@@ -1,10 +1,31 @@
 import sys
-from PyQt6.QtWidgets import QApplication, QWidget
+from PyQt6.QtWidgets import QApplication, QWidget, QPushButton
 
 app = QApplication(sys.argv)
+qss = "Stylesheet.qss"
 
-widget = QWidget()
+with open(qss,"r") as fh:
+    app.setStyleSheet(fh.read())
 
-widget.show()
+
+class Window(QWidget):
+    def __init__(self):
+        super().__init__()
+
+        self.createButton()
+
+
+
+    def createButton(self):
+        button = QPushButton('hahahaha BUTTON',self)
+
+
+
+
+
+
+
+window = Window()
+window.show()
 
 sys.exit(app.exec())
