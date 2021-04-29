@@ -1,3 +1,23 @@
 QWidget{
-            background-color: blue;
+    background-color: #D8EAF3;
 }
+QWidget#box{
+    background-color: white;
+}
+
+QPushButton{
+    color: black;
+    border-color: #8DC1D8;
+}
+
+QPushButton#playbtn{
+    max-width: 80px;
+    max-height: 80px;
+    image: url('playButton.png') ;
+}
+
+QPushButton#playbtn:hover{
+    background-color: #B2D6E6;
+}
+
+
