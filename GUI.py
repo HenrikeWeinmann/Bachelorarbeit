@@ -16,17 +16,15 @@ class Window(QWidget):
 
         self.setGeometry(200,300,1000,600)
         #Box links
-        box = QWidget()
+        box = QWidget(self)
         box.setObjectName("box")
-        playbtn = QPushButton('')
+        playbtn = QPushButton('', parent=box)
         playbtn.setObjectName("playbtn")
-        btn = QPushButton('test')
-        btn2 = QPushButton('test')
         innerLeft = QVBoxLayout()
-        innerLeft.setAlignment(innerLeft,Qt.Alignment.AlignBottom)
-        innerLeft.addWidget(playbtn)
-        innerLeft.addWidget(btn)
-        innerLeft.addWidget(btn2)
+        innerLeft.addStretch()
+        center= QHBoxLayout()
+        center.addWidget(playbtn)
+        innerLeft.addLayout(center)
         box.setLayout(innerLeft)
 
         #Box oben rechts
