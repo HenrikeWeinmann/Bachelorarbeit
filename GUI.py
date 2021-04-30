@@ -1,12 +1,10 @@
 import sys
-from PyQt6.QtGui     import *
 from PyQt6.QtWidgets import *
-from PyQt6.QtCore    import *
-
+import vtk
 app = QApplication(sys.argv)
 qss = "Stylesheet.qss"
 
-with open(qss,"r") as fh:
+with open(qss, "r") as fh:
     app.setStyleSheet(fh.read())
 
 
@@ -15,22 +13,22 @@ class Window(QWidget):
         super().__init__()
 
         self.setGeometry(200,300,1000,600)
-        #Box links
+        # Box links
         box = QWidget(self)
         box.setObjectName("box")
         playbtn = QPushButton('', parent=box)
         playbtn.setObjectName("playbtn")
         innerLeft = QVBoxLayout()
         innerLeft.addStretch()
-        center= QHBoxLayout()
+        center = QHBoxLayout()
         center.addWidget(playbtn)
         innerLeft.addLayout(center)
         box.setLayout(innerLeft)
-
-        #Box oben rechts
+        # Box oben rechts
         box2 = QWidget()
         box2.setObjectName("box2")
-        #Box unten rechts
+
+        # Box unten rechts
         box3 = QWidget()
         box3.setObjectName("box3")
         grid3 = QGridLayout()
@@ -43,13 +41,12 @@ class Window(QWidget):
         innerRight.addWidget(box2)
         innerRight.addWidget(box3)
 
-        #Layout
+        # Layout
         mainLayout = QHBoxLayout()
         mainLayout.addWidget(box)
         mainLayout.addLayout(innerRight)
 
         self.setLayout(mainLayout)
-
 
 
 
