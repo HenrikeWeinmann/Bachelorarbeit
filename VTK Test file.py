@@ -1,7 +1,5 @@
 import sys
 import vtk
-import sys
-import vtk
 from PyQt5 import QtCore, QtWidgets
 from vtk.qt.QVTKRenderWindowInteractor import QVTKRenderWindowInteractor
 
