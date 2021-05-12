@@ -9,44 +9,68 @@ with open(qss, "r") as fh:
 
 
 class Window(QWidget):
+    filepath = ''
+
     def __init__(self):
         super().__init__()
 
         self.setGeometry(200,300,1000,600)
         # Box links
-        box = QWidget(self)
-        box.setObjectName("box")
-        playbtn = QPushButton('', parent=box)
-        playbtn.setObjectName("playbtn")
-        innerLeft = QVBoxLayout()
-        innerLeft.addStretch()
-        center = QHBoxLayout()
-        center.addWidget(playbtn)
-        innerLeft.addLayout(center)
-        box.setLayout(innerLeft)
+        self.box = QWidget()
+        self.box.setObjectName("box")
+
+        self.playbtn = QPushButton('', parent=self.box)
+        self.playbtn.setObjectName("playbtn")
+        self.playbtn.clicked.connect(self.playButton)
+
+        self.innerLeft = QVBoxLayout()
+        self.innerLeft.addStretch()
+
+        self.center = QHBoxLayout()
+        self.center.addWidget(self.playbtn)
+
+        self.innerLeft.addLayout(self.center)
+        self.box.setLayout(self.innerLeft)
+
         # Box oben rechts
-        box2 = QWidget()
-        box2.setObjectName("box2")
+        self.box2 = QWidget()
+        self.box2.setObjectName("box2")
 
         # Box unten rechts
-        box3 = QWidget()
-        box3.setObjectName("box3")
-        grid3 = QGridLayout()
-        button2 = QPushButton('LOL')
-        button2.setMaximumWidth(100)
-        grid3.addWidget(button2)
-        box3.setLayout(grid3)
+        self.box3 = QWidget()
+        self.box3.setObjectName("box3")
+        self.box3.setMaximumWidth(200)
+        self.bottomRight = QHBoxLayout()
+        self.button2 = QPushButton('LOL')
+        self.button2.setMaximumWidth(100)
 
-        innerRight = QVBoxLayout()
-        innerRight.addWidget(box2)
-        innerRight.addWidget(box3)
+        self.input = QLineEdit('filepath')
+        self.input.setMaxLength(25)
+        self.input.editingFinished.connect(self.setFilepath)
+
+        self.bottomRight.addWidget(self.button2)
+        self.bottomRight.addWidget(self.input)
+        self.box3.setLayout(self.bottomRight)
+
+        self.innerRight = QVBoxLayout()
+        self.innerRight.addWidget(self.box2)
+        self.innerRight.addWidget(self.box3)
 
         # Layout
-        mainLayout = QHBoxLayout()
-        mainLayout.addWidget(box)
-        mainLayout.addLayout(innerRight)
+        self.mainLayout = QHBoxLayout()
+        self.mainLayout.addWidget(self.box)
+        self.mainLayout.addLayout(self.innerRight)
 
-        self.setLayout(mainLayout)
+        self.setLayout(self.mainLayout)
+
+    def playButton(self):
+        print('start')
+
+
+    def setFilepath(self):
+        print(self.input.text())
+        Window.filepath = self.input.text()
+
 
 
 
