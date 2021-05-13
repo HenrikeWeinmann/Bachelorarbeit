@@ -1,9 +1,10 @@
 import sys
 import vtk
 from PyQt5 import QtCore, QtWidgets
+from PyQt5.QtWidgets import *
 from vtk.qt.QVTKRenderWindowInteractor import QVTKRenderWindowInteractor
 
-class MainWindow(QtWidgets.QMainWindow):
+class MainWindow(QMainWindow):
 
     def __init__(self, parent=None):
         QtWidgets.QMainWindow.__init__(self, parent)

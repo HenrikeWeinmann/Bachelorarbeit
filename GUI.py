@@ -1,46 +1,79 @@
 import sys
-from PyQt6.QtWidgets import *
+from PyQt5.QtWidgets import *
 import vtk
+from vtk.qt import *
+from vtk.qt.QVTKRenderWindowInteractor import QVTKRenderWindowInteractor
 app = QApplication(sys.argv)
 qss = "Stylesheet.qss"
 
 with open(qss, "r") as fh:
     app.setStyleSheet(fh.read())
 
-
-class Window(QWidget):
-    filepath = ''
+class VTKWidget (QMainWindow):
 
     def __init__(self):
-        super().__init__()
+        QWidget.__init__(self)
+        self.setGeometry(200, 300, 1000, 600)
+        self.frame = QFrame()
 
-        self.setGeometry(200,300,1000,600)
-        # Box links
-        self.box = QWidget()
-        self.box.setObjectName("box")
+        self.mainLayout = QGridLayout()
 
-        self.playbtn = QPushButton('', parent=self.box)
-        self.playbtn.setObjectName("playbtn")
-        self.playbtn.clicked.connect(self.playButton)
+        self.vtkWidget = QVTKRenderWindowInteractor(self.frame)
 
-        self.innerLeft = QVBoxLayout()
-        self.innerLeft.addStretch()
+        self.box = Data()
 
-        self.center = QHBoxLayout()
-        self.center.addWidget(self.playbtn)
+        self.play = PlayButton()
 
-        self.innerLeft.addLayout(self.center)
-        self.box.setLayout(self.innerLeft)
+        self.userInput = UserInput()
 
-        # Box oben rechts
-        self.box2 = QWidget()
-        self.box2.setObjectName("box2")
+        self.mainLayout.addWidget(self.vtkWidget, 0, 0)
+        self.mainLayout.addWidget(self.play, 1, 0)
+        self.mainLayout.addWidget(self.box, 0, 1)
+        self.mainLayout.addWidget(self.userInput, 1, 1)
 
-        # Box unten rechts
-        self.box3 = QWidget()
-        self.box3.setObjectName("box3")
-        self.box3.setMaximumWidth(200)
-        self.bottomRight = QHBoxLayout()
+        # reader the dicom file
+        self.reader = vtk.vtkDICOMImageReader()
+        self.reader.SetDataByteOrderToLittleEndian()
+        self.reader.SetFileName("IM-13020-0001.dcm")
+        self.reader.Update()
+
+        # show the dicom flie
+        self.imageviewer = vtk.vtkImageViewer2()
+        self.imageviewer.SetInputConnection(self.reader.GetOutputPort())
+        self.ren = vtk.vtkRenderer()
+        self.vtkWidget.GetRenderWindow().AddRenderer(self.ren)
+        self.imageviewer.SetRenderer(self.ren)
+        self.imageviewer.SetRenderWindow(self.vtkWidget.GetRenderWindow())
+        self.iren = self.vtkWidget.GetRenderWindow().GetInteractor()
+        self.imageviewer.SetupInteractor(self.iren)
+        self.imageviewer.Render()
+        self.ren.ResetCamera()
+        self.imageviewer.Render()
+
+        self.frame.setLayout(self.mainLayout)
+        self.setCentralWidget(self.frame)
+
+        self.show()
+        self.iren.Initialize()
+
+class Data(QWidget):
+
+    def __init__(self):
+        QWidget.__init__(self)
+        self.BoxLayout = QHBoxLayout()
+        self.lable = QLabel('This is going to be information about the slice....')
+        self.BoxLayout.addWidget(self.lable)
+        self.setLayout(self.BoxLayout)
+
+
+class UserInput(QWidget):
+    filepath = 'IM-13020-0001.dcm'
+
+    def __init__(self):
+        QWidget.__init__(self)
+        self.setObjectName("box3")
+        self.setGeometry(300, 300, 300, 300)
+
         self.button2 = QPushButton('LOL')
         self.button2.setMaximumWidth(100)
 
@@ -48,33 +81,34 @@ class Window(QWidget):
         self.input.setMaxLength(25)
         self.input.editingFinished.connect(self.setFilepath)
 
-        self.bottomRight.addWidget(self.button2)
-        self.bottomRight.addWidget(self.input)
-        self.box3.setLayout(self.bottomRight)
+        self.layout = QHBoxLayout()
+        self.layout.addWidget(self.button2)
+        self.layout.addWidget(self.input)
+        self.setLayout(self.layout)
 
-        self.innerRight = QVBoxLayout()
-        self.innerRight.addWidget(self.box2)
-        self.innerRight.addWidget(self.box3)
 
-        # Layout
-        self.mainLayout = QHBoxLayout()
-        self.mainLayout.addWidget(self.box)
-        self.mainLayout.addLayout(self.innerRight)
+    def setFilepath(self):
+        print(self.input.text())
+        UserInput.filepath = self.input.text()
 
-        self.setLayout(self.mainLayout)
+
+class PlayButton(QWidget):
+    def __init__(self):
+        QWidget.__init__(self)
+        self.playbtn = QPushButton('')
+        self.playbtn.setObjectName("playbtn")
+        self.playbtn.clicked.connect(self.playButton)
+        self.layout = QHBoxLayout()
+        self.layout.addWidget(self.playbtn)
+        self.setLayout(self.layout)
+
 
     def playButton(self):
         print('start')
 
 
-    def setFilepath(self):
-        print(self.input.text())
-        Window.filepath = self.input.text()
 
-
-
-
-window = Window()
-window.show()
+Window = VTKWidget()
+Window.show()
 
 sys.exit(app.exec())

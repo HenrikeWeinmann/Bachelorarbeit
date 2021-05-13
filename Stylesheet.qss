@@ -6,6 +6,10 @@ QWidget#box, QWidget#box2{
     background-color: white;
 
 }
+QWidget#box4{
+    background-color: red;
+
+}
 
 QPushButton{
     color: black;
