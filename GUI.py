@@ -3,13 +3,26 @@ from PyQt5.QtWidgets import *
 import vtk
 from vtk.qt import *
 from vtk.qt.QVTKRenderWindowInteractor import QVTKRenderWindowInteractor
+import os
+
 app = QApplication(sys.argv)
 qss = "Stylesheet.qss"
+study = "/Users/Heni/OneDrive/Uni/Bachelorarbeit/second-annual-data-science-bowl/test/test/932/study/"
+
 
 with open(qss, "r") as fh:
     app.setStyleSheet(fh.read())
 
 class VTKWidget (QMainWindow):
+    current = 0
+    running = False
+    slice = 1
+    slices = os.listdir(study)
+    slices.sort()
+    current_slice = os.path.join(study, slices[slice])
+    frames = os.listdir(current_slice)
+    frames.sort()
+    current_frame = os.path.join(current_slice, frames[current])
 
     def __init__(self):
         QWidget.__init__(self)
@@ -18,7 +31,7 @@ class VTKWidget (QMainWindow):
 
         self.mainLayout = QGridLayout()
 
-        self.vtkWidget = QVTKRenderWindowInteractor(self.frame)
+        self.vtkWidget = MyQVTKRenderWindowInteractor(self.frame)
 
         self.box = Data()
 
@@ -31,21 +44,21 @@ class VTKWidget (QMainWindow):
         self.mainLayout.addWidget(self.box, 0, 1)
         self.mainLayout.addWidget(self.userInput, 1, 1)
 
-        # reader the dicom file
+        # reader the DICOM file
         self.reader = vtk.vtkDICOMImageReader()
         self.reader.SetDataByteOrderToLittleEndian()
-        self.reader.SetFileName("IM-13020-0001.dcm")
+        self.reader.SetFileName(self.current_frame)
         self.reader.Update()
 
-        # show the dicom flie
+        # show the DICOM file
         self.imageviewer = vtk.vtkImageViewer2()
         self.imageviewer.SetInputConnection(self.reader.GetOutputPort())
         self.ren = vtk.vtkRenderer()
         self.vtkWidget.GetRenderWindow().AddRenderer(self.ren)
         self.imageviewer.SetRenderer(self.ren)
         self.imageviewer.SetRenderWindow(self.vtkWidget.GetRenderWindow())
-        self.iren = self.vtkWidget.GetRenderWindow().GetInteractor()
-        self.imageviewer.SetupInteractor(self.iren)
+        self.interactor = self.vtkWidget.GetRenderWindow().GetInteractor()
+        self.imageviewer.SetupInteractor(self.interactor)
         self.imageviewer.Render()
         self.ren.ResetCamera()
         self.imageviewer.Render()
@@ -54,7 +67,39 @@ class VTKWidget (QMainWindow):
         self.setCentralWidget(self.frame)
 
         self.show()
-        self.iren.Initialize()
+        self.interactor.Initialize()
+        self.interactor.RemoveObservers('MouseWheelForwardEvent')
+        self.interactor.AddObserver('MouseWheelForwardEvent', self.selected_slice_forward, 1.0)
+        self.interactor.RemoveObservers('MouseWheelBackwardEvent')
+        self.interactor.AddObserver('MouseWheelBackwardEvent', self.selected_slice_backward, 1.0)
+
+
+    def reset_after_changes(self):
+        self.current_slice = os.path.join(study, self.slices[self.slice])
+        self.frames = os.listdir(self.current_slice)
+        self.frames.sort()
+        self.current_frame = os.path.join(self.current_slice, self.frames[self.current])
+        self.reader.SetFileName(self.current_frame)
+        self.imageviewer.Render()
+
+    def selected_slice_forward(self, caller, event):
+        print(self.slice)
+        if self.slice < 12:
+            self.slice +=1
+            self.reset_after_changes()
+        else:
+            pass
+
+
+    def selected_slice_backward(self, caller, event):
+        print(self.slice)
+        if self.slice > 1:
+            self.slice -=1
+            self.reset_after_changes()
+        else:
+            pass
+
+
 
 class Data(QWidget):
 
@@ -93,6 +138,7 @@ class UserInput(QWidget):
 
 
 class PlayButton(QWidget):
+    refresh = 10000 # in fps
     def __init__(self):
         QWidget.__init__(self)
         self.playbtn = QPushButton('')
@@ -104,11 +150,43 @@ class PlayButton(QWidget):
 
 
     def playButton(self):
-        print('start')
+        if Window.running:
+            Window.running = False
+            Window.interactor.DestroyTimer()
+        else:
+            Window.running = True
+            Window.interactor.CreateRepeatingTimer(int(self.refresh))
+            Window.interactor.AddObserver("TimerEvent", self.callback_func)
+
+
+    def callback_func(self, caller, timer_event):
+        if Window.current < 29:
+            Window.current += 1
+        else:
+            Window.current = 0
+
+        print(Window.current)
+        Window.current_frame = os.path.join(Window.current_slice, Window.frames[Window.current])
+        Window.reset_after_changes()
+
+
+# since QVTK Timer is bugged
+class MyQVTKRenderWindowInteractor(QVTKRenderWindowInteractor):
+   def __init__(self, *arg):
+       super(MyQVTKRenderWindowInteractor, self).__init__(*arg)
+       self._TimerDuration = 20 # default value
+
+   def CreateTimer(self, obj, event):
+       self._Timer.start(self._TimerDuration) # self._Timer.start(10) in orginal
+
+   def CreateRepeatingTimer(self, duration):
+       self._TimerDuration = duration
+       super(MyQVTKRenderWindowInteractor, self).GetRenderWindow().GetInteractor().CreateRepeatingTimer(duration)
+       self._TimeDuration = 20
+
 
 
 
 Window = VTKWidget()
 Window.show()
-
 sys.exit(app.exec())
