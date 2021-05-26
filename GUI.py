@@ -7,7 +7,6 @@ import os
 
 app = QApplication(sys.argv)
 qss = "Stylesheet.qss"
-study = "/Users/Heni/OneDrive/Uni/Bachelorarbeit/second-annual-data-science-bowl/test/test/932/study/"
 
 
 with open(qss, "r") as fh:
@@ -15,6 +14,7 @@ with open(qss, "r") as fh:
 
 
 class VTKWidget (QMainWindow):
+    study = "/Users/Heni/OneDrive/Uni/Bachelorarbeit/second-annual-data-science-bowl/test/test/932/study/"
     current = 0  # current frame starting with 0
     running = False
     slice = 1  # slice the user currently sees starting at 1
@@ -35,7 +35,8 @@ class VTKWidget (QMainWindow):
 
         self.vtkWidget = MyQVTKRenderWindowInteractor(self.frame)
 
-        self.box = Data()
+        self.data = Data()
+        self.data.info.setText(self.information())
         # self.box.setObjectName('Data')
 
         self.play = Buttons()
@@ -45,13 +46,15 @@ class VTKWidget (QMainWindow):
 
         self.mainLayout.addWidget(self.vtkWidget, 0, 0)
         self.mainLayout.addWidget(self.play, 1, 0)
-        self.mainLayout.addWidget(self.box, 0, 1)
+        self.mainLayout.addWidget(self.data, 0, 1)
         self.mainLayout.addWidget(self.userInput, 1, 1)
 
         # reader the DICOM file
         self.reader = vtk.vtkDICOMImageReader()
         self.reader.SetDataByteOrderToLittleEndian()
         self.reader.SetFileName(self.current_frame)
+        self.reader.Update()
+        self.vtk_selection()
         self.reader.Update()
 
         # show the DICOM file
@@ -80,7 +83,9 @@ class VTKWidget (QMainWindow):
 # reset the current slice and frame we are on
 
     def reset_after_changes(self):
-        self.current_slice = os.path.join(study, self.slices[self.slice])
+        self.slices = os.listdir(self.study)  # list of all names of all slices
+        self.slices.sort()
+        self.current_slice = os.path.join(Window.study, self.slices[self.slice])
         self.frames = os.listdir(self.current_slice)
         self.frames.sort()
         self.current_frame = os.path.join(self.current_slice, self.frames[self.current])
@@ -90,7 +95,7 @@ class VTKWidget (QMainWindow):
 # scroll wheel methods
     def selected_slice_forward(self, caller, event):
         print(self.slice)
-        if self.slice < 12:
+        if self.slice < len(self.slices)-1:
             self.slice += 1
             self.reset_after_changes()
         else:
@@ -104,18 +109,13 @@ class VTKWidget (QMainWindow):
         else:
             pass
 
+    def vtk_selection(self):
+        pass
 
-# this class creates a widget that contains all necessary data about the current slice
-class Data(QWidget):
-
-    def __init__(self):
-        QWidget.__init__(self)
-        self.setObjectName("Data")
-        self.BoxLayout = QHBoxLayout()
-        self.lable = QLabel('This is going to be information about the slice....')
-        self.BoxLayout.addWidget(self.lable)
-        self.setLayout(self.BoxLayout)
-
+    def information(self):
+        return "This is the current slice: " + self.slices[self.slice] +"\n" \
+               "This is the current frame: " + self.frames[self.current] + "\n" \
+               "The selected Point is : "
 
 # this class handles user Input
 
@@ -127,22 +127,30 @@ class UserInput(QWidget):
         self.setObjectName("UserInput")
         self.setGeometry(300, 300, 300, 300)
 
-        self.button2 = QPushButton('LOL')
-        self.button2.setMaximumWidth(100)
-
+        self.button2 = QPushButton('SUBMIT')
+        self.button2.clicked.connect(self.setFilepath)
+        self.label = QLabel("Please enter the filepath to a study directory")
         self.input = QLineEdit('filepath')
-        self.input.setMaxLength(25)
+        self.input.setMaxLength(100)
         self.input.editingFinished.connect(self.setFilepath)
 
-        self.layout = QHBoxLayout()
-        self.layout.addWidget(self.button2)
-        self.layout.addWidget(self.input)
+        self.layout = QGridLayout()
+        self.layout.addWidget(self.label, 0, 0)
+        self.layout.addWidget(self.button2, 1, 1)
+        self.layout.addWidget(self.input, 1, 0)
         self.setLayout(self.layout)
 
     def setFilepath(self):
-        print(self.input.text())
-        UserInput.filepath = self.input.text()
+        self.filepath = self.input.text()
+        print(self.filepath)
+        self.check_and_Set_Filepath()
 
+
+    def check_and_Set_Filepath(self):
+        if os.path.exists(self.filepath):
+            Window.study = self.filepath
+            Window.reset_after_changes()
+            print("this ist the study path: "+ Window.study)
 
 # Animation/Video
 
@@ -196,6 +204,22 @@ class Buttons(QWidget):
             Window.current = 29
         Window.current_frame = os.path.join(Window.current_slice, Window.frames[Window.current])
         Window.reset_after_changes()
+
+# this class creates a widget that contains all necessary data about the current slice
+class Data(QWidget):
+
+    def __init__(self):
+        QWidget.__init__(self)
+        self.setObjectName("Data")
+        self.BoxLayout = QVBoxLayout()
+        self.lable = QLabel('This is going to be information about the slice: ')
+        self.info = QLabel("")
+        self.info.setObjectName("info")
+        self.BoxLayout.addWidget(self.lable)
+        self.BoxLayout.addWidget(self.info)
+        self.BoxLayout.addStretch()
+        self.setLayout(self.BoxLayout)
+
 
 # since QVTK Timer is bugged
 class MyQVTKRenderWindowInteractor(QVTKRenderWindowInteractor):

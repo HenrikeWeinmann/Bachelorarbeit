@@ -6,11 +6,16 @@ QMainWindow{
 QLabel{
     background-color: #D8EAF3;
     color: black;
-    font: 20px;
+    font: 30px;
+    min-height: 100px;
 
 }
-
+QLabel#info{
+    min-height: 400px;
+    font: 20px;
+}
 QPushButton{
+    background-color: #D8EAF3;
     color: black;
     border-color: #8DC1D8;
     border-radius: 20;
@@ -51,6 +56,10 @@ QPushButton#backward{
 }
 
 QLineEdit{
-    max-width: 200px;
+    background-color: #D8EAF3;
+    max-width: 300px;
+    min-width: 200px;
+    min-height: 40px;
     color: darkgrey;
+    font: 20px;
 }
