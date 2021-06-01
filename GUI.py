@@ -37,12 +37,14 @@ class VTKWidget (QMainWindow):
 
         self.data = Data()
         self.data.info.setText(self.information())
+        self.data.setObjectName("data")
         # self.box.setObjectName('Data')
 
         self.play = Buttons()
         self.play.setObjectName("MediaBar")
 
         self.userInput = UserInput()
+        self.userInput.setObjectName("userInput")
 
         self.mainLayout.addWidget(self.vtkWidget, 0, 0)
         self.mainLayout.addWidget(self.play, 1, 0)
@@ -124,20 +126,22 @@ class UserInput(QWidget):
 
     def __init__(self):
         QWidget.__init__(self)
-        self.setObjectName("UserInput")
-        self.setGeometry(300, 300, 300, 300)
-
         self.button2 = QPushButton('SUBMIT')
+        self.button2.setObjectName("submit")
         self.button2.clicked.connect(self.setFilepath)
         self.label = QLabel("Please enter the filepath to a study directory")
+        self.label.setObjectName("enterfilepath")
         self.input = QLineEdit('filepath')
         self.input.setMaxLength(100)
         self.input.editingFinished.connect(self.setFilepath)
 
-        self.layout = QGridLayout()
-        self.layout.addWidget(self.label, 0, 0)
-        self.layout.addWidget(self.button2, 1, 1)
-        self.layout.addWidget(self.input, 1, 0)
+        self.layout = QVBoxLayout()
+        self.layout.addWidget(self.label)
+        self.inner = QHBoxLayout()
+        self.inner.addWidget(self.input)
+        self.inner.addWidget(self.button2)
+        self.layout.addLayout(self.inner)
+        self.layout.addStretch()
         self.setLayout(self.layout)
 
     def setFilepath(self):
