@@ -57,10 +57,20 @@ class VTKWidget (QMainWindow):
         self.reader.SetDataByteOrderToLittleEndian()
         self.reader.SetFileName(self.current_frame)
         self.reader.Update()
+        # image Data
+        self.imageData = self.reader.GetOutput()
+        self.imageData.SetOrigin(0, 0, 0)
+        # canvas
+        self.imageCanvas = vtk.vtkImageCanvasSource2D()
+        self.imageCanvas.InitializeCanvasVolume(self.imageData)
+        self.imageCanvas.SetExtent(self.imageData.GetExtent())
+        self.imageCanvas.SetDrawColor(255, 0, 0, 0.01)
+        self.imageCanvas.FillTriangle(0, 0, 100, 30, 10, 140)
+        self.imageCanvas.Update()
 
         # show the DICOM file
         self.imageviewer = vtk.vtkImageViewer2()
-        self.imageviewer.SetInputConnection(self.reader.GetOutputPort())
+        self.imageviewer.SetInputConnection(self.imageCanvas.GetOutputPort())
         self.ren = vtk.vtkRenderer()
         self.vtkWidget.GetRenderWindow().AddRenderer(self.ren)
         self.imageviewer.SetRenderer(self.ren)
@@ -91,7 +101,14 @@ class VTKWidget (QMainWindow):
         self.frames.sort()
         self.current_frame = os.path.join(self.current_slice, self.frames[self.current])
         self.reader.SetFileName(self.current_frame)
+        self.reset_canvas()
         self.imageviewer.Render()
+        print('reset')
+
+    def reset_canvas(self):
+        self.reader.Update()
+        self.imageData = self.reader.GetOutput()
+        self.imageCanvas.InitializeCanvasVolume(self.imageData)
 
 
 # scroll wheel methods
@@ -113,8 +130,13 @@ class VTKWidget (QMainWindow):
 
     def vtk_selection(self, caller, event):
         print(self.interactor.GetEventPosition())
+        self.reset_canvas()
         self.selection = self.interactor.GetEventPosition()
         self.data.info.setText(self.information())
+        self.imageCanvas.SetDrawColor(255, 0, 0, 0.01)
+        self.imageCanvas.FillTriangle(0, 0, 100, 30, self.selection[0], self.selection[1])
+        self.imageCanvas.Update()
+        self.imageviewer.Render()
 
     def information(self):
         return "This is the current slice: " + self.slices[self.slice] + "\n" \
