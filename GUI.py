@@ -56,8 +56,6 @@ class VTKWidget (QMainWindow):
         self.reader.SetDataByteOrderToLittleEndian()
         self.reader.SetFileName(self.current_frame)
         self.reader.Update()
-        self.vtk_selection()
-        self.reader.Update()
 
         # show the DICOM file
         self.imageviewer = vtk.vtkImageViewer2()
@@ -75,13 +73,13 @@ class VTKWidget (QMainWindow):
         self.frame.setLayout(self.mainLayout)
         self.setCentralWidget(self.frame)
 
-        self.show()
         self.interactor.Initialize()
         self.interactor.RemoveObservers('MouseWheelForwardEvent')
         self.interactor.AddObserver('MouseWheelForwardEvent', self.selected_slice_forward, 1.0)  # why 1.0?
         self.interactor.RemoveObservers('MouseWheelBackwardEvent')
         self.interactor.AddObserver('MouseWheelBackwardEvent', self.selected_slice_backward, 1.0)
-
+        self.interactor.RemoveObservers('LeftButtonPressEvent')
+        self.interactor.AddObserver('LeftButtonPressEvent', self.vtk_selection, 1.0)
 # reset the current slice and frame we are on
 
     def reset_after_changes(self):
@@ -111,7 +109,9 @@ class VTKWidget (QMainWindow):
         else:
             pass
 
-    def vtk_selection(self):
+    def vtk_selection(self, caller, event):
+        print(self.interactor.GetEventPosition())
+        self.interactor.GetEventPosition()
         pass
 
     def information(self):
@@ -119,8 +119,8 @@ class VTKWidget (QMainWindow):
                "This is the current frame: " + self.frames[self.current] + "\n" \
                "The selected Point is : "
 
-# this class handles user Input
 
+# this class handles user Input
 class UserInput(QWidget):
     filepath = 'IM-13020-0001.dcm'
 
@@ -154,7 +154,7 @@ class UserInput(QWidget):
         if os.path.exists(self.filepath):
             Window.study = self.filepath
             Window.reset_after_changes()
-            print("this ist the study path: "+ Window.study)
+            print("this ist the study path: " + Window.study)
 
 # Animation/Video
 
@@ -180,7 +180,7 @@ class Buttons(QWidget):
         self.setLayout(self.layout)
 
     def playButton(self):
-        if  Window.running:
+        if Window.running:
             Window.running = False
             Window.interactor.DestroyTimer()
             self.playbtn.setStyleSheet("image: url('playButton.png') ;")

@@ -38,18 +38,18 @@ imageCanvas.FillTriangle(0, 0, 100, 30, 10, 140)
 imageCanvas.Update()
 
 
-'''
+
 # show the dicom file 
 # example from github
 
 imageviewer = vtk.vtkImageViewer2()
-imageviewer.SetInputData(imageBlend.GetOutput())
+imageviewer.SetInputData(imageCanvas.GetOutput())
 renderwindowinteractor = vtk.vtkRenderWindowInteractor()
 imageviewer.SetupInteractor(renderwindowinteractor)
 imageviewer.Render()
 imageviewer.GetRenderer(). ResetCamera()
 imageviewer.Render()
-'''
+
 
 '''
 # look up table
@@ -97,4 +97,4 @@ renderWindow.Render()
 
 renderWindowInteractor.Start()
 
-# renderwindowinteractor.Start()
+renderwindowinteractor.Start()
