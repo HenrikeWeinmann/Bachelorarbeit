@@ -25,6 +25,7 @@ class VTKWidget (QMainWindow):
     frames = os.listdir(current_slice)  # list of all names from all frames of the current slice
     frames.sort()
     current_frame = os.path.join(current_slice, frames[current])  # path of the current frame on users OS
+    selection = []
 
     def __init__(self):
         QWidget.__init__(self)
@@ -92,6 +93,7 @@ class VTKWidget (QMainWindow):
         self.reader.SetFileName(self.current_frame)
         self.imageviewer.Render()
 
+
 # scroll wheel methods
     def selected_slice_forward(self, caller, event):
         print(self.slice)
@@ -111,13 +113,13 @@ class VTKWidget (QMainWindow):
 
     def vtk_selection(self, caller, event):
         print(self.interactor.GetEventPosition())
-        self.interactor.GetEventPosition()
-        pass
+        self.selection = self.interactor.GetEventPosition()
+        self.data.info.setText(self.information())
 
     def information(self):
-        return "This is the current slice: " + self.slices[self.slice] +"\n" \
+        return "This is the current slice: " + self.slices[self.slice] + "\n" \
                "This is the current frame: " + self.frames[self.current] + "\n" \
-               "The selected Point is : "
+               "The selected Point is : " + str(self.selection)
 
 
 # this class handles user Input
