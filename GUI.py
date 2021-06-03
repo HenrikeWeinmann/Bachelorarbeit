@@ -41,7 +41,7 @@ class VTKWidget (QMainWindow):
         self.data.setObjectName("data")
         # self.box.setObjectName('Data')
 
-        self.play = Buttons()
+        self.play = Buttons(self)
         self.play.setObjectName("MediaBar")
 
         self.userInput = UserInput()
@@ -186,8 +186,9 @@ class UserInput(QWidget):
 class Buttons(QWidget):
     refresh = 10000  # in fps (doesn't work because of VTK bug)
 
-    def __init__(self):
+    def __init__(self, window):
         QWidget.__init__(self)
+        self.window = window
         self.backward = QPushButton('')
         self.backward.setObjectName("backward")
         self.backward.clicked.connect(self.backwardButton)
@@ -204,34 +205,34 @@ class Buttons(QWidget):
         self.setLayout(self.layout)
 
     def playButton(self):
-        if Window.running:
-            Window.running = False
-            Window.interactor.DestroyTimer()
+        if self.window.running:
+            self.window.running = False
+            self.window.interactor.DestroyTimer()
             self.playbtn.setStyleSheet("image: url('playButton.png') ;")
         else:
-            Window.running = True
-            Window.interactor.CreateRepeatingTimer(int(self.refresh))
-            Window.interactor.AddObserver("TimerEvent", self.callback_func)
+            self.window.running = True
+            self.window.interactor.CreateRepeatingTimer(int(self.refresh))
+            self.window.interactor.AddObserver("TimerEvent", self.callback_func)
             self.playbtn.setStyleSheet("image: url('pauseButton.png') ;")
 
     def callback_func(self, caller, timer_event):
         self.forwardButton()
 
     def forwardButton(self):
-        if Window.current < 29:
-            Window.current += 1
+        if self.window.current < 29:
+            self.window.current += 1
         else:
-            Window.current = 0
-        Window.current_frame = os.path.join(Window.current_slice, Window.frames[Window.current])
-        Window.reset_after_changes()
+            self.window.current = 0
+        self.window.current_frame = os.path.join(self.window.current_slice, self.window.frames[self.window.current])
+        self.window.reset_after_changes()
 
     def backwardButton(self):
-        if Window.current > 0:
-            Window.current -= 1
+        if self.window.current > 0:
+            self.window.current -= 1
         else:
-            Window.current = 29
-        Window.current_frame = os.path.join(Window.current_slice, Window.frames[Window.current])
-        Window.reset_after_changes()
+            self.window.current = 29
+        self.window.current_frame = os.path.join(self.window.current_slice, self.window.frames[self.window.current])
+        self.window.reset_after_changes()
 
 # this class creates a widget that contains all necessary data about the current slice
 class Data(QWidget):
