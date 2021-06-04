@@ -30,24 +30,26 @@ class VTKWidget (QMainWindow):
     def __init__(self):
         QWidget.__init__(self)
         self.setGeometry(200, 300, 1300, 1000)
-        self.frame = QFrame()
+        self.centralWidget = QFrame()
+        self.vtk = QFrame()
+        self.vtk.setFixedSize(191*3, 255*3)
+        self.vtk.setStyleSheet("background-color: red;")
 
         self.mainLayout = QGridLayout()
 
-        self.vtkWidget = MyQVTKRenderWindowInteractor(self.frame)
+        self.vtkWidget = QVTKRenderWindowInteractor(self.vtk)
 
         self.data = Data()
         self.data.info.setText(self.information())
         self.data.setObjectName("data")
-        # self.box.setObjectName('Data')
 
         self.play = Buttons(self)
         self.play.setObjectName("MediaBar")
 
-        self.userInput = UserInput()
+        self.userInput = UserInput(self)
         self.userInput.setObjectName("userInput")
 
-        self.mainLayout.addWidget(self.vtkWidget, 0, 0)
+        self.mainLayout.addWidget(self.vtk, 0, 0)
         self.mainLayout.addWidget(self.play, 1, 0)
         self.mainLayout.addWidget(self.data, 0, 1)
         self.mainLayout.addWidget(self.userInput, 1, 1)
@@ -60,29 +62,32 @@ class VTKWidget (QMainWindow):
         # image Data
         self.imageData = self.reader.GetOutput()
         self.imageData.SetOrigin(0, 0, 0)
+        self.dimensions = self.imageData.GetExtent()
+        print(self.dimensions)
         # canvas
         self.imageCanvas = vtk.vtkImageCanvasSource2D()
         self.imageCanvas.InitializeCanvasVolume(self.imageData)
-        self.imageCanvas.SetExtent(self.imageData.GetExtent())
+        self.imageCanvas.SetExtent(self.dimensions)
         self.imageCanvas.SetDrawColor(255, 0, 0, 0.01)
         self.imageCanvas.FillTriangle(0, 0, 100, 30, 10, 140)
         self.imageCanvas.Update()
 
         # show the DICOM file
+        self.ren = vtk.vtkRenderer()
+        self.renderwindow = self.vtkWidget.GetRenderWindow()
+        self.renderwindow.AddRenderer(self.ren)
+        self.interactor = self.renderwindow.GetInteractor()
         self.imageviewer = vtk.vtkImageViewer2()
         self.imageviewer.SetInputConnection(self.imageCanvas.GetOutputPort())
-        self.ren = vtk.vtkRenderer()
-        self.vtkWidget.GetRenderWindow().AddRenderer(self.ren)
         self.imageviewer.SetRenderer(self.ren)
-        self.imageviewer.SetRenderWindow(self.vtkWidget.GetRenderWindow())
-        self.interactor = self.vtkWidget.GetRenderWindow().GetInteractor()
+        self.imageviewer.SetRenderWindow(self.renderwindow)
         self.imageviewer.SetupInteractor(self.interactor)
         self.imageviewer.Render()
-        self.ren.ResetCamera()
+        self.update_camera()
         self.imageviewer.Render()
 
-        self.frame.setLayout(self.mainLayout)
-        self.setCentralWidget(self.frame)
+        self.centralWidget.setLayout(self.mainLayout)
+        self.setCentralWidget(self.centralWidget)
 
         self.interactor.Initialize()
         self.interactor.RemoveObservers('MouseWheelForwardEvent')
@@ -91,8 +96,16 @@ class VTKWidget (QMainWindow):
         self.interactor.AddObserver('MouseWheelBackwardEvent', self.selected_slice_backward, 1.0)
         self.interactor.RemoveObservers('LeftButtonPressEvent')
         self.interactor.AddObserver('LeftButtonPressEvent', self.vtk_selection, 1.0)
-# reset the current slice and frame we are on
 
+
+    def update_camera(self):
+        self.ren.ResetCamera()
+        self.ren.SetBackground(0, 20, 0)
+        print(self.renderwindow.GetSize())
+        camera = self.ren.GetActiveCamera()
+        #camera.Zoom(3)
+
+# reset the current slice and frame we are on
     def reset_after_changes(self):
         self.slices = os.listdir(self.study)  # list of all names of all slices
         self.slices.sort()
@@ -109,7 +122,6 @@ class VTKWidget (QMainWindow):
         self.reader.Update()
         self.imageData = self.reader.GetOutput()
         self.imageCanvas.InitializeCanvasVolume(self.imageData)
-
 
 # scroll wheel methods
     def selected_slice_forward(self, caller, event):
@@ -148,8 +160,9 @@ class VTKWidget (QMainWindow):
 class UserInput(QWidget):
     filepath = 'IM-13020-0001.dcm'
 
-    def __init__(self):
+    def __init__(self, window):
         QWidget.__init__(self)
+        self.window = window
         self.button2 = QPushButton('SUBMIT')
         self.button2.setObjectName("submit")
         self.button2.clicked.connect(self.setFilepath)
@@ -176,9 +189,9 @@ class UserInput(QWidget):
 
     def check_and_Set_Filepath(self):
         if os.path.exists(self.filepath):
-            Window.study = self.filepath
-            Window.reset_after_changes()
-            print("this ist the study path: " + Window.study)
+            self.window.study = self.filepath
+            self.window.reset_after_changes()
+            print("this ist the study path: " + self.window.study)
 
 # Animation/Video
 
