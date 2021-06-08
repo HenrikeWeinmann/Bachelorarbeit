@@ -90,11 +90,12 @@ renderWindowInteractor.SetRenderWindow(renderWindow)
 # Add the actor to the scene
 renderer.AddActor(imageActor)
 renderWindow.SetSize(1227, 1163)
+
 renderWindow.SetWindowName('Actor2D')
 
 # Render and interact
 renderWindow.Render()
-
+print(renderWindow.GetSize())
 renderWindowInteractor.Start()
 
 renderwindowinteractor.Start()
