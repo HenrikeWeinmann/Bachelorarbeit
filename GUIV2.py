@@ -1,6 +1,7 @@
 import sys
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
+from PyQt5.QtCore import*
 import os
 import matplotlib.pyplot as plt
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
@@ -62,25 +63,33 @@ class MainWindow (QMainWindow):
         self.frames = os.listdir(self.current_slice)
         self.frames.sort()
         self.current_frame = os.path.join(self.current_slice, self.frames[self.current])
-        print('reset')
+        print('reset -' + 'frame : ' + str(self.current_frame))
+        Dicom.update_fig(self)
+        self.dicom.draw()
+        print('redraw')
+        self.mainLayout.addWidget(self.dicom, 0, 0)
+
 
     def information(self):
         return "This is the current slice: " + self.slices[self.slice] + "\n" \
-                                                                         "This is the current frame: " + self.frames[
-                   self.current] + "\n" \
-                                   "The selected Point is : "
+               "This is the current frame: " + self.frames[self.current] + "\n" \
+               "The selected Point is : "
 
 
 class Dicom (FigureCanvas):
 
     def __init__(self, window):
-        fig, self.ax = plt.subplots()
-        super().__init__(fig)
+        self.fig, self.ax = plt.subplots()
+        super().__init__(self.fig)
         self.setParent(window)
-        self.dicom = dcm.dcmread(window.current_frame)
-        self.imgarr = self.dicom.pixel_array
+        self.dcmfile = dcm.dcmread(window.current_frame)
+        self.imgarr = self.dcmfile.pixel_array
         plt.imshow(self.imgarr)
 
+    def update_fig(self):
+        self.dicom.dcmfile = dcm.dcmread(self.current_frame)
+        self.dicom.imgarr = self.dicom.dcmfile.pixel_array
+        plt.imshow(self.dicom.imgarr)
 
     # scroll wheel methods
     def selected_slice_forward(self):
@@ -143,11 +152,12 @@ class UserInput(QWidget):
 
 # Animation/Video
 class Buttons(QWidget):
-    refresh = 10000  # in fps (doesn't work because of VTK bug)
+    refresh = 10  # in fps
 
     def __init__(self, window):
         QWidget.__init__(self)
         self.window = window
+        self.timer = QTimer()
         self.backward = QPushButton('')
         self.backward.setObjectName("backward")
         self.backward.clicked.connect(self.backward_button)
@@ -167,9 +177,14 @@ class Buttons(QWidget):
         if self.window.running:
             self.window.running = False
             self.playbtn.setStyleSheet("image: url('playButton.png') ;")
+            self.timer.stop()
+            print('start')
         else:
             self.window.running = True
             self.playbtn.setStyleSheet("image: url('pauseButton.png') ;")
+            self.timer.start(self.refresh)
+            self.timer.timeout.connect(self.forward_button)
+            print('stop')
 
     def callback_func(self, caller, timer_event):
         self.forward_button()
