@@ -69,7 +69,6 @@ class MainWindow (QMainWindow):
         print('redraw')
         self.mainLayout.addWidget(self.dicom, 0, 0)
 
-
     def information(self):
         return "This is the current slice: " + self.slices[self.slice] + "\n" \
                "This is the current frame: " + self.frames[self.current] + "\n" \
@@ -91,22 +90,22 @@ class Dicom (FigureCanvas):
         self.dicom.imgarr = self.dicom.dcmfile.pixel_array
         plt.imshow(self.dicom.imgarr)
 
-    # scroll wheel methods
-    def selected_slice_forward(self):
-        print(self.window.slice)
-        if self.window.slice < len(self.window.slices) - 1:
-            self.window.slice += 1
-            self.window.reset_after_changes()
+    # scroll wheel
+    def wheelEvent(self, event):
+        window = self.parent().parent()
+        change = event.angleDelta().y()/120
+        if change > 0:
+            if window.slice < len(window.slices) - 1:
+                window.slice += 1
+                window.reset_after_changes()
+            else:
+                pass
         else:
-            pass
-
-    def selected_slice_backward(self):
-        print(self.window.slice)
-        if self.window.slice > 1:
-            self.window.slice -= 1
-            self.window.reset_after_changes()
-        else:
-            pass
+            if window.slice > 1:
+                window.slice -= 1
+                window.reset_after_changes()
+            else:
+                pass
 
     def selection(self):
         pass
@@ -152,7 +151,7 @@ class UserInput(QWidget):
 
 # Animation/Video
 class Buttons(QWidget):
-    refresh = 10  # in fps
+    refresh = 100  # in fps
 
     def __init__(self, window):
         QWidget.__init__(self)
