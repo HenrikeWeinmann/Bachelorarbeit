@@ -1,13 +1,12 @@
-QMainWindow{
-    background-color: 999999;
-
-}
 QLabel{
     background-color: #D8EAF3;
     color: black;
     font: 20px;
     min-height: 100px;
 
+}
+QToolbar#Toolbar{
+    background-color: rgb(216, 234, 243);
 }
 QLabel#info{
     min-height: 600px;
@@ -70,4 +69,7 @@ QLineEdit{
     color: darkgrey;
     font: 20px;
 }
+QFrame{
+    background-color: #808080
 
+}

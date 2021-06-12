@@ -37,6 +37,9 @@ class MainWindow (QMainWindow):
         self.mainLayout = QGridLayout()
         self.dicom = Dicom(self)
 
+        self.menu = QToolBar()
+        self.toolbar(self.menu)
+
         self.data = Data()
         self.data.info.setText(self.information())
         self.data.setObjectName("data")
@@ -47,9 +50,10 @@ class MainWindow (QMainWindow):
         self.userInput = UserInput(self)
         self.userInput.setObjectName("userInput")
 
-        self.mainLayout.addWidget(self.dicom, 0, 0)
-        self.mainLayout.addWidget(self.play, 1, 0)
-        self.mainLayout.addWidget(self.data, 0, 1)
+        self.mainLayout.addWidget(self.menu, 0, 0, 1, 2)  # row, column , rowSpan, columnSpan
+        self.mainLayout.addWidget(self.dicom, 1, 0, 2, 1)
+        self.mainLayout.addWidget(self.play, 3, 0)
+        self.mainLayout.addWidget(self.data, 2, 1)
         self.mainLayout.addWidget(self.userInput, 1, 1)
 
         self.centralWidget.setLayout(self.mainLayout)
@@ -67,13 +71,23 @@ class MainWindow (QMainWindow):
         Dicom.update_fig(self)
         self.dicom.draw()
         print('redraw')
-        self.mainLayout.addWidget(self.dicom, 0, 0)
+        self.mainLayout.addWidget(self.dicom, 1, 0, 2, 1)
 
     def information(self):
         return "This is the current slice: " + self.slices[self.slice] + "\n" \
                "This is the current frame: " + self.frames[self.current] + "\n" \
                "The selected Point is : "
 
+    def toolbar(self, toolbar):
+        toolbar.setObjectName("Toolbar")
+        label = QLabel("Selection Mode: ")
+        toolbar.addWidget(label)
+        mode = QComboBox()
+        mode.addItem("Point Selection")
+        toolbar.addWidget(mode)
+        clear = QPushButton("clear")
+        clear.clicked.connect(Dicom.clear)
+        toolbar.addWidget(clear)
 
 class Dicom (FigureCanvas):
 
@@ -86,6 +100,7 @@ class Dicom (FigureCanvas):
         plt.imshow(self.imgarr)
 
     def update_fig(self):
+        plt.clf()
         self.dicom.dcmfile = dcm.dcmread(self.current_frame)
         self.dicom.imgarr = self.dicom.dcmfile.pixel_array
         plt.imshow(self.dicom.imgarr)
@@ -110,7 +125,8 @@ class Dicom (FigureCanvas):
     def selection(self):
         pass
 
-
+    def clear(self):
+        pass
 
 # this class handles user Input
 class UserInput(QWidget):
@@ -134,7 +150,6 @@ class UserInput(QWidget):
         self.inner.addWidget(self.input)
         self.inner.addWidget(self.button2)
         self.layout.addLayout(self.inner)
-        self.layout.addStretch()
         self.setLayout(self.layout)
 
     def set_filepath(self):
@@ -151,7 +166,7 @@ class UserInput(QWidget):
 
 # Animation/Video
 class Buttons(QWidget):
-    refresh = 100  # in fps
+    refresh = 1  # in fps
 
     def __init__(self, window):
         QWidget.__init__(self)
@@ -185,8 +200,6 @@ class Buttons(QWidget):
             self.timer.timeout.connect(self.forward_button)
             print('stop')
 
-    def callback_func(self, caller, timer_event):
-        self.forward_button()
 
     def forward_button(self):
         if self.window.current < 29:
