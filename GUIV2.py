@@ -32,6 +32,8 @@ class MainWindow (QMainWindow):
     def __init__(self):
         QWidget.__init__(self)
         self.setGeometry(200, 300, 1300, 1000)
+        self.setMaximumWidth(1300)
+        self.setMaximumHeight(1000)
         self.centralWidget = QFrame()
 
         self.mainLayout = QGridLayout()
@@ -39,23 +41,14 @@ class MainWindow (QMainWindow):
 
         self.menu = QToolBar()
         self.toolbar(self.menu)
+        self.play = MediaBar(self)
 
-        self.data = Data()
-        self.data.info.setText(self.information())
-        self.data.setObjectName("data")
-
-        self.play = Buttons(self)
-        self.play.setObjectName("MediaBar")
-
-        self.userInput = UserInput(self)
-        self.userInput.setObjectName("userInput")
+        self.right = self.rightSide()
 
         self.mainLayout.addWidget(self.menu, 0, 0, 1, 2)  # row, column , rowSpan, columnSpan
         self.mainLayout.addWidget(self.dicom, 1, 0, 2, 1)
         self.mainLayout.addWidget(self.play, 3, 0)
-        self.mainLayout.addWidget(self.data, 2, 1)
-        self.mainLayout.addWidget(self.userInput, 1, 1)
-
+        self.mainLayout.addWidget(self.right, 1, 1, 3, 1)
         self.centralWidget.setLayout(self.mainLayout)
         self.setCentralWidget(self.centralWidget)
 
@@ -63,15 +56,12 @@ class MainWindow (QMainWindow):
     def reset_after_changes(self):
         self.slices = os.listdir(self.study)  # list of all names of all slices
         self.slices.sort()
-        self.current_slice = os.path.join(Window.study, self.slices[self.slice])
+        self.current_slice = os.path.join(self.study, self.slices[self.slice])
         self.frames = os.listdir(self.current_slice)
         self.frames.sort()
         self.current_frame = os.path.join(self.current_slice, self.frames[self.current])
-        print('reset -' + 'frame : ' + str(self.current_frame))
-        Dicom.update_fig(self)
-        self.dicom.draw()
-        print('redraw')
-        self.mainLayout.addWidget(self.dicom, 1, 0, 2, 1)
+        #print('reset -' + 'frame : ' + str(self.current_frame))
+        self.update_fig()
 
     def information(self):
         return "This is the current slice: " + self.slices[self.slice] + "\n" \
@@ -82,12 +72,43 @@ class MainWindow (QMainWindow):
         toolbar.setObjectName("Toolbar")
         label = QLabel("Selection Mode: ")
         toolbar.addWidget(label)
-        mode = QComboBox()
-        mode.addItem("Point Selection")
-        toolbar.addWidget(mode)
+        selectionMode = QComboBox()
+        selectionMode.addItem("Point Selection")
+        imageMode =QComboBox()
+        imageMode.addItem('bone')
+        imageMode.addItem('gray')
+        imageMode.addItem('copper')
+        imageMode.activated.connect(lambda: Dicom.changecmap(self, imageMode.currentText(), self))
+        toolbar.addWidget(selectionMode)
+        toolbar.addWidget(imageMode)
         clear = QPushButton("clear")
+        clear.setObjectName("clear")
         clear.clicked.connect(Dicom.clear)
         toolbar.addWidget(clear)
+
+    def rightSide(self):
+        rightSide = QWidget()
+        rightSide.setObjectName("right")
+        self.data = Data()
+        self.data.info.setText(self.information())
+        self.data.setObjectName("data")
+        self.userInput = UserInput(self)
+        self.userInput.setObjectName("userInput")
+        layout = QVBoxLayout()
+        layout.addWidget(self.data)
+        layout.addWidget(self.userInput)
+        layout.addStretch()
+        rightSide.setLayout(layout)
+        return rightSide
+
+    def update_fig(self):
+        plt.clf()
+        self.dicom.dcmfile = dcm.dcmread(self.current_frame)
+        self.dicom.imgarr = self.dicom.dcmfile.pixel_array
+        self.dicom.img = plt.imshow(self.dicom.imgarr, self.dicom.cmap)
+        self.dicom.draw()
+        self.mainLayout.addWidget(self.dicom, 1, 0, 2, 1)
+
 
 class Dicom (FigureCanvas):
 
@@ -95,15 +116,11 @@ class Dicom (FigureCanvas):
         self.fig, self.ax = plt.subplots()
         super().__init__(self.fig)
         self.setParent(window)
+        self.cmap = 'bone'
         self.dcmfile = dcm.dcmread(window.current_frame)
         self.imgarr = self.dcmfile.pixel_array
-        plt.imshow(self.imgarr)
+        self.img = plt.imshow(self.imgarr, self.cmap)
 
-    def update_fig(self):
-        plt.clf()
-        self.dicom.dcmfile = dcm.dcmread(self.current_frame)
-        self.dicom.imgarr = self.dicom.dcmfile.pixel_array
-        plt.imshow(self.dicom.imgarr)
 
     # scroll wheel
     def wheelEvent(self, event):
@@ -122,11 +139,19 @@ class Dicom (FigureCanvas):
             else:
                 pass
 
+    def changecmap(self, color, window):
+        window.dicom.cmap = color
+        window.update_fig()
+        print(window.dicom.cmap)
+
+
+
     def selection(self):
         pass
 
     def clear(self):
         pass
+
 
 # this class handles user Input
 class UserInput(QWidget):
@@ -135,17 +160,22 @@ class UserInput(QWidget):
     def __init__(self, window):
         QWidget.__init__(self)
         self.window = window
+        self.setObjectName("UserInput")
         self.button2 = QPushButton('SUBMIT')
         self.button2.setObjectName("submit")
         self.button2.clicked.connect(self.set_filepath)
         self.label = QLabel("Please enter the filepath to a study directory")
         self.label.setObjectName("enterfilepath")
-        self.input = QLineEdit('filepath')
+        self.label2 = QLabel("")
+        self.label2.setObjectName("error")
+        self.input = QLineEdit('')
+        self.input.setPlaceholderText('file path')
         self.input.setMaxLength(100)
         self.input.editingFinished.connect(self.set_filepath)
 
         self.layout = QVBoxLayout()
         self.layout.addWidget(self.label)
+        self.layout.addWidget(self.label2)
         self.inner = QHBoxLayout()
         self.inner.addWidget(self.input)
         self.inner.addWidget(self.button2)
@@ -154,7 +184,6 @@ class UserInput(QWidget):
 
     def set_filepath(self):
         self.filepath = self.input.text()
-        print(self.filepath)
         self.check_and_set_filepath()
 
     def check_and_set_filepath(self):
@@ -162,14 +191,18 @@ class UserInput(QWidget):
             self.window.study = self.filepath
             self.window.reset_after_changes()
             print("this ist the study path: " + self.window.study)
+            self.label2.setText("")
+        else:
+            self.label2.setText("This is not a valid file path")
 
 
 # Animation/Video
-class Buttons(QWidget):
+class MediaBar(QWidget):
     refresh = 1  # in fps
 
     def __init__(self, window):
         QWidget.__init__(self)
+        self.setObjectName("MediaBar")
         self.window = window
         self.timer = QTimer()
         self.backward = QPushButton('')
@@ -230,7 +263,6 @@ class Data(QWidget):
         self.info.setObjectName("info")
         self.BoxLayout.addWidget(self.label)
         self.BoxLayout.addWidget(self.info)
-        self.BoxLayout.addStretch()
         self.setLayout(self.BoxLayout)
 
 
