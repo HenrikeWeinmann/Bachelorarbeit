@@ -49,6 +49,7 @@ class MainWindow (QMainWindow):
         self.mainLayout.addWidget(self.dicom, 1, 0, 2, 1)
         self.mainLayout.addWidget(self.play, 3, 0)
         self.mainLayout.addWidget(self.right, 1, 1, 3, 1)
+
         self.centralWidget.setLayout(self.mainLayout)
         self.setCentralWidget(self.centralWidget)
 
@@ -60,7 +61,6 @@ class MainWindow (QMainWindow):
         self.frames = os.listdir(self.current_slice)
         self.frames.sort()
         self.current_frame = os.path.join(self.current_slice, self.frames[self.current])
-        #print('reset -' + 'frame : ' + str(self.current_frame))
         self.update_fig()
 
     def information(self):
@@ -70,15 +70,16 @@ class MainWindow (QMainWindow):
 
     def toolbar(self, toolbar):
         toolbar.setObjectName("Toolbar")
+        toolbar.setFloatable(False)
         label = QLabel("Selection Mode: ")
         toolbar.addWidget(label)
         selectionMode = QComboBox()
         selectionMode.addItem("Point Selection")
-        imageMode =QComboBox()
+        imageMode = QComboBox()
         imageMode.addItem('bone')
-        imageMode.addItem('gray')
+        imageMode.addItem('gist_gray')
         imageMode.addItem('copper')
-        imageMode.activated.connect(lambda: Dicom.changecmap(self, imageMode.currentText(), self))
+        imageMode.activated.connect(lambda: Dicom.changecmap(self.dicom, imageMode.currentText(), self))
         toolbar.addWidget(selectionMode)
         toolbar.addWidget(imageMode)
         clear = QPushButton("clear")
@@ -121,7 +122,6 @@ class Dicom (FigureCanvas):
         self.imgarr = self.dcmfile.pixel_array
         self.img = plt.imshow(self.imgarr, self.cmap)
 
-
     # scroll wheel
     def wheelEvent(self, event):
         window = self.parent().parent()
@@ -140,11 +140,9 @@ class Dicom (FigureCanvas):
                 pass
 
     def changecmap(self, color, window):
-        window.dicom.cmap = color
+        self.cmap = color
         window.update_fig()
         print(window.dicom.cmap)
-
-
 
     def selection(self):
         pass

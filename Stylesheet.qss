@@ -1,20 +1,30 @@
+/* -------- Color Palette --------------
+
+Text : #1A1A1A
+dark grey: #808080
+light grey: #999999
+dark blue: #8DC1D8
+middle blue: #B2D6E6
+light blue: #D8EAF3
+
+*/
 /* -------- Stylesheet --------------*/
 QFrame{
-    background-color: #808080
+    background-color: #808080;
+    color: #1A1A1A;
 }
 
 /* -------- General --------------*/
 QLabel{
     background-color: #D8EAF3;
-    color: black;
     font: 20px;
     min-height: 80px;
 
 }
 
 QPushButton{
+    color: #1A1A1A;
     background-color: #D8EAF3;
-    color: black;
     border-color: #8DC1D8;
     border-radius: 20;
     border-style: outset ;
@@ -36,12 +46,20 @@ QLineEdit{
     max-width: 500px;
     min-width: 300px;
     min-height: 40px;
-    color: darkgrey;
+    color: #808080;
     font: 20px;
 }
 
 QLineEdit:focus{
     border: 2px solid #8DC1D8;
+}
+
+QComboBox{
+    color: #1A1A1A;
+    background: #D8EAF3;
+    border-radius: 7;
+    min-height: 20px;
+    min-width: 150px;
 }
 
 /* -------- Media Bar --------------*/
@@ -75,17 +93,32 @@ QPushButton#backward{
 
 /* -------- Toolbar --------------*/
 
-QToolbar#Toolbar{
-    background-color: #D8EAF3;
-    border: none;
-    padding: 1px;
-    margin: 1px;
+QToolBar{
+    max-height: 60px;
+    background: #8DC1D8;
+    border: 5px solid #1A1A1A;
+    margin: 0;
 }
 
 QPushButton#clear{
     border-radius: 15;
-    max-height: 40px;
-    min-width: 60;
+    max-height: 20px;
+    min-width: 70;
+
+}
+
+QToolBar *{
+    max-height: 30px;
+    height: 30px;
+    margin: 4px;
+    padding: 5px;
+    font: 20px;
+}
+
+QToolBar QLabel{
+    padding: 0px;
+    max-height: 30px;
+
 }
 
 /* -------- Right Side --------------*/
