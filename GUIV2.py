@@ -62,17 +62,16 @@ class MainWindow (QMainWindow):
         self.frames.sort()
         self.current_frame = os.path.join(self.current_slice, self.frames[self.current])
         self.update_fig()
+        self.data.info.setText(self.information())
 
     def information(self):
         return "This is the current slice: " + self.slices[self.slice] + "\n" \
                "This is the current frame: " + self.frames[self.current] + "\n" \
-               "The selected Point is : "
+               "The selected Point is : " + str(self.selection)
 
     def toolbar(self, toolbar):
         toolbar.setObjectName("Toolbar")
         toolbar.setFloatable(False)
-        label = QLabel("Selection Mode: ")
-        toolbar.addWidget(label)
         selectionMode = QComboBox()
         selectionMode.addItem("Point Selection")
         imageMode = QComboBox()
@@ -84,7 +83,7 @@ class MainWindow (QMainWindow):
         toolbar.addWidget(imageMode)
         clear = QPushButton("clear")
         clear.setObjectName("clear")
-        clear.clicked.connect(Dicom.clear)
+        clear.clicked.connect(lambda: Dicom.clear(self.dicom, self))
         toolbar.addWidget(clear)
 
     def rightSide(self):
@@ -121,6 +120,7 @@ class Dicom (FigureCanvas):
         self.dcmfile = dcm.dcmread(window.current_frame)
         self.imgarr = self.dcmfile.pixel_array
         self.img = plt.imshow(self.imgarr, self.cmap)
+        self.cid = self.fig.canvas.mpl_connect('button_press_event', self.selection)
 
     # scroll wheel
     def wheelEvent(self, event):
@@ -144,11 +144,20 @@ class Dicom (FigureCanvas):
         window.update_fig()
         print(window.dicom.cmap)
 
-    def selection(self):
-        pass
+    def selection(self, event):
+        window = self.parent().parent()
+        x = event.xdata
+        y = event.ydata
+        if (x and y > 0):
+            point = [int(x), int(y)]
+            window.selection = [point]
+            window.reset_after_changes()
 
-    def clear(self):
-        pass
+
+    def clear(self, window):
+        window.selection = []
+        window.reset_after_changes()
+
 
 
 # this class handles user Input

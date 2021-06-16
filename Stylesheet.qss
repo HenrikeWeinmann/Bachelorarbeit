@@ -94,17 +94,10 @@ QPushButton#backward{
 /* -------- Toolbar --------------*/
 
 QToolBar{
-    max-height: 60px;
+    max-height: 50px;
     background: #8DC1D8;
     border: 5px solid #1A1A1A;
     margin: 0;
-}
-
-QPushButton#clear{
-    border-radius: 15;
-    max-height: 20px;
-    min-width: 70;
-
 }
 
 QToolBar *{
@@ -115,9 +108,10 @@ QToolBar *{
     font: 20px;
 }
 
-QToolBar QLabel{
-    padding: 0px;
-    max-height: 30px;
+QPushButton#clear{
+    border-radius: 15;
+    max-height: 20px;
+    min-width: 70;
 
 }
 
