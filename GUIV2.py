@@ -3,8 +3,10 @@ from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
 from PyQt5.QtCore import*
 import os
+import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
+from matplotlib.colors import ListedColormap
 import pydicom as dcm
 
 
@@ -39,8 +41,7 @@ class MainWindow (QMainWindow):
         self.mainLayout = QGridLayout()
         self.dicom = Dicom(self)
 
-        self.menu = QToolBar()
-        self.toolbar(self.menu)
+        self.menu = self.toolbar()
         self.play = MediaBar(self)
 
         self.right = self.rightSide()
@@ -69,22 +70,24 @@ class MainWindow (QMainWindow):
                "This is the current frame: " + self.frames[self.current] + "\n" \
                "The selected Point is : " + str(self.selection)
 
-    def toolbar(self, toolbar):
+    def toolbar(self):
+        toolbar = QToolBar()
         toolbar.setObjectName("Toolbar")
-        toolbar.setFloatable(False)
-        selectionMode = QComboBox()
-        selectionMode.addItem("Point Selection")
+        self.selectionMode = QComboBox()
+        self.selectionMode.addItem("Single Point Selection")
+        self.selectionMode.addItem("Multiple Point Selection")
         imageMode = QComboBox()
         imageMode.addItem('bone')
         imageMode.addItem('gist_gray')
         imageMode.addItem('copper')
         imageMode.activated.connect(lambda: Dicom.changecmap(self.dicom, imageMode.currentText(), self))
-        toolbar.addWidget(selectionMode)
+        toolbar.addWidget(self.selectionMode)
         toolbar.addWidget(imageMode)
         clear = QPushButton("clear")
         clear.setObjectName("clear")
         clear.clicked.connect(lambda: Dicom.clear(self.dicom, self))
         toolbar.addWidget(clear)
+        return toolbar
 
     def rightSide(self):
         rightSide = QWidget()
@@ -106,6 +109,7 @@ class MainWindow (QMainWindow):
         self.dicom.dcmfile = dcm.dcmread(self.current_frame)
         self.dicom.imgarr = self.dicom.dcmfile.pixel_array
         self.dicom.img = plt.imshow(self.dicom.imgarr, self.dicom.cmap)
+        self.cnv = plt.imshow(self.dicom.canvas, Dicom.customcmap(self.dicom))
         self.dicom.draw()
         self.mainLayout.addWidget(self.dicom, 1, 0, 2, 1)
 
@@ -119,7 +123,10 @@ class Dicom (FigureCanvas):
         self.cmap = 'bone'
         self.dcmfile = dcm.dcmread(window.current_frame)
         self.imgarr = self.dcmfile.pixel_array
+        self.canvas = np.empty(self.imgarr.shape)
+        self.canvas[:] = 0
         self.img = plt.imshow(self.imgarr, self.cmap)
+        self.cnv = plt.imshow(self.canvas, cmap=self.customcmap())
         self.cid = self.fig.canvas.mpl_connect('button_press_event', self.selection)
 
     # scroll wheel
@@ -144,14 +151,38 @@ class Dicom (FigureCanvas):
         window.update_fig()
         print(window.dicom.cmap)
 
+    def customcmap(self):
+        # Choose colormap
+        cmap = plt.cm.Reds
+
+        # Get the colormap colors
+        my_cmap = cmap(np.arange(cmap.N))
+
+        # Set alpha
+        my_cmap[:, -1] = np.linspace(0, 1, cmap.N)
+
+        # Create new colormap
+        my_cmap = ListedColormap(my_cmap)
+        return my_cmap
+
     def selection(self, event):
         window = self.parent().parent()
+        print(window.selectionMode.currentText())
         x = event.xdata
         y = event.ydata
-        if (x and y > 0):
-            point = [int(x), int(y)]
-            window.selection = [point]
-            window.reset_after_changes()
+        if window.selectionMode.currentText() == 'Single Point Selection':
+            if x and y > 0:
+                point = [int(x), int(y)]
+                window.dicom.canvas[:] = 0
+                window.dicom.canvas[int(y), int(x)] = 255
+                window.selection = [point]
+                window.reset_after_changes()
+        elif window.selectionMode.currentText() == 'Multiple Point Selection':
+            if x and y > 0:
+                point = [int(x), int(y)]
+                window.dicom.canvas[int(y), int(x)] = 255
+                window.selection = [point]
+                window.reset_after_changes()
 
 
     def clear(self, window):
