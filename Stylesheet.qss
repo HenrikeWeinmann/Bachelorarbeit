@@ -51,16 +51,18 @@ QLineEdit{
 }
 
 QLineEdit:focus{
-    border: 2px solid #8DC1D8;
+    border: 5px solid #8DC1D8;
+
 }
 
 QComboBox{
     color: #1A1A1A;
     background: #D8EAF3;
-    border-radius: 7;
-    min-height: 20px;
-    min-width: 150px;
+    width: 300px;
+    combobox-popup: 0;
+    selection-background-color: #D8EAF3;
 }
+
 
 /* -------- Media Bar --------------*/
 
@@ -94,14 +96,14 @@ QPushButton#backward{
 /* -------- Toolbar --------------*/
 
 QToolBar{
-    max-height: 50px;
+    height: 50px;
     background: #8DC1D8;
-    border: 5px solid #1A1A1A;
+    border: 2px solid #1A1A1A;
+    border-style: outset ;
     margin: 0;
 }
 
 QToolBar *{
-    max-height: 30px;
     height: 30px;
     margin: 4px;
     padding: 5px;
@@ -114,6 +116,30 @@ QPushButton#clear{
     min-width: 70;
 
 }
+
+QComboBox::drop-down{
+    subcontrol-origin: padding;
+    subcontrol-position: right;
+    margin: 0;
+    width: 20px;
+}
+
+QComboBox QAbstractItemView{
+    min-width: 320px;
+    height: 60px;
+    border: none;
+    background: #B2D6E6;
+    outline: none;
+}
+QComboBox:item{
+    padding: 5px;
+}
+QComboBox *{
+
+    margin: 46 0 0 13;
+    font 20px;
+}
+
 
 /* -------- Right Side --------------*/
 

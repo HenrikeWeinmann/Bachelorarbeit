@@ -39,6 +39,7 @@ class MainWindow (QMainWindow):
         self.centralWidget = QFrame()
 
         self.mainLayout = QGridLayout()
+        self.mainLayout.setSpacing(3)
         self.dicom = Dicom(self)
 
         self.menu = self.toolbar()
@@ -207,6 +208,7 @@ class UserInput(QWidget):
         self.label2 = QLabel("")
         self.label2.setObjectName("error")
         self.input = QLineEdit('')
+        self.input.setAttribute(Qt.WidgetAttribute.WA_MacShowFocusRect, 0) # get rid of ugly mac focus rect
         self.input.setPlaceholderText('file path')
         self.input.setMaxLength(100)
         self.input.editingFinished.connect(self.set_filepath)
