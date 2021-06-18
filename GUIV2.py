@@ -7,6 +7,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
 from matplotlib.colors import ListedColormap
+import matplotlib.patches as patches
 import pydicom as dcm
 
 
@@ -30,30 +31,30 @@ class MainWindow (QMainWindow):
     frames.sort()
     current_frame = os.path.join(current_slice, frames[current])  # path of the current frame on users OS
     selection = []
+    selectionMode = ''
 
     def __init__(self):
         QWidget.__init__(self)
         self.setGeometry(200, 300, 1300, 1000)
         self.setMaximumWidth(1300)
         self.setMaximumHeight(1000)
-        self.centralWidget = QFrame()
+        self.centralWidget = QWidget()
+        self.centralWidget.setContentsMargins(0,0,0,0)
 
         self.mainLayout = QGridLayout()
-        self.mainLayout.setSpacing(3)
+        self.mainLayout.setSpacing(2)
         self.dicom = Dicom(self)
+        self.addToolBar(self.toolbar())
 
         self.menu = self.toolbar()
         self.play = MediaBar(self)
 
-        self.right = self.rightSide()
-
-        self.mainLayout.addWidget(self.menu, 0, 0, 1, 2)  # row, column , rowSpan, columnSpan
-        self.mainLayout.addWidget(self.dicom, 1, 0, 2, 1)
+        self.addDockWidget(Qt.DockWidgetArea.RightDockWidgetArea, self.rightSide())
+        self.mainLayout.addWidget(self.dicom, 1, 0, 2, 1) # row, column , rowSpan, columnSpan
         self.mainLayout.addWidget(self.play, 3, 0)
-        self.mainLayout.addWidget(self.right, 1, 1, 3, 1)
-
         self.centralWidget.setLayout(self.mainLayout)
         self.setCentralWidget(self.centralWidget)
+
 
 # reset the current slice and frame we are on
     def reset_after_changes(self):
@@ -67,30 +68,55 @@ class MainWindow (QMainWindow):
         self.data.info.setText(self.information())
 
     def information(self):
-        return "This is the current slice: " + self.slices[self.slice] + "\n" \
-               "This is the current frame: " + self.frames[self.current] + "\n" \
-               "The selected Point is : " + str(self.selection)
+        slice = "This is the current slice: " + self.slices[self.slice] + "\n"
+        frame = "This is the current frame: " + self.frames[self.current] + "\n"
+        text = slice + frame
+        if self.selectionMode == 'Multiple Point Selection':
+            points = "The selected Points are : " + str(self.selection)
+            return text + points
+
+        elif self.selectionMode == 'Single Point Selection':
+            points = "The selected Point is : " + str(self.selection)
+            return text + points
+
+        elif self.selectionMode == 'Polygon Selection':
+            points = "The selected Point is : " + str(self.selection)
+            return text + points
+
+        return text
 
     def toolbar(self):
         toolbar = QToolBar()
         toolbar.setObjectName("Toolbar")
-        self.selectionMode = QComboBox()
-        self.selectionMode.addItem("Single Point Selection")
-        self.selectionMode.addItem("Multiple Point Selection")
+        selectionMode = QComboBox()
+        selectionMode.addItem("Single Point Selection")
+        selectionMode.addItem("Multiple Point Selection")
+        selectionMode.addItem("Polygon Selection")
+        selectionMode.activated.connect(lambda: Dicom.setSelectionMode(self.dicom, selectionMode.currentText(), self))
+        self.selectionMode = selectionMode.currentText()
         imageMode = QComboBox()
         imageMode.addItem('bone')
         imageMode.addItem('gist_gray')
         imageMode.addItem('copper')
         imageMode.activated.connect(lambda: Dicom.changecmap(self.dicom, imageMode.currentText(), self))
-        toolbar.addWidget(self.selectionMode)
-        toolbar.addWidget(imageMode)
         clear = QPushButton("clear")
         clear.setObjectName("clear")
         clear.clicked.connect(lambda: Dicom.clear(self.dicom, self))
+        showData = QPushButton("Show Data")
+        showData.setObjectName("ShowData")
+        spacer = QWidget()
+        spacer.setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Preferred)
+        spacer.setObjectName("spacer")
+        showData.clicked.connect(self.showRightSide)
+        toolbar.addWidget(selectionMode)
+        toolbar.addWidget(imageMode)
+        toolbar.addWidget(spacer)
         toolbar.addWidget(clear)
+        toolbar.addWidget(showData)
         return toolbar
 
     def rightSide(self):
+        self.dock = QDockWidget("Data", self)
         rightSide = QWidget()
         rightSide.setObjectName("right")
         self.data = Data()
@@ -103,7 +129,13 @@ class MainWindow (QMainWindow):
         layout.addWidget(self.userInput)
         layout.addStretch()
         rightSide.setLayout(layout)
-        return rightSide
+        self.dock.setWidget(rightSide)
+        self.dock.setFeatures(QDockWidget.DockWidgetFeature.DockWidgetClosable)
+        return self.dock
+
+    def showRightSide(self):
+        self.dock.setVisible(True)
+
 
     def update_fig(self):
         plt.clf()
@@ -111,6 +143,8 @@ class MainWindow (QMainWindow):
         self.dicom.imgarr = self.dicom.dcmfile.pixel_array
         self.dicom.img = plt.imshow(self.dicom.imgarr, self.dicom.cmap)
         self.cnv = plt.imshow(self.dicom.canvas, Dicom.customcmap(self.dicom))
+        if self.selectionMode == 'Polygon Selection' and len(self.selection) >= 3:
+            plt.subplot().add_patch(self.dicom.patch)
         self.dicom.draw()
         self.mainLayout.addWidget(self.dicom, 1, 0, 2, 1)
 
@@ -126,9 +160,11 @@ class Dicom (FigureCanvas):
         self.imgarr = self.dcmfile.pixel_array
         self.canvas = np.empty(self.imgarr.shape)
         self.canvas[:] = 0
-        self.img = plt.imshow(self.imgarr, self.cmap)
-        self.cnv = plt.imshow(self.canvas, cmap=self.customcmap())
+        self.img = self.ax.imshow(self.imgarr, self.cmap)
+        self.cnv = self.ax.imshow(self.canvas, cmap=self.customcmap())
         self.cid = self.fig.canvas.mpl_connect('button_press_event', self.selection)
+        self.patch = patches.Circle([1,1], 2)
+        plt.tight_layout()
 
     # scroll wheel
     def wheelEvent(self, event):
@@ -168,25 +204,41 @@ class Dicom (FigureCanvas):
 
     def selection(self, event):
         window = self.parent().parent()
-        print(window.selectionMode.currentText())
         x = event.xdata
         y = event.ydata
-        if window.selectionMode.currentText() == 'Single Point Selection':
+        if window.selectionMode == 'Single Point Selection':
             if x and y > 0:
                 point = [int(x), int(y)]
                 window.dicom.canvas[:] = 0
                 window.dicom.canvas[int(y), int(x)] = 255
                 window.selection = [point]
                 window.reset_after_changes()
-        elif window.selectionMode.currentText() == 'Multiple Point Selection':
+        elif window.selectionMode == 'Multiple Point Selection':
             if x and y > 0:
                 point = [int(x), int(y)]
                 window.dicom.canvas[int(y), int(x)] = 255
-                window.selection = [point]
+                window.selection.append(point)
+                window.reset_after_changes()
+        elif window.selectionMode == 'Polygon Selection':
+            if x and y > 0:
+                point = [int(x), int(y)]
+                window.dicom.canvas[int(y), int(x)] = 255
+                window.selection.append(point)
+                if len(window.selection) >= 3:
+                    print("its a polygon")
+                    polygon = patches.Polygon(window.selection, color='red', alpha=0.2)
+                    window.dicom.patch = polygon
                 window.reset_after_changes()
 
 
+
+    def setSelectionMode(self, selectionMode, window):
+        print(selectionMode)
+        window.selectionMode = selectionMode
+
+
     def clear(self, window):
+        self.canvas[:] = 0
         window.selection = []
         window.reset_after_changes()
 
@@ -203,10 +255,11 @@ class UserInput(QWidget):
         self.button2 = QPushButton('SUBMIT')
         self.button2.setObjectName("submit")
         self.button2.clicked.connect(self.set_filepath)
-        self.label = QLabel("Please enter the filepath to a study directory")
+        self.label = QLabel("Please enter the filepath to a study directory: ")
         self.label.setObjectName("enterfilepath")
-        self.label2 = QLabel("")
-        self.label2.setObjectName("error")
+        self.errorText = QLabel("")
+        self.errorText.setSizePolicy(QSizePolicy.Policy.Preferred, QSizePolicy.Policy.Maximum)
+        self.errorText.setObjectName("error")
         self.input = QLineEdit('')
         self.input.setAttribute(Qt.WidgetAttribute.WA_MacShowFocusRect, 0) # get rid of ugly mac focus rect
         self.input.setPlaceholderText('file path')
@@ -215,7 +268,7 @@ class UserInput(QWidget):
 
         self.layout = QVBoxLayout()
         self.layout.addWidget(self.label)
-        self.layout.addWidget(self.label2)
+        self.layout.addWidget(self.errorText)
         self.inner = QHBoxLayout()
         self.inner.addWidget(self.input)
         self.inner.addWidget(self.button2)
@@ -231,9 +284,9 @@ class UserInput(QWidget):
             self.window.study = self.filepath
             self.window.reset_after_changes()
             print("this ist the study path: " + self.window.study)
-            self.label2.setText("")
+            self.errorText.setText("")
         else:
-            self.label2.setText("This is not a valid file path")
+            self.errorText.setText("This is not a valid file path")
 
 
 # Animation/Video
@@ -298,10 +351,8 @@ class Data(QWidget):
         QWidget.__init__(self)
         self.setObjectName("Data")
         self.BoxLayout = QVBoxLayout()
-        self.label = QLabel('This is going to be information about the slice: ')
         self.info = QLabel("")
         self.info.setObjectName("info")
-        self.BoxLayout.addWidget(self.label)
         self.BoxLayout.addWidget(self.info)
         self.setLayout(self.BoxLayout)
 
