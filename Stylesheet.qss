@@ -187,8 +187,11 @@ QWidget#Data{
     padding: 20 px;
 }
 
-QLabel#info{
+QTableWidget#info{
     font: 20px;
+    background-color: #D8EAF3;
+    border: 0;
+    outline: none;
 }
 
 QLabel#enterfilepath{

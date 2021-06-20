@@ -9,6 +9,7 @@ from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
 from matplotlib.colors import ListedColormap
 import matplotlib.patches as patches
 import pydicom as dcm
+import math
 
 
 app = QApplication(sys.argv)
@@ -50,8 +51,10 @@ class MainWindow (QMainWindow):
         self.background.setObjectName("MediaBarBackground")
         self.play = MediaBar(self)
         self.background.addWidget(self.play)
-
-        self.addDockWidget(Qt.DockWidgetArea.RightDockWidgetArea, self.rightSide())
+        self.dock = QDockWidget("Data", self)
+        self.dock.setWidget(self.rightSide())
+        self.dock.setFeatures(QDockWidget.DockWidgetFeature.DockWidgetClosable)
+        self.addDockWidget(Qt.DockWidgetArea.RightDockWidgetArea, self.dock)
         self.mainLayout.addWidget(self.dicom)
         self.mainLayout.addWidget(self.background)
         self.mainLayout.setAlignment(Qt.AlignmentFlag.AlignHCenter)
@@ -70,25 +73,9 @@ class MainWindow (QMainWindow):
         self.frames.sort()
         self.current_frame = os.path.join(self.current_slice, self.frames[self.current])
         self.update_fig()
-        self.data.info.setText(self.information())
+        self.data.info = Data.information(self.data)
+        self.dock.setWidget(self.rightSide())
 
-    def information(self):
-        slice = "This is the current slice: " + self.slices[self.slice] + "\n"
-        frame = "This is the current frame: " + self.frames[self.current] + "\n"
-        text = slice + frame
-        if self.selectionMode == 'Multiple Point Selection':
-            points = "The selected Points are : " + str(self.selection)
-            return text + points
-
-        elif self.selectionMode == 'Single Point Selection':
-            points = "The selected Point is : " + str(self.selection)
-            return text + points
-
-        elif self.selectionMode == 'Polygon Selection':
-            points = "The selected Point is : " + str(self.selection)
-            return text + points
-
-        return text
 
     def toolbar(self):
         toolbar = QToolBar()
@@ -121,11 +108,9 @@ class MainWindow (QMainWindow):
         return toolbar
 
     def rightSide(self):
-        self.dock = QDockWidget("Data", self)
         rightSide = QWidget()
         rightSide.setObjectName("right")
-        self.data = Data()
-        self.data.info.setText(self.information())
+        self.data = Data(self)
         self.data.setObjectName("data")
         self.userInput = UserInput(self)
         self.userInput.setObjectName("userInput")
@@ -134,9 +119,8 @@ class MainWindow (QMainWindow):
         layout.addWidget(self.userInput)
         layout.addStretch()
         rightSide.setLayout(layout)
-        self.dock.setWidget(rightSide)
-        self.dock.setFeatures(QDockWidget.DockWidgetFeature.DockWidgetClosable)
-        return self.dock
+
+        return rightSide
 
     def showRightSide(self):
         self.dock.setVisible(True)
@@ -168,7 +152,7 @@ class Dicom (FigureCanvas):
         self.img = self.ax.imshow(self.imgarr, self.cmap)
         self.cnv = self.ax.imshow(self.canvas, cmap=self.customcmap())
         self.cid = self.fig.canvas.mpl_connect('button_press_event', self.selection)
-        self.patch = patches.Circle([1,1], 2)
+        self.patch = patches.Circle([1, 1], 2)
         plt.tight_layout()
 
     # scroll wheel
@@ -229,13 +213,16 @@ class Dicom (FigureCanvas):
                 point = [int(x), int(y)]
                 window.dicom.canvas[int(y), int(x)] = 255
                 window.selection.append(point)
+                self.sortSelection(window.selection)
                 if len(window.selection) >= 3:
                     print("its a polygon")
                     polygon = patches.Polygon(window.selection, color='red', alpha=0.2)
                     window.dicom.patch = polygon
                 window.reset_after_changes()
 
-
+    def sortSelection(self, selection):
+        cent = (sum([p[0] for p in selection]) / len(selection), sum([p[1] for p in selection]) / len(selection))
+        selection.sort(key=lambda p: math.atan2(p[1] - cent[1], p[0] - cent[0]))
 
     def setSelectionMode(self, selectionMode, window):
         print(selectionMode)
@@ -365,14 +352,38 @@ class MediaBar(QWidget):
 # this class creates a widget that contains all necessary data about the current slice
 class Data(QWidget):
 
-    def __init__(self):
+    def __init__(self, window):
         QWidget.__init__(self)
+        self.window = window
         self.setObjectName("Data")
         self.BoxLayout = QVBoxLayout()
-        self.info = QLabel("")
+        self.info = self.information()
         self.info.setObjectName("info")
         self.BoxLayout.addWidget(self.info)
         self.setLayout(self.BoxLayout)
+
+    def information(self):
+        self.table = QTableWidget()
+        self.table.setColumnCount(2)
+        self.table.setRowCount(3)
+        self.table.setItem(0, 0, QTableWidgetItem("This is the current slice: "))
+        self.table.setItem(1, 0, QTableWidgetItem("This is the current frame: "))
+        self.table.setItem(2, 0, QTableWidgetItem("The selected Point is : "))
+        self.table.setItem(0, 1, QTableWidgetItem(self.window.slices[self.window.slice]))
+        self.table.setItem(1, 1, QTableWidgetItem(self.window.frames[self.window.current]))
+        self.table.setItem(2, 1, QTableWidgetItem(str(self.window.selection)))
+
+        self.table.horizontalHeader().hide()
+        self.table.verticalHeader().hide()
+        self.table.setMaximumWidth(500)
+        self.table.setShowGrid(False)
+        self.table.resizeColumnsToContents()
+        if self.window.selectionMode == 'Multiple Point Selection':
+            self.table.setItem(2, 0, QTableWidgetItem("The selected Points are : "))
+            if len(self.window.selection) > 2:
+                self.table.setColumnWidth(1, 200)
+
+        return self.table
 
 
 Window = MainWindow()
