@@ -79,8 +79,8 @@ QWidget#MediaBar{
     max-height: 100px;
 }
 
-QPushButton#playbtn, #forward, #backward{
-    background-color: #D8EAF3;
+QPushButton#playbtn, #forward, #backward, #fastforward, #fastbackward{
+    background-color: #B2D6E6;
     border-radius: 25;
     margin: 20px;
     max-width: 50px;
@@ -88,17 +88,26 @@ QPushButton#playbtn, #forward, #backward{
     min-width: 50px;
     min-height: 50px;
 }
+QPushButton#playbtn:hover, #forward:hover, #backward:hover, #fastforward:hover, #fastbackward:hover{
+    background-color: #8DC1D8;
 
+}
 QPushButton#playbtn{
-    image: url('playButton.png') ;
+    image: url('Icons/Play.png') ;
 }
 
 QPushButton#forward{
-    image: url('forwardButton.png') ;
+    image: url('Icons/Forward.png') ;
+}
+QPushButton#fastforward{
+    image: url('Icons/FastForward.png') ;
+}
+QPushButton#backward{
+    image: url('Icons/Backward.png') ;
 }
 
-QPushButton#backward{
-    image: url('backwardButton.png') ;
+QPushButton#fastbackward{
+    image: url('Icons/FastBackward.png') ;
 }
 
 /* -------- Toolbar --------------*/

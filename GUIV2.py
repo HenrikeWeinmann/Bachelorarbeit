@@ -298,36 +298,43 @@ class MediaBar(QWidget):
         self.setObjectName("MediaBar")
         self.window = window
         self.timer = QTimer()
-        self.backward = QPushButton('')
-        self.backward.setObjectName("backward")
-        self.backward.clicked.connect(self.backward_button)
+        self.Backwardbtn = QPushButton('')
+        self.Backwardbtn.setObjectName("backward")
+        self.Backwardbtn.clicked.connect(self.backward)
         self.playbtn = QPushButton('')
         self.playbtn.setObjectName("playbtn")
-        self.playbtn.clicked.connect(self.play_button)
-        self.forward = QPushButton('')
-        self.forward.setObjectName("forward")
-        self.forward.clicked.connect(self.forward_button)
+        self.playbtn.clicked.connect(self.play)
+        self.Forwardbtn = QPushButton('')
+        self.Forwardbtn.setObjectName("forward")
+        self.Forwardbtn.clicked.connect(self.forward)
+        self.FFbtn = QPushButton('')
+        self.FFbtn.setObjectName("fastforward")
+        self.FFbtn.clicked.connect(self.fastforward)
+        self.FBbtn = QPushButton('')
+        self.FBbtn.setObjectName("fastbackward")
+        self.FBbtn.clicked.connect(self.fastbackward)
         self.layout = QHBoxLayout()
-        self.layout.addWidget(self.backward)
+        self.layout.addWidget(self.Backwardbtn)
+        self.layout.addWidget(self.FBbtn)
         self.layout.addWidget(self.playbtn)
-        self.layout.addWidget(self.forward)
+        self.layout.addWidget(self.FFbtn)
+        self.layout.addWidget(self.Forwardbtn)
         self.setLayout(self.layout)
 
-    def play_button(self):
+    def play(self):
         if self.window.running:
             self.window.running = False
-            self.playbtn.setStyleSheet("image: url('playButton.png') ;")
+            self.playbtn.setStyleSheet("image: url('Icons/Play.png') ;")
             self.timer.stop()
             print('start')
         else:
             self.window.running = True
-            self.playbtn.setStyleSheet("image: url('pauseButton.png') ;")
+            self.playbtn.setStyleSheet("image: url('Icons/Pause.png') ;")
             self.timer.start(self.refresh)
-            self.timer.timeout.connect(self.forward_button)
+            self.timer.timeout.connect(self.forward)
             print('stop')
 
-
-    def forward_button(self):
+    def forward(self):
         if self.window.current < 29:
             self.window.current += 1
         else:
@@ -335,13 +342,19 @@ class MediaBar(QWidget):
         self.window.current_frame = os.path.join(self.window.current_slice, self.window.frames[self.window.current])
         self.window.reset_after_changes()
 
-    def backward_button(self):
+    def backward(self):
         if self.window.current > 0:
             self.window.current -= 1
         else:
             self.window.current = 29
         self.window.current_frame = os.path.join(self.window.current_slice, self.window.frames[self.window.current])
         self.window.reset_after_changes()
+
+    def fastforward(self):
+        pass
+
+    def fastbackward(self):
+        pass
 
 
 # this class creates a widget that contains all necessary data about the current slice
