@@ -15,7 +15,9 @@ QWidget{
     padding: 0px;
     font-family: "Trebuchet MS";
     font: 20px;
+    margin: 0;
 }
+
 QFrame * {
     margin: 0;
 }
@@ -75,14 +77,20 @@ QComboBox{
 /* -------- Media Bar --------------*/
 
 QWidget#MediaBar{
-    background-color: #D8EAF3;
+
+}
+
+QWidget#MediaBarBackground{
+    background: #999999;
     max-height: 100px;
+    max-width: 700px;
+    margin: 10 0 10 0;
+    border-radius: 15;
 }
 
 QPushButton#playbtn, #forward, #backward, #fastforward, #fastbackward{
     background-color: #B2D6E6;
     border-radius: 25;
-    margin: 20px;
     max-width: 50px;
     max-height: 50px;
     min-width: 50px;

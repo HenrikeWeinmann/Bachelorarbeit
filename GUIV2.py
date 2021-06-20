@@ -39,20 +39,25 @@ class MainWindow (QMainWindow):
         self.setMaximumWidth(1300)
         self.setMaximumHeight(1000)
         self.centralWidget = QWidget()
-        self.centralWidget.setContentsMargins(0,0,0,0)
 
-        self.mainLayout = QGridLayout()
+        self.mainLayout = QVBoxLayout()
         self.mainLayout.setSpacing(2)
         self.dicom = Dicom(self)
         self.addToolBar(self.toolbar())
 
         self.menu = self.toolbar()
+        self.background = QStackedWidget()
+        self.background.setObjectName("MediaBarBackground")
         self.play = MediaBar(self)
+        self.background.addWidget(self.play)
 
         self.addDockWidget(Qt.DockWidgetArea.RightDockWidgetArea, self.rightSide())
-        self.mainLayout.addWidget(self.dicom, 1, 0, 2, 1) # row, column , rowSpan, columnSpan
-        self.mainLayout.addWidget(self.play, 3, 0)
+        self.mainLayout.addWidget(self.dicom)
+        self.mainLayout.addWidget(self.background)
+        self.mainLayout.setAlignment(Qt.AlignmentFlag.AlignHCenter)
+
         self.centralWidget.setLayout(self.mainLayout)
+        self.centralWidget.setSizePolicy(QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Minimum)
         self.setCentralWidget(self.centralWidget)
 
 
@@ -146,7 +151,7 @@ class MainWindow (QMainWindow):
         if self.selectionMode == 'Polygon Selection' and len(self.selection) >= 3:
             plt.subplot().add_patch(self.dicom.patch)
         self.dicom.draw()
-        self.mainLayout.addWidget(self.dicom, 1, 0, 2, 1)
+        self.mainLayout.insertWidget(0,self.dicom)
 
 
 class Dicom (FigureCanvas):
