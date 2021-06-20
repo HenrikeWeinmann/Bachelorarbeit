@@ -88,7 +88,7 @@ QWidget#MediaBarBackground{
     border-radius: 15;
 }
 
-QPushButton#playbtn, #forward, #backward, #fastforward, #fastbackward{
+QPushButton#playbtn, #forward, #backward, #fastforward, #fastbackward, #stopbtn{
     background-color: #B2D6E6;
     border-radius: 25;
     max-width: 50px;
@@ -96,12 +96,16 @@ QPushButton#playbtn, #forward, #backward, #fastforward, #fastbackward{
     min-width: 50px;
     min-height: 50px;
 }
-QPushButton#playbtn:hover, #forward:hover, #backward:hover, #fastforward:hover, #fastbackward:hover{
+QPushButton#playbtn:hover, #forward:hover, #backward:hover, #fastforward:hover, #fastbackward:hover,  #stopbtn:hover{
     background-color: #8DC1D8;
 
 }
 QPushButton#playbtn{
     image: url('Icons/Play.png') ;
+}
+
+QPushButton#stopbtn{
+    image: url('Icons/Stop.png') ;
 }
 
 QPushButton#forward{

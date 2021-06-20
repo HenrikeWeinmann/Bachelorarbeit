@@ -125,7 +125,6 @@ class MainWindow (QMainWindow):
     def showRightSide(self):
         self.dock.setVisible(True)
 
-
     def update_fig(self):
         plt.clf()
         self.dicom.dcmfile = dcm.dcmread(self.current_frame)
@@ -228,12 +227,13 @@ class Dicom (FigureCanvas):
         print(selectionMode)
         window.selectionMode = selectionMode
 
-
     def clear(self, window):
         self.canvas[:] = 0
         window.selection = []
         window.reset_after_changes()
 
+    def zoom(self): # to implement in the future
+        pass
 
 
 # this class handles user Input
@@ -296,6 +296,9 @@ class MediaBar(QWidget):
         self.playbtn = QPushButton('')
         self.playbtn.setObjectName("playbtn")
         self.playbtn.clicked.connect(self.play)
+        self.stopbtn = QPushButton('')
+        self.stopbtn.setObjectName("stopbtn")
+        self.stopbtn.clicked.connect(self.stop)
         self.Forwardbtn = QPushButton('')
         self.Forwardbtn.setObjectName("forward")
         self.Forwardbtn.clicked.connect(self.forward)
@@ -309,6 +312,7 @@ class MediaBar(QWidget):
         self.layout.addWidget(self.Backwardbtn)
         self.layout.addWidget(self.FBbtn)
         self.layout.addWidget(self.playbtn)
+        self.layout.addWidget(self.stopbtn)
         self.layout.addWidget(self.FFbtn)
         self.layout.addWidget(self.Forwardbtn)
         self.setLayout(self.layout)
@@ -325,6 +329,17 @@ class MediaBar(QWidget):
             self.timer.start(self.refresh)
             self.timer.timeout.connect(self.forward)
             print('stop')
+
+    def stop(self):
+        if self.window.running:
+            self.window.running = False
+            self.playbtn.setStyleSheet("image: url('Icons/Play.png') ;")
+            self.timer.stop()
+            self.window.current = 0
+            self.window.current_frame = os.path.join(self.window.current_slice, self.window.frames[self.window.current])
+            self.window.reset_after_changes()
+        else:
+            pass
 
     def forward(self):
         if self.window.current < 29:
