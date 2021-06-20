@@ -76,14 +76,10 @@ QComboBox{
 
 /* -------- Media Bar --------------*/
 
-QWidget#MediaBar{
-
-}
-
 QWidget#MediaBarBackground{
     background: #999999;
     max-height: 100px;
-    max-width: 700px;
+    max-width: 600px;
     margin: 10 0 10 0;
     border-radius: 15;
 }
@@ -177,7 +173,11 @@ QComboBox QAbstractItemView::item {
 
 }
 
-
+QLabel#EraseMode{
+    background: none;
+    min-height: 30 px;
+    max-height: 30 px;
+}
 /* -------- Right Side --------------*/
 
 QWidget#right{

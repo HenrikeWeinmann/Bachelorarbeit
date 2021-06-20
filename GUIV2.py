@@ -2,6 +2,7 @@ import sys
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
 from PyQt5.QtCore import*
+from qtwidgets import AnimatedToggle
 import os
 import numpy as np
 import matplotlib.pyplot as plt
@@ -10,6 +11,7 @@ from matplotlib.colors import ListedColormap
 import matplotlib.patches as patches
 import pydicom as dcm
 import math
+from scipy.spatial import distance
 
 
 app = QApplication(sys.argv)
@@ -84,6 +86,7 @@ class MainWindow (QMainWindow):
         selectionMode.addItem("Single Point Selection")
         selectionMode.addItem("Multiple Point Selection")
         selectionMode.addItem("Polygon Selection")
+        selectionMode.addItem("Freehand Selection") # to be implemented in the future
         selectionMode.activated.connect(lambda: Dicom.setSelectionMode(self.dicom, selectionMode.currentText(), self))
         self.selectionMode = selectionMode.currentText()
         imageMode = QComboBox()
@@ -91,10 +94,15 @@ class MainWindow (QMainWindow):
         imageMode.addItem('gist_gray')
         imageMode.addItem('copper')
         imageMode.activated.connect(lambda: Dicom.changecmap(self.dicom, imageMode.currentText(), self))
+        label = QLabel("eraser mode:")
+        label.setObjectName("EraseMode")
+        eraseMode = AnimatedToggle(checked_color="#8DC1D8",
+            pulse_checked_color="#55808080")
+        eraseMode.clicked.connect(lambda: Dicom.erase(self.dicom, eraseMode.checkState(), self))
         clear = QPushButton("clear")
         clear.setObjectName("clear")
         clear.clicked.connect(lambda: Dicom.clear(self.dicom, self))
-        showData = QPushButton("Show Data")
+        showData = QPushButton("Show/Hide Data")
         showData.setObjectName("ShowData")
         spacer = QWidget()
         spacer.setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Preferred)
@@ -103,6 +111,8 @@ class MainWindow (QMainWindow):
         toolbar.addWidget(selectionMode)
         toolbar.addWidget(imageMode)
         toolbar.addWidget(spacer)
+        toolbar.addWidget(label)
+        toolbar.addWidget(eraseMode)
         toolbar.addWidget(clear)
         toolbar.addWidget(showData)
         return toolbar
@@ -123,7 +133,11 @@ class MainWindow (QMainWindow):
         return rightSide
 
     def showRightSide(self):
-        self.dock.setVisible(True)
+        if self.dock.isVisible():
+            self.dock.setVisible(False)
+        else:
+            self.dock.setVisible(True)
+
 
     def update_fig(self):
         plt.clf()
@@ -218,6 +232,8 @@ class Dicom (FigureCanvas):
                     polygon = patches.Polygon(window.selection, color='red', alpha=0.2)
                     window.dicom.patch = polygon
                 window.reset_after_changes()
+        else:
+            pass
 
     def sortSelection(self, selection):
         cent = (sum([p[0] for p in selection]) / len(selection), sum([p[1] for p in selection]) / len(selection))
@@ -230,6 +246,30 @@ class Dicom (FigureCanvas):
     def clear(self, window):
         self.canvas[:] = 0
         window.selection = []
+        window.reset_after_changes()
+
+    def erase(self, state, window):
+        if state == 2:
+            window.dicom.cid = window.dicom.fig.canvas.mpl_disconnect(window.dicom.cid)
+            window.dicom.cid = window.dicom.fig.canvas.mpl_connect('button_press_event', self.erasePoint)
+        else:
+            window.dicom.cid = window.dicom.fig.canvas.mpl_disconnect(window.dicom.cid)
+            window.dicom.cid = window.dicom.fig.canvas.mpl_connect('button_press_event', self.selection)
+        pass
+
+    def erasePoint(self, event):
+        print("erasing")
+        window = self.parent().parent()
+        x = event.xdata
+        y = event.ydata
+        point = [int(x), int(y)]
+        closest_index = distance.cdist([point], window.selection).argmin()
+        window.dicom.canvas[window.selection[closest_index]] = 0
+        window.selection.pop(closest_index)
+        #recalculating Polygon
+        if window.selectionMode == 'Polygon Selection':
+            polygon = patches.Polygon(window.selection, color='red', alpha=0.2)
+            window.dicom.patch = polygon
         window.reset_after_changes()
 
     def zoom(self): # to implement in the future
@@ -357,6 +397,7 @@ class MediaBar(QWidget):
         self.window.current_frame = os.path.join(self.window.current_slice, self.window.frames[self.window.current])
         self.window.reset_after_changes()
 
+# to be implemented
     def fastforward(self):
         pass
 
@@ -393,7 +434,7 @@ class Data(QWidget):
         self.table.setMaximumWidth(500)
         self.table.setShowGrid(False)
         self.table.resizeColumnsToContents()
-        if self.window.selectionMode == 'Multiple Point Selection':
+        if self.window.selectionMode == 'Multiple Point Selection' or 'Polygon Selection':
             self.table.setItem(2, 0, QTableWidgetItem("The selected Points are : "))
             if len(self.window.selection) > 2:
                 self.table.setColumnWidth(1, 200)
