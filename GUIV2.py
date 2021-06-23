@@ -96,6 +96,7 @@ class MainWindow (QMainWindow):
         imageMode.activated.connect(lambda: Dicom.changecmap(self.dicom, imageMode.currentText(), self))
         label = QLabel("eraser mode:")
         label.setObjectName("EraseMode")
+        label.setToolTip("Click near a Point to erase it")
         eraseMode = AnimatedToggle(checked_color="#8DC1D8",
             pulse_checked_color="#55808080")
         eraseMode.clicked.connect(lambda: Dicom.erase(self.dicom, eraseMode.checkState(), self))
@@ -228,7 +229,6 @@ class Dicom (FigureCanvas):
                 window.selection.append(point)
                 self.sortSelection(window.selection)
                 if len(window.selection) >= 3:
-                    print("its a polygon")
                     polygon = patches.Polygon(window.selection, color='red', alpha=0.2)
                     window.dicom.patch = polygon
                 window.reset_after_changes()
@@ -287,6 +287,9 @@ class UserInput(QWidget):
         self.button2 = QPushButton('SUBMIT')
         self.button2.setObjectName("submit")
         self.button2.clicked.connect(self.set_filepath)
+        self.button3 = QPushButton('Open')
+        self.button3.setObjectName("Open")
+        self.button3.clicked.connect(self.open)
         self.label = QLabel("Please enter the filepath to a study directory: ")
         self.label.setObjectName("enterfilepath")
         self.errorText = QLabel("")
@@ -304,6 +307,7 @@ class UserInput(QWidget):
         self.inner = QHBoxLayout()
         self.inner.addWidget(self.input)
         self.inner.addWidget(self.button2)
+        self.inner.addWidget(self.button3)
         self.layout.addLayout(self.inner)
         self.setLayout(self.layout)
 
@@ -320,6 +324,11 @@ class UserInput(QWidget):
         else:
             self.errorText.setText("This is not a valid file path")
 
+    def open(self):
+        file_name = QFileDialog.getExistingDirectory(self, 'Open Source Folder', os.getcwd())
+        self.filepath = file_name
+        self.check_and_set_filepath()
+        print(file_name)
 
 # Animation/Video
 class MediaBar(QWidget):

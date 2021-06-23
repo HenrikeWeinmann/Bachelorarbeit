@@ -212,7 +212,7 @@ QDockWidget::close-button{
     icon-size: 50px;
 }
 
-QPushButton#submit{
+QPushButton#submit, #Open{
     border-radius: 18;
     max-height: 40px;
     width: 100;
