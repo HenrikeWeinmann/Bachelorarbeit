@@ -22,17 +22,16 @@ with open(qss, "r") as fh:
 
 
 class MainWindow (QMainWindow):
-    study = "/Users/Heni/OneDrive/Uni/Bachelorarbeit/second-annual-data-science-bowl/test/test/932/study/"
+    validDataset = False
+    study = ""  # /Users/Heni/OneDrive/Uni/Bachelorarbeit/second-annual-data-science-bowl/test/test/932/study/
     current = 0  # current frame starting with 0
     running = False
     slice = 1  # slice the user currently sees starting at 1
     # paths
-    slices = os.listdir(study)  # list of all names of all slices
-    slices.sort()
-    current_slice = os.path.join(study, slices[slice])  # path of the current slice on users OS
-    frames = os.listdir(current_slice)  # list of all names from all frames of the current slice
-    frames.sort()
-    current_frame = os.path.join(current_slice, frames[current])  # path of the current frame on users OS
+    slices = None  # list of all names of all slices
+    current_slice = None  # path of the current slice on users OS
+    frames = None  # list of all names from all frames of the current slice
+    current_frame = None  # path of the current frame on users OS
     selection = []
     selectionMode = ''
 
@@ -58,9 +57,9 @@ class MainWindow (QMainWindow):
         self.dock.setFeatures(QDockWidget.DockWidgetFeature.DockWidgetClosable)
         self.addDockWidget(Qt.DockWidgetArea.RightDockWidgetArea, self.dock)
         self.mainLayout.addWidget(self.dicom)
-        self.mainLayout.addWidget(self.background)
+        if self.validDataset:
+            self.mainLayout.addWidget(self.background)
         self.mainLayout.setAlignment(Qt.AlignmentFlag.AlignHCenter)
-
         self.centralWidget.setLayout(self.mainLayout)
         self.centralWidget.setSizePolicy(QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Minimum)
         self.setCentralWidget(self.centralWidget)
@@ -68,16 +67,19 @@ class MainWindow (QMainWindow):
 
 # reset the current slice and frame we are on
     def reset_after_changes(self):
+        self.initialize_paths()
+        self.dicom.initCanvas()
+        self.update_fig()
+        self.data.info = Data.information(self.data)
+        self.dock.setWidget(self.rightSide())
+
+    def initialize_paths(self):
         self.slices = os.listdir(self.study)  # list of all names of all slices
         self.slices.sort()
         self.current_slice = os.path.join(self.study, self.slices[self.slice])
         self.frames = os.listdir(self.current_slice)
         self.frames.sort()
         self.current_frame = os.path.join(self.current_slice, self.frames[self.current])
-        self.update_fig()
-        self.data.info = Data.information(self.data)
-        self.dock.setWidget(self.rightSide())
-
 
     def toolbar(self):
         toolbar = QToolBar()
@@ -97,8 +99,7 @@ class MainWindow (QMainWindow):
         label = QLabel("eraser mode:")
         label.setObjectName("EraseMode")
         label.setToolTip("Click near a Point to erase it")
-        eraseMode = AnimatedToggle(checked_color="#8DC1D8",
-            pulse_checked_color="#55808080")
+        eraseMode = AnimatedToggle(checked_color="#8DC1D8", pulse_checked_color="#55808080")
         eraseMode.clicked.connect(lambda: Dicom.erase(self.dicom, eraseMode.checkState(), self))
         clear = QPushButton("clear")
         clear.setObjectName("clear")
@@ -159,32 +160,45 @@ class Dicom (FigureCanvas):
         super().__init__(self.fig)
         self.setParent(window)
         self.cmap = 'bone'
+        try:
+            self.initCanvas()
+        except:
+            self.img = self.ax.imshow(plt.imread("Default.jpg"))
+
+        plt.tight_layout()
+
+
+    def initCanvas(self):
+        window = self.parent().parent()
         self.dcmfile = dcm.dcmread(window.current_frame)
         self.imgarr = self.dcmfile.pixel_array
+        self.img = self.ax.imshow(self.imgarr, self.cmap)
         self.canvas = np.empty(self.imgarr.shape)
         self.canvas[:] = 0
-        self.img = self.ax.imshow(self.imgarr, self.cmap)
         self.cnv = self.ax.imshow(self.canvas, cmap=self.customcmap())
         self.cid = self.fig.canvas.mpl_connect('button_press_event', self.selection)
         self.patch = patches.Circle([1, 1], 2)
-        plt.tight_layout()
 
     # scroll wheel
     def wheelEvent(self, event):
         window = self.parent().parent()
         change = event.angleDelta().y()/120
-        if change > 0:
-            if window.slice < len(window.slices) - 1:
-                window.slice += 1
-                window.reset_after_changes()
+        if window.validDataset:
+
+            if change > 0:
+                if window.slice < len(window.slices) - 1:
+                    window.slice += 1
+                    window.reset_after_changes()
+                else:
+                    pass
             else:
-                pass
+                if window.slice > 1:
+                    window.slice -= 1
+                    window.reset_after_changes()
+                else:
+                    pass
         else:
-            if window.slice > 1:
-                window.slice -= 1
-                window.reset_after_changes()
-            else:
-                pass
+            pass
 
     def changecmap(self, color, window):
         self.cmap = color
@@ -272,7 +286,7 @@ class Dicom (FigureCanvas):
             window.dicom.patch = polygon
         window.reset_after_changes()
 
-    def zoom(self): # to implement in the future
+    def zoom(self):  # to implement in the future
         pass
 
 
@@ -322,6 +336,9 @@ class UserInput(QWidget):
 
     def check_and_set_filepath(self):
         if os.path.exists(self.filepath):
+            if self.window.validDataset == False:
+                self.window.validDataset = True
+                self.window.mainLayout.addWidget(self.window.background)
             self.window.study = self.filepath
             self.window.reset_after_changes()
             print("this ist the study path: " + self.window.study)
@@ -434,24 +451,26 @@ class Data(QWidget):
 
     def information(self):
         self.table = QTableWidget()
-        self.table.setColumnCount(2)
-        self.table.setRowCount(3)
-        self.table.setItem(0, 0, QTableWidgetItem("This is the current slice: "))
-        self.table.setItem(1, 0, QTableWidgetItem("This is the current frame: "))
-        self.table.setItem(2, 0, QTableWidgetItem("The selected Point is : "))
-        self.table.setItem(0, 1, QTableWidgetItem(self.window.slices[self.window.slice]))
-        self.table.setItem(1, 1, QTableWidgetItem(self.window.frames[self.window.current]))
-        self.table.setItem(2, 1, QTableWidgetItem(str(self.window.selection)))
 
-        self.table.horizontalHeader().hide()
-        self.table.verticalHeader().hide()
-        self.table.setMaximumWidth(500)
-        self.table.setShowGrid(False)
-        self.table.resizeColumnsToContents()
-        if self.window.selectionMode == 'Multiple Point Selection' or 'Polygon Selection':
-            self.table.setItem(2, 0, QTableWidgetItem("The selected Points are : "))
-            if len(self.window.selection) > 2:
-                self.table.setColumnWidth(1, 200)
+        if self.window.validDataset:
+            self.table.setColumnCount(2)
+            self.table.setRowCount(3)
+            self.table.setItem(0, 0, QTableWidgetItem("This is the current slice: "))
+            self.table.setItem(1, 0, QTableWidgetItem("This is the current frame: "))
+            self.table.setItem(2, 0, QTableWidgetItem("The selected Point is : "))
+            self.table.setItem(0, 1, QTableWidgetItem(self.window.slices[self.window.slice]))
+            self.table.setItem(1, 1, QTableWidgetItem(self.window.frames[self.window.current]))
+            self.table.setItem(2, 1, QTableWidgetItem(str(self.window.selection)))
+
+            self.table.horizontalHeader().hide()
+            self.table.verticalHeader().hide()
+            self.table.setMaximumWidth(500)
+            self.table.setShowGrid(False)
+            self.table.resizeColumnsToContents()
+            if self.window.selectionMode == 'Multiple Point Selection' or 'Polygon Selection':
+                self.table.setItem(2, 0, QTableWidgetItem("The selected Points are : "))
+                if len(self.window.selection) > 2:
+                    self.table.setColumnWidth(1, 200)
 
         return self.table
 
