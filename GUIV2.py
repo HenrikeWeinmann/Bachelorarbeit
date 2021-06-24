@@ -284,19 +284,21 @@ class UserInput(QWidget):
         QWidget.__init__(self)
         self.window = window
         self.setObjectName("UserInput")
-        self.button2 = QPushButton('SUBMIT')
-        self.button2.setObjectName("submit")
-        self.button2.clicked.connect(self.set_filepath)
-        self.button3 = QPushButton('Open')
-        self.button3.setObjectName("Open")
-        self.button3.clicked.connect(self.open)
+        self.submitbtn = QPushButton('SUBMIT')
+        self.submitbtn.setObjectName("submit")
+        self.submitbtn.clicked.connect(self.set_filepath)
+        self.openbtn = QPushButton('Open')
+        self.openbtn.setObjectName("Open")
+        self.openbtn.clicked.connect(self.open)
         self.label = QLabel("Please enter the filepath to a study directory: ")
         self.label.setObjectName("enterfilepath")
+        self.label2 = QLabel("Open a study folder from the file manager: ")
+        self.label2.setObjectName("label2")
         self.errorText = QLabel("")
         self.errorText.setSizePolicy(QSizePolicy.Policy.Preferred, QSizePolicy.Policy.Maximum)
         self.errorText.setObjectName("error")
         self.input = QLineEdit('')
-        self.input.setAttribute(Qt.WidgetAttribute.WA_MacShowFocusRect, 0) # get rid of ugly mac focus rect
+        self.input.setAttribute(Qt.WidgetAttribute.WA_MacShowFocusRect, 0)  # get rid of ugly mac focus rect
         self.input.setPlaceholderText('file path')
         self.input.setMaxLength(100)
         self.input.editingFinished.connect(self.set_filepath)
@@ -306,9 +308,12 @@ class UserInput(QWidget):
         self.layout.addWidget(self.errorText)
         self.inner = QHBoxLayout()
         self.inner.addWidget(self.input)
-        self.inner.addWidget(self.button2)
-        self.inner.addWidget(self.button3)
+        self.inner.addWidget(self.submitbtn)
+        self.inner2 = QHBoxLayout()
+        self.inner2.addWidget(self.label2)
+        self.inner2.addWidget(self.openbtn)
         self.layout.addLayout(self.inner)
+        self.layout.addLayout(self.inner2)
         self.setLayout(self.layout)
 
     def set_filepath(self):
@@ -328,7 +333,7 @@ class UserInput(QWidget):
         file_name = QFileDialog.getExistingDirectory(self, 'Open Source Folder', os.getcwd())
         self.filepath = file_name
         self.check_and_set_filepath()
-        print(file_name)
+
 
 # Animation/Video
 class MediaBar(QWidget):
