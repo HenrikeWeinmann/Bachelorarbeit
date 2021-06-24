@@ -215,6 +215,7 @@ QDockWidget::close-button{
 QPushButton#submit, #Open{
     border-radius: 18;
     max-height: 40px;
+    max-width: 200px;
     width: 100;
     color: #1A1A1A;
 }
