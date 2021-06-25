@@ -68,7 +68,8 @@ class MainWindow (QMainWindow):
 # reset the current slice and frame we are on
     def reset_after_changes(self):
         self.initialize_paths()
-        self.dicom.initCanvas()
+        if not self.validDataset:
+            self.dicom.initCanvas()
         self.update_fig()
         self.data.info = Data.information(self.data)
         self.dock.setWidget(self.rightSide())
@@ -292,7 +293,7 @@ class Dicom (FigureCanvas):
 
 # this class handles user Input
 class UserInput(QWidget):
-    filepath = 'IM-13020-0001.dcm'
+    filepath = ''  # IM-13020-0001.dcm
 
     def __init__(self, window):
         QWidget.__init__(self)
@@ -336,11 +337,11 @@ class UserInput(QWidget):
 
     def check_and_set_filepath(self):
         if os.path.exists(self.filepath):
-            if self.window.validDataset == False:
-                self.window.validDataset = True
-                self.window.mainLayout.addWidget(self.window.background)
             self.window.study = self.filepath
             self.window.reset_after_changes()
+            if not self.window.validDataset:
+                self.window.validDataset = True
+                self.window.mainLayout.addWidget(self.window.background)
             print("this ist the study path: " + self.window.study)
             self.errorText.setText("")
         else:
