@@ -21,6 +21,7 @@ with open(qss, "r") as fh:
     app.setStyleSheet(fh.read())
 
 
+
 class MainWindow (QMainWindow):
     validDataset = False
     study = ""  # /Users/Heni/OneDrive/Uni/Bachelorarbeit/second-annual-data-science-bowl/test/test/932/study/
@@ -65,23 +66,6 @@ class MainWindow (QMainWindow):
         self.setCentralWidget(self.centralWidget)
 
 
-# reset the current slice and frame we are on
-    def reset_after_changes(self):
-        self.initialize_paths()
-        if not self.validDataset:
-            self.dicom.initCanvas()
-        self.update_fig()
-        self.data.info = Data.information(self.data)
-        self.dock.setWidget(self.rightSide())
-
-    def initialize_paths(self):
-        self.slices = os.listdir(self.study)  # list of all names of all slices
-        self.slices.sort()
-        self.current_slice = os.path.join(self.study, self.slices[self.slice])
-        self.frames = os.listdir(self.current_slice)
-        self.frames.sort()
-        self.current_frame = os.path.join(self.current_slice, self.frames[self.current])
-
     def toolbar(self):
         toolbar = QToolBar()
         toolbar.setObjectName("Toolbar")
@@ -89,13 +73,13 @@ class MainWindow (QMainWindow):
         selectionMode.addItem("Single Point Selection")
         selectionMode.addItem("Multiple Point Selection")
         selectionMode.addItem("Polygon Selection")
-        selectionMode.addItem("Freehand Selection") # to be implemented in the future
+        selectionMode.addItem("Freehand Selection")  # to be implemented in the future
         selectionMode.activated.connect(lambda: Dicom.setSelectionMode(self.dicom, selectionMode.currentText(), self))
         self.selectionMode = selectionMode.currentText()
         imageMode = QComboBox()
         imageMode.addItem('bone')
         imageMode.addItem('gist_gray')
-        imageMode.addItem('copper')
+        imageMode.addItem('binary')
         imageMode.activated.connect(lambda: Dicom.changecmap(self.dicom, imageMode.currentText(), self))
         label = QLabel("eraser mode:")
         label.setObjectName("EraseMode")
@@ -141,6 +125,22 @@ class MainWindow (QMainWindow):
         else:
             self.dock.setVisible(True)
 
+    # reset the current slice and frame we are on
+    def reset_after_changes(self):
+        self.initialize_paths()
+        if not self.validDataset:
+            self.dicom.initCanvas()
+        self.update_fig()
+        self.data.info = Data.information(self.data)
+        self.dock.setWidget(self.rightSide())
+
+    def initialize_paths(self):
+        self.slices = os.listdir(self.study)  # list of all names of all slices
+        self.slices.sort()
+        self.current_slice = os.path.join(self.study, self.slices[self.slice])
+        self.frames = os.listdir(self.current_slice)
+        self.frames.sort()
+        self.current_frame = os.path.join(self.current_slice, self.frames[self.current])
 
     def update_fig(self):
         plt.clf()
@@ -414,7 +414,7 @@ class MediaBar(QWidget):
             pass
 
     def forward(self):
-        if self.window.current < 29:
+        if self.window.current < len(self.window.frames)-1:
             self.window.current += 1
         else:
             self.window.current = 0
@@ -425,7 +425,7 @@ class MediaBar(QWidget):
         if self.window.current > 0:
             self.window.current -= 1
         else:
-            self.window.current = 29
+            self.window.current = len(self.window.frames)-1
         self.window.current_frame = os.path.join(self.window.current_slice, self.window.frames[self.window.current])
         self.window.reset_after_changes()
 
