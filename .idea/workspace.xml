@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8e406e9a-7129-4799-b3f3-c02ccd0c5d7c" name="Default Changelist" comment="Starting Screen">
+    <list default="true" id="8e406e9a-7129-4799-b3f3-c02ccd0c5d7c" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/loadFiles test" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GUIV2.py" beforeDir="false" afterPath="$PROJECT_DIR$/GUIV2.py" afterDir="false" />
     </list>
@@ -19,10 +20,22 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/GUIV2.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="629">
-              <caret line="69" column="31" lean-forward="true" selection-start-line="69" selection-start-column="31" selection-end-line="69" selection-end-column="31" />
+            <state relative-caret-position="424">
+              <caret line="171" column="26" lean-forward="true" selection-start-line="171" selection-start-column="26" selection-end-line="171" selection-end-column="26" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/loadFiles test">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="864">
+              <caret line="24" selection-start-line="20" selection-end-line="24" />
+              <folding>
+                <element signature="e#0#9#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -42,7 +55,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="Stylesheet(Atom)" />
+        <entry key="$PROJECT_DIR$" value="StartScreen" />
       </map>
     </option>
   </component>
@@ -55,6 +68,7 @@
         <option value="$PROJECT_DIR$/VTK DICOM Reader.py" />
         <option value="$PROJECT_DIR$/GUI.py" />
         <option value="$PROJECT_DIR$/Stylesheet.qss" />
+        <option value="$PROJECT_DIR$/loadFiles test" />
         <option value="$PROJECT_DIR$/GUIV2.py" />
       </list>
     </option>
@@ -257,9 +271,31 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="loadFiles test" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+      <module name="Bachelorarbeit" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="/usr/bin/python3" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/loadFiles test" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <list>
       <item itemvalue="Python.GUI" />
       <item itemvalue="Python.Bachelorarbeit" />
+      <item itemvalue="Python.loadFiles test" />
       <item itemvalue="Python.GUIV2" />
       <item itemvalue="Python.UserInteraction" />
       <item itemvalue="Python.VTK DICOM Reader" />
@@ -529,7 +565,21 @@
       <option name="project" value="LOCAL" />
       <updated>1624543118140</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="canvas auto clear fixed.">
+      <created>1624609732415</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1624609732415</updated>
+    </task>
+    <task id="LOCAL-00038" summary="binary color map">
+      <created>1624612600484</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1624612600484</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="TodoView">
@@ -545,12 +595,12 @@
     <frame x="0" y="0" width="2560" height="1440" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49708456" visible="true" weight="0.12957858" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49708456" visible="true" weight="0.110673495" />
       <window_info id="Structure" order="1" sideWeight="0.50291544" side_tool="true" weight="0.17239301" />
       <window_info id="Favorites" order="2" sideWeight="0.5005015" side_tool="true" weight="0.09531312" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3270073" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.5648438" visible="true" weight="0.08248175" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.5648438" visible="true" weight="0.042335767" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49921876" weight="0.39836735" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -663,8 +713,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="information about slice&#10;weird problem: can't access Window in Data class..." />
-    <MESSAGE value="vtk draw on canvas in seperate file tested-&#10;no lut yet." />
     <MESSAGE value="vtk_selection will now detect position of the mouse" />
     <MESSAGE value="selection will appear on info" />
     <MESSAGE value="frame is clickable and coordinates are ofset but canvas included and selection possible" />
@@ -688,7 +736,9 @@
     <MESSAGE value="eraser Mode added" />
     <MESSAGE value="integrated open files from file manager" />
     <MESSAGE value="Starting Screen" />
-    <option name="LAST_COMMIT_MESSAGE" value="Starting Screen" />
+    <MESSAGE value="canvas auto clear fixed." />
+    <MESSAGE value="binary color map" />
+    <option name="LAST_COMMIT_MESSAGE" value="binary color map" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/README.md">
@@ -736,10 +786,20 @@
     <entry file="file://$PROJECT_DIR$/VTK Test file.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/loadFiles test">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="864">
+          <caret line="24" selection-start-line="20" selection-end-line="24" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/GUIV2.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="629">
-          <caret line="69" column="31" lean-forward="true" selection-start-line="69" selection-start-column="31" selection-end-line="69" selection-end-column="31" />
+        <state relative-caret-position="424">
+          <caret line="171" column="26" lean-forward="true" selection-start-line="171" selection-start-column="26" selection-end-line="171" selection-end-column="26" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
           </folding>

@@ -23,16 +23,10 @@ with open(qss, "r") as fh:
 
 
 class MainWindow (QMainWindow):
-    validDataset = False
-    study = ""  # /Users/Heni/OneDrive/Uni/Bachelorarbeit/second-annual-data-science-bowl/test/test/932/study/
+    validDataset = False  # /Users/Heni/OneDrive/Uni/Bachelorarbeit/second-annual-data-science-bowl/test/test/932/study/
     current = 0  # current frame starting with 0
     running = False
-    slice = 1  # slice the user currently sees starting at 1
-    # paths
-    slices = None  # list of all names of all slices
-    current_slice = None  # path of the current slice on users OS
-    frames = None  # list of all names from all frames of the current slice
-    current_frame = None  # path of the current frame on users OS
+    slice = 0  # slice the user currently sees starting at 1
     selection = []
     selectionMode = ''
 
@@ -42,7 +36,7 @@ class MainWindow (QMainWindow):
         self.setMaximumWidth(1300)
         self.setMaximumHeight(1000)
         self.centralWidget = QWidget()
-
+        self.dataArray = []
         self.mainLayout = QVBoxLayout()
         self.mainLayout.setSpacing(2)
         self.dicom = Dicom(self)
@@ -127,31 +121,22 @@ class MainWindow (QMainWindow):
 
     # reset the current slice and frame we are on
     def reset_after_changes(self):
-        self.initialize_paths()
         if not self.validDataset:
             self.dicom.initCanvas()
         self.update_fig()
         self.data.info = Data.information(self.data)
         self.dock.setWidget(self.rightSide())
 
-    def initialize_paths(self):
-        self.slices = os.listdir(self.study)  # list of all names of all slices
-        self.slices.sort()
-        self.current_slice = os.path.join(self.study, self.slices[self.slice])
-        self.frames = os.listdir(self.current_slice)
-        self.frames.sort()
-        self.current_frame = os.path.join(self.current_slice, self.frames[self.current])
 
     def update_fig(self):
         plt.clf()
-        self.dicom.dcmfile = dcm.dcmread(self.current_frame)
-        self.dicom.imgarr = self.dicom.dcmfile.pixel_array
+        self.dicom.imgarr = self.dataArray[self.slice][self.current].pixel_array
         self.dicom.img = plt.imshow(self.dicom.imgarr, self.dicom.cmap)
         self.cnv = plt.imshow(self.dicom.canvas, Dicom.customcmap(self.dicom))
         if self.selectionMode == 'Polygon Selection' and len(self.selection) >= 3:
             plt.subplot().add_patch(self.dicom.patch)
         self.dicom.draw()
-        self.mainLayout.insertWidget(0,self.dicom)
+        self.mainLayout.insertWidget(0, self.dicom)
 
 
 class Dicom (FigureCanvas):
@@ -171,8 +156,7 @@ class Dicom (FigureCanvas):
 
     def initCanvas(self):
         window = self.parent().parent()
-        self.dcmfile = dcm.dcmread(window.current_frame)
-        self.imgarr = self.dcmfile.pixel_array
+        self.imgarr = window.dataArray[window.slice][window.current].pixel_array
         self.img = self.ax.imshow(self.imgarr, self.cmap)
         self.canvas = np.empty(self.imgarr.shape)
         self.canvas[:] = 0
@@ -185,9 +169,9 @@ class Dicom (FigureCanvas):
         window = self.parent().parent()
         change = event.angleDelta().y()/120
         if window.validDataset:
-
             if change > 0:
-                if window.slice < len(window.slices) - 1:
+                if window.slice < (len(window.dataArray[window.slice]) - 1):
+
                     window.slice += 1
                     window.reset_after_changes()
                 else:
@@ -338,6 +322,7 @@ class UserInput(QWidget):
     def check_and_set_filepath(self):
         if os.path.exists(self.filepath):
             self.window.study = self.filepath
+            self.window.dataArray = self.loadData()
             self.window.reset_after_changes()
             if not self.window.validDataset:
                 self.window.validDataset = True
@@ -351,6 +336,28 @@ class UserInput(QWidget):
         file_name = QFileDialog.getExistingDirectory(self, 'Open Source Folder', os.getcwd())
         self.filepath = file_name
         self.check_and_set_filepath()
+
+    def loadData(self):
+        slices = os.listdir(self.filepath)  # list of all names of all slices
+        slices.sort()
+        data = []
+
+        for i in range(1, len(slices)):
+            current_slice = os.path.join(self.filepath, slices[i])
+            frames = os.listdir(current_slice)
+            frames.sort()
+            data.append([])
+            for j in range(len(frames)):
+                current_frame = os.path.join(current_slice, frames[j])
+                dicom = dcm.dcmread(current_frame)
+                data[i - 1].append(dicom)
+
+        # for testing purposes
+        for k in range(len(data)):
+            for l in range(len(data[k])):
+                print(data[k][l])
+
+        return data
 
 
 # Animation/Video
@@ -408,25 +415,22 @@ class MediaBar(QWidget):
             self.playbtn.setStyleSheet("image: url('Icons/Play.png') ;")
             self.timer.stop()
             self.window.current = 0
-            self.window.current_frame = os.path.join(self.window.current_slice, self.window.frames[self.window.current])
             self.window.reset_after_changes()
         else:
             pass
 
     def forward(self):
-        if self.window.current < len(self.window.frames)-1:
+        if self.window.current < len(self.window.dataArray[self.window.slice])-1:
             self.window.current += 1
         else:
             self.window.current = 0
-        self.window.current_frame = os.path.join(self.window.current_slice, self.window.frames[self.window.current])
         self.window.reset_after_changes()
 
     def backward(self):
         if self.window.current > 0:
             self.window.current -= 1
         else:
-            self.window.current = len(self.window.frames)-1
-        self.window.current_frame = os.path.join(self.window.current_slice, self.window.frames[self.window.current])
+            self.window.current = len(self.window.dataArray[self.window.slice])-1
         self.window.reset_after_changes()
 
 # to be implemented
@@ -459,8 +463,8 @@ class Data(QWidget):
             self.table.setItem(0, 0, QTableWidgetItem("This is the current slice: "))
             self.table.setItem(1, 0, QTableWidgetItem("This is the current frame: "))
             self.table.setItem(2, 0, QTableWidgetItem("The selected Point is : "))
-            self.table.setItem(0, 1, QTableWidgetItem(self.window.slices[self.window.slice]))
-            self.table.setItem(1, 1, QTableWidgetItem(self.window.frames[self.window.current]))
+            self.table.setItem(0, 1, QTableWidgetItem(str(self.window.slice)))
+            self.table.setItem(1, 1, QTableWidgetItem(str(self.window.current)))
             self.table.setItem(2, 1, QTableWidgetItem(str(self.window.selection)))
 
             self.table.horizontalHeader().hide()
