@@ -33,16 +33,18 @@ class MainWindow (QMainWindow):
     def __init__(self):
         QWidget.__init__(self)
         self.setGeometry(200, 300, 1300, 1000)
-        self.setMaximumWidth(1300)
-        self.setMaximumHeight(1000)
+        self.setFixedWidth(1300)
+        self.setFixedHeight(1000)
         self.centralWidget = QWidget()
         self.dataArray = []
-        self.mainLayout = QVBoxLayout()
-        self.mainLayout.setSpacing(2)
+
         self.dicom = Dicom(self)
         self.addToolBar(self.toolbar())
 
         self.menu = self.toolbar()
+        self.picturemenu = self.picturemenu()
+        self.picturemenu.setFixedWidth(self.centralWidget.width())
+        print(self.picturemenu.size())
         self.background = QStackedWidget()
         self.background.setObjectName("MediaBarBackground")
         self.play = MediaBar(self)
@@ -51,14 +53,35 @@ class MainWindow (QMainWindow):
         self.dock.setWidget(self.rightSide())
         self.dock.setFeatures(QDockWidget.DockWidgetFeature.DockWidgetClosable)
         self.addDockWidget(Qt.DockWidgetArea.RightDockWidgetArea, self.dock)
+
+        self.mainLayout = QVBoxLayout()
         self.mainLayout.addWidget(self.dicom)
         if self.validDataset:
+            self.mainLayout.insertWidget(0, self.picturemenu)
             self.mainLayout.addWidget(self.background)
         self.mainLayout.setAlignment(Qt.AlignmentFlag.AlignHCenter)
+
         self.centralWidget.setLayout(self.mainLayout)
         self.centralWidget.setSizePolicy(QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Minimum)
         self.setCentralWidget(self.centralWidget)
 
+    def picturemenu(self):
+        picturemenu = QWidget()
+        picturemenu.setObjectName("picturemenu")
+        layout = QHBoxLayout()
+        label = QLabel("eraser mode:")
+        label.setObjectName("EraseMode")
+        label.setToolTip("Click near a Point to erase it")
+        eraseMode = AnimatedToggle(checked_color="#8DC1D8", pulse_checked_color="#55808080")
+        eraseMode.clicked.connect(lambda: Dicom.erase(self.dicom, eraseMode.checkState(), self))
+        clear = QPushButton("clear")
+        clear.setObjectName("clear")
+        clear.clicked.connect(lambda: Dicom.clear(self.dicom, self))
+        layout.addWidget(label)
+        layout.addWidget(eraseMode)
+        layout.addWidget(clear)
+        picturemenu.setLayout(layout)
+        return picturemenu
 
     def toolbar(self):
         toolbar = QToolBar()
@@ -75,14 +98,6 @@ class MainWindow (QMainWindow):
         imageMode.addItem('gist_gray')
         imageMode.addItem('binary')
         imageMode.activated.connect(lambda: Dicom.changecmap(self.dicom, imageMode.currentText(), self))
-        label = QLabel("eraser mode:")
-        label.setObjectName("EraseMode")
-        label.setToolTip("Click near a Point to erase it")
-        eraseMode = AnimatedToggle(checked_color="#8DC1D8", pulse_checked_color="#55808080")
-        eraseMode.clicked.connect(lambda: Dicom.erase(self.dicom, eraseMode.checkState(), self))
-        clear = QPushButton("clear")
-        clear.setObjectName("clear")
-        clear.clicked.connect(lambda: Dicom.clear(self.dicom, self))
         showData = QPushButton("Show/Hide Data")
         showData.setObjectName("ShowData")
         spacer = QWidget()
@@ -92,9 +107,6 @@ class MainWindow (QMainWindow):
         toolbar.addWidget(selectionMode)
         toolbar.addWidget(imageMode)
         toolbar.addWidget(spacer)
-        toolbar.addWidget(label)
-        toolbar.addWidget(eraseMode)
-        toolbar.addWidget(clear)
         toolbar.addWidget(showData)
         return toolbar
 
@@ -136,7 +148,8 @@ class MainWindow (QMainWindow):
         if self.selectionMode == 'Polygon Selection' and len(self.selection) >= 3:
             plt.subplot().add_patch(self.dicom.patch)
         self.dicom.draw()
-        self.mainLayout.insertWidget(0, self.dicom)
+        self.mainLayout.insertWidget(1, self.dicom)
+
 
 
 class Dicom (FigureCanvas):
@@ -150,6 +163,7 @@ class Dicom (FigureCanvas):
             self.initCanvas()
         except:
             self.img = self.ax.imshow(plt.imread("Default.jpg"))
+            plt.axis("off")
 
         plt.tight_layout()
 
@@ -170,8 +184,7 @@ class Dicom (FigureCanvas):
         change = event.angleDelta().y()/120
         if window.validDataset:
             if change > 0:
-                if window.slice < (len(window.dataArray[window.slice]) - 1):
-
+                if window.slice < (len(window.dataArray) - 1):
                     window.slice += 1
                     window.reset_after_changes()
                 else:
@@ -193,13 +206,10 @@ class Dicom (FigureCanvas):
     def customcmap(self):
         # Choose colormap
         cmap = plt.cm.Reds
-
         # Get the colormap colors
         my_cmap = cmap(np.arange(cmap.N))
-
         # Set alpha
         my_cmap[:, -1] = np.linspace(0, 1, cmap.N)
-
         # Create new colormap
         my_cmap = ListedColormap(my_cmap)
         return my_cmap
@@ -321,14 +331,14 @@ class UserInput(QWidget):
 
     def check_and_set_filepath(self):
         if os.path.exists(self.filepath):
-            self.window.study = self.filepath
+            print("this ist the study path: " + self.filepath)
             self.window.dataArray = self.loadData()
             self.window.reset_after_changes()
+            self.errorText.setText("")
             if not self.window.validDataset:
                 self.window.validDataset = True
                 self.window.mainLayout.addWidget(self.window.background)
-            print("this ist the study path: " + self.window.study)
-            self.errorText.setText("")
+                self.window.mainLayout.insertWidget(0, self.window.picturemenu)
         else:
             self.errorText.setText("This is not a valid file path")
 
@@ -341,22 +351,31 @@ class UserInput(QWidget):
         slices = os.listdir(self.filepath)  # list of all names of all slices
         slices.sort()
         data = []
+        if os.path.isdir(os.path.join(self.filepath, slices[0])):
+            for i in range(1, len(slices)):
+                current_slice = os.path.join(self.filepath, slices[i])
+                frames = os.listdir(current_slice)
+                frames.sort()
+                data.append([])
+                for j in range(len(frames)):
+                    current_frame = os.path.join(current_slice, frames[j])
+                    dicom = dcm.dcmread(current_frame)
+                    data[i - 1].append(dicom)
 
-        for i in range(1, len(slices)):
-            current_slice = os.path.join(self.filepath, slices[i])
-            frames = os.listdir(current_slice)
-            frames.sort()
+        else:
             data.append([])
-            for j in range(len(frames)):
-                current_frame = os.path.join(current_slice, frames[j])
-                dicom = dcm.dcmread(current_frame)
-                data[i - 1].append(dicom)
+            for i in range(len(slices)):
+                current_slice = os.path.join(self.filepath, slices[i])
+                dicom = dcm.dcmread(current_slice)
+                data[0].append(dicom)
+                print(data)
 
-        # for testing purposes
+        '''
+        #for testing purposes
         for k in range(len(data)):
             for l in range(len(data[k])):
                 print(data[k][l])
-
+        '''
         return data
 
 

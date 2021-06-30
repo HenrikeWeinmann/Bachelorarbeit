@@ -173,6 +173,16 @@ QLabel#EraseMode {
     min-height: 30 px;
     max-height: 30 px;
 }
+/* -------- Picturemenu --------------*/
+
+QWidget#picturemenu{
+    max-height: 100 px;
+    background: #999999;
+}
+
+QWidget#picturemenu *{
+    max-height: 50 px;
+}
 
 /* -------- Right Side --------------*/
 QWidget#right {
