@@ -183,6 +183,9 @@ QWidget#picturemenu{
 QWidget#picturemenu *{
     max-height: 50 px;
 }
+QSlider{
+    background: none;
+}
 
 /* -------- Right Side --------------*/
 QWidget#right {

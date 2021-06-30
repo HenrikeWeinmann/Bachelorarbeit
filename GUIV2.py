@@ -8,6 +8,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
 from matplotlib.colors import ListedColormap
+from matplotlib.backend_bases import MouseButton
 import matplotlib.patches as patches
 import pydicom as dcm
 import math
@@ -44,7 +45,7 @@ class MainWindow (QMainWindow):
         self.menu = self.toolbar()
         self.picturemenu = self.picturemenu()
         self.picturemenu.setFixedWidth(self.centralWidget.width())
-        print(self.picturemenu.size())
+
         self.background = QStackedWidget()
         self.background.setObjectName("MediaBarBackground")
         self.play = MediaBar(self)
@@ -77,6 +78,18 @@ class MainWindow (QMainWindow):
         clear = QPushButton("clear")
         clear.setObjectName("clear")
         clear.clicked.connect(lambda: Dicom.clear(self.dicom, self))
+        zoom = QSlider(Qt.Horizontal)
+        zoom.sliderMoved.connect(lambda: Dicom.zoom(self.dicom, zoom.value()))
+        zoom.setValue(10)
+        zoom.setMinimum(10)
+        zoom.setMaximum(30)
+        self.contrast = QSlider(Qt.Horizontal)
+        self.contrast.sliderMoved.connect(lambda: Dicom.change_contrast(self.dicom, self.contrast.value(), self))
+        self.contrast.setValue(255)
+        self.contrast.setMaximum(500)
+        self.contrast.setMinimum(1)
+        layout.addWidget(zoom)
+        layout.addWidget(self.contrast)
         layout.addWidget(label)
         layout.addWidget(eraseMode)
         layout.addWidget(clear)
@@ -143,22 +156,27 @@ class MainWindow (QMainWindow):
     def update_fig(self):
         plt.clf()
         self.dicom.imgarr = self.dataArray[self.slice][self.current].pixel_array
-        self.dicom.img = plt.imshow(self.dicom.imgarr, self.dicom.cmap)
+        self.dicom.img = plt.imshow(self.dicom.imgarr, self.dicom.cmap, vmin=self.dicom.vmin, vmax=self.dicom.vmax)
         self.cnv = plt.imshow(self.dicom.canvas, Dicom.customcmap(self.dicom))
         if self.selectionMode == 'Polygon Selection' and len(self.selection) >= 3:
-            plt.subplot().add_patch(self.dicom.patch)
+            Dicom.draw_polygon(self.dicom, patches.Polygon(self.selection, color='red', alpha=0.2))
+            '''used to be: plt.gca().add_patch(polygon)... but somehow wont work anymore'''
         self.dicom.draw()
         self.mainLayout.insertWidget(1, self.dicom)
 
 
 
 class Dicom (FigureCanvas):
-
+    pressed = False
+    pos = []
     def __init__(self, window):
-        self.fig, self.ax = plt.subplots()
+        self.fig = plt.figure()
+        self.ax = self.fig.add_subplot(1, 1, 1)
         super().__init__(self.fig)
         self.setParent(window)
         self.cmap = 'bone'
+        self.vmin = 0
+        self.vmax = 255
         try:
             self.initCanvas()
         except:
@@ -176,6 +194,8 @@ class Dicom (FigureCanvas):
         self.canvas[:] = 0
         self.cnv = self.ax.imshow(self.canvas, cmap=self.customcmap())
         self.cid = self.fig.canvas.mpl_connect('button_press_event', self.selection)
+        self.cid2 = self.fig.canvas.mpl_connect('button_release_event', self.release)
+        self.cid3 = self.fig.canvas.mpl_connect('motion_notify_event', self.set_contrast)
         self.patch = patches.Circle([1, 1], 2)
 
     # scroll wheel
@@ -215,34 +235,34 @@ class Dicom (FigureCanvas):
         return my_cmap
 
     def selection(self, event):
-        window = self.parent().parent()
-        x = event.xdata
-        y = event.ydata
-        if window.selectionMode == 'Single Point Selection':
-            if x and y > 0:
-                point = [int(x), int(y)]
-                window.dicom.canvas[:] = 0
-                window.dicom.canvas[int(y), int(x)] = 255
-                window.selection = [point]
-                window.reset_after_changes()
-        elif window.selectionMode == 'Multiple Point Selection':
-            if x and y > 0:
-                point = [int(x), int(y)]
-                window.dicom.canvas[int(y), int(x)] = 255
-                window.selection.append(point)
-                window.reset_after_changes()
-        elif window.selectionMode == 'Polygon Selection':
-            if x and y > 0:
-                point = [int(x), int(y)]
-                window.dicom.canvas[int(y), int(x)] = 255
-                window.selection.append(point)
-                self.sortSelection(window.selection)
-                if len(window.selection) >= 3:
-                    polygon = patches.Polygon(window.selection, color='red', alpha=0.2)
-                    window.dicom.patch = polygon
-                window.reset_after_changes()
-        else:
-            pass
+        self.pressed = True
+        self.pos = [int(event.xdata), int(event.ydata)]
+        if event.button == MouseButton.LEFT:
+            window = self.parent().parent()
+            x = event.xdata
+            y = event.ydata
+            if window.selectionMode == 'Single Point Selection':
+                if x and y > 0:
+                    window.dicom.canvas[:] = 0
+                    window.dicom.canvas[int(y), int(x)] = 255
+                    window.selection = [self.pos]
+                    window.reset_after_changes()
+            elif window.selectionMode == 'Multiple Point Selection':
+                if x and y > 0:
+                    window.dicom.canvas[int(y), int(x)] = 255
+                    window.selection.append(self.pos)
+                    window.reset_after_changes()
+            elif window.selectionMode == 'Polygon Selection':
+                if x and y > 0:
+                    window.dicom.canvas[int(y), int(x)] = 255
+                    window.selection.append(self.pos)
+                    self.sortSelection(window.selection)
+                    window.reset_after_changes()
+            else:
+                pass
+
+    def draw_polygon(self, polygon):
+        plt.gca().add_patch(polygon)
 
     def sortSelection(self, selection):
         cent = (sum([p[0] for p in selection]) / len(selection), sum([p[1] for p in selection]) / len(selection))
@@ -251,6 +271,26 @@ class Dicom (FigureCanvas):
     def setSelectionMode(self, selectionMode, window):
         print(selectionMode)
         window.selectionMode = selectionMode
+
+    def set_contrast(self, event):
+        window = self.parent().parent()
+        if self.pressed and event.button == MouseButton.RIGHT:
+            diff = int(self.pos[1] - event.ydata)
+            value = window.contrast.value() + diff
+
+            self.change_contrast(value, window)
+
+    def change_contrast(self, value, window):
+        self.vmax = value
+        window.update_fig()
+
+
+    def release(self, event):
+        self.pressed = False
+        self.pos = []
+        window = self.parent().parent()
+        window.contrast.setValue(self.vmax)
+
 
     def clear(self, window):
         self.canvas[:] = 0
@@ -281,7 +321,8 @@ class Dicom (FigureCanvas):
             window.dicom.patch = polygon
         window.reset_after_changes()
 
-    def zoom(self):  # to implement in the future
+    def zoom(self, value):  # to implement in the future
+        print(value/10)
         pass
 
 
@@ -351,7 +392,8 @@ class UserInput(QWidget):
         slices = os.listdir(self.filepath)  # list of all names of all slices
         slices.sort()
         data = []
-        if os.path.isdir(os.path.join(self.filepath, slices[0])):
+
+        if os.path.isdir(os.path.join(self.filepath, slices[1])):
             for i in range(1, len(slices)):
                 current_slice = os.path.join(self.filepath, slices[i])
                 frames = os.listdir(current_slice)
@@ -362,7 +404,7 @@ class UserInput(QWidget):
                     dicom = dcm.dcmread(current_frame)
                     data[i - 1].append(dicom)
 
-        else:
+        elif not os.path.isdir(os.path.join(self.filepath, slices[1])):
             data.append([])
             for i in range(len(slices)):
                 current_slice = os.path.join(self.filepath, slices[i])
