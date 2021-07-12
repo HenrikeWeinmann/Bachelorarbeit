@@ -22,7 +22,6 @@ with open(qss, "r") as fh:
     app.setStyleSheet(fh.read())
 
 
-
 class MainWindow (QMainWindow):
     validDataset = False  # /Users/Heni/OneDrive/Uni/Bachelorarbeit/second-annual-data-science-bowl/test/test/932/study/
     current = 0  # current frame starting with 0
@@ -61,7 +60,6 @@ class MainWindow (QMainWindow):
             self.mainLayout.insertWidget(0, self.picturemenu)
             self.mainLayout.addWidget(self.background)
         self.mainLayout.setAlignment(Qt.AlignmentFlag.AlignHCenter)
-
         self.centralWidget.setLayout(self.mainLayout)
         self.centralWidget.setSizePolicy(QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Minimum)
         self.setCentralWidget(self.centralWidget)
@@ -70,28 +68,27 @@ class MainWindow (QMainWindow):
         picturemenu = QWidget()
         picturemenu.setObjectName("picturemenu")
         layout = QHBoxLayout()
-        label = QLabel("eraser mode:")
-        label.setObjectName("EraseMode")
-        label.setToolTip("Click near a Point to erase it")
-        eraseMode = AnimatedToggle(checked_color="#8DC1D8", pulse_checked_color="#55808080")
-        eraseMode.clicked.connect(lambda: Dicom.erase(self.dicom, eraseMode.checkState(), self))
+        self.eraseMode = QPushButton("eraseMode")
+        self.eraseMode.setObjectName("eraseMode")
+        self.eraseMode.setCheckable(True)
+        self.eraseMode.clicked.connect(lambda: Dicom.erase(self.dicom, self))
+        self.eraseMode.setToolTip("Click near a Point to erase it")
+        self.moveMode = QPushButton("moveMode")
+        self.moveMode.setObjectName("moveMode")
+        self.moveMode.setCheckable(True)
+        self.moveMode.clicked.connect(lambda: Dicom.move(self.dicom, self))
+        self.moveMode.setToolTip("Click near a Point to move it")
         clear = QPushButton("clear")
         clear.setObjectName("clear")
         clear.clicked.connect(lambda: Dicom.clear(self.dicom, self))
-        zoom = QSlider(Qt.Horizontal)
-        zoom.sliderMoved.connect(lambda: Dicom.zoom(self.dicom, zoom.value()))
-        zoom.setValue(10)
-        zoom.setMinimum(10)
-        zoom.setMaximum(30)
         self.contrast = QSlider(Qt.Horizontal)
         self.contrast.sliderMoved.connect(lambda: Dicom.change_contrast(self.dicom, self.contrast.value(), self))
         self.contrast.setValue(255)
         self.contrast.setMaximum(500)
         self.contrast.setMinimum(1)
-        layout.addWidget(zoom)
         layout.addWidget(self.contrast)
-        layout.addWidget(label)
-        layout.addWidget(eraseMode)
+        layout.addWidget(self.eraseMode)
+        layout.addWidget(self.moveMode)
         layout.addWidget(clear)
         picturemenu.setLayout(layout)
         return picturemenu
@@ -103,7 +100,7 @@ class MainWindow (QMainWindow):
         selectionMode.addItem("Single Point Selection")
         selectionMode.addItem("Multiple Point Selection")
         selectionMode.addItem("Polygon Selection")
-        selectionMode.addItem("Freehand Selection")  # to be implemented in the future
+        #selectionMode.addItem("Freehand Selection")  # to be implemented in the future
         selectionMode.activated.connect(lambda: Dicom.setSelectionMode(self.dicom, selectionMode.currentText(), self))
         self.selectionMode = selectionMode.currentText()
         imageMode = QComboBox()
@@ -152,7 +149,6 @@ class MainWindow (QMainWindow):
         self.data.info = Data.information(self.data)
         self.dock.setWidget(self.rightSide())
 
-
     def update_fig(self):
         plt.clf()
         self.dicom.imgarr = self.dataArray[self.slice][self.current].pixel_array
@@ -163,7 +159,6 @@ class MainWindow (QMainWindow):
             '''used to be: plt.gca().add_patch(polygon)... but somehow wont work anymore'''
         self.dicom.draw()
         self.mainLayout.insertWidget(1, self.dicom)
-
 
 
 class Dicom (FigureCanvas):
@@ -184,7 +179,6 @@ class Dicom (FigureCanvas):
             plt.axis("off")
 
         plt.tight_layout()
-
 
     def initCanvas(self):
         window = self.parent().parent()
@@ -207,16 +201,9 @@ class Dicom (FigureCanvas):
                 if window.slice < (len(window.dataArray) - 1):
                     window.slice += 1
                     window.reset_after_changes()
-                else:
-                    pass
-            else:
-                if window.slice > 1:
+            elif window.slice > 1:
                     window.slice -= 1
                     window.reset_after_changes()
-                else:
-                    pass
-        else:
-            pass
 
     def changecmap(self, color, window):
         self.cmap = color
@@ -235,6 +222,8 @@ class Dicom (FigureCanvas):
         return my_cmap
 
     def selection(self, event):
+        if event.dblclick:
+            self.zoom(1.5, event)
         self.pressed = True
         self.pos = [int(event.xdata), int(event.ydata)]
         if event.button == MouseButton.LEFT:
@@ -291,20 +280,23 @@ class Dicom (FigureCanvas):
         window = self.parent().parent()
         window.contrast.setValue(self.vmax)
 
-
     def clear(self, window):
         self.canvas[:] = 0
         window.selection = []
         window.reset_after_changes()
 
-    def erase(self, state, window):
-        if state == 2:
-            window.dicom.cid = window.dicom.fig.canvas.mpl_disconnect(window.dicom.cid)
-            window.dicom.cid = window.dicom.fig.canvas.mpl_connect('button_press_event', self.erasePoint)
+    def erase(self, window):
+        if window.moveMode.isChecked():
+            window.moveMode.toggle()
+            window.moveMode.setStyleSheet("background-color : ##D8EAF3")
+        if window.eraseMode.isChecked():
+            window.eraseMode.setStyleSheet("background-color : #B2D6E6")
+            self.cid = self.fig.canvas.mpl_disconnect(window.dicom.cid)
+            self.cid = self.fig.canvas.mpl_connect('button_press_event', self.erase_and_redraw)
         else:
-            window.dicom.cid = window.dicom.fig.canvas.mpl_disconnect(window.dicom.cid)
-            window.dicom.cid = window.dicom.fig.canvas.mpl_connect('button_press_event', self.selection)
-        pass
+            window.eraseMode.setStyleSheet("background-color : ##D8EAF3")
+            self.cid = self.fig.canvas.mpl_disconnect(window.dicom.cid)
+            self.cid = self.fig.canvas.mpl_connect('button_press_event', self.selection)
 
     def erasePoint(self, event):
         print("erasing")
@@ -313,17 +305,46 @@ class Dicom (FigureCanvas):
         y = event.ydata
         point = [int(x), int(y)]
         closest_index = distance.cdist([point], window.selection).argmin()
-        window.dicom.canvas[window.selection[closest_index]] = 0
+        self.canvas[window.selection[closest_index]] = 0
         window.selection.pop(closest_index)
-        #recalculating Polygon
-        if window.selectionMode == 'Polygon Selection':
-            polygon = patches.Polygon(window.selection, color='red', alpha=0.2)
-            window.dicom.patch = polygon
+
+
+    def erase_and_redraw(self, event):
+        window = self.parent().parent()
+        self.erasePoint(event)
         window.reset_after_changes()
 
-    def zoom(self, value):  # to implement in the future
-        print(value/10)
+    def zoom(self, value, event):  # to implement in the future
         pass
+        x, y = event.xdata, event.ydata
+        self.ax.set_xlim(x - 0.1, x + 0.1)
+        self.ax.set_ylim(x - 0.1, x + 0.1)
+        self.draw()
+        print("zoom")
+
+    def move(self, window):
+        if window.eraseMode.isChecked():
+            window.eraseMode.toggle()
+            window.eraseMode.setStyleSheet("background-color : ##D8EAF3")
+        if window.moveMode.isChecked():
+            window.moveMode.setStyleSheet("background-color : #B2D6E6")
+            self.cid = self.fig.canvas.mpl_disconnect(window.dicom.cid)
+            self.cid = self.fig.canvas.mpl_connect('button_press_event', self.erasePoint)
+            self.cid2 = self.fig.canvas.mpl_disconnect(window.dicom.cid2)
+            self.cid2 = self.fig.canvas.mpl_connect('button_release_event', self.movePoint)
+        else:
+            window.moveMode.setStyleSheet("background-color : ##D8EAF3")
+            self.cid = self.fig.canvas.mpl_disconnect(window.dicom.cid)
+            self.cid = self.fig.canvas.mpl_connect('button_press_event', self.selection)
+            self.cid2 = self.fig.canvas.mpl_disconnect(window.dicom.cid2)
+            self.cid2 = self.fig.canvas.mpl_connect('button_release_event', self.release)
+
+    def movePoint(self, event):
+        window = self.parent().parent()
+        self.selection(event)
+        self.pressed = False
+        self.pos = []
+        window.reset_after_changes()
 
 
 # this class handles user Input
@@ -412,12 +433,6 @@ class UserInput(QWidget):
                 data[0].append(dicom)
                 print(data)
 
-        '''
-        #for testing purposes
-        for k in range(len(data)):
-            for l in range(len(data[k])):
-                print(data[k][l])
-        '''
         return data
 
 
@@ -535,8 +550,14 @@ class Data(QWidget):
             self.table.resizeColumnsToContents()
             if self.window.selectionMode == 'Multiple Point Selection' or 'Polygon Selection':
                 self.table.setItem(2, 0, QTableWidgetItem("The selected Points are : "))
-                if len(self.window.selection) > 2:
+                if len(self.window.selection) > 1:
                     self.table.setColumnWidth(1, 200)
+                    for i in range(0, len(self.window.selection)):
+                        print("point added")
+                        print(len(self.window.selection))
+                        print(self.window.selection[i-1])
+                        self.table.insertRow(3+i)
+                        self.table.setItem(2+i, 1, QTableWidgetItem(str(self.window.selection[i-1])))
 
         return self.table
 

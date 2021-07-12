@@ -183,8 +183,13 @@ QWidget#picturemenu{
 QWidget#picturemenu *{
     max-height: 50 px;
 }
+
 QSlider{
     background: none;
+}
+
+QPushButton#eraseMode, #moveMode{
+    border-radius: 20;
 }
 
 /* -------- Right Side --------------*/
