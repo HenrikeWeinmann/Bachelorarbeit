@@ -1,0 +1,41 @@
+\begin{thebibliography}{Weg09b}
+
+\bibitem[SST97]{SaaSchTue97}
+G.~Saake, I.~Schmitt, and C.~Türker.
+\newblock {\em {Objektdatenbanken --- Konzepte, Sprachen, Architekturen}}.
+\newblock International Thomson Publishing, Bonn, 1997.
+
+\bibitem[STS98]{SchTueSaa98preprint}
+K.~Schwarz, C.~Türker, and G.~Saake.
+\newblock {Specifying Advanced Transaction Models as Transaction Closures with
+  Special Transaction Dependency Combinations}.
+\newblock Preprint~5, {Fakult{\"a}t f{\"u}r Informatik, Universit{\"a}t
+  Magdeburg}, February 1998.
+
+\bibitem[TCS96]{TueConSaa96ismis}
+C.~Türker, S.~Conrad, and G.~Saake.
+\newblock {Dynamically Changing Behavior: An Agent-Oriented View to Modeling
+  Intelligent Information Systems}.
+\newblock In Z.~W. Ra{\'s} and M.~Michalewicz, editors, {\em {Foundations of
+  Intelligent Systems, Proc. of the 9th Int. Symposium on Methodologies for
+  Intelligent Systems, ISMIS'96, Zakopane, Poland}}, volume 1079 of {\em
+  Lecture Notes in Artificial Intelligence}, pages 572--581, Berlin, June 1996.
+  Springer-Verlag.
+
+\bibitem[Weg09a]{Wegner16}
+L.~Wegner.
+\newblock {Ratgeber für die gute Abschlussarbeit}.
+\newblock Universität Kassel, 2009.
+\newblock {Online unter:
+  \url{https://www.uni-kassel.de/eecs/fileadmin/datas/fb16/Zentrale_Ebene/Studienservice/Gem.Dokumente/RatgeberAbschlussarbeit.pdf}
+  (abgerufen am 2016-10-24)}.
+
+\bibitem[Weg09b]{Wegner_engl16}
+L.~Wegner.
+\newblock {Ratgeber für die gute Abschlussarbeit}.
+\newblock Universität Kassel, 2009.
+\newblock {Online available:
+  \url{https://www.uni-kassel.de/eecs/fileadmin/datas/fb16/Zentrale_Ebene/Studienservice/Gem.Dokumente/RatgeberAbschlussarbeit.pdf}
+  (accessed on 2016-10-24)}.
+
+\end{thebibliography}

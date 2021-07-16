@@ -134,7 +134,7 @@ QWidget#spacer {
     background: none;
 }
 
-QPushButton#clear, #ShowData {
+QPushButton#ShowData {
     border-radius: 15;
     max-height: 20px;
     min-width: 70;
@@ -186,10 +186,15 @@ QWidget#picturemenu *{
 
 QSlider{
     background: none;
+    max-width: 100px;
 }
 
-QPushButton#eraseMode, #moveMode{
-    border-radius: 20;
+QPushButton#eraseMode, #moveMode, #clear, #DS{
+    min-height: 45px;
+    max-height: 45px;
+    min-width: 45px;
+    max-width: 45px;
+
 }
 
 /* -------- Right Side --------------*/

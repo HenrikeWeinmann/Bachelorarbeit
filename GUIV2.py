@@ -2,7 +2,6 @@ import sys
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
 from PyQt5.QtCore import*
-from qtwidgets import AnimatedToggle
 import os
 import numpy as np
 import matplotlib.pyplot as plt
@@ -13,7 +12,6 @@ import matplotlib.patches as patches
 import pydicom as dcm
 import math
 from scipy.spatial import distance
-
 
 app = QApplication(sys.argv)
 qss = "Stylesheet.qss"
@@ -78,6 +76,10 @@ class MainWindow (QMainWindow):
         self.moveMode.setCheckable(True)
         self.moveMode.clicked.connect(lambda: Dicom.move(self.dicom, self))
         self.moveMode.setToolTip("Click near a Point to move it")
+        self.dontShow = QPushButton("DS")
+        self.dontShow.setObjectName("DS")
+        self.dontShow.setCheckable(True)
+        self.dontShow.clicked.connect(lambda: Dicom.hide(self.dicom, self))
         clear = QPushButton("clear")
         clear.setObjectName("clear")
         clear.clicked.connect(lambda: Dicom.clear(self.dicom, self))
@@ -89,6 +91,7 @@ class MainWindow (QMainWindow):
         layout.addWidget(self.contrast)
         layout.addWidget(self.eraseMode)
         layout.addWidget(self.moveMode)
+        layout.addWidget(self.dontShow)
         layout.addWidget(clear)
         picturemenu.setLayout(layout)
         return picturemenu
@@ -247,8 +250,6 @@ class Dicom (FigureCanvas):
                     window.selection.append(self.pos)
                     self.sortSelection(window.selection)
                     window.reset_after_changes()
-            else:
-                pass
 
     def draw_polygon(self, polygon):
         plt.gca().add_patch(polygon)
@@ -273,12 +274,19 @@ class Dicom (FigureCanvas):
         self.vmax = value
         window.update_fig()
 
-
+    #on mouse release
     def release(self, event):
         self.pressed = False
         self.pos = []
         window = self.parent().parent()
         window.contrast.setValue(self.vmax)
+
+    #reconnect the standard on click actions
+    def reconnect_cids(self, window):
+        self.cid = self.fig.canvas.mpl_disconnect(window.dicom.cid)
+        self.cid = self.fig.canvas.mpl_connect('button_press_event', self.erasePoint)
+        self.cid2 = self.fig.canvas.mpl_disconnect(window.dicom.cid2)
+        self.cid2 = self.fig.canvas.mpl_connect('button_release_event', self.movePoint)
 
     def clear(self, window):
         self.canvas[:] = 0
@@ -288,15 +296,16 @@ class Dicom (FigureCanvas):
     def erase(self, window):
         if window.moveMode.isChecked():
             window.moveMode.toggle()
-            window.moveMode.setStyleSheet("background-color : ##D8EAF3")
+            window.moveMode.setStyleSheet("background-color : #D8EAF3")
+            self.cid2 = self.fig.canvas.mpl_disconnect(window.dicom.cid2)
+            self.cid2 = self.fig.canvas.mpl_connect('button_release_event', self.release)
         if window.eraseMode.isChecked():
             window.eraseMode.setStyleSheet("background-color : #B2D6E6")
             self.cid = self.fig.canvas.mpl_disconnect(window.dicom.cid)
             self.cid = self.fig.canvas.mpl_connect('button_press_event', self.erase_and_redraw)
         else:
-            window.eraseMode.setStyleSheet("background-color : ##D8EAF3")
-            self.cid = self.fig.canvas.mpl_disconnect(window.dicom.cid)
-            self.cid = self.fig.canvas.mpl_connect('button_press_event', self.selection)
+            window.eraseMode.setStyleSheet("background-color : #D8EAF3")
+            self.reconnect_cids(window)
 
     def erasePoint(self, event):
         print("erasing")
@@ -312,6 +321,7 @@ class Dicom (FigureCanvas):
     def erase_and_redraw(self, event):
         window = self.parent().parent()
         self.erasePoint(event)
+        print(window.selection)
         window.reset_after_changes()
 
     def zoom(self, value, event):  # to implement in the future
@@ -325,7 +335,7 @@ class Dicom (FigureCanvas):
     def move(self, window):
         if window.eraseMode.isChecked():
             window.eraseMode.toggle()
-            window.eraseMode.setStyleSheet("background-color : ##D8EAF3")
+            window.eraseMode.setStyleSheet("background-color : #D8EAF3")
         if window.moveMode.isChecked():
             window.moveMode.setStyleSheet("background-color : #B2D6E6")
             self.cid = self.fig.canvas.mpl_disconnect(window.dicom.cid)
@@ -333,11 +343,8 @@ class Dicom (FigureCanvas):
             self.cid2 = self.fig.canvas.mpl_disconnect(window.dicom.cid2)
             self.cid2 = self.fig.canvas.mpl_connect('button_release_event', self.movePoint)
         else:
-            window.moveMode.setStyleSheet("background-color : ##D8EAF3")
-            self.cid = self.fig.canvas.mpl_disconnect(window.dicom.cid)
-            self.cid = self.fig.canvas.mpl_connect('button_press_event', self.selection)
-            self.cid2 = self.fig.canvas.mpl_disconnect(window.dicom.cid2)
-            self.cid2 = self.fig.canvas.mpl_connect('button_release_event', self.release)
+            window.moveMode.setStyleSheet("background-color : #D8EAF3")
+            self.reconnect_cids(window)
 
     def movePoint(self, event):
         window = self.parent().parent()
@@ -346,6 +353,17 @@ class Dicom (FigureCanvas):
         self.pos = []
         window.reset_after_changes()
 
+    def hide(self, window):
+        if window.dontShow.isChecked():
+            window.dontShow.setStyleSheet("background-color : #B2D6E6;")
+            self.cid = self.fig.canvas.mpl_disconnect(window.dicom.cid)
+            print("hide")
+            print(self.cnv)
+            self.cnv.set_visible(False)
+            window.update_fig()
+        else:
+            window.dontShow.setStyleSheet("background-color : #D8EAF3;")
+            self.reconnect_cids(window)
 
 # this class handles user Input
 class UserInput(QWidget):
@@ -553,9 +571,6 @@ class Data(QWidget):
                 if len(self.window.selection) > 1:
                     self.table.setColumnWidth(1, 200)
                     for i in range(0, len(self.window.selection)):
-                        print("point added")
-                        print(len(self.window.selection))
-                        print(self.window.selection[i-1])
                         self.table.insertRow(3+i)
                         self.table.setItem(2+i, 1, QTableWidgetItem(str(self.window.selection[i-1])))
 
