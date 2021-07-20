@@ -13,12 +13,6 @@ import pydicom as dcm
 import math
 from scipy.spatial import distance
 
-app = QApplication(sys.argv)
-qss = "Stylesheet.qss"
-
-with open(qss, "r") as fh:
-    app.setStyleSheet(fh.read())
-
 
 class MainWindow (QMainWindow):
     validDataset = False  # /Users/Heni/OneDrive/Uni/Bachelorarbeit/second-annual-data-science-bowl/test/test/932/study/
@@ -575,7 +569,14 @@ class Data(QWidget):
 
         return self.table
 
+if __name__== '__main__':
+    app = QApplication(sys.argv)
+    qss = "Stylesheet.qss"
 
-Window = MainWindow()
-Window.show()
-sys.exit(app.exec())
+    with open(qss, "r") as fh:
+        app.setStyleSheet(fh.read())
+
+    Window = MainWindow()
+    Window.show()
+    sys.exit(app.exec())
+
