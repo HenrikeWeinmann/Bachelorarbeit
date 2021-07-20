@@ -66,21 +66,21 @@ class MainWindow (QMainWindow):
         picturemenu = QWidget()
         picturemenu.setObjectName("picturemenu")
         layout = QHBoxLayout()
-        self.eraseMode = QPushButton("eraseMode")
+        self.eraseMode = QPushButton()
         self.eraseMode.setObjectName("eraseMode")
         self.eraseMode.setCheckable(True)
         self.eraseMode.clicked.connect(lambda: Dicom.erase(self.dicom, self))
         self.eraseMode.setToolTip("Click near a Point to erase it")
-        self.moveMode = QPushButton("moveMode")
+        self.moveMode = QPushButton()
         self.moveMode.setObjectName("moveMode")
         self.moveMode.setCheckable(True)
         self.moveMode.clicked.connect(lambda: Dicom.move(self.dicom, self))
         self.moveMode.setToolTip("Click near a Point to move it")
-        self.dontShow = QPushButton("DS")
+        self.dontShow = QPushButton()
         self.dontShow.setObjectName("DS")
         self.dontShow.setCheckable(True)
         self.dontShow.clicked.connect(lambda: Dicom.hide(self.dicom, self))
-        clear = QPushButton("clear")
+        clear = QPushButton()
         clear.setObjectName("clear")
         clear.clicked.connect(lambda: Dicom.clear(self.dicom, self))
         self.contrast = QSlider(Qt.Horizontal)
@@ -325,10 +325,9 @@ class Dicom (FigureCanvas):
         window.reset_after_changes()
 
     def zoom(self, value, event):  # to implement in the future
-        pass
         x, y = event.xdata, event.ydata
         self.ax.set_xlim(x - 0.1, x + 0.1)
-        self.ax.set_ylim(x - 0.1, x + 0.1)
+        self.ax.set_ylim(y - 0.1, y + 0.1)
         self.draw()
         print("zoom")
 

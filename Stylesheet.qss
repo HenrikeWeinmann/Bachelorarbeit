@@ -168,11 +168,6 @@ QComboBox QAbstractItemView::item {
     border: 3px solid red;
 }
 
-QLabel#EraseMode {
-    background: none;
-    min-height: 30 px;
-    max-height: 30 px;
-}
 /* -------- Picturemenu --------------*/
 
 QWidget#picturemenu{
@@ -189,7 +184,25 @@ QSlider{
     max-width: 100px;
 }
 
+QPushButton#eraseMode{
+    image: url('Icons/erase.png');
+}
+
+QPushButton#moveMode{
+    image: url('Icons/move.png');
+}
+
+QPushButton#clear{
+    image: url('Icons/clear.png');
+}
+
+QPushButton#DS{
+    image: url('Icons/ds.png');
+}
+
 QPushButton#eraseMode, #moveMode, #clear, #DS{
+    background:none;
+    border:none;
     min-height: 45px;
     max-height: 45px;
     min-width: 45px;
