@@ -26,14 +26,15 @@ class MainWindow (QMainWindow):
         QWidget.__init__(self)
         self.setGeometry(200, 300, 1300, 1000)
         self.setFixedWidth(1300)
-        self.setFixedHeight(1000)
-        self.centralWidget = QWidget()
+        self.setFixedHeight(900)
+        self.centralWidget = QFrame()
+        self.centralWidget.setFrameStyle(QFrame.StyledPanel)
         self.dataArray = []
-
+        self.menu = self.toolbar()
         self.dicom = Dicom(self)
         self.addToolBar(self.toolbar())
 
-        self.menu = self.toolbar()
+
         self.picturemenu = self.selection_menu()
         self.picturemenu.setFixedWidth(self.centralWidget.width())
 
@@ -94,6 +95,7 @@ class MainWindow (QMainWindow):
 #main toolbar with all major settings
     def toolbar(self):
         toolbar = QToolBar()
+        toolbar.setFixedHeight(50)
         toolbar.setObjectName("Toolbar")
         selectionMode = QComboBox()
         selectionMode.addItem("Single Point Selection")
@@ -119,7 +121,7 @@ class MainWindow (QMainWindow):
         toolbar.addWidget(showData)
         return toolbar
 
-    def rightSide(self): # exists only for styling purposes
+    def rightSide(self):  # exists only for styling purposes
         rightSide = QWidget()
         rightSide.setObjectName("right")
         self.data = Data(self)
@@ -144,6 +146,7 @@ class MainWindow (QMainWindow):
     def reset_after_changes(self):
         if not self.validDataset:
             self.dicom.initCanvas()
+        self.mainLayout.setAlignment(Qt.AlignmentFlag.AlignHCenter)
         self.update_fig()
         self.data.info = Data.information(self.data)
         self.dock.setWidget(self.rightSide())
@@ -170,9 +173,14 @@ class Dicom (FigureCanvas):
     pos = []
 
     def __init__(self, window):
-        self.fig = plt.figure()
+        self.dpi = 100
+        self.fig = plt.figure(figsize=(700 / self.dpi, 900 / self.dpi), dpi=self.dpi)
         self.ax = self.fig.add_subplot(1, 1, 1)
         super().__init__(self.fig)
+        window.centralWidget.setFixedWidth(700)
+        window.centralWidget.setFixedHeight(900 - window.menu.height())
+        print(window.centralWidget.width())
+        print(window.centralWidget.height())
         self.setParent(window)
         self.cmap = 'bone'
         self.vmin = 0
@@ -181,9 +189,10 @@ class Dicom (FigureCanvas):
             self.initCanvas()
         except:
             self.img = self.ax.imshow(plt.imread("Default.jpg"))
+            self.fig.subplots_adjust(bottom=0, top=1, left=0, right=1)
             plt.axis("off")
 
-        plt.tight_layout()
+
 
     def initCanvas(self):
         window = self.parent().parent()
@@ -200,6 +209,12 @@ class Dicom (FigureCanvas):
         self.ylim = [self.imgarr.shape[0], 0]
         plt.xlim(self.xlim)
         plt.ylim(self.ylim)
+        window.dicom.setMaximumWidth(500)
+        window.dicom.setMaximumHeight(700)
+        plt.tight_layout(pad=3)
+        plt.tight_layout(pad=3)  # some bug in matplotlib version so it needs to be called twice
+        window.update_fig()
+        print(self.fig.get_size_inches() * self.fig.dpi)
 
     # scroll wheel
     def wheelEvent(self, event):
@@ -337,18 +352,17 @@ class Dicom (FigureCanvas):
     def zoom(self, event):  # to implement in the future
         window = self.parent().parent()
         x, y = event.xdata, event.ydata
+        # calculate the new ax limits
         xlength = ((abs(self.xlim[0] - self.xlim[1]) * 0.8) / 2)
         ylength = ((abs(self.ylim[0] - self.ylim[1]) * 0.8) / 2)
-        print(xlength)
         xmin = x - xlength
         xmax = x + xlength
         ymin = x - ylength
         ymax = x + ylength
+        # set new limits
         self.xlim = [xmin, xmax]
         self.ylim = [ymax, ymin]
         window.update_fig()
-        print(plt.gca().get_xlim())
-        print("zoom")
 
     def move(self, window):
         if window.eraseMode.isChecked():
@@ -376,12 +390,12 @@ class Dicom (FigureCanvas):
             window.dontShow.setStyleSheet("background-color : #B2D6E6;")
             self.cid = self.fig.canvas.mpl_disconnect(window.dicom.cid)
             print("hide")
-            print(self.cnv)
             self.cnv.set_visible(False)
-            window.update_fig()
+            plt.draw()
         else:
             window.dontShow.setStyleSheet("background-color : #D8EAF3;")
             self.reconnect_cids(window)
+            print("unhide")
 
 
 # --------------------- User Input---------------------------------------------------------------------------------
@@ -502,10 +516,10 @@ class MediaBar(QWidget):
         self.FBbtn.clicked.connect(self.fastbackward)
         self.layout = QHBoxLayout()
         self.layout.addWidget(self.Backwardbtn)
-        self.layout.addWidget(self.FBbtn)
+        # self.layout.addWidget(self.FBbtn)
         self.layout.addWidget(self.playbtn)
         self.layout.addWidget(self.stopbtn)
-        self.layout.addWidget(self.FFbtn)
+        # self.layout.addWidget(self.FFbtn)
         self.layout.addWidget(self.Forwardbtn)
         self.setLayout(self.layout)
 

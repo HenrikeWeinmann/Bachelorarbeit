@@ -19,8 +19,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/GUIV2.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="828">
-              <caret line="577" column="19" selection-start-line="577" selection-start-column="19" selection-end-line="577" selection-end-column="19" />
+            <state relative-caret-position="658">
+              <caret line="214" column="30" selection-start-line="214" selection-start-column="30" selection-end-line="214" selection-end-column="30" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
@@ -36,6 +36,11 @@
         <option value="Python Script" />
       </list>
     </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>zoom</find>
+    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="UPDATE_TYPE" value="MERGE" />
@@ -75,11 +80,6 @@
             <path>
               <item name="Bachelorarbeit" type="b2602c69:ProjectViewProjectNode" />
               <item name="Bachelorarbeit" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Bachelorarbeit" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Bachelorarbeit" type="462c0819:PsiDirectoryNode" />
-              <item name="Icons" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -606,7 +606,21 @@
       <option name="project" value="LOCAL" />
       <updated>1626796355027</updated>
     </task>
-    <option name="localTasksCounter" value="44" />
+    <task id="LOCAL-00044" summary="Create main method (finally)">
+      <created>1626796882296</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1626796882296</updated>
+    </task>
+    <task id="LOCAL-00045" summary="zoom finished">
+      <created>1626908612027</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1626908612027</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <servers />
   </component>
   <component name="TodoView">
@@ -622,17 +636,17 @@
     <frame x="0" y="0" width="2560" height="1440" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49708456" visible="true" weight="0.113430485" />
-      <window_info id="Structure" order="1" sideWeight="0.50291544" side_tool="true" weight="0.17239301" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49574268" weight="0.113430485" />
+      <window_info id="Structure" order="1" sideWeight="0.5042573" side_tool="true" weight="0.113430485" />
       <window_info id="Favorites" order="2" sideWeight="0.5005015" side_tool="true" weight="0.09531312" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3270073" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.5648438" visible="true" weight="0.088321164" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.5648438" visible="true" weight="0.33357665" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49921876" weight="0.39836735" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49940923" weight="0.329927" />
-      <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.49921876" weight="0.33576643" />
+      <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.49921876" weight="0.04452555" />
       <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49901536" weight="0.329927" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.43515626" side_tool="true" weight="0.3495066" />
       <window_info anchor="bottom" id="Python Console" order="10" sideWeight="0.49940923" weight="0.329927" />
@@ -642,17 +656,17 @@
       <window_info anchor="right" x="0" y="0" width="590" height="1123" id="Documentation" order="3" side_tool="true" weight="0.32962668" />
     </layout>
     <layout-to-restore>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49708456" visible="true" weight="0.17239301" />
-      <window_info id="Structure" order="1" sideWeight="0.50291544" side_tool="true" visible="true" weight="0.17239301" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49574268" visible="true" weight="0.113430485" />
+      <window_info id="Structure" order="1" sideWeight="0.5042573" side_tool="true" weight="0.113430485" />
       <window_info id="Favorites" order="2" sideWeight="0.5005015" side_tool="true" weight="0.09531312" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32814372" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.5648438" visible="true" weight="0.2527233" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49921876" weight="0.3988024" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3270073" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.5648438" visible="true" weight="0.22846715" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49921876" weight="0.39836735" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49940923" weight="0.329927" />
-      <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.49921876" weight="0.375817" />
+      <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.49921876" weight="0.04452555" />
       <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49901536" weight="0.329927" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.43515626" side_tool="true" weight="0.3495066" />
       <window_info anchor="bottom" id="Python Console" order="10" sideWeight="0.49940923" weight="0.329927" />
@@ -740,8 +754,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="no more VTK Dicom image displayed with matplotlib and in new Class Dicom" />
-    <MESSAGE value="Animation and forward/backward added" />
     <MESSAGE value="scroll wheel method implemented" />
     <MESSAGE value="slow down issue of video solved" />
     <MESSAGE value="-layout and style updates&#10;-image styles added&#10;-update figure refined" />
@@ -765,7 +777,20 @@
     <MESSAGE value="patch fixed when pressed play" />
     <MESSAGE value="moving Points enabled and minor refactoring." />
     <MESSAGE value="icons for picture menu" />
-    <option name="LAST_COMMIT_MESSAGE" value="icons for picture menu" />
+    <MESSAGE value="Create main method (finally)" />
+    <MESSAGE value="zoom finished" />
+    <option name="LAST_COMMIT_MESSAGE" value="zoom finished" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/GUIV2.py</url>
+          <line>387</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/README.md">
@@ -810,8 +835,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/GUIV2.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="828">
-          <caret line="577" column="19" selection-start-line="577" selection-start-column="19" selection-end-line="577" selection-end-column="19" />
+        <state relative-caret-position="658">
+          <caret line="214" column="30" selection-start-line="214" selection-start-column="30" selection-end-line="214" selection-end-column="30" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
           </folding>
