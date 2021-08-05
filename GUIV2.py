@@ -136,8 +136,10 @@ class MainWindow (QMainWindow):
         self.welcome.setHtml(text)
         self.welcome.adjustSize()
         self.RSlayout = QVBoxLayout()
-        self.RSlayout.addWidget(self.welcome)
-        #self.RSlayout.addWidget(self.data)
+        if self.validDataset:
+            self.RSlayout.addWidget(self.data)
+        else:
+            self.RSlayout.addWidget(self.welcome)
         self.RSlayout.addStretch()
         self.RSlayout.addWidget(self.userInput)
         rightSide.setLayout(self.RSlayout)
@@ -454,7 +456,6 @@ class UserInput(QFrame):
             if self.check_file(self.filepath):
                 print("this ist the study path: " + self.filepath)
                 self.window.dataArray = self.loadData()
-                self.window.RSlayout.removeWidget(self.window.welcome)
                 self.layout.removeWidget(self.errorText)
                 self.window.reset_after_changes()
                 if not self.window.validDataset:
