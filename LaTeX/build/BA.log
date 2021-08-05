@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.7.16)  16 JUL 2021 15:06
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.7.16)  4 AUG 2021 19:19
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -117,7 +117,12 @@ File: babel.def 2021/03/24 3.56 Babel common definitions
 \bbl@readstream=\read2
 )
 \bbl@dirlevel=\count268
- (/usr/local/texlive/2021/texmf-dist/tex/generic/babel-english/english.ldf
+ (/usr/local/texlive/2021/texmf-dist/tex/generic/babel-german/ngerman.ldf
+Language: ngerman 2021/02/27 v2.13 German support for babel (post-1996 orthography)
+ (/usr/local/texlive/2021/texmf-dist/tex/generic/babel-german/ngermanb.ldf
+Language: ngermanb 2021/02/27 v2.13 German support for babel (post-1996 orthography)
+Package babel Info: Making " an active character on input line 122.
+)) (/usr/local/texlive/2021/texmf-dist/tex/generic/babel-english/english.ldf
 Language: english 2017/06/06 v3.3r English support from the babel system
 Package babel Info: \l@canadian = using hyphenrules for english
 (babel)             (\language0) on input line 102.
@@ -125,12 +130,7 @@ Package babel Info: \l@australian = using hyphenrules for ukenglish
 (babel)             (\language21) on input line 105.
 Package babel Info: \l@newzealand = using hyphenrules for ukenglish
 (babel)             (\language21) on input line 108.
-) (/usr/local/texlive/2021/texmf-dist/tex/generic/babel-german/ngerman.ldf
-Language: ngerman 2021/02/27 v2.13 German support for babel (post-1996 orthography)
- (/usr/local/texlive/2021/texmf-dist/tex/generic/babel-german/ngermanb.ldf
-Language: ngermanb 2021/02/27 v2.13 German support for babel (post-1996 orthography)
-Package babel Info: Making " an active character on input line 122.
-))) (/usr/local/texlive/2021/texmf-dist/tex/latex/germbib/bibgerm.sty
+)) (/usr/local/texlive/2021/texmf-dist/tex/latex/germbib/bibgerm.sty
 Package: bibgerm 2000/08/18 v0.1 Support for mixed language bibliographies
  ** Macros for german `BibTeX'ing added to Style Option `german' 20 Apr 1993 ** ** idea and languages `german' and `USenglish' implemented by M. Wallmeier ** ** Modified for LaTeX 2e and german.sty 2.5b by A. Scherer 1 Nov 1995 ** ** Modified for ngerman.sty and babel.sty by H. Harders 21 August 2000 **) (/usr/local/texlive/2021/texmf-dist/tex/latex/graphics/graphics.sty
 Package: graphics 2020/08/30 v1.4c Standard LaTeX Graphics (DPC,SPQR)
@@ -308,10 +308,10 @@ Package: fancyhdr 2021/01/28 v4.0.1 Extensive control of page headers and footer
 \f@nch@O@orf=\skip61
 )
 
+Package fancyhdr Warning: \fancyhead's `E' option without twoside option is useless on input line 34.
+
+
 Package fancyhdr Warning: \fancyhead's `E' option without twoside option is useless on input line 35.
-
-
-Package fancyhdr Warning: \fancyhead's `E' option without twoside option is useless on input line 36.
 
 (/usr/local/texlive/2021/texmf-dist/tex/latex/todonotes/todonotes.sty
 Package: todonotes 2020/08/18 v1.1.3 Todonotes source and documentation.
@@ -546,24 +546,24 @@ File: l3backend-pdftex.def 2021-03-18 L3 backend support: PDF output (pdfTeX)
 ) (build/BA.aux)
 \openout1 = `BA.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 49.
-LaTeX Font Info:    ... okay on input line 49.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 49.
-LaTeX Font Info:    ... okay on input line 49.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 49.
-LaTeX Font Info:    ... okay on input line 49.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 49.
-LaTeX Font Info:    ... okay on input line 49.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 49.
-LaTeX Font Info:    ... okay on input line 49.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 49.
-LaTeX Font Info:    ... okay on input line 49.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 49.
-LaTeX Font Info:    ... okay on input line 49.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 49.
-LaTeX Font Info:    ... okay on input line 49.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 49.
-LaTeX Font Info:    ... okay on input line 49.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 48.
+LaTeX Font Info:    ... okay on input line 48.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 48.
+LaTeX Font Info:    ... okay on input line 48.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 48.
+LaTeX Font Info:    ... okay on input line 48.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 48.
+LaTeX Font Info:    ... okay on input line 48.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 48.
+LaTeX Font Info:    ... okay on input line 48.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 48.
+LaTeX Font Info:    ... okay on input line 48.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 48.
+LaTeX Font Info:    ... okay on input line 48.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 48.
+LaTeX Font Info:    ... okay on input line 48.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 48.
+LaTeX Font Info:    ... okay on input line 48.
 
 
 bibgerm.sty: babel.sty detected
@@ -590,11 +590,11 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: hyperref package is loaded.
 Package caption Info: End \AtBeginDocument code.
-LaTeX Font Info:    Trying to load font information for U+lasy on input line 49.
+LaTeX Font Info:    Trying to load font information for U+lasy on input line 48.
  (/usr/local/texlive/2021/texmf-dist/tex/latex/base/ulasy.fd
 File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
 )
-Package hyperref Info: Link coloring OFF on input line 49.
+Package hyperref Info: Link coloring OFF on input line 48.
  (/usr/local/texlive/2021/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2021-04-02 v2.47 Cross-referencing by name of section
  (/usr/local/texlive/2021/texmf-dist/tex/latex/refcount/refcount.sty
@@ -604,9 +604,9 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
 \c@section@level=\count316
 )
-LaTeX Info: Redefining \ref on input line 49.
-LaTeX Info: Redefining \pageref on input line 49.
-LaTeX Info: Redefining \nameref on input line 49.
+LaTeX Info: Redefining \ref on input line 48.
+LaTeX Info: Redefining \pageref on input line 48.
+LaTeX Info: Redefining \nameref on input line 48.
  (build/BA.out) (build/BA.out)
 \@outlinefile=\write4
 \openout4 = `BA.out'.
@@ -648,7 +648,15 @@ LaTeX Info: Redefining \nameref on input line 49.
 
 [1
 
-{/usr/local/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
+{/usr/local/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[2]pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.91 \newpage
@@ -666,149 +674,94 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[5] (./sec1.tex
-Kapitel 1.
-<figures/threedomains.pdf, id=164, 419.5675pt x 381.425pt>
-File: figures/threedomains.pdf Graphic file (type pdf)
-<use figures/threedomains.pdf>
-Package pdftex.def Info: figures/threedomains.pdf  used on input line 19.
-(pdftex.def)             Requested size: 199.16928pt x 181.06235pt.
-pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
+[5] (./Introduction.tex
+Chapter 1.
+)pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.55 	\item .
-             .. [1
+l.161 \newpage
+               [1
 
- <./figures/threedomains.pdf>]
-<figures/note-page.png, id=179, 683.55376pt x 212.29312pt>
-File: figures/note-page.png Graphic file (type png)
-<use figures/note-page.png>
-Package pdftex.def Info: figures/note-page.png  used on input line 76.
-(pdftex.def)             Requested size: 358.50227pt x 111.34218pt.
+] (./Medical_Data_and_imaging.tex
+Chapter 2.
+)pdfTeX warning (ext4): destination with the same identifier (name{page.2}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.165 \newpage
+               [2
 
+] (./State_of_the_art.tex
+Chapter 3.
 
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[2]
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[3 <./figures/note-page.png (PNG copy)>])
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[4] (./sec2.tex
-Kapitel 2.
-
-Overfull \hbox (31.21713pt too wide) in paragraph at lines 28--29
-[]\T1/cmr/m/n/12 Gegeben sei ei-ne Stich-pro-be $\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 X[]; X[]; [] ; X[]\OT1/cmr/m/n/12 )$\T1/cmr/m/n/12 . Ei-ne Funk-ti-on $\OML/cmm/m/it/12 Z[] \OT1/cmr/m/n/12 = \OML/cmm/m/it/12 Z\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 X[]; [] ; X[]\OT1/cmr/m/n/12 )$
+Overfull \hbox (1.13606pt too wide) in paragraph at lines 7--8
+\T1/cmr/m/n/12 Während im Grund-la-genkapi-tel notwendige Be-grif-flichkeiten, Daten-struk-turen,
  []
 
-[5
 
-]
-Package hyperref Info: bookmark level for unknown todo defaults to 0 on input line 38.
-)
+Overfull \hbox (0.23764pt too wide) in paragraph at lines 7--8
+\T1/cmr/m/n/12 Ba-sisal-go-rith-men oder Hardware-Architekturen vorgestellt wer-den, be-fasst sich
+ []
 
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[6]
+LaTeX Warning: Reference `Grundlagen' on page 3 undefined on input line 9.
 
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[7] (./sec3.tex
-Kapitel 3.
-) [8
+LaTeX Warning: Reference `Konzept' on page 3 undefined on input line 9.
 
-] (./sec4.tex
-Kapitel 4.
-) [9
+) [3
 
-] (./sec5.tex
-Kapitel 5.
-) [10
+] (./Concept.tex
+Chapter 4.
+) [4
 
-] (./sec6.tex
-Kapitel 6.
-) [11
+] (./Evaluation.tex
+Chapter 5.
+) [5
+
+] (./Recapitulation_and_future_possibilities.tex
+Chapter 6.
+) [6
 
 ] (build/BA.bbl
-LaTeX Font Info:    Trying to load font information for T1+NimbusMonoN on input line 30.
- (/usr/local/texlive/2021/texmf-dist/tex/latex/nimbus15/T1NimbusMonoN.fd
-File: T1NimbusMonoN.fd 2016/01/08 Font definitions for T1/NimbusMonoN (msharpe).
-)
-LaTeX Font Info:    Font shape `T1/NimbusMonoN/m/n' will be
-(Font)              scaled to size 13.20007pt on input line 30.
 
-Underfull \hbox (badness 10000) in paragraph at lines 26--32
-\T1/NimbusMonoN/m/n/12 fileadmin / datas / fb16 / Zentrale _ Ebene / Studienservice /
- []
+LaTeX Warning: Empty `thebibliography' environment on input line 3.
 
+) [7
 
-Underfull \hbox (badness 10000) in paragraph at lines 26--32
-\T1/NimbusMonoN/m/n/12 Gem . Dokumente / RatgeberAbschlussarbeit . pdf$[] \T1/cmr/m/n/12 (ab-ge-ru-fen
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 34--40
-\T1/NimbusMonoN/m/n/12 fileadmin / datas / fb16 / Zentrale _ Ebene / Studienservice /
- []
-
-) [12
-
-] [13
+] [8
 
 ] (build/BA.lof)
 \tf@lof=\write6
 \openout6 = `BA.lof'.
 
- [14
+ [9
 
 ] (build/BA.lot)
 \tf@lot=\write7
 \openout7 = `BA.lot'.
 
- [15
+ [10
 
 ] (build/BA.aux)
+
+LaTeX Warning: There were undefined references.
+
 Package rerunfilecheck Info: File `BA.out' has not changed.
-(rerunfilecheck)             Checksum: CFE35AA3C17EE232834A1785B2272A02;2623.
+(rerunfilecheck)             Checksum: 9BD73E5EEDE9859EC15A1A867C318CBB;2699.
  ) 
 Here is how much of TeX's memory you used:
- 22941 strings out of 478994
- 415805 string characters out of 5858184
- 718174 words of memory out of 5000000
- 39887 multiletter control sequences out of 15000+600000
- 424458 words of font info for 78 fonts, out of 8000000 for 9000
+ 22719 strings out of 478994
+ 411898 string characters out of 5858184
+ 710841 words of memory out of 5000000
+ 39705 multiletter control sequences out of 15000+600000
+ 418573 words of font info for 61 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 102i,11n,117p,583b,947s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/nimbus15/nimbus15mono-ec.enc}{/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}{/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/c
-msy8.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfbx1095.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfbx1728.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfbx2488.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm0700.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm1440.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm1728.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfr
-m2074.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfsl1200.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfti1200.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/nimbus15/zcoN-Regular.pfb>
-Output written on build/BA.pdf (22 pages, 468555 bytes).
+ 102i,11n,117p,639b,636s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}</usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfbx1095.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfbx1728.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfbx2488.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm1440.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm1728.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm2074.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfsl1200.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfti1200.pfb>
+Output written on build/BA.pdf (18 pages, 202108 bytes).
 PDF statistics:
- 390 PDF objects out of 1000 (max. 8388607)
- 316 compressed objects within 4 object streams
- 60 named destinations out of 1000 (max. 500000)
- 263 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 264 PDF objects out of 1000 (max. 8388607)
+ 214 compressed objects within 3 object streams
+ 39 named destinations out of 1000 (max. 500000)
+ 261 words of extra memory for PDF output out of 10000 (max. 10000000)
 

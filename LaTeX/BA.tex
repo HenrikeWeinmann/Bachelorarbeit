@@ -13,9 +13,8 @@
 \usepackage[scaled=0.92]{helvet}
 \usepackage[scaled=1.1]{nimbusmononarrow}
 \usepackage[T1]{fontenc}
-
 \usepackage{eurosym}
-\usepackage[english,ngerman]{babel}
+\usepackage[ngerman, english]{babel}
 \usepackage{bibgerm}
 \usepackage{graphics, graphicx}
 \usepackage[margin=10pt,font=small,labelfont=bf]{caption}
@@ -57,11 +56,12 @@
   {\LARGE Eberhard Karls Universität Tübingen}\\
   {\large Mathematisch-Naturwissenschaftliche Fakultät\\
   Fachbereich Informatik\\[2cm]}
-  {\Huge\bf  Titel\\[1.5cm]}
-  {\Large Masterarbeit Informatik\\[3.5cm]}
-  {\Large Vor- und Nachname}\\[0.5cm]
+  {\Huge\bf  MR-LINAC and CINE\\[1.5cm]}
+{\Large\bf A viewing platform for 4d medical images with extensive labeling functionality\\[0.8cm]}
+  {\Large Bachelorthesis Medical Informatics\\[3.5cm]}
+  {\Large Henrike Weinmann}\\[0.5cm]
   Datum\\[4cm]
-{\small\bf Betreuer}\\[0.5cm]
+{\small\bf Marcel Früh}\\[0.5cm]
   \parbox{7cm}{\begin{center}{
   	\large Prof. Dr. Oliver Bringmann}\\
 	  Lehrstuhl für Eingebettete Systeme\\
@@ -83,10 +83,10 @@
 \thispagestyle{empty}
 \vspace*{\fill}
 \begin{minipage}{11.2cm}
-\textbf{Nachname, Vorname:}\\
-\emph{Titel der Arbeit}\\ Masterarbeit Informatik\\
+\textbf{Weinmann, Henrike:}\\
+\emph{MR-LINAC and CINE, A viewing platform for 4d medical images with extensive labeling functionality}\\ Bachelorthesis Medical Informatics\\
 Eberhard Karls Universit"at T"ubingen\\
-Bearbeitungszeitraum: von-bis
+Bearbeitungszeitraum: May 2021-bis
 \end{minipage}
 \newpage
 
@@ -101,9 +101,12 @@ Bearbeitungszeitraum: von-bis
 
 
 \thispagestyle{plain}
-\section*{Zusammenfassung}
+\section*{Abstract}
 
-Hier kommt die Zusammenfassung hin!!!
+MR guided radiotherapy has become a standard when treating cancer. The alternative to an operative removal of the tumor uses radiation, created by a linear accelerator (LINAC). MR-LINAC improves the accuracy of radiation by combining a LINAC with an MR imaging system. Magnetic resonance imaging (MRI) is optimal for viewing soft tissue such as most organs in the human body. It is also an important tool for detecting tumors in soft tissue such as the lungs and heart.
+The CINE MRI technology makes it possible to observe a slice through a patient over a period of time.
+This makes it easier to detect the margins of a structure and therefore decreases the risk of damaging tissue surrounding a tumor during treatment.
+To be able to use those technologies to their full extent, a viewing platform is needed.
 \newpage
 
 
@@ -154,34 +157,34 @@ Ort, Datum	\hfill Unterschrift \hfill
 \setcounter{page}{1}
 
 %% Introduction
-\input{sec1}
+\input{Introduction}
 \newpage
 
 %%
-\input{sec2}
+\input{Medical_Data_and_imaging}
 \newpage
 
 %%
-\input{sec3}
+\input{State_of_the_art}
 \newpage
 
 %%
-\input{sec4}
+\input{Concept}
 \newpage
 
 %%
-\input{sec5}
+\input{Evaluation}
 \newpage
 
 %%
-\input{sec6}
+\input{Recapitulation_and_future_possibilities}
 \newpage
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% Bibliographie
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\addcontentsline{toc}{chapter}{Literaturverzeichnis}
+\addcontentsline{toc}{chapter}{Sources}
 
 \bibliographystyle{alpha}
 \bibliography{mylit}
@@ -195,13 +198,15 @@ Ort, Datum	\hfill Unterschrift \hfill
 %%% Abk"urzungsverzeichnis
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\addcontentsline{toc}{chapter}{Abk"urzungsverzeichnis}
-\chapter*{Abk"urzungsverzeichnis\markboth{ABKÜRZUNGSVERZEICHNIS}{ABKÜRZUNGSVERZEICHNIS}}
+\addcontentsline{toc}{chapter}{List of abbreviations}
+\chapter*{List of abbreviations}
 
 \begin{tabbing}
 	\textbf{FACTOTUM}\hspace{1cm}\=Schrott\kill
-	\textbf{DFG}\>Datenflussgraph \\
-	\textbf{...} \> ...\\
+	\textbf{LINAC}\>Linear accelerator \\
+	\textbf{MRI} \> Magnetic Resonance Imaging\\
+    \textbf{PET} \> Positron emission tomography\\
+    \textbf{CINE} \> ...\\
 \end{tabbing}
 
 \newpage
@@ -213,7 +218,7 @@ Ort, Datum	\hfill Unterschrift \hfill
 \renewcommand{\baselinestretch}{1.3}
 \small\normalsize
 
-\addcontentsline{toc}{chapter}{Abbildungsverzeichnis}
+\addcontentsline{toc}{chapter}{List of images}
 \listoffigures
 
 \renewcommand{\baselinestretch}{1}
@@ -228,7 +233,7 @@ Ort, Datum	\hfill Unterschrift \hfill
 \renewcommand{\baselinestretch}{1.3}
 \small\normalsize
 
-\addcontentsline{toc}{chapter}{Tabellenverzeichnis}
+\addcontentsline{toc}{chapter}{List of tables}
 \listoftables
 
 \renewcommand{\baselinestretch}{1}
@@ -237,7 +242,7 @@ Ort, Datum	\hfill Unterschrift \hfill
 \newpage
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%% Ende
+%%% End
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \end{document}

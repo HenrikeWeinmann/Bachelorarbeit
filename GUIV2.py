@@ -128,11 +128,19 @@ class MainWindow (QMainWindow):
         self.data.setObjectName("data")
         self.userInput = UserInput(self)
         self.userInput.setObjectName("userInput")
-        layout = QVBoxLayout()
-        layout.addWidget(self.data)
-        layout.addWidget(self.userInput)
-        layout.addStretch()
-        rightSide.setLayout(layout)
+        with open('welcome.txt', 'r') as file:
+            text = file.read()
+        self.welcome = QTextEdit()
+        self.welcome.setReadOnly(True)
+        self.welcome.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
+        self.welcome.setHtml(text)
+        self.welcome.adjustSize()
+        self.RSlayout = QVBoxLayout()
+        self.RSlayout.addWidget(self.welcome)
+        #self.RSlayout.addWidget(self.data)
+        self.RSlayout.addStretch()
+        self.RSlayout.addWidget(self.userInput)
+        rightSide.setLayout(self.RSlayout)
 
         return rightSide
 
@@ -399,7 +407,7 @@ class Dicom (FigureCanvas):
 
 
 # --------------------- User Input---------------------------------------------------------------------------------
-class UserInput(QWidget):
+class UserInput(QFrame):
     filepath = ''  # IM-13020-0001.dcm
 
     def __init__(self, window):
@@ -416,18 +424,17 @@ class UserInput(QWidget):
         self.label.setObjectName("enterfilepath")
         self.label2 = QLabel("Open a study folder from the file manager: ")
         self.label2.setObjectName("label2")
-        self.errorText = QLabel("")
+        self.errorText = QLabel("This is not a valid file path")
         self.errorText.setSizePolicy(QSizePolicy.Policy.Preferred, QSizePolicy.Policy.Maximum)
         self.errorText.setObjectName("error")
         self.input = QLineEdit('')
         self.input.setAttribute(Qt.WidgetAttribute.WA_MacShowFocusRect, 0)  # get rid of ugly mac focus rect
         self.input.setPlaceholderText('file path')
-        self.input.setMaxLength(100)
+        self.input.setMaxLength(150)
         self.input.editingFinished.connect(self.set_filepath)
 
         self.layout = QVBoxLayout()
         self.layout.addWidget(self.label)
-        self.layout.addWidget(self.errorText)
         self.inner = QHBoxLayout()
         self.inner.addWidget(self.input)
         self.inner.addWidget(self.submitbtn)
@@ -444,16 +451,45 @@ class UserInput(QWidget):
 
     def check_and_set_filepath(self):
         if os.path.exists(self.filepath):
-            print("this ist the study path: " + self.filepath)
-            self.window.dataArray = self.loadData()
-            self.window.reset_after_changes()
-            self.errorText.setText("")
-            if not self.window.validDataset:
-                self.window.validDataset = True
-                self.window.mainLayout.addWidget(self.window.background)
-                self.window.mainLayout.insertWidget(0, self.window.picturemenu)
+            if self.check_file(self.filepath):
+                print("this ist the study path: " + self.filepath)
+                self.window.dataArray = self.loadData()
+                self.window.RSlayout.removeWidget(self.window.welcome)
+                self.layout.removeWidget(self.errorText)
+                self.window.reset_after_changes()
+                if not self.window.validDataset:
+                    self.window.validDataset = True
+                    self.window.mainLayout.addWidget(self.window.background)
+                    self.window.mainLayout.insertWidget(0, self.window.picturemenu)
+            else:
+                self.layout.insertWidget(1, self.errorText)
         else:
-            self.errorText.setText("This is not a valid file path")
+            self.layout.insertWidget(1, self.errorText)
+            self.errorText.setText("not a valid path")
+
+    def check_file(self, file):
+        if os.path.isdir(file):
+            slices = os.listdir(file)  # list of all names of all slices
+            slices.sort()
+            file = os.path.join(file, slices[1])
+            if os.path.isdir(file):
+                slices = os.listdir(file)  # list of all names of all slices
+                slices.sort()
+                file = os.path.join(file, slices[1])
+                if os.path.isdir(file):
+                    self.errorText.setText("you can only load one dataset at a time.")
+                    self.layout.insertWidget(1, self.errorText)
+                    return False
+                elif file.lower().endswith('.dcm'):
+                    return True
+            elif file.lower().endswith('.dcm'):
+                return True
+        elif file.lower().endswith('.dcm'):
+            return True
+        else:
+            self.layout.insertWidget(1, self.errorText)
+            self.errorText.setText("you can only load dicom images")
+            return False
 
     def open(self):
         file_name = QFileDialog.getExistingDirectory(self, 'Open Source Folder', os.getcwd())
@@ -461,30 +497,37 @@ class UserInput(QWidget):
         self.check_and_set_filepath()
 
     def loadData(self):
-        slices = os.listdir(self.filepath)  # list of all names of all slices
-        slices.sort()
         data = []
-
-        if os.path.isdir(os.path.join(self.filepath, slices[1])):
-            for i in range(1, len(slices)):
-                current_slice = os.path.join(self.filepath, slices[i])
-                frames = os.listdir(current_slice)
-                frames.sort()
-                data.append([])
-                for j in range(len(frames)):
-                    current_frame = os.path.join(current_slice, frames[j])
-                    dicom = dcm.dcmread(current_frame)
-                    data[i - 1].append(dicom)
-
-        elif not os.path.isdir(os.path.join(self.filepath, slices[1])):
+        if not os.path.isdir(self.filepath):
+            print("single picture")
             data.append([])
-            for i in range(len(slices)):
-                current_slice = os.path.join(self.filepath, slices[i])
-                dicom = dcm.dcmread(current_slice)
-                data[0].append(dicom)
-                print(data)
+            dicom = dcm.dcmread(self.filepath)
+            data[0].append(dicom)
+            return data
+        else:
+            slices = os.listdir(self.filepath)  # list of all names of all slices
+            slices.sort()
 
-        return data
+            if os.path.isdir(os.path.join(self.filepath, slices[1])):
+                for i in range(1, len(slices)):
+                    current_slice = os.path.join(self.filepath, slices[i])
+                    frames = os.listdir(current_slice)
+                    frames.sort()
+                    data.append([])
+                    for j in range(len(frames)):
+                        current_frame = os.path.join(current_slice, frames[j])
+                        dicom = dcm.dcmread(current_frame)
+                        data[i - 1].append(dicom)
+
+            elif not os.path.isdir(os.path.join(self.filepath, slices[1])):
+                data.append([])
+                for i in range(len(slices)):
+                    current_slice = os.path.join(self.filepath, slices[i])
+                    dicom = dcm.dcmread(current_slice)
+                    data[0].append(dicom)
+                    print(data)
+
+            return data
 
 
 # ----------------Animation/Video---------------------------------------------------------------------------------

@@ -2,8 +2,30 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8e406e9a-7129-4799-b3f3-c02ccd0c5d7c" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/welcome.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GUIV2.py" beforeDir="false" afterPath="$PROJECT_DIR$/GUIV2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LaTeX/BA.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/LaTeX/BA.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LaTeX/BA.synctex.gz" beforeDir="false" afterPath="$PROJECT_DIR$/LaTeX/BA.synctex.gz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LaTeX/BA.tex" beforeDir="false" afterPath="$PROJECT_DIR$/LaTeX/BA.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LaTeX/build/BA.aux" beforeDir="false" afterPath="$PROJECT_DIR$/LaTeX/build/BA.aux" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LaTeX/build/BA.bbl" beforeDir="false" afterPath="$PROJECT_DIR$/LaTeX/build/BA.bbl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LaTeX/build/BA.blg" beforeDir="false" afterPath="$PROJECT_DIR$/LaTeX/build/BA.blg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LaTeX/build/BA.fdb_latexmk" beforeDir="false" afterPath="$PROJECT_DIR$/LaTeX/build/BA.fdb_latexmk" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LaTeX/build/BA.fls" beforeDir="false" afterPath="$PROJECT_DIR$/LaTeX/build/BA.fls" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LaTeX/build/BA.lof" beforeDir="false" afterPath="$PROJECT_DIR$/LaTeX/build/BA.lof" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LaTeX/build/BA.log" beforeDir="false" afterPath="$PROJECT_DIR$/LaTeX/build/BA.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LaTeX/build/BA.lot" beforeDir="false" afterPath="$PROJECT_DIR$/LaTeX/build/BA.lot" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LaTeX/build/BA.out" beforeDir="false" afterPath="$PROJECT_DIR$/LaTeX/build/BA.out" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LaTeX/build/BA.toc" beforeDir="false" afterPath="$PROJECT_DIR$/LaTeX/build/BA.toc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LaTeX/mylit.bib" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/LaTeX/sec1.tex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/LaTeX/sec2.tex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/LaTeX/sec3.tex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/LaTeX/sec4.tex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/LaTeX/sec5.tex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/LaTeX/sec6.tex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Stylesheet.qss" beforeDir="false" afterPath="$PROJECT_DIR$/Stylesheet.qss" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -19,11 +41,20 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/GUIV2.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="658">
-              <caret line="214" column="30" selection-start-line="214" selection-start-column="30" selection-end-line="214" selection-end-column="30" />
+            <state relative-caret-position="522">
+              <caret line="464" column="59" selection-start-line="464" selection-start-column="59" selection-end-line="464" selection-end-column="59" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/welcome.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret column="38" selection-start-column="38" selection-end-column="38" />
             </state>
           </provider>
         </entry>
@@ -61,11 +92,12 @@
         <option value="$PROJECT_DIR$/GUI.py" />
         <option value="$PROJECT_DIR$/loadFiles test" />
         <option value="$PROJECT_DIR$/Stylesheet.qss" />
+        <option value="$PROJECT_DIR$/welcome.txt" />
         <option value="$PROJECT_DIR$/GUIV2.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" fullScreen="true">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="width" value="2560" />
     <option name="height" value="1440" />
   </component>
@@ -74,6 +106,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -85,7 +118,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -620,7 +652,14 @@
       <option name="project" value="LOCAL" />
       <updated>1626908612027</updated>
     </task>
-    <option name="localTasksCounter" value="46" />
+    <task id="LOCAL-00046" summary="style update&#10;(not final)">
+      <created>1627046551558</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1627046551558</updated>
+    </task>
+    <option name="localTasksCounter" value="47" />
     <servers />
   </component>
   <component name="TodoView">
@@ -633,15 +672,15 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="2560" height="1440" extended-state="0" />
+    <frame x="91" y="25" width="2469" height="1415" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49574268" weight="0.113430485" />
-      <window_info id="Structure" order="1" sideWeight="0.5042573" side_tool="true" weight="0.113430485" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4949608" visible="true" weight="0.11764706" />
+      <window_info id="Structure" order="1" sideWeight="0.5050392" side_tool="true" visible="true" weight="0.11764706" />
       <window_info id="Favorites" order="2" sideWeight="0.5005015" side_tool="true" weight="0.09531312" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3270073" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.5648438" visible="true" weight="0.33357665" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.5648438" visible="true" weight="0.32194382" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49921876" weight="0.39836735" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -754,7 +793,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="scroll wheel method implemented" />
     <MESSAGE value="slow down issue of video solved" />
     <MESSAGE value="-layout and style updates&#10;-image styles added&#10;-update figure refined" />
     <MESSAGE value="toolbar styled&#10;label somehow not resizable" />
@@ -779,14 +817,15 @@
     <MESSAGE value="icons for picture menu" />
     <MESSAGE value="Create main method (finally)" />
     <MESSAGE value="zoom finished" />
-    <option name="LAST_COMMIT_MESSAGE" value="zoom finished" />
+    <MESSAGE value="style update&#10;(not final)" />
+    <option name="LAST_COMMIT_MESSAGE" value="style update&#10;(not final)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/GUIV2.py</url>
-          <line>387</line>
+          <line>395</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
@@ -828,15 +867,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Stylesheet.qss">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5385">
+        <state relative-caret-position="-439">
           <caret line="203" column="20" selection-start-line="203" selection-start-column="20" selection-end-line="203" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/welcome.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="38" selection-start-column="38" selection-end-column="38" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/GUIV2.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="658">
-          <caret line="214" column="30" selection-start-line="214" selection-start-column="30" selection-end-line="214" selection-end-column="30" />
+        <state relative-caret-position="522">
+          <caret line="464" column="59" selection-start-line="464" selection-start-column="59" selection-end-line="464" selection-end-column="59" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
           </folding>
