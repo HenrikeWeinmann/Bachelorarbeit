@@ -1,6 +1,7 @@
-<html><head/><body><p align="center"> Welcome to this app. You can view your Cine data set here as well as any other dicom file.
-You can change saturation and colormap on the top and edit your image in the image toolbar.
+<html><head/><body><p align="center"> Welcome to this app! <br><br>
+You can view your Cine data set here as well as any other dicom file.
+You can change saturation and colormap on the top and edit your image in the image toolbar.<br>
 You can make selections as a single point, multiple point or polygon selection.
 If you don't know what a feature does or how to use it,
-you can just hover over the button for instructions.
+you can just hover over the button for instructions.<br>
 Have fun:)</p></body></html>

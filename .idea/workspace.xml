@@ -2,30 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8e406e9a-7129-4799-b3f3-c02ccd0c5d7c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/welcome.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Icons/visible.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Default.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Default.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GUIV2.py" beforeDir="false" afterPath="$PROJECT_DIR$/GUIV2.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LaTeX/BA.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/LaTeX/BA.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LaTeX/BA.synctex.gz" beforeDir="false" afterPath="$PROJECT_DIR$/LaTeX/BA.synctex.gz" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LaTeX/BA.tex" beforeDir="false" afterPath="$PROJECT_DIR$/LaTeX/BA.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LaTeX/build/BA.aux" beforeDir="false" afterPath="$PROJECT_DIR$/LaTeX/build/BA.aux" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LaTeX/build/BA.bbl" beforeDir="false" afterPath="$PROJECT_DIR$/LaTeX/build/BA.bbl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LaTeX/build/BA.blg" beforeDir="false" afterPath="$PROJECT_DIR$/LaTeX/build/BA.blg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LaTeX/build/BA.fdb_latexmk" beforeDir="false" afterPath="$PROJECT_DIR$/LaTeX/build/BA.fdb_latexmk" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LaTeX/build/BA.fls" beforeDir="false" afterPath="$PROJECT_DIR$/LaTeX/build/BA.fls" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LaTeX/build/BA.lof" beforeDir="false" afterPath="$PROJECT_DIR$/LaTeX/build/BA.lof" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LaTeX/build/BA.log" beforeDir="false" afterPath="$PROJECT_DIR$/LaTeX/build/BA.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LaTeX/build/BA.lot" beforeDir="false" afterPath="$PROJECT_DIR$/LaTeX/build/BA.lot" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LaTeX/build/BA.out" beforeDir="false" afterPath="$PROJECT_DIR$/LaTeX/build/BA.out" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LaTeX/build/BA.toc" beforeDir="false" afterPath="$PROJECT_DIR$/LaTeX/build/BA.toc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LaTeX/mylit.bib" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/LaTeX/sec1.tex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/LaTeX/sec2.tex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/LaTeX/sec3.tex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/LaTeX/sec4.tex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/LaTeX/sec5.tex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/LaTeX/sec6.tex" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Stylesheet.qss" beforeDir="false" afterPath="$PROJECT_DIR$/Stylesheet.qss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/welcome.txt" beforeDir="false" afterPath="$PROJECT_DIR$/welcome.txt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -41,8 +23,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/GUIV2.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="522">
-              <caret line="464" column="59" selection-start-line="464" selection-start-column="59" selection-end-line="464" selection-end-column="59" />
+            <state relative-caret-position="933">
+              <caret line="89" column="39" lean-forward="true" selection-start-line="89" selection-start-column="39" selection-end-line="89" selection-end-column="39" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
@@ -114,6 +96,11 @@
               <item name="Bachelorarbeit" type="b2602c69:ProjectViewProjectNode" />
               <item name="Bachelorarbeit" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="Bachelorarbeit" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Bachelorarbeit" type="462c0819:PsiDirectoryNode" />
+              <item name="Icons" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -128,10 +115,11 @@
     <property name="settings.editor.selected.configurable" value="Errors" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
+    <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Icons" />
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
@@ -659,7 +647,21 @@
       <option name="project" value="LOCAL" />
       <updated>1627046551558</updated>
     </task>
-    <option name="localTasksCounter" value="47" />
+    <task id="LOCAL-00047" summary="check the file paths before loading and new welcome message (only place holder)">
+      <created>1628204078671</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1628204078671</updated>
+    </task>
+    <task id="LOCAL-00048" summary="remove welcome text after opening data set">
+      <created>1628205337607</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1628205337607</updated>
+    </task>
+    <option name="localTasksCounter" value="49" />
     <servers />
   </component>
   <component name="TodoView">
@@ -675,12 +677,12 @@
     <frame x="91" y="25" width="2469" height="1415" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4949608" visible="true" weight="0.11764706" />
-      <window_info id="Structure" order="1" sideWeight="0.5050392" side_tool="true" visible="true" weight="0.11764706" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49495798" visible="true" weight="0.11764706" />
+      <window_info id="Structure" order="1" sideWeight="0.505042" side_tool="true" visible="true" weight="0.11764706" />
       <window_info id="Favorites" order="2" sideWeight="0.5005015" side_tool="true" weight="0.09531312" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3270073" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.5648438" visible="true" weight="0.32194382" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.5648438" visible="true" weight="0.096431285" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49921876" weight="0.39836735" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -793,8 +795,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="slow down issue of video solved" />
-    <MESSAGE value="-layout and style updates&#10;-image styles added&#10;-update figure refined" />
     <MESSAGE value="toolbar styled&#10;label somehow not resizable" />
     <MESSAGE value="point selection added" />
     <MESSAGE value="single and multiple point selection visualized" />
@@ -818,14 +818,16 @@
     <MESSAGE value="Create main method (finally)" />
     <MESSAGE value="zoom finished" />
     <MESSAGE value="style update&#10;(not final)" />
-    <option name="LAST_COMMIT_MESSAGE" value="style update&#10;(not final)" />
+    <MESSAGE value="check the file paths before loading and new welcome message (only place holder)" />
+    <MESSAGE value="remove welcome text after opening data set" />
+    <option name="LAST_COMMIT_MESSAGE" value="remove welcome text after opening data set" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/GUIV2.py</url>
-          <line>395</line>
+          <line>394</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
@@ -881,8 +883,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/GUIV2.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="522">
-          <caret line="464" column="59" selection-start-line="464" selection-start-column="59" selection-end-line="464" selection-end-column="59" />
+        <state relative-caret-position="933">
+          <caret line="89" column="39" lean-forward="true" selection-start-line="89" selection-start-column="39" selection-end-line="89" selection-end-column="39" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
           </folding>

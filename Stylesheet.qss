@@ -1,9 +1,10 @@
 /* -------- Color Palette --------------
 
 Text : #1A1A1A
+Text2: #163540
 dark grey: #808080
 light grey: #999999
-dark blue: #8DC1D8
+dark blue: #8DC1D8 or rgb(141,193,216)
 middle blue: #B2D6E6
 light blue: #D8EAF3
 
@@ -11,7 +12,7 @@ light blue: #D8EAF3
 /* -------- Stylesheet --------------*/
 QWidget {
     background-color: #808080;
-    color: #1A1A1A;
+    color: #163540;
     padding: 0px;
     font-family: "Trebuchet MS";
     font: 20px;
@@ -176,9 +177,17 @@ QWidget#picturemenu{
 }
 
 QWidget#picturemenu *{
+    color: #1A1A1A;
     max-height: 50 px;
 }
+QLabel#contrast{
+    min-height: 50px;
+    max-width: 80px;
+    background: none;
+    padding: 0px;
+    margin: 0px;
 
+}
 QSlider{
     background: none;
     max-width: 100px;
@@ -197,18 +206,23 @@ QPushButton#clear{
 }
 
 QPushButton#DS{
-    image: url('Icons/ds.png');
+    image: url('Icons/visible.png');
 }
 
 QPushButton#eraseMode, #moveMode, #clear, #DS{
     background:none;
     border:none;
+    border-radius: 7;
     min-height: 45px;
     max-height: 45px;
     min-width: 45px;
     max-width: 45px;
 
 }
+QPushButton#eraseMode:hover, #moveMode:hover, #clear:hover, #DS:hover{
+    background: rgba(89,89,89, 0.2);
+}
+
 
 /* -------- Right Side --------------*/
 QWidget#right {
@@ -223,12 +237,12 @@ QTextEdit{
     font-family: "Trebuchet MS";
     font: 29px;
     padding: 20px;
-    color: #8DC1D8;
+    color: #274C5B;
 }
 
 QFrame#userInput{
     background-color: #D8EAF3;
-    border: 1px solid #8DC1D8;
+    border: 2px solid #8DC1D8;
     margin: 0px;
 }
 

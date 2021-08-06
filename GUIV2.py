@@ -84,6 +84,9 @@ class MainWindow (QMainWindow):
         self.contrast.setValue(255)
         self.contrast.setMaximum(500)
         self.contrast.setMinimum(1)
+        self.label = QLabel("contrast")
+        self.label.setObjectName("contrast")
+        layout.addWidget(self.label)
         layout.addWidget(self.contrast)
         layout.addWidget(self.eraseMode)
         layout.addWidget(self.moveMode)
@@ -198,7 +201,7 @@ class Dicom (FigureCanvas):
         try:
             self.initCanvas()
         except:
-            self.img = self.ax.imshow(plt.imread("Default.jpg"))
+            self.img = self.ax.imshow(plt.imread("Default.jpg"), aspect='auto')
             self.fig.subplots_adjust(bottom=0, top=1, left=0, right=1)
             plt.axis("off")
 
@@ -224,7 +227,7 @@ class Dicom (FigureCanvas):
         plt.tight_layout(pad=3)
         plt.tight_layout(pad=3)  # some bug in matplotlib version so it needs to be called twice
         window.update_fig()
-        print(self.fig.get_size_inches() * self.fig.dpi)
+        #print(self.fig.get_size_inches() * self.fig.dpi)
 
     # scroll wheel
     def wheelEvent(self, event):
@@ -331,15 +334,12 @@ class Dicom (FigureCanvas):
     def erase(self, window):
         if window.moveMode.isChecked():
             window.moveMode.toggle()
-            window.moveMode.setStyleSheet("background-color : #D8EAF3")
             self.cid2 = self.fig.canvas.mpl_disconnect(window.dicom.cid2)
             self.cid2 = self.fig.canvas.mpl_connect('button_release_event', self.release)
         if window.eraseMode.isChecked():
-            window.eraseMode.setStyleSheet("background-color : #B2D6E6")
             self.cid = self.fig.canvas.mpl_disconnect(window.dicom.cid)
             self.cid = self.fig.canvas.mpl_connect('button_press_event', self.erase_and_redraw)
         else:
-            window.eraseMode.setStyleSheet("background-color : #D8EAF3")
             self.reconnect_cids(window)
 
     def erasePoint(self, event):
@@ -377,15 +377,12 @@ class Dicom (FigureCanvas):
     def move(self, window):
         if window.eraseMode.isChecked():
             window.eraseMode.toggle()
-            window.eraseMode.setStyleSheet("background-color : #D8EAF3")
         if window.moveMode.isChecked():
-            window.moveMode.setStyleSheet("background-color : #B2D6E6")
             self.cid = self.fig.canvas.mpl_disconnect(window.dicom.cid)
             self.cid = self.fig.canvas.mpl_connect('button_press_event', self.erasePoint)
             self.cid2 = self.fig.canvas.mpl_disconnect(window.dicom.cid2)
             self.cid2 = self.fig.canvas.mpl_connect('button_release_event', self.movePoint)
         else:
-            window.moveMode.setStyleSheet("background-color : #D8EAF3")
             self.reconnect_cids(window)
 
     def movePoint(self, event):
@@ -397,14 +394,14 @@ class Dicom (FigureCanvas):
 
     def hide(self, window):
         if window.dontShow.isChecked():
-            window.dontShow.setStyleSheet("background-color : #B2D6E6;")
             self.cid = self.fig.canvas.mpl_disconnect(window.dicom.cid)
+            window.dontShow.setStyleSheet("image: url('Icons/ds.png') ;")
             print("hide")
             self.cnv.set_visible(False)
             plt.draw()
         else:
-            window.dontShow.setStyleSheet("background-color : #D8EAF3;")
             self.reconnect_cids(window)
+            window.dontShow.setStyleSheet("image: url('Icons/visible.png') ;")
             print("unhide")
 
 
@@ -454,7 +451,7 @@ class UserInput(QFrame):
     def check_and_set_filepath(self):
         if os.path.exists(self.filepath):
             if self.check_file(self.filepath):
-                print("this ist the study path: " + self.filepath)
+                #print("this ist the study path: " + self.filepath)
                 self.window.dataArray = self.loadData()
                 self.layout.removeWidget(self.errorText)
                 self.window.reset_after_changes()
@@ -526,7 +523,6 @@ class UserInput(QFrame):
                     current_slice = os.path.join(self.filepath, slices[i])
                     dicom = dcm.dcmread(current_slice)
                     data[0].append(dicom)
-                    print(data)
 
             return data
 
