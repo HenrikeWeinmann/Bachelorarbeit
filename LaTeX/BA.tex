@@ -5,7 +5,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% allgemeine Einstellungen
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+%!TeX spellcheck = en-GB
 \documentclass[12pt,a4paper]{report}
 \usepackage[utf8]{inputenc}
 
@@ -15,13 +15,16 @@
 \usepackage[T1]{fontenc}
 \usepackage{eurosym}
 \usepackage[ngerman, english]{babel}
-\usepackage{bibgerm}
+\usepackage{biblatex}
+\usepackage{csquotes}
+\addbibresource{Literature.bib}
 \usepackage{graphics, graphicx}
 \usepackage[margin=10pt,font=small,labelfont=bf]{caption}
 \usepackage{sistyle}
 \usepackage{latexsym}
 \usepackage{hyperref}
 \usepackage[textwidth=14cm,textheight=22cm]{geometry}
+\usepackage{wrapfig}
 
 %\footskip 2cm
 \parskip 0.5ex plus 0.1ex minus 0.1ex
@@ -58,13 +61,13 @@
   Fachbereich Informatik\\[2cm]}
   {\Huge\bf  MR-LINAC and CINE\\[1.5cm]}
 {\Large\bf A viewing platform for 4d medical images with extensive labeling functionality\\[0.8cm]}
-  {\Large Bachelorthesis Medical Informatics\\[3.5cm]}
-  {\Large Henrike Weinmann}\\[0.5cm]
-  Datum\\[4cm]
-{\small\bf Marcel Früh}\\[0.5cm]
+  {\Large Bachelorthesis Medical Informatics\\[3.0cm]}
+  {\Large Henrike Sophie Weinmann}\\[0.5cm]
+  Datum\\[3cm]
+{\small\bf Marcel Früh}\\[1.0cm]
   \parbox{7cm}{\begin{center}{
-  	\large Prof. Dr. Oliver Bringmann}\\
-	  Lehrstuhl für Eingebettete Systeme\\
+  	\large Prof. Dr. rer. nat. Andreas Schilling}\\
+	  Visual Computing\\
 	  Fachbereich Informatik\\
 	  Universität Tübingen
 	  \end{center}}\hfill\parbox{7cm}{\begin{center}
@@ -127,13 +130,20 @@ Hier kommen die Danksagungen hin (falls gewünscht)!!!
 
 % Erklärung aus dem Formular zur Anmeldung einer Bachelor-, Master- oder Diplomarbeit
 % http://www.uni-tuebingen.de/fakultaeten/mathematisch-naturwissenschaftliche-fakultaet/fachbereiche/informatik/studium/downloads/allgemein-und-formulare.html
-Hiermit erkläre ich, dass ich diese schriftliche Abschlussarbeit selbständig verfasst habe, keine anderen als die angegebenen Hilfsmittel und Quellen benutzt habe und alle wörtlich oder sinngemäß aus anderen Werken übernommenen Aussagen als solche gekennzeichnet habe.
+Hereby, I declare that I have composed the presented paper independently on my own and without any other resources than the ones indicated. All thoughts taken directly or indirectly from external sources are properly denoted as such.
 
+This paper has neither been previously submitted to another authority nor has it been published yet.
 \vskip 3cm
 
-Ort, Datum	\hfill Unterschrift \hfill
+Place, Date	\hfill Signature \hfill
 
+Hiermit erkläre ich, dass ich diese schriftliche Abschlussarbeit selbständig verfasst habe,
+keine anderen als die angegebenen Hilfsmittel und Quellen benutzt habe und alle wörtlich
+oder sinngemäß aus anderen Werken übernommenen Aussagen als solche gekennzeichnet
+habe.
+Datum, Ort, \hfill Unterschrift \hfill
 
+\newpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% Inhaltsverzeichnis
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -185,12 +195,10 @@ Ort, Datum	\hfill Unterschrift \hfill
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \addcontentsline{toc}{chapter}{Sources}
+\printbibliography
 
-\bibliographystyle{alpha}
-\bibliography{mylit}
-%% Obige Anweisung legt fest, dass BibTeX-Datei `mylit.bib' verwendet
-%% wird. Hier koennen mehrere Dateinamen mit Kommata getrennt aufgelistet
-%% werden.
+
+%% Verwende jetzt Biblatex.
 
 \newpage
 \appendix
@@ -203,10 +211,12 @@ Ort, Datum	\hfill Unterschrift \hfill
 
 \begin{tabbing}
 	\textbf{FACTOTUM}\hspace{1cm}\=Schrott\kill
+    \textbf{AI}\>Artificial intelligence  \\
 	\textbf{LINAC}\>Linear accelerator \\
+    \textbf{IGRT}\>Image guided radiotherapy  \\
 	\textbf{MRI} \> Magnetic Resonance Imaging\\
-    \textbf{PET} \> Positron emission tomography\\
-    \textbf{CINE} \> ...\\
+    \textbf{RF} \> Radio Frequency\\
+    \textbf{PACS} \> Picture Archiving and Communication System\\
 \end{tabbing}
 
 \newpage

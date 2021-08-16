@@ -36,7 +36,7 @@ class MainWindow (QMainWindow):
 
 
         self.picturemenu = self.selection_menu()
-        self.picturemenu.setFixedWidth(self.centralWidget.width())
+        self.picturemenu.setMaximumWidth(self.centralWidget.width())
 
         self.background = QStackedWidget()
         self.background.setObjectName("MediaBarBackground")
@@ -54,7 +54,7 @@ class MainWindow (QMainWindow):
             self.mainLayout.addWidget(self.background)
         self.mainLayout.setAlignment(Qt.AlignmentFlag.AlignHCenter)
         self.centralWidget.setLayout(self.mainLayout)
-        self.centralWidget.setSizePolicy(QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Minimum)
+        #self.centralWidget.setSizePolicy(QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Minimum)
         self.setCentralWidget(self.centralWidget)
 
 #this menu handles everything concerning the selection and labeling function
@@ -62,6 +62,9 @@ class MainWindow (QMainWindow):
         picturemenu = QWidget()
         picturemenu.setObjectName("picturemenu")
         layout = QHBoxLayout()
+        self.saveImage = QPushButton()
+        self.saveImage.setObjectName("safeImage")
+        self.saveImage.clicked.connect(lambda: Dicom.save(self.dicom))
         self.eraseMode = QPushButton()
         self.eraseMode.setObjectName("eraseMode")
         self.eraseMode.setCheckable(True)
@@ -88,6 +91,7 @@ class MainWindow (QMainWindow):
         self.label.setObjectName("contrast")
         layout.addWidget(self.label)
         layout.addWidget(self.contrast)
+        layout.addWidget(self.saveImage)
         layout.addWidget(self.eraseMode)
         layout.addWidget(self.moveMode)
         layout.addWidget(self.dontShow)
@@ -404,6 +408,9 @@ class Dicom (FigureCanvas):
             window.dontShow.setStyleSheet("image: url('Icons/visible.png') ;")
             print("unhide")
 
+    def save(self):
+        test = QFileDialog.getSaveFileName(self, "Save File", filter="Images (*.png *.jpg)")
+        plt.savefig(test[0])
 
 # --------------------- User Input---------------------------------------------------------------------------------
 class UserInput(QFrame):
@@ -478,11 +485,11 @@ class UserInput(QFrame):
                     self.errorText.setText("you can only load one dataset at a time.")
                     self.layout.insertWidget(1, self.errorText)
                     return False
-                elif file.lower().endswith('.dcm'):
+                elif file.lower().endswith(('.dcm', '.dc3', '.dic')):
                     return True
-            elif file.lower().endswith('.dcm'):
+            elif file.lower().endswith(('.dcm', '.dc3', '.dic')):
                 return True
-        elif file.lower().endswith('.dcm'):
+        elif file.lower().endswith(('.dcm', '.dc3', '.dic')):
             return True
         else:
             self.layout.insertWidget(1, self.errorText)
