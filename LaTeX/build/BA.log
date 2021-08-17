@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.7.16)  16 AUG 2021 12:41
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.7.16)  16 AUG 2021 18:43
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -988,7 +988,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 Chapter 4.
 [7
 
-])
+]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -1004,13 +1004,21 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[9] (./Evaluation.tex
+[9])
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[10] (./Evaluation.tex
 Chapter 5.
-) [10
+) [11
 
 ] (./Recapitulation_and_future_possibilities.tex
 Chapter 6.
-) [11
+) [12
 
 ]
 LaTeX Font Info:    Trying to load font information for T1+NimbusMonoN on input line 198.
@@ -1029,7 +1037,7 @@ Overfull \hbox (305.61479pt too wide) in paragraph at lines 199--199
 \T1/NimbusMonoN/m/n/12 token = E91C1EEF68066558A1FC3643CFF3FA302C75FD56F2348337AE917AE2335411C54F98910EB368F0E308F3D3BDEED81ACA &
  []
 
-[12
+[13
 
 ]
 
@@ -1039,41 +1047,41 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[13] [14
+[14] [15
 
 ] (build/BA.lof)
 \tf@lof=\write7
 \openout7 = `BA.lof'.
 
- [15
+ [16
 
 ] (build/BA.lot)
 \tf@lot=\write8
 \openout8 = `BA.lot'.
 
- [16
+ [17
 
 ] (build/BA.aux)
 Package rerunfilecheck Info: File `BA.out' has not changed.
-(rerunfilecheck)             Checksum: 37168CBDA7F4BF6D843AE564CA7A4816;4931.
+(rerunfilecheck)             Checksum: AFB52BB7EC157A87CEF16777882308AD;4932.
 Package logreq Info: Writing requests to 'BA.run.xml'.
 \openout1 = `BA.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 30484 strings out of 478994
- 565523 string characters out of 5858184
- 1320659 words of memory out of 5000000
- 47356 multiletter control sequences out of 15000+600000
- 419554 words of font info for 63 fonts, out of 8000000 for 9000
+ 30505 strings out of 478994
+ 565951 string characters out of 5858184
+ 1320753 words of memory out of 5000000
+ 47367 multiletter control sequences out of 15000+600000
+ 419891 words of font info for 64 fonts, out of 8000000 for 9000
  1143 hyphenation exceptions out of 8191
- 102i,11n,117p,1852b,2333s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/nimbus15/nimbus15mono-ec.enc}{/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}</usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfbx1095.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfbx1728.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfbx2488.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfcc1200.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm1440.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm1728.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm20
-74.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfsl1200.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfti1200.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/nimbus15/zcoN-Regular.pfb>
-Output written on build/BA.pdf (23 pages, 363036 bytes).
+ 102i,12n,117p,1852b,2333s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/nimbus15/nimbus15mono-ec.enc}{/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}{/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfbx1095.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfbx1728.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfbx2488.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfcc1200.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm1440.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm1
+728.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm2074.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfsl1200.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfti1200.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/nimbus15/zcoN-Regular.pfb>
+Output written on build/BA.pdf (24 pages, 367342 bytes).
 PDF statistics:
- 423 PDF objects out of 1000 (max. 8388607)
- 363 compressed objects within 4 object streams
- 70 named destinations out of 1000 (max. 500000)
+ 446 PDF objects out of 1000 (max. 8388607)
+ 385 compressed objects within 4 object streams
+ 79 named destinations out of 1000 (max. 500000)
  378 words of extra memory for PDF output out of 10000 (max. 10000000)
 

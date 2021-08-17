@@ -162,6 +162,60 @@
       \endverb
       \keyw{MRI,sensitivity,signal-to-noise ratio}
     \endentry
+    \entry{lineyMRIRadiotherapyPlanning2019}{book}{useprefix=true}
+      \name{editor}{2}{}{%
+        {{hash=46e9f6431c0ec92e416f4bb134dbc142}{%
+           family={Liney},
+           familyi={L\bibinitperiod},
+           given={Gary},
+           giveni={G\bibinitperiod}}}%
+        {{hash=67450f932a0e0d91ff7a3f2f9cd898e8}{%
+           family={Heide},
+           familyi={H\bibinitperiod},
+           given={Uulke},
+           giveni={U\bibinitperiod},
+           prefix={van\bibnamedelima der},
+           prefixi={v\bibinitperiod\bibinitdelim d\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Cham}%
+      }
+      \list{publisher}{1}{%
+        {Springer International Publishing}%
+      }
+      \strng{namehash}{707d69282090ead126cc63656af69513}
+      \strng{fullhash}{707d69282090ead126cc63656af69513}
+      \strng{bibnamehash}{707d69282090ead126cc63656af69513}
+      \strng{editorbibnamehash}{707d69282090ead126cc63656af69513}
+      \strng{editornamehash}{707d69282090ead126cc63656af69513}
+      \strng{editorfullhash}{707d69282090ead126cc63656af69513}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{labelnamesource}{editor}
+      \field{labeltitlesource}{shorttitle}
+      \field{isbn}{978-3-030-14441-8 978-3-030-14442-5}
+      \field{langid}{english}
+      \field{shorttitle}{{{MRI}} for {{Radiotherapy}}}
+      \field{title}{{{MRI}} for {{Radiotherapy}}: {{Planning}}, {{Delivery}}, and {{Response Assessment}}}
+      \field{urlday}{4}
+      \field{urlmonth}{8}
+      \field{urlyear}{2021}
+      \field{year}{2019}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \verb{doi}
+      \verb 10.1007/978-3-030-14442-5
+      \endverb
+      \verb{file}
+      \verb /Users/Heni/Zotero/storage/NVFXZM69/Liney und van der Heide - 2019 - MRI for Radiotherapy Planning, Delivery, and Resp.pdf
+      \endverb
+      \verb{urlraw}
+      \verb http://link.springer.com/10.1007/978-3-030-14442-5
+      \endverb
+      \verb{url}
+      \verb http://link.springer.com/10.1007/978-3-030-14442-5
+      \endverb
+    \endentry
     \entry{MagneticResonanceImaging}{online}{}
       \field{sortinit}{M}
       \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}

@@ -190,9 +190,67 @@ QLabel#contrast{
 }
 QSlider{
     background: none;
-    max-width: 100px;
+    max-width: 120px;
+}
+QSlider::groove:horizontal {
+    border: 1px solid #bbb;
+    background: #999999;
+    height: 16px;
+    border-radius: 5px;
 }
 
+QSlider::sub-page:horizontal {
+    background: qlineargradient(x1: 0, y1: 0,    x2: 0, y2: 1,
+        stop: 0 #8DC1D8, stop: 1 #B2D6E6);
+    background: qlineargradient(x1: 0, y1: 0.2, x2: 1, y2: 1,
+        stop: 0 #B2D6E6, stop: 1 #163540);
+    border: 1px solid #808080;
+    height: 16px;
+    border-radius: 5px;
+}
+
+QSlider::add-page:horizontal {
+    background: #D8EAF3;
+    border: 1px solid #808080;
+    height: 16px;
+    border-radius: 5px;
+}
+
+QSlider::handle:horizontal {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:1,
+        stop:0 #eee, stop:1 #ccc);
+    border: 1px solid #808080;
+    width: 15px;
+    margin-top: -2px;
+    margin-bottom: -2px;
+    border-radius: 5px;
+}
+
+QSlider::handle:horizontal:hover {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:1,
+        stop:0 #fff, stop:1 #ddd);
+    border: 1px solid #444;
+    border-radius: 5px;
+}
+
+QSlider::sub-page:horizontal:disabled {
+    background: #bbb;
+    border-color: #999;
+}
+
+QSlider::add-page:horizontal:disabled {
+    background: #eee;
+    border-color: #999;
+}
+
+QSlider::handle:horizontal:disabled {
+    background: #eee;
+    border: 1px solid #aaa;
+    border-radius: 5px;
+}
+QPushButton#saveImage{
+    image: url('Icons/save.png');
+}
 QPushButton#eraseMode{
     image: url('Icons/erase.png');
 }
@@ -209,17 +267,18 @@ QPushButton#DS{
     image: url('Icons/visible.png');
 }
 
-QPushButton#eraseMode, #moveMode, #clear, #DS{
-    background:none;
+QPushButton#eraseMode, #moveMode, #clear, #DS, #saveImage{
+    background:red;
     border:none;
     border-radius: 7;
-    min-height: 45px;
-    max-height: 45px;
-    min-width: 45px;
-    max-width: 45px;
+    margin: 5 5 5 5 ;
+    min-height: 50px;
+    max-height: 50px;
+    min-width: 50px;
+    max-width: 50px;
 
 }
-QPushButton#eraseMode:hover, #moveMode:hover, #clear:hover, #DS:hover{
+QPushButton#eraseMode:hover, #moveMode:hover, #clear:hover, #DS:hover, #saveImage:hover{
     background: rgba(89,89,89, 0.2);
 }
 

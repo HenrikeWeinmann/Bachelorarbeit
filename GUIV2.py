@@ -32,8 +32,8 @@ class MainWindow (QMainWindow):
         self.dataArray = []
         self.menu = self.toolbar()
         self.dicom = Dicom(self)
+        self.dicom.setObjectName("dicom")
         self.addToolBar(self.toolbar())
-
 
         self.picturemenu = self.selection_menu()
         self.picturemenu.setMaximumWidth(self.centralWidget.width())
@@ -45,16 +45,21 @@ class MainWindow (QMainWindow):
         self.dock = QDockWidget("Data", self)
         self.dock.setWidget(self.rightSide())
         self.dock.setFeatures(QDockWidget.DockWidgetFeature.DockWidgetClosable)
+        self.uI = QDockWidget("Input", self)
+        self.input = UserInput(self)
+        self.input.setObjectName("userInput")
+        self.uI.setWidget(self.input)
+        self.uI.setFeatures(QDockWidget.DockWidgetFeature.NoDockWidgetFeatures)
         self.addDockWidget(Qt.DockWidgetArea.RightDockWidgetArea, self.dock)
+        self.addDockWidget(Qt.DockWidgetArea.RightDockWidgetArea, self.uI)
 
         self.mainLayout = QVBoxLayout()
         self.mainLayout.addWidget(self.dicom)
         if self.validDataset:
             self.mainLayout.insertWidget(0, self.picturemenu)
             self.mainLayout.addWidget(self.background)
-        self.mainLayout.setAlignment(Qt.AlignmentFlag.AlignHCenter)
+        self.mainLayout.setAlignment(self.dicom, Qt.AlignmentFlag.AlignHCenter)
         self.centralWidget.setLayout(self.mainLayout)
-        #self.centralWidget.setSizePolicy(QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Minimum)
         self.setCentralWidget(self.centralWidget)
 
 #this menu handles everything concerning the selection and labeling function
@@ -63,7 +68,7 @@ class MainWindow (QMainWindow):
         picturemenu.setObjectName("picturemenu")
         layout = QHBoxLayout()
         self.saveImage = QPushButton()
-        self.saveImage.setObjectName("safeImage")
+        self.saveImage.setObjectName("saveImage")
         self.saveImage.clicked.connect(lambda: Dicom.save(self.dicom))
         self.eraseMode = QPushButton()
         self.eraseMode.setObjectName("eraseMode")
@@ -133,8 +138,6 @@ class MainWindow (QMainWindow):
         rightSide.setObjectName("right")
         self.data = Data(self)
         self.data.setObjectName("data")
-        self.userInput = UserInput(self)
-        self.userInput.setObjectName("userInput")
         with open('welcome.txt', 'r') as file:
             text = file.read()
         self.welcome = QTextEdit()
@@ -148,7 +151,6 @@ class MainWindow (QMainWindow):
         else:
             self.RSlayout.addWidget(self.welcome)
         self.RSlayout.addStretch()
-        self.RSlayout.addWidget(self.userInput)
         rightSide.setLayout(self.RSlayout)
 
         return rightSide
@@ -177,6 +179,8 @@ class MainWindow (QMainWindow):
         if self.selectionMode == 'Polygon Selection' and len(self.selection) >= 3:
             Dicom.draw_polygon(self.dicom, patches.Polygon(self.selection, color='red', alpha=0.2))
             '''used to be: plt.gca().add_patch(polygon)... but somehow wont work anymore'''
+        self.dicom.xlim = [0, self.dicom.imgarr.shape[1]]
+        self.dicom.ylim = [self.dicom.imgarr.shape[0], 0]
         plt.xlim(self.dicom.xlim)
         plt.ylim(self.dicom.ylim)
         self.dicom.draw()
@@ -191,7 +195,7 @@ class Dicom (FigureCanvas):
 
     def __init__(self, window):
         self.dpi = 100
-        self.fig = plt.figure(figsize=(700 / self.dpi, 900 / self.dpi), dpi=self.dpi)
+        self.fig = plt.figure(figsize=(700 / self.dpi, 900 / self.dpi), dpi=self.dpi, facecolor="#808080")
         self.ax = self.fig.add_subplot(1, 1, 1)
         super().__init__(self.fig)
         window.centralWidget.setFixedWidth(700)
@@ -214,6 +218,7 @@ class Dicom (FigureCanvas):
     def initCanvas(self):
         window = self.parent().parent()
         self.imgarr = window.dataArray[window.slice][window.current].pixel_array
+        #  print(window.dataArray[window.slice][window.current])  #print meta data
         self.img = self.ax.imshow(self.imgarr, self.cmap)
         self.canvas = np.empty(self.imgarr.shape)
         self.canvas[:] = 0
@@ -226,12 +231,10 @@ class Dicom (FigureCanvas):
         self.ylim = [self.imgarr.shape[0], 0]
         plt.xlim(self.xlim)
         plt.ylim(self.ylim)
-        window.dicom.setMaximumWidth(500)
-        window.dicom.setMaximumHeight(700)
         plt.tight_layout(pad=3)
         plt.tight_layout(pad=3)  # some bug in matplotlib version so it needs to be called twice
         window.update_fig()
-        #print(self.fig.get_size_inches() * self.fig.dpi)
+        #  print(self.fig.get_size_inches() * self.fig.dpi)
 
     # scroll wheel
     def wheelEvent(self, event):
@@ -413,6 +416,10 @@ class Dicom (FigureCanvas):
         plt.savefig(test[0])
 
 # --------------------- User Input---------------------------------------------------------------------------------
+'''
+This class manages the process of opening and loading files into the app 
+It creates an User Input Widget which always needs the window attribute in order to call some methods
+'''
 class UserInput(QFrame):
     filepath = ''  # IM-13020-0001.dcm
 
@@ -449,11 +456,17 @@ class UserInput(QFrame):
         self.inner2.addWidget(self.openbtn)
         self.layout.addLayout(self.inner)
         self.layout.addLayout(self.inner2)
+        self.layout.addStretch()
         self.setLayout(self.layout)
 
     def set_filepath(self):
         self.filepath = self.input.text()
         self.check_and_set_filepath()
+
+    '''
+    this is the main method that starts the whole process of checking for the right data to display 
+    and calling all necessary methods
+    '''
 
     def check_and_set_filepath(self):
         if os.path.exists(self.filepath):
@@ -461,6 +474,7 @@ class UserInput(QFrame):
                 #print("this ist the study path: " + self.filepath)
                 self.window.dataArray = self.loadData()
                 self.layout.removeWidget(self.errorText)
+                print(self.layout.children())
                 self.window.reset_after_changes()
                 if not self.window.validDataset:
                     self.window.validDataset = True
@@ -471,7 +485,9 @@ class UserInput(QFrame):
         else:
             self.layout.insertWidget(1, self.errorText)
             self.errorText.setText("not a valid path")
-
+    '''
+    check for DICOM file suffix as well as the structure of nested directories with up to 3 layers
+    '''
     def check_file(self, file):
         if os.path.isdir(file):
             slices = os.listdir(file)  # list of all names of all slices
@@ -501,6 +517,9 @@ class UserInput(QFrame):
         self.filepath = file_name
         self.check_and_set_filepath()
 
+    '''
+    load all pixel Data into an array called data[slice][frame]
+    '''
     def loadData(self):
         data = []
         if not os.path.isdir(self.filepath):
@@ -616,6 +635,12 @@ class MediaBar(QWidget):
 
 
 # this class creates a widget that contains all necessary data about the current slice
+'''
+(0028, 0010) Rows
+(0028, 0011) Columns
+(0018, 0050) Slice Thickness
+(0020, 1041) Slice Location 
+'''
 class Data(QWidget):
 
     def __init__(self, window):

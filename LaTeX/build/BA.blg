@@ -1,15 +1,17 @@
 [0] Config.pm:311> INFO - This is Biber 2.16
 [0] Config.pm:314> INFO - Logfile is 'build/BA.blg'
-[95] biber-darwin:340> INFO - === Fri Aug 13, 2021, 17:38:42
-[117] Biber.pm:415> INFO - Reading 'build/BA.bcf'
-[230] Biber.pm:952> INFO - Found 7 citekeys in bib section 0
-[246] Biber.pm:4340> INFO - Processing section 0
-[259] Biber.pm:4531> INFO - Looking for bibtex format file 'Literature.bib' for section 0
-[263] bibtex.pm:1689> INFO - LaTeX decoding ...
-[323] bibtex.pm:1494> INFO - Found BibTeX data source 'Literature.bib'
-[412] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[412] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
-[412] Biber.pm:4168> INFO - Sorting list 'nty/global//global/global' of type 'entry' with template 'nty' and locale 'en-US'
-[412] Biber.pm:4174> INFO - No sort tailoring available for locale 'en-US'
-[426] bbl.pm:654> INFO - Writing 'build/BA.bbl' with encoding 'UTF-8'
-[432] bbl.pm:757> INFO - Output to build/BA.bbl
+[115] biber-darwin:340> INFO - === Mon Aug 16, 2021, 18:43:54
+[141] Biber.pm:415> INFO - Reading 'build/BA.bcf'
+[271] Biber.pm:952> INFO - Found 8 citekeys in bib section 0
+[291] Biber.pm:4340> INFO - Processing section 0
+[304] Biber.pm:4531> INFO - Looking for bibtex format file 'Literature.bib' for section 0
+[308] bibtex.pm:1689> INFO - LaTeX decoding ...
+[380] bibtex.pm:1494> INFO - Found BibTeX data source 'Literature.bib'
+[471] Utils.pm:395> WARN - ISBN '978-3-030-14441-8 978-3-030-14442-5' in entry 'lineyMRIRadiotherapyPlanning2019' is invalid - run biber with '--validate_datamodel' for details.
+[508] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[508] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[508] Biber.pm:4168> INFO - Sorting list 'nty/global//global/global' of type 'entry' with template 'nty' and locale 'en-US'
+[508] Biber.pm:4174> INFO - No sort tailoring available for locale 'en-US'
+[524] bbl.pm:654> INFO - Writing 'build/BA.bbl' with encoding 'UTF-8'
+[531] bbl.pm:757> INFO - Output to build/BA.bbl
+[531] Biber.pm:128> INFO - WARNINGS: 1

@@ -47,28 +47,42 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {4.3}Labeling}{8}{section.4.3}%
 \defcounter {refsection}{0}\relax 
+\contentsline {subparagraph}{single point selection}{8}{section*.7}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subparagraph}{multiple point selection}{8}{section*.8}%
+\defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {4.3.1}Polygonal segmentation}{8}{subsection.4.3.1}%
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {4.3.2}Editing}{8}{subsection.4.3.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.4}Design}{8}{section.4.4}%
+\contentsline {subparagraph}{specify color map}{8}{section*.9}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.4.1}Layout of the application}{8}{subsection.4.4.1}%
+\contentsline {subparagraph}{edit labeling}{9}{section*.10}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.4.2}Simplicity}{8}{subsection.4.4.2}%
+\contentsline {subparagraph}{change contrast}{9}{section*.11}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subparagraph}{color palette}{8}{section*.7}%
+\contentsline {subparagraph}{export and save}{9}{section*.12}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subparagraph}{logos}{9}{section*.8}%
+\contentsline {subparagraph}{hide selections}{9}{section*.13}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {5}Evaluation}{10}{chapter.5}%
+\contentsline {section}{\numberline {4.4}Design}{9}{section.4.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {6}Recapitulation and Future possibilities}{11}{chapter.6}%
+\contentsline {subsection}{\numberline {4.4.1}Layout of the application}{9}{subsection.4.4.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{Sources}{12}{chapter.6}%
+\contentsline {subsection}{\numberline {4.4.2}Simplicity}{10}{subsection.4.4.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{List of abbreviations}{14}{chapter*.9}%
+\contentsline {subparagraph}{color palette}{10}{section*.14}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{List of images}{15}{appendix*.10}%
+\contentsline {subparagraph}{logos}{10}{section*.15}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{List of tables}{16}{appendix*.11}%
+\contentsline {chapter}{\numberline {5}Evaluation}{11}{chapter.5}%
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {6}Recapitulation and Future possibilities}{12}{chapter.6}%
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{Sources}{13}{chapter.6}%
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{List of abbreviations}{15}{chapter*.16}%
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{List of images}{16}{appendix*.17}%
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{List of tables}{17}{appendix*.18}%
