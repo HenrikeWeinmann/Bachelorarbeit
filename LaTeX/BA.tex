@@ -1,0 +1,261 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% LaTeX-Rahmen fuer das Erstellen von Masterarbeiten
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% allgemeine Einstellungen
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%!TeX spellcheck = en-GB
+\documentclass[12pt,a4paper]{report}
+\usepackage[utf8]{inputenc}
+
+\usepackage{amsmath}
+\usepackage[scaled=0.92]{helvet}
+\usepackage[scaled=1.1]{nimbusmononarrow}
+\usepackage[T1]{fontenc}
+\usepackage{eurosym}
+\usepackage[ngerman, english]{babel}
+\usepackage{biblatex}
+\usepackage{csquotes}
+\addbibresource{Literature.bib}
+\usepackage{graphics, graphicx}
+\usepackage[margin=10pt,font=small,labelfont=bf]{caption}
+\usepackage{sistyle}
+\usepackage{latexsym}
+\usepackage{hyperref}
+\usepackage[textwidth=14cm,textheight=22cm]{geometry}
+\usepackage{wrapfig}
+
+%\footskip 2cm
+\parskip 0.5ex plus 0.1ex minus 0.1ex
+%\parindent0pt
+
+
+% Kann nach persönlichem Geschmack verändert werden.
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhead[LO,RE]{\textsl{\nouppercase{\leftmark}}}
+\fancyhead[LE,RO]{\thepage}
+\fancyfoot{}
+
+%\fancyhead[LE,RO]{\textsl{\rightmark}}
+
+
+% Kommentar-Style zum Einfügen von To-Do's Befehle: \todo , \note und \listoftodos
+\usepackage[textsize=footnotesize,textwidth=0.8in]{todonotes} % Kommentare einschalten
+%\usepackage[disable]{todonotes} % Kommentarausgabe ausschalten
+\setlength{\marginparwidth}{0.8in} % Abstand vom Rand
+\newcommand{\note}{\todo[inline,color=yellow,caption={}]} %Notiz über volle Seitenbreite
+
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% hier steht die neue Titelseite
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{titlepage}
+ \begin{center}
+  {\LARGE Eberhard Karls Universität Tübingen}\\
+  {\large Mathematisch-Naturwissenschaftliche Fakultät\\
+  Fachbereich Informatik\\[2cm]}
+  {\Huge\bf  MR-LINAC and CINE\\[1.5cm]}
+{\Large\bf A viewing platform for 4d medical images with extensive labeling functionality\\[0.8cm]}
+  {\Large Bachelorthesis Medical Informatics\\[3.0cm]}
+  {\Large Henrike Sophie Weinmann}\\[0.5cm]
+  Datum\\[3cm]
+{\small\bf Marcel Früh}\\[1.0cm]
+  \parbox{7cm}{\begin{center}{
+  	\large Prof. Dr. rer. nat. Andreas Schilling}\\
+	  Visual Computing\\
+	  Fachbereich Informatik\\
+	  Universität Tübingen
+	  \end{center}}\hfill\parbox{7cm}{\begin{center}
+  {\large Name Zweitgutachter}\\
+	  Arbeitsbereich\\
+	  Fachbereich Informatik\\
+	  Universität Tübingen \end{center}
+ }
+  \end{center}
+\end{titlepage}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Titelrückseite: Bibliographische Angaben
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty}
+\vspace*{\fill}
+\begin{minipage}{11.2cm}
+\textbf{Weinmann, Henrike:}\\
+\emph{MR-LINAC and CINE, A viewing platform for 4d medical images with extensive labeling functionality}\\ Bachelorthesis Medical Informatics\\
+Eberhard Karls Universit"at T"ubingen\\
+Bearbeitungszeitraum: May 2021-bis
+\end{minipage}
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\pagenumbering{roman}
+\setcounter{page}{1}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Seite I: Zusammenfassug, Danksagung
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\thispagestyle{plain}
+\section*{Abstract}
+
+MR guided radiotherapy has become a standard when treating cancer. The alternative to an operative removal of the tumor uses radiation, created by a linear accelerator (LINAC). MR-LINAC improves the accuracy of radiation by combining a LINAC with an MR imaging system. Magnetic resonance imaging (MRI) is optimal for viewing soft tissue such as most organs in the human body. It is also an important tool for detecting tumors in soft tissue such as the lungs and heart.
+The CINE MRI technology makes it possible to observe a slice through a patient over a period of time.
+This makes it easier to detect the margins of a structure and therefore decreases the risk of damaging tissue surrounding a tumor during treatment.
+To be able to use those technologies to their full extent, a viewing platform is needed.
+\newpage
+
+
+\thispagestyle{plain}
+\section*{Danksagung}
+
+Hier kommen die Danksagungen hin (falls gewünscht)!!!
+
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Erklaerung
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\thispagestyle{empty}
+\section*{Selbständigkeitserklärung}
+
+%Hiermit versichere ich, dass ich die vorliegende Masterarbeit selbständig und nur mit den angegebenen Hilfsmitteln angefertigt habe und dass alle Stellen, die dem Wortlaut oder dem Sinne nach anderen Werken entnommen sind, durch Angaben von Quellen als Entlehnung kenntlich gemacht worden sind. Diese Masterarbeit wurde in gleicher oder ähnlicher Form in keinem anderen Studiengang als Prüfungsleistung vorgelegt.
+
+% Erklärung aus dem Formular zur Anmeldung einer Bachelor-, Master- oder Diplomarbeit
+% http://www.uni-tuebingen.de/fakultaeten/mathematisch-naturwissenschaftliche-fakultaet/fachbereiche/informatik/studium/downloads/allgemein-und-formulare.html
+Hereby, I declare that I have composed the presented paper independently on my own and without any other resources than the ones indicated. All thoughts taken directly or indirectly from external sources are properly denoted as such.
+
+This paper has neither been previously submitted to another authority nor has it been published yet.
+\vskip 3cm
+
+Place, Date	\hfill Signature \hfill
+
+Hiermit erkläre ich, dass ich diese schriftliche Abschlussarbeit selbständig verfasst habe,
+keine anderen als die angegebenen Hilfsmittel und Quellen benutzt habe und alle wörtlich
+oder sinngemäß aus anderen Werken übernommenen Aussagen als solche gekennzeichnet
+habe.
+Datum, Ort, \hfill Unterschrift \hfill
+
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Inhaltsverzeichnis
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\renewcommand{\baselinestretch}{1.3}
+\small\normalsize
+
+\tableofcontents
+
+\renewcommand{\baselinestretch}{1}
+\small\normalsize
+
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Der Haupttext, ab hier mit arabischer Numerierung
+%%% Mit \input{dateiname} werden die Datei `dateiname' eingebunden
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\pagenumbering{arabic}
+\setcounter{page}{1}
+
+%% Introduction
+\input{Introduction}
+\newpage
+
+%%
+\input{Medical_Data_and_imaging}
+\newpage
+
+%%
+\input{State_of_the_art}
+\newpage
+
+%%
+\input{Concept}
+\newpage
+
+%%
+\input{Evaluation}
+\newpage
+
+%%
+\input{Recapitulation_and_future_possibilities}
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Bibliographie
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\addcontentsline{toc}{chapter}{Sources}
+\printbibliography
+
+
+%% Verwende jetzt Biblatex.
+
+\newpage
+\appendix
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Abk"urzungsverzeichnis
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\addcontentsline{toc}{chapter}{List of abbreviations}
+\chapter*{List of abbreviations}
+
+\begin{tabbing}
+	\textbf{FACTOTUM}\hspace{1cm}\=Schrott\kill
+    \textbf{AI}\>Artificial intelligence  \\
+	\textbf{LINAC}\>Linear accelerator \\
+    \textbf{IGRT}\>Image guided radiotherapy  \\
+	\textbf{MRI} \> Magnetic Resonance Imaging\\
+    \textbf{RF} \> Radio Frequency\\
+    \textbf{PACS} \> Picture Archiving and Communication System\\
+    \textbf{SRS} \> Stereotactic radiosurgery\\
+    \textbf{GTV} \> Gross tumor volume\\
+    \textbf{OAR} \> Organs at risk\\
+\end{tabbing}
+
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Abbildungsverzeichnis
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\renewcommand{\baselinestretch}{1.3}
+\small\normalsize
+
+\addcontentsline{toc}{chapter}{List of images}
+\listoffigures
+
+\renewcommand{\baselinestretch}{1}
+\small\normalsize
+
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Tabellenverzeichnis
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\renewcommand{\baselinestretch}{1.3}
+\small\normalsize
+
+\addcontentsline{toc}{chapter}{List of tables}
+\listoftables
+
+\renewcommand{\baselinestretch}{1}
+\small\normalsize
+
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% End
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}

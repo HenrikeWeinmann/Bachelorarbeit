@@ -1,0 +1,88 @@
+\boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
+\babel@toc {english}{}
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {2}Medical Data and imaging}{2}{chapter.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {2.1}DICOM Format}{2}{section.2.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {2.2}Image Aquisition}{2}{section.2.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.2.1}2d Slices}{3}{subsection.2.2.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.2.2}3d Volumetric imaging}{3}{subsection.2.2.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.2.3}4d medical imaging}{3}{subsection.2.2.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {2.3}Image-guided therapy}{4}{section.2.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.3.1}planning}{4}{subsection.2.3.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.3.2}radiotherapy and LINAC}{4}{subsection.2.3.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {3}State of the art}{5}{chapter.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {3.1}Viewers for medical images}{5}{section.3.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.1.1}proprietary DICOM viewers}{5}{subsection.3.1.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.1.2}Third party DICOM viewers}{5}{subsection.3.1.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {3.2}Image labeling and editing Software}{5}{section.3.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.2.1}Segmentation}{6}{subsection.3.2.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {4}A viewing platform for 4d image data}{7}{chapter.4}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {4.1}Goal}{7}{section.4.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {4.2}original approach}{7}{section.4.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {4.2.1}Loading data into the app}{7}{subsection.4.2.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {4.2.2}Displaying the DICOM images}{8}{subsection.4.2.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subparagraph}{Media bar}{8}{section*.6}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {4.3}Labeling}{8}{section.4.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subparagraph}{single point selection}{8}{section*.7}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subparagraph}{multiple point selection}{8}{section*.8}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {4.3.1}Polygonal segmentation}{8}{subsection.4.3.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {4.3.2}Editing}{8}{subsection.4.3.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subparagraph}{specify color map}{8}{section*.9}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subparagraph}{edit labeling}{9}{section*.10}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subparagraph}{change contrast}{9}{section*.11}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subparagraph}{export and save}{9}{section*.12}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subparagraph}{hide selections}{9}{section*.13}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {4.4}Design}{9}{section.4.4}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {4.4.1}Layout of the application}{9}{subsection.4.4.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {4.4.2}Simplicity}{10}{subsection.4.4.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subparagraph}{color palette}{10}{section*.14}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subparagraph}{logos}{10}{section*.15}%
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {5}Evaluation}{11}{chapter.5}%
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {6}Recapitulation and Future possibilities}{12}{chapter.6}%
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{Sources}{13}{chapter.6}%
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{List of abbreviations}{15}{chapter*.16}%
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{List of images}{16}{appendix*.17}%
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{List of tables}{17}{appendix*.18}%

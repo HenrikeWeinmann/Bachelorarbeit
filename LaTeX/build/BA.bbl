@@ -1,0 +1,437 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.1 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{nty/global//global/global}
+    \entry{ElsevierEnhancedReader}{online}{}
+      \field{sortinit}{E}
+      \field{sortinithash}{8da8a182d344d5b9047633dfc0cc9131}
+      \field{labeltitlesource}{title}
+      \field{langid}{english}
+      \field{title}{Elsevier {{Enhanced Reader}}}
+      \field{urlday}{9}
+      \field{urlmonth}{8}
+      \field{urlyear}{2021}
+      \field{urldateera}{ce}
+      \verb{doi}
+      \verb 10.1016/j.crad.2005.07.003
+      \endverb
+      \verb{file}
+      \verb /Users/Heni/Zotero/storage/DN8KXPIH/Elsevier Enhanced Reader.pdf;/Users/Heni/Zotero/storage/LK33D2P9/S0009926005002199.html
+      \endverb
+      \verb{urlraw}
+      \verb https://reader.elsevier.com/reader/sd/pii/S0009926005002199?token=E91C1EEF68066558A1FC3643CFF3FA302C75FD56F2348337AE917AE2335411C54F98910EB368F0E308F3D3BDEED81ACA&originRegion=eu-west-1&originCreation=20210809151919
+      \endverb
+      \verb{url}
+      \verb https://reader.elsevier.com/reader/sd/pii/S0009926005002199?token=E91C1EEF68066558A1FC3643CFF3FA302C75FD56F2348337AE917AE2335411C54F98910EB368F0E308F3D3BDEED81ACA&originRegion=eu-west-1&originCreation=20210809151919
+      \endverb
+    \endentry
+    \entry{heckelSketchBasedEditingTools2013}{article}{}
+      \name{author}{4}{}{%
+        {{hash=9b061c09c94ca5e2fb83b4ed361e6853}{%
+           family={Heckel},
+           familyi={H\bibinitperiod},
+           given={Frank},
+           giveni={F\bibinitperiod}}}%
+        {{hash=ac49504197ac31d3996fed0eab4bc668}{%
+           family={Moltz},
+           familyi={M\bibinitperiod},
+           given={Jan\bibnamedelima H.},
+           giveni={J\bibinitperiod\bibinitdelim H\bibinitperiod}}}%
+        {{hash=f97a708aa43c17d5588e4c0a773fa32a}{%
+           family={Tietjen},
+           familyi={T\bibinitperiod},
+           given={Christian},
+           giveni={C\bibinitperiod}}}%
+        {{hash=a8ae80c3db7be10eb2372a3fa1f3ce06}{%
+           family={Hahn},
+           familyi={H\bibinitperiod},
+           given={Horst\bibnamedelima K.},
+           giveni={H\bibinitperiod\bibinitdelim K\bibinitperiod}}}%
+      }
+      \strng{namehash}{bbaf89e94236d49dc85ee3715d840045}
+      \strng{fullhash}{7eef52629d4280c2dbca755a2b61af45}
+      \strng{bibnamehash}{bbaf89e94236d49dc85ee3715d840045}
+      \strng{authorbibnamehash}{bbaf89e94236d49dc85ee3715d840045}
+      \strng{authornamehash}{bbaf89e94236d49dc85ee3715d840045}
+      \strng{authorfullhash}{7eef52629d4280c2dbca755a2b61af45}
+      \field{sortinit}{H}
+      \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{In the past years sophisticated automatic segmentation algorithms for various medical image segmentation problems have been developed. However, there are always cases where automatic algorithms fail to provide an acceptable segmentation. In these cases the user needs efficient segmentation editing tools, a problem which has not received much attention in research. We give a comprehensive overview on segmentation editing for three-dimensional (3D) medical images. For segmentation editing in two-dimensional (2D) images, we discuss a sketch-based approach where the user modifies the segmentation in the contour domain. Based on this 2D interface, we present an image-based as well as an image-independent method for intuitive and efficient segmentation editing in 3D in the context of tumour segmentation in computed tomography (CT). Our editing tools have been evaluated on a database containing 1226 representative liver metastases, lung nodules and lymph nodes of different shape, size and image quality. In addition, we have performed a qualitative evaluation with radiologists and technical experts, proving the efficiency of our tools.}
+      \field{annotation}{\_eprint: https://onlinelibrary.wiley.com/doi/pdf/10.1111/cgf.12193}
+      \field{issn}{1467-8659}
+      \field{journaltitle}{Computer Graphics Forum}
+      \field{number}{8}
+      \field{title}{Sketch-{{Based Editing Tools}} for {{Tumour Segmentation}} in {{3D Medical Images}}}
+      \field{urlday}{13}
+      \field{urlmonth}{8}
+      \field{urlyear}{2021}
+      \field{volume}{32}
+      \field{year}{2013}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \field{pages}{144\bibrangedash 157}
+      \range{pages}{14}
+      \verb{doi}
+      \verb 10.1111/cgf.12193
+      \endverb
+      \verb{file}
+      \verb /Users/Heni/Zotero/storage/68SFS57G/Heckel et al. - 2013 - Sketch-Based Editing Tools for Tumour Segmentation.pdf;/Users/Heni/Zotero/storage/EVQGPP9X/cgf.html
+      \endverb
+      \verb{urlraw}
+      \verb https://onlinelibrary.wiley.com/doi/abs/10.1111/cgf.12193
+      \endverb
+      \verb{url}
+      \verb https://onlinelibrary.wiley.com/doi/abs/10.1111/cgf.12193
+      \endverb
+      \keyw{3D,and object representations,Computer Graphics I.3.5: Computational Geometry and Object ModellingCurve,Computer Graphics I.3.6: Methodology and TechniquesInteraction techniques,contours,correction,CT,editing,Image Processing and Computer Vision I.4.6: Segmentation,interaction,segmentation,sketching,solid,surface}
+    \endentry
+    \entry{johnson2DMultislice3D1999}{article}{}
+      \name{author}{3}{}{%
+        {{hash=b4487219abe47440d43ebbd72ec5246c}{%
+           family={Johnson},
+           familyi={J\bibinitperiod},
+           given={Glyn},
+           giveni={G\bibinitperiod}}}%
+        {{hash=c91ef423f1f2e56c8a5164384982e75d}{%
+           family={Wadghiri},
+           familyi={W\bibinitperiod},
+           given={Youssef\bibnamedelima Zain},
+           giveni={Y\bibinitperiod\bibinitdelim Z\bibinitperiod}}}%
+        {{hash=6f29bfa623f6c67f3eda27e8c82068dc}{%
+           family={Turnbull},
+           familyi={T\bibinitperiod},
+           given={Daniel\bibnamedelima H.},
+           giveni={D\bibinitperiod\bibinitdelim H\bibinitperiod}}}%
+      }
+      \strng{namehash}{a8b7ff050e2546e45a6927261f5109eb}
+      \strng{fullhash}{a8b7ff050e2546e45a6927261f5109eb}
+      \strng{bibnamehash}{a8b7ff050e2546e45a6927261f5109eb}
+      \strng{authorbibnamehash}{a8b7ff050e2546e45a6927261f5109eb}
+      \strng{authornamehash}{a8b7ff050e2546e45a6927261f5109eb}
+      \strng{authorfullhash}{a8b7ff050e2546e45a6927261f5109eb}
+      \field{sortinit}{J}
+      \field{sortinithash}{b2f54a9081ace9966a7cb9413811edb4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{A simple theoretical model was developed to compare the sensitivities (i.e., signal-to-noise ratios per unit imaging time) of two-dimensional (2D) multislice and 3D imaging sequences. The model shows that the sensitivities of 3D and 2D multislice MRI sequences are usually similar. Sensitivities are identical in T2-weighted sequences when the TRs of the two sequences are the same. In T1-weighted gradient-echo sequences, sensitivities are very similar when Ernst angle excitation is used and the TR of the 2D sequence is less than T1. The predictions of the model are confirmed in phantom and animal experiments. Magn Reson Med 41:824–828, 1999. © 1999 Wiley-Liss, Inc.}
+      \field{annotation}{\_eprint: https://onlinelibrary.wiley.com/doi/pdf/10.1002/\%28SICI\%291522-2594\%28199904\%2941\%3A4\%3C824\%3A\%3AAID-MRM23\%3E3.0.CO\%3B2-1}
+      \field{issn}{1522-2594}
+      \field{journaltitle}{Magnetic Resonance in Medicine}
+      \field{langid}{english}
+      \field{number}{4}
+      \field{title}{{{2D}} Multislice and {{3D MRI}} Sequences Are Often Equally Sensitive}
+      \field{urlday}{10}
+      \field{urlmonth}{8}
+      \field{urlyear}{2021}
+      \field{volume}{41}
+      \field{year}{1999}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \field{pages}{824\bibrangedash 828}
+      \range{pages}{5}
+      \verb{doi}
+      \verb 10.1002/(SICI)1522-2594(199904)41:4<824::AID-MRM23>3.0.CO;2-1
+      \endverb
+      \verb{file}
+      \verb /Users/Heni/Zotero/storage/RGGW3YL4/Johnson et al. - 1999 - 2D multislice and 3D MRI sequences are often equal.pdf;/Users/Heni/Zotero/storage/AA83SNCR/(SICI)1522-2594(199904)414824AID-MRM233.0.html
+      \endverb
+      \verb{urlraw}
+      \verb https://onlinelibrary.wiley.com/doi/abs/10.1002/%28SICI%291522-2594%28199904%2941%3A4%3C824%3A%3AAID-MRM23%3E3.0.CO%3B2-1
+      \endverb
+      \verb{url}
+      \verb https://onlinelibrary.wiley.com/doi/abs/10.1002/%28SICI%291522-2594%28199904%2941%3A4%3C824%3A%3AAID-MRM23%3E3.0.CO%3B2-1
+      \endverb
+      \keyw{MRI,sensitivity,signal-to-noise ratio}
+    \endentry
+    \entry{lineyMRIRadiotherapyPlanning2019}{book}{useprefix=true}
+      \name{editor}{2}{}{%
+        {{hash=46e9f6431c0ec92e416f4bb134dbc142}{%
+           family={Liney},
+           familyi={L\bibinitperiod},
+           given={Gary},
+           giveni={G\bibinitperiod}}}%
+        {{hash=67450f932a0e0d91ff7a3f2f9cd898e8}{%
+           family={Heide},
+           familyi={H\bibinitperiod},
+           given={Uulke},
+           giveni={U\bibinitperiod},
+           prefix={van\bibnamedelima der},
+           prefixi={v\bibinitperiod\bibinitdelim d\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Cham}%
+      }
+      \list{publisher}{1}{%
+        {Springer International Publishing}%
+      }
+      \strng{namehash}{707d69282090ead126cc63656af69513}
+      \strng{fullhash}{707d69282090ead126cc63656af69513}
+      \strng{bibnamehash}{707d69282090ead126cc63656af69513}
+      \strng{editorbibnamehash}{707d69282090ead126cc63656af69513}
+      \strng{editornamehash}{707d69282090ead126cc63656af69513}
+      \strng{editorfullhash}{707d69282090ead126cc63656af69513}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{labelnamesource}{editor}
+      \field{labeltitlesource}{shorttitle}
+      \field{isbn}{978-3-030-14441-8 978-3-030-14442-5}
+      \field{langid}{english}
+      \field{shorttitle}{{{MRI}} for {{Radiotherapy}}}
+      \field{title}{{{MRI}} for {{Radiotherapy}}: {{Planning}}, {{Delivery}}, and {{Response Assessment}}}
+      \field{urlday}{4}
+      \field{urlmonth}{8}
+      \field{urlyear}{2021}
+      \field{year}{2019}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \verb{doi}
+      \verb 10.1007/978-3-030-14442-5
+      \endverb
+      \verb{file}
+      \verb /Users/Heni/Zotero/storage/NVFXZM69/Liney und van der Heide - 2019 - MRI for Radiotherapy Planning, Delivery, and Resp.pdf
+      \endverb
+      \verb{urlraw}
+      \verb http://link.springer.com/10.1007/978-3-030-14442-5
+      \endverb
+      \verb{url}
+      \verb http://link.springer.com/10.1007/978-3-030-14442-5
+      \endverb
+    \endentry
+    \entry{MagneticResonanceImaging}{online}{}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{labeltitlesource}{title}
+      \field{title}{Magnetic {{Resonance Imaging}} ({{MRI}})}
+      \field{urlday}{10}
+      \field{urlmonth}{8}
+      \field{urlyear}{2021}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb /Users/Heni/Zotero/storage/SRHYCPA3/magnetic-resonance-imaging-mri.html
+      \endverb
+      \verb{urlraw}
+      \verb https://www.nibib.nih.gov/science-education/science-topics/magnetic-resonance-imaging-mri
+      \endverb
+      \verb{url}
+      \verb https://www.nibib.nih.gov/science-education/science-topics/magnetic-resonance-imaging-mri
+      \endverb
+    \endentry
+    \entry{vangeunsBasicPrinciplesMagnetic1999}{article}{useprefix=true}
+      \name{author}{8}{}{%
+        {{hash=2f06f4af93f42c7d4c8411b915173044}{%
+           family={Geuns},
+           familyi={G\bibinitperiod},
+           given={Robert-Jan\bibnamedelima M.},
+           giveni={R\bibinithyphendelim J\bibinitperiod\bibinitdelim M\bibinitperiod},
+           prefix={van},
+           prefixi={v\bibinitperiod}}}%
+        {{hash=df2a6b5b941be77c932a7644a3ba945b}{%
+           family={Wielopolski},
+           familyi={W\bibinitperiod},
+           given={Piotr\bibnamedelima A.},
+           giveni={P\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+        {{hash=9c77c48739b59303a98ad20ea543ab88}{%
+           family={Bruin},
+           familyi={B\bibinitperiod},
+           given={Hein\bibnamedelima G.},
+           giveni={H\bibinitperiod\bibinitdelim G\bibinitperiod},
+           prefix={de},
+           prefixi={d\bibinitperiod}}}%
+        {{hash=a4a0e3f12b75ac803ef31e0a01515697}{%
+           family={Rensing},
+           familyi={R\bibinitperiod},
+           given={Benno\bibnamedelima J.},
+           giveni={B\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+        {{hash=54482ec824a9935d9ce1c283809b17da}{%
+           family={Ooijen},
+           familyi={O\bibinitperiod},
+           given={Peter\bibnamedelimb M.\bibnamedelimi A.},
+           giveni={P\bibinitperiod\bibinitdelim M\bibinitperiod\bibinitdelim A\bibinitperiod},
+           prefix={van},
+           prefixi={v\bibinitperiod}}}%
+        {{hash=0c77a45664f9edf77e28181652d0da85}{%
+           family={Hulshoff},
+           familyi={H\bibinitperiod},
+           given={Marc},
+           giveni={M\bibinitperiod}}}%
+        {{hash=f42c7952bd46bc309695203cad975bcd}{%
+           family={Oudkerk},
+           familyi={O\bibinitperiod},
+           given={Matthijs},
+           giveni={M\bibinitperiod}}}%
+        {{hash=8922333b3467be14554247512e6d07c3}{%
+           family={Feyter},
+           familyi={F\bibinitperiod},
+           given={Pim\bibnamedelima J.},
+           giveni={P\bibinitperiod\bibinitdelim J\bibinitperiod},
+           prefix={de},
+           prefixi={d\bibinitperiod}}}%
+      }
+      \strng{namehash}{44ceeea5f3ac69f5afbefc8d1f0ba07b}
+      \strng{fullhash}{8b1a92ff2a359d72ed2e8b9e4adccd86}
+      \strng{bibnamehash}{44ceeea5f3ac69f5afbefc8d1f0ba07b}
+      \strng{authorbibnamehash}{44ceeea5f3ac69f5afbefc8d1f0ba07b}
+      \strng{authornamehash}{44ceeea5f3ac69f5afbefc8d1f0ba07b}
+      \strng{authorfullhash}{8b1a92ff2a359d72ed2e8b9e4adccd86}
+      \field{sortinit}{v}
+      \field{sortinithash}{afb52128e5b4dc4b843768c0113d673b}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Magnetic resonance imaging (MRI) is a noninvasive imaging technique that is becoming more and more important in clinical cardiology. Physicians must understand the basic principles of MRI before reliable use in practice is possible. Therefore, we will give an introduction to basic MRI principles necessary to understand the difficulties of cardiac MRI. First the generation of a signal by the combination of a strong magnetic field, radiofrequency pulses, and temporary changes in the magnetic field is explained. Then, the processes of localization of different points in an image, resolution, and signal-to-noise ratio are highlighted. Finally, the influence of tissue characteristics such as T1 and T2 on the contrast of an image are discussed. Copyright © 1999 by W.B. Saunders Company Progress in Cardiovascular Diseases, Vol. 42, No. 2 (September/October), 1999: pp 149-156}
+      \field{day}{1}
+      \field{issn}{0033-0620}
+      \field{journaltitle}{Progress in Cardiovascular Diseases}
+      \field{langid}{english}
+      \field{month}{9}
+      \field{number}{2}
+      \field{series}{Advances in {{Coronary Imaging}}}
+      \field{shortjournal}{Progress in Cardiovascular Diseases}
+      \field{title}{Basic Principles of Magnetic Resonance Imaging}
+      \field{urlday}{10}
+      \field{urlmonth}{8}
+      \field{urlyear}{2021}
+      \field{volume}{42}
+      \field{year}{1999}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \field{pages}{149\bibrangedash 156}
+      \range{pages}{8}
+      \verb{doi}
+      \verb 10.1016/S0033-0620(99)70014-9
+      \endverb
+      \verb{file}
+      \verb /Users/Heni/Zotero/storage/VRHKFXJB/van Geuns et al. - 1999 - Basic principles of magnetic resonance imaging.pdf;/Users/Heni/Zotero/storage/RKBDV2MY/S0033062099700149.html
+      \endverb
+      \verb{urlraw}
+      \verb https://www.sciencedirect.com/science/article/pii/S0033062099700149
+      \endverb
+      \verb{url}
+      \verb https://www.sciencedirect.com/science/article/pii/S0033062099700149
+      \endverb
+    \endentry
+    \entry{varmaFreeDICOMBrowsers2008}{article}{}
+      \name{author}{1}{}{%
+        {{hash=0103557625597edb85a6b432f5c955b4}{%
+           family={Varma},
+           familyi={V\bibinitperiod},
+           given={Dandu\bibnamedelima Ravi},
+           giveni={D\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
+      }
+      \strng{namehash}{0103557625597edb85a6b432f5c955b4}
+      \strng{fullhash}{0103557625597edb85a6b432f5c955b4}
+      \strng{bibnamehash}{0103557625597edb85a6b432f5c955b4}
+      \strng{authorbibnamehash}{0103557625597edb85a6b432f5c955b4}
+      \strng{authornamehash}{0103557625597edb85a6b432f5c955b4}
+      \strng{authorfullhash}{0103557625597edb85a6b432f5c955b4}
+      \field{extraname}{1}
+      \field{sortinit}{V}
+      \field{sortinithash}{afb52128e5b4dc4b843768c0113d673b}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{eprinttype}{pmid}
+      \field{issn}{0971-3026}
+      \field{journaltitle}{The Indian Journal of Radiology \& Imaging}
+      \field{month}{2}
+      \field{number}{1}
+      \field{shortjournal}{Indian J Radiol Imaging}
+      \field{title}{Free {{DICOM}} Browsers}
+      \field{urlday}{13}
+      \field{urlmonth}{8}
+      \field{urlyear}{2021}
+      \field{volume}{18}
+      \field{year}{2008}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \field{pages}{12\bibrangedash 16}
+      \range{pages}{5}
+      \verb{doi}
+      \verb 10.4103/0971-3026.38503
+      \endverb
+      \verb{eprint}
+      \verb null
+      \endverb
+      \verb{file}
+      \verb /Users/Heni/Zotero/storage/KF58T9LY/Varma - 2008 - Free DICOM browsers.pdf
+      \endverb
+      \verb{urlraw}
+      \verb https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2766899/
+      \endverb
+      \verb{url}
+      \verb https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2766899/
+      \endverb
+    \endentry
+    \entry{varmaManagingDICOMImages2012}{article}{}
+      \name{author}{1}{}{%
+        {{hash=0103557625597edb85a6b432f5c955b4}{%
+           family={Varma},
+           familyi={V\bibinitperiod},
+           given={Dandu\bibnamedelima Ravi},
+           giveni={D\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
+      }
+      \strng{namehash}{0103557625597edb85a6b432f5c955b4}
+      \strng{fullhash}{0103557625597edb85a6b432f5c955b4}
+      \strng{bibnamehash}{0103557625597edb85a6b432f5c955b4}
+      \strng{authorbibnamehash}{0103557625597edb85a6b432f5c955b4}
+      \strng{authornamehash}{0103557625597edb85a6b432f5c955b4}
+      \strng{authorfullhash}{0103557625597edb85a6b432f5c955b4}
+      \field{extraname}{2}
+      \field{sortinit}{V}
+      \field{sortinithash}{afb52128e5b4dc4b843768c0113d673b}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{abstract}{All modalities in radiology practice have become digital, and therefore deal with DICOM images. Image files that are compliant with part 10 of the DICOM standard are generally referred to as “DICOM format files” or simply “DICOM files” and are represented as “.dcm.” DICOM differs from other image formats in that it groups information into data sets. A DICOM file consists of a header and image data sets packed into a single file. The information within the header is organized as a constant and standardized series of tags. By extracting data from these tags one can access important information regarding the patient demographics, study parameters, etc. In the interest of patient confidentiality, all information that can be used to identify the patient should be removed before DICOM images are transmitted over a network for educational or other purposes. In addition to the DICOM format, the radiologist routinely encounters images of several file formats such as JPEG, TIFF, GIF, and PNG. Each format has its own unique advantages and disadvantages, which must be taken into consideration when images are archived, used in teaching files, or submitted for publication. Knowledge about these formats and their attributes, such as image resolution, image compression, and image metadata, helps the radiologist in optimizing the archival, organization, and display of images. This article aims to increase the awareness among radiologists regarding DICOM and other image file formats encountered in clinical practice. It also suggests several tips and tricks that can be used by the radiologist so that the digital potential of these images can be fully utilized for maximization of workflow in the radiology practice.}
+      \field{eprinttype}{pmid}
+      \field{issn}{0971-3026}
+      \field{journaltitle}{The Indian Journal of Radiology \& Imaging}
+      \field{number}{1}
+      \field{shortjournal}{Indian J Radiol Imaging}
+      \field{shorttitle}{Managing {{DICOM}} Images}
+      \field{title}{Managing {{DICOM}} Images: {{Tips}} and Tricks for the Radiologist}
+      \field{urlday}{13}
+      \field{urlmonth}{8}
+      \field{urlyear}{2021}
+      \field{volume}{22}
+      \field{year}{2012}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \field{pages}{4\bibrangedash 13}
+      \range{pages}{10}
+      \verb{doi}
+      \verb 10.4103/0971-3026.95396
+      \endverb
+      \verb{eprint}
+      \verb 22623808
+      \endverb
+      \verb{file}
+      \verb /Users/Heni/Zotero/storage/CTHYEE2H/Varma - 2012 - Managing DICOM images Tips and tricks for the rad.pdf
+      \endverb
+      \verb{urlraw}
+      \verb https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3354356/
+      \endverb
+      \verb{url}
+      \verb https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3354356/
+      \endverb
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+

@@ -1,0 +1,66 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Concept
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter{A viewing platform for 4d image data}
+  \label{A viewing platform for 4d image data}
+  \section{Goal}
+  The goal of this project, was to develop a viewing platform for MRI CINE data, which is easy to use and still provides useful editing and labeling tools. The focus was set on the labeling funcionality of the app which is supposed to give the user the option to mark ceratin places or areas. The app should be intuitively usable without a tutorial or a long learning phase. Given that most medical applications don't look very appealing, it also became a personal goal of mine to make this application look nice as well.
+
+\section{original approach}
+\label{original approach}
+To build the user interface I ended up using PyQt, as it works nicely with the other python modules in use. However, the first versions of the application's GUI were using a combination of VTK and PyQt. In these versions all user input was handeled by VTK which is a very powerful tool but doesn't necessarily work well together with the PyQt part of the app. Especially the newer versions of VTK and PyQt in conjunction caused more and more problems for me. After some thought, I decided to limit this project to 2d selections only, thus there was no need for a 3D Module anymore and I ended up using Matplotlib instead.
+
+
+\subsection{Loading data into the app}
+\label{Loading data into the app}
+To be able to view a data set, it first must be loaded into the app. My first approach was to load a folder via pathname, as no libraries or extra packages would be needed for that. However this method was not very userfriendly, because a single typo would lead to an error message. The solution was to open a directory or file with help of the os beneath. This was way more intuitive and also gave me the option to specify which kinds of data should be allowed to open. Although I had already checked for the correct suffix in the path, the QFileDialog Class had a useful feature that prevented the user from trying to open an unsuitable dataset.
+Since the main focus was to display CINE datasets, each set consistet of multiple slices and a number of different timesteps for each slice. To have full accesssiblity to the whole dataset at all times during the editing process, the first step was to load all image parts of the DICOM files into a multidimensional array.
+
+\subsection{Displaying the DICOM images}
+\label{Displaying the DICOM images}
+\subparagraph{Media bar}
+If the loaded data set were to contain multiple images in a folder, the app recognizes them as a CINE sequence and provides a media bar with the options to play the video or go through it frame by frame.
+This option is automatically removed when only a single image or only one image per slice ist provided.
+
+\section{Labeling}
+\label{Labeling}
+\subparagraph{single point selection}
+\subparagraph{multiple point selection}
+
+\subsection{Polygonal segmentation}
+\label{Polygonal segmentation}
+To make a 'multi point selection' better visible and also give the user the option to select an area rather than specific points, the option for polygonal segmentation was added.
+
+\subsection{Editing}
+\label{Editing}
+There are five main editing funcionalities. They don't alter the original image, but change how it is displayed as well as give the option to make changes.
+\subparagraph{specify color map}
+There are several different color maps available. The standard when opening the app being 'bone', which resembles the original look of an X-ray film. I chose this color map a the standard because most people will be used to the look. Still, it might not be the best option for some usecases which is why the option to chose another one exists.
+\subparagraph{edit labeling}
+As mentioned before, the user is able to make selections on the image. Sometimes a selection needs to be moved or completly deleted. There are a few different options available.
+\begin{itemize}
+    \item Clear all selections
+    \item Erase a specific selection
+    \item Move a selection
+\end{itemize}
+ \subparagraph{change contrast}
+ There are two ways to change the contrast. For a new user the slider in the image editing menu might be the most intuitive. However quite a few image viewers give the option to change the contrast via mouse as well. Although my intention was not to have any hidden features, this one was an exception since it is fairly established.
+\subparagraph{export and save}
+The 'export and save' function allows the user to save the current figure with all selections made to their computer.
+\subparagraph{hide selections}
+This fuction was needed to be able to quickly check the original image without loosing the already made selections. It also allows to save 2 Versions of the displayed image. One with selections and one without.
+\section{Design}
+\label{Design}
+Most applications have a very bland design and purely focus on usability. Since some of these apps are very old, the design of them doesn't match what some users might be used to from modern apps and therefore even hinder their usability. They can be very cluttered with no sense of hirarchy as to what is important for the user and what feature will only be useful every once in a while.
+
+\subsection{Layout of the application}
+\label{Layout of the application}
+When designing the app, I had a very modular style in mind. This way, it would be easy to add on to the existing app or simplify if needed. The main portion of the app would be the DICOM viewer, since it would be what needs to be displayed the largest in order to be useful.
+
+\subsection{Simplicity}
+\label{Simplicity}
+\subparagraph{color palette}
+In order to avoid to many clashing collors, I crated a monochromatic color palette. By using greys and blues of different saturation and brightness values the contrast between different texts and their background would still be given.
+\subparagraph{logos}
+All logos and buttons were designed by me to avoid any copyright issues. I tryed to match the rest of the application with rounded edges and matching colors.
