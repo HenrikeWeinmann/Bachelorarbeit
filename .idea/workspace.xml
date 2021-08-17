@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="8e406e9a-7129-4799-b3f3-c02ccd0c5d7c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GUIV2.py" beforeDir="false" afterPath="$PROJECT_DIR$/GUIV2.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Stylesheet.qss" beforeDir="false" afterPath="$PROJECT_DIR$/Stylesheet.qss" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -20,8 +18,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/GUIV2.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="606">
-              <caret line="596" column="31" selection-start-line="596" selection-start-column="31" selection-end-line="596" selection-end-column="31" />
+            <state relative-caret-position="175">
+              <caret line="594" column="43" lean-forward="true" selection-start-line="594" selection-start-column="43" selection-end-line="594" selection-end-column="43" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
@@ -76,7 +74,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds">
     <option name="x" value="84" />
     <option name="y" value="25" />
     <option name="width" value="2476" />
@@ -87,7 +85,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -99,14 +96,16 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="Git.Branch.Popup.ShowAllRemotes" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="restartRequiresConfirmation" value="false" />
-    <property name="settings.editor.selected.configurable" value="Errors" />
+    <property name="settings.editor.selected.configurable" value="preferences.general" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -299,13 +298,13 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.GUI" />
       <item itemvalue="Python.Bachelorarbeit" />
-      <item itemvalue="Python.loadFiles test" />
       <item itemvalue="Python.GUIV2" />
+      <item itemvalue="Python.GUI" />
       <item itemvalue="Python.UserInteraction" />
       <item itemvalue="Python.VTK DICOM Reader" />
       <item itemvalue="Python.VTK Test file" />
+      <item itemvalue="Python.loadFiles test" />
     </list>
   </component>
   <component name="SvnConfiguration">
@@ -318,13 +317,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1619447345414</updated>
-    </task>
-    <task id="LOCAL-00005" summary="Still not pretty code,but button alignment works">
-      <created>1619777642014</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1619777642014</updated>
     </task>
     <task id="LOCAL-00006" summary="VTK integrated in Test file, but switch to pyqt5">
       <created>1619819254091</created>
@@ -662,7 +654,14 @@
       <option name="project" value="LOCAL" />
       <updated>1629197818043</updated>
     </task>
-    <option name="localTasksCounter" value="54" />
+    <task id="LOCAL-00054" summary="center media bar">
+      <created>1629200361589</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1629200361589</updated>
+    </task>
+    <option name="localTasksCounter" value="55" />
     <servers />
   </component>
   <component name="TodoView">
@@ -675,20 +674,19 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="83" y="26" width="2476" height="1415" extended-state="6" />
-    <editor active="true" />
+    <frame x="84" y="25" width="2476" height="1415" extended-state="6" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49248928" visible="true" weight="0.06517312" />
       <window_info id="Structure" order="1" sideWeight="0.5075107" side_tool="true" weight="0.11731161" />
       <window_info id="Favorites" order="2" sideWeight="0.5005015" side_tool="true" weight="0.09531312" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3264996" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.5648438" visible="true" weight="0.29233107" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.5648438" weight="0.29233107" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49921876" weight="0.39836735" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49940923" weight="0.329927" />
-      <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.49921876" weight="0.04452555" />
+      <window_info active="true" anchor="bottom" id="Version Control" order="7" sideWeight="0.49921876" visible="true" weight="0.6059226" />
       <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49901536" weight="0.329927" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.43515626" side_tool="true" weight="0.3495066" />
       <window_info anchor="bottom" id="Python Console" order="10" sideWeight="0.49940923" weight="0.329927" />
@@ -796,7 +794,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="changed icons to custom icons" />
     <MESSAGE value="icons" />
     <MESSAGE value="media bar fixed window parameter accessible again" />
     <MESSAGE value="polygon selection perfected&#10;now sorting coordinates before plotting" />
@@ -821,7 +818,8 @@
     <MESSAGE value="centered dicom and seperated data from input" />
     <MESSAGE value="cid now correctly reconnected" />
     <MESSAGE value="hide finished" />
-    <option name="LAST_COMMIT_MESSAGE" value="hide finished" />
+    <MESSAGE value="center media bar" />
+    <option name="LAST_COMMIT_MESSAGE" value="center media bar" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/README.md">
@@ -864,20 +862,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/GUIV2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="594" column="43" lean-forward="true" selection-start-line="594" selection-start-column="43" selection-end-line="594" selection-end-column="43" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/welcome.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret column="38" selection-start-column="38" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/GUIV2.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="606">
-          <caret line="596" column="31" selection-start-line="596" selection-start-column="31" selection-end-line="596" selection-end-column="31" />
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
