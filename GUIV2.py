@@ -133,7 +133,7 @@ class MainWindow (QMainWindow):
         toolbar.addWidget(showData)
         return toolbar
 
-    def rightSide(self):  # exists only for styling purposes
+    def rightSide(self):  # exists only for styling purposes and displays welcome text when no data set is loaded
         rightSide = QWidget()
         rightSide.setObjectName("right")
         self.data = Data(self)
@@ -324,9 +324,9 @@ class Dicom (FigureCanvas):
     #reconnect the standard on click actions
     def reconnect_cids(self, window):
         self.cid = self.fig.canvas.mpl_disconnect(window.dicom.cid)
-        self.cid = self.fig.canvas.mpl_connect('button_press_event', self.erasePoint)
+        self.cid = self.fig.canvas.mpl_connect('button_press_event', self.selection)
         self.cid2 = self.fig.canvas.mpl_disconnect(window.dicom.cid2)
-        self.cid2 = self.fig.canvas.mpl_connect('button_release_event', self.movePoint)
+        self.cid2 = self.fig.canvas.mpl_connect('button_release_event', self.release)
 
     '''
     picture menu methods
@@ -404,9 +404,9 @@ class Dicom (FigureCanvas):
             self.cid = self.fig.canvas.mpl_disconnect(window.dicom.cid)
             window.dontShow.setStyleSheet("image: url('Icons/ds.png') ;")
             print("hide")
-            self.cnv.set_visible(False)
+            self.cnv.set_data(np.empty(self.imgarr.shape))
             plt.draw()
-        else:
+        elif not window.dontShow.isChecked():
             self.reconnect_cids(window)
             window.dontShow.setStyleSheet("image: url('Icons/visible.png') ;")
             print("unhide")
@@ -471,10 +471,8 @@ class UserInput(QFrame):
     def check_and_set_filepath(self):
         if os.path.exists(self.filepath):
             if self.check_file(self.filepath):
-                #print("this ist the study path: " + self.filepath)
                 self.window.dataArray = self.loadData()
                 self.layout.removeWidget(self.errorText)
-                print(self.layout.children())
                 self.window.reset_after_changes()
                 if not self.window.validDataset:
                     self.window.validDataset = True

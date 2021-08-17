@@ -2,21 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8e406e9a-7129-4799-b3f3-c02ccd0c5d7c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Icons/save.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GUIV2.py" beforeDir="false" afterPath="$PROJECT_DIR$/GUIV2.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LaTeX/BA.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/LaTeX/BA.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LaTeX/BA.synctex.gz" beforeDir="false" afterPath="$PROJECT_DIR$/LaTeX/BA.synctex.gz" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LaTeX/BA.tex" beforeDir="false" afterPath="$PROJECT_DIR$/LaTeX/BA.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LaTeX/build/BA.aux" beforeDir="false" afterPath="$PROJECT_DIR$/LaTeX/build/BA.aux" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LaTeX/build/BA.bbl" beforeDir="false" afterPath="$PROJECT_DIR$/LaTeX/build/BA.bbl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LaTeX/build/BA.blg" beforeDir="false" afterPath="$PROJECT_DIR$/LaTeX/build/BA.blg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LaTeX/build/BA.fdb_latexmk" beforeDir="false" afterPath="$PROJECT_DIR$/LaTeX/build/BA.fdb_latexmk" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LaTeX/build/BA.fls" beforeDir="false" afterPath="$PROJECT_DIR$/LaTeX/build/BA.fls" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LaTeX/build/BA.log" beforeDir="false" afterPath="$PROJECT_DIR$/LaTeX/build/BA.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LaTeX/build/BA.out" beforeDir="false" afterPath="$PROJECT_DIR$/LaTeX/build/BA.out" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LaTeX/build/BA.toc" beforeDir="false" afterPath="$PROJECT_DIR$/LaTeX/build/BA.toc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Stylesheet.qss" beforeDir="false" afterPath="$PROJECT_DIR$/Stylesheet.qss" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -32,8 +19,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/GUIV2.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="569">
-              <caret line="232" column="27" selection-start-line="232" selection-start-column="27" selection-end-line="232" selection-end-column="27" />
+            <state relative-caret-position="616">
+              <caret line="408" column="45" lean-forward="true" selection-start-line="408" selection-start-column="45" selection-end-line="408" selection-end-column="45" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
@@ -330,13 +317,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1619447345414</updated>
-    </task>
-    <task id="LOCAL-00002" summary="Change to object oriented programming and added stylesheet">
-      <created>1619557359697</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1619557359697</updated>
     </task>
     <task id="LOCAL-00003" summary="Test commit">
       <created>1619557786280</created>
@@ -674,7 +654,14 @@
       <option name="project" value="LOCAL" />
       <updated>1629123758551</updated>
     </task>
-    <option name="localTasksCounter" value="51" />
+    <task id="LOCAL-00051" summary="centered dicom and seperated data from input">
+      <created>1629195533046</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1629195533046</updated>
+    </task>
+    <option name="localTasksCounter" value="52" />
     <servers />
   </component>
   <component name="TodoView">
@@ -808,7 +795,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="single and multiple point selection visualized" />
     <MESSAGE value="style focus field" />
     <MESSAGE value="polygon selection mode added" />
     <MESSAGE value="changed icons to custom icons" />
@@ -833,7 +819,8 @@
     <MESSAGE value="remove welcome text after opening data set" />
     <MESSAGE value="picture menu style" />
     <MESSAGE value="safe images implemented" />
-    <option name="LAST_COMMIT_MESSAGE" value="safe images implemented" />
+    <MESSAGE value="centered dicom and seperated data from input" />
+    <option name="LAST_COMMIT_MESSAGE" value="centered dicom and seperated data from input" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -896,8 +883,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/GUIV2.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="569">
-          <caret line="232" column="27" selection-start-line="232" selection-start-column="27" selection-end-line="232" selection-end-column="27" />
+        <state relative-caret-position="616">
+          <caret line="408" column="45" lean-forward="true" selection-start-line="408" selection-start-column="45" selection-end-line="408" selection-end-column="45" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
           </folding>
