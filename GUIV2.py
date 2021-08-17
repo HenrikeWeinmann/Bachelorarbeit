@@ -179,8 +179,8 @@ class MainWindow (QMainWindow):
         if self.selectionMode == 'Polygon Selection' and len(self.selection) >= 3:
             Dicom.draw_polygon(self.dicom, patches.Polygon(self.selection, color='red', alpha=0.2))
             '''used to be: plt.gca().add_patch(polygon)... but somehow wont work anymore'''
-        self.dicom.xlim = [0, self.dicom.imgarr.shape[1]]
-        self.dicom.ylim = [self.dicom.imgarr.shape[0], 0]
+        self.dicom.xlim = [0, self.dicom.imgarr.shape[1]-1]
+        self.dicom.ylim = [self.dicom.imgarr.shape[0]-1, 0]
         plt.xlim(self.dicom.xlim)
         plt.ylim(self.dicom.ylim)
         self.dicom.draw()
@@ -227,8 +227,8 @@ class Dicom (FigureCanvas):
         self.cid2 = self.fig.canvas.mpl_connect('button_release_event', self.release)
         self.cid3 = self.fig.canvas.mpl_connect('motion_notify_event', self.set_contrast)
         self.patch = patches.Circle([1, 1], 2)
-        self.xlim = [0, self.imgarr.shape[1]]
-        self.ylim = [self.imgarr.shape[0], 0]
+        self.xlim = [0, self.imgarr.shape[1]-1]
+        self.ylim = [self.imgarr.shape[0]-1, 0]
         plt.xlim(self.xlim)
         plt.ylim(self.ylim)
         plt.tight_layout(pad=3)
@@ -404,10 +404,14 @@ class Dicom (FigureCanvas):
             self.cid = self.fig.canvas.mpl_disconnect(window.dicom.cid)
             window.dontShow.setStyleSheet("image: url('Icons/ds.png') ;")
             print("hide")
-            self.cnv.set_data(np.empty(self.imgarr.shape))
-            plt.draw()
+            plt.clf()
+            window.dicom.img = plt.imshow(self.imgarr, self.cmap, vmin=self.vmin, vmax=self.vmax)
+            window.dicom.draw()
+            window.mainLayout.insertWidget(1, window.dicom)
+
         elif not window.dontShow.isChecked():
             self.reconnect_cids(window)
+            window.update_fig()
             window.dontShow.setStyleSheet("image: url('Icons/visible.png') ;")
             print("unhide")
 
