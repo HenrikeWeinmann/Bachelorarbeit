@@ -1,17 +1,18 @@
 /* -------- Color Palette --------------
 
 Text : #1A1A1A
+Text2: #163540
 dark grey: #808080
 light grey: #999999
-dark blue: #8DC1D8
+dark blue: #8DC1D8 or rgb(141,193,216)
 middle blue: #B2D6E6
 light blue: #D8EAF3
 
 */
 /* -------- Stylesheet --------------*/
-QWidget{
+QWidget {
     background-color: #808080;
-    color: #1A1A1A;
+    color: #163540;
     padding: 0px;
     font-family: "Trebuchet MS";
     font: 20px;
@@ -23,32 +24,30 @@ QFrame * {
 }
 
 /* -------- General --------------*/
-QLabel{
+QLabel {
     background-color: #D8EAF3;
-
     min-height: 80px;
-
 }
 
-QPushButton{
+QPushButton {
     color: #1A1A1A;
     background-color: #D8EAF3;
     border-color: #8DC1D8;
     border-radius: 20;
-    border-style: outset ;
+    border-style: outset;
     border-width: 3px;
 }
 
-QPushButton:hover{
+QPushButton:hover {
     background-color: #B2D6E6;
 }
 
-QPushButton:pressed{
+QPushButton:pressed {
     border-color: #808080;
     background-color: #8DC1D8;
 }
 
-QLineEdit{
+QLineEdit {
     background-color: #B2D6E6;
     border: 2px solid #8DC1D8;
     max-width: 500px;
@@ -58,12 +57,11 @@ QLineEdit{
     font: 20px;
 }
 
-QLineEdit:focus{
+QLineEdit:focus {
     border: 5px solid #8DC1D8;
-
 }
 
-QComboBox{
+QComboBox {
     color: #1A1A1A;
     background: #D8EAF3;
     width: 300px;
@@ -71,92 +69,97 @@ QComboBox{
     selection-background-color: #D8EAF3;
 }
 
-
-
-
 /* -------- Media Bar --------------*/
+QWidget#MediaBar{
+    max-height: 100px;
+    max-width: 500px;
+}
 
-QWidget#MediaBarBackground{
+QWidget#MediaBarBackground {
     background: #999999;
     max-height: 100px;
-    max-width: 600px;
+    max-width: 500px;
     margin: 10 0 10 0;
     border-radius: 15;
 }
 
-QPushButton#playbtn, #forward, #backward, #fastforward, #fastbackward, #stopbtn{
+QPushButton#playbtn, #forward, #backward, #fastforward, #fastbackward, #stopbtn {
     background-color: #B2D6E6;
     border-radius: 25;
     max-width: 50px;
     max-height: 50px;
     min-width: 50px;
     min-height: 50px;
+    margin: 0 10 0 10 ;
 }
-QPushButton#playbtn:hover, #forward:hover, #backward:hover, #fastforward:hover, #fastbackward:hover,  #stopbtn:hover{
+
+QPushButton#playbtn:hover, #forward:hover, #backward:hover, #fastforward:hover, #fastbackward:hover, #stopbtn:hover {
     background-color: #8DC1D8;
-
-}
-QPushButton#playbtn{
-    image: url('Icons/Play.png') ;
 }
 
-QPushButton#stopbtn{
-    image: url('Icons/Stop.png') ;
+QPushButton#playbtn {
+    image: url('Icons/Play.png');
 }
 
-QPushButton#forward{
-    image: url('Icons/Forward.png') ;
-}
-QPushButton#fastforward{
-    image: url('Icons/FastForward.png') ;
-}
-QPushButton#backward{
-    image: url('Icons/Backward.png') ;
+QPushButton#stopbtn {
+    image: url('Icons/Stop.png');
 }
 
-QPushButton#fastbackward{
-    image: url('Icons/FastBackward.png') ;
+QPushButton#forward {
+    image: url('Icons/Forward.png');
+}
+
+QPushButton#fastforward {
+    image: url('Icons/FastForward.png');
+}
+
+QPushButton#backward {
+    image: url('Icons/Backward.png');
+}
+
+QPushButton#fastbackward {
+    image: url('Icons/FastBackward.png');
 }
 
 /* -------- Toolbar --------------*/
-
-QToolBar{
+QToolBar {
     height: 50px;
     background: #8DC1D8;
     border: 2px solid #1A1A1A;
-    border-style: outset ;
+    border-style: outset;
     margin: 0;
 }
 
-QToolBar *{
+QToolBar * {
     height: 30px;
     margin: 4px;
     padding: 5px;
     font: 20px;
 }
-QWidget#spacer{
+
+QWidget#spacer {
     background: none;
 }
-QPushButton#clear, #ShowData{
+
+QPushButton#ShowData {
     border-radius: 15;
     max-height: 20px;
     min-width: 70;
-
 }
 
-QComboBox::drop-down{
+QComboBox::drop-down {
     subcontrol-origin: padding;
     subcontrol-position: right;
     margin: 0;
     width: 20px;
 }
 
-QComboBox:on{
+QComboBox:on {
     background: #B2D6E6;
     border-bottom: none;
 }
 
-QComboBox QAbstractItemView{
+QComboBox QAbstractItemView {
     min-width: 330px;
     min-height: 60px;
     border: none;
@@ -164,59 +167,181 @@ QComboBox QAbstractItemView{
     margin: 46 0 0 13;
     selection-background-color: #999999;
     font 20px;
-    padding:0;
+    padding: 0;
 }
 
 QComboBox QAbstractItemView::item {
     color: red;
     border: 3px solid red;
-
 }
 
-QLabel#EraseMode{
+/* -------- Picturemenu --------------*/
+
+QWidget#picturemenu{
+    max-height: 100 px;
+    background: #999999;
+}
+
+QWidget#picturemenu *{
+    color: #1A1A1A;
+    max-height: 50 px;
+}
+QLabel#contrast{
+    min-height: 50px;
+    max-width: 80px;
     background: none;
-    min-height: 30 px;
-    max-height: 30 px;
-}
-/* -------- Right Side --------------*/
+    padding: 0px;
+    margin: 0px;
 
-QWidget#right{
+}
+QSlider{
+    background: none;
+    max-width: 120px;
+}
+QSlider::groove:horizontal {
+    border: 1px solid #bbb;
+    background: #999999;
+    height: 16px;
+    border-radius: 5px;
+}
+
+QSlider::sub-page:horizontal {
+    background: qlineargradient(x1: 0, y1: 0,    x2: 0, y2: 1,
+        stop: 0 #8DC1D8, stop: 1 #B2D6E6);
+    background: qlineargradient(x1: 0, y1: 0.2, x2: 1, y2: 1,
+        stop: 0 #B2D6E6, stop: 1 #163540);
+    border: 1px solid #808080;
+    height: 16px;
+    border-radius: 5px;
+}
+
+QSlider::add-page:horizontal {
+    background: #D8EAF3;
+    border: 1px solid #808080;
+    height: 16px;
+    border-radius: 5px;
+}
+
+QSlider::handle:horizontal {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:1,
+        stop:0 #eee, stop:1 #ccc);
+    border: 1px solid #808080;
+    width: 15px;
+    margin-top: -2px;
+    margin-bottom: -2px;
+    border-radius: 5px;
+}
+
+QSlider::handle:horizontal:hover {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:1,
+        stop:0 #fff, stop:1 #ddd);
+    border: 1px solid #444;
+    border-radius: 5px;
+}
+
+QSlider::sub-page:horizontal:disabled {
+    background: #bbb;
+    border-color: #999;
+}
+
+QSlider::add-page:horizontal:disabled {
+    background: #eee;
+    border-color: #999;
+}
+
+QSlider::handle:horizontal:disabled {
+    background: #eee;
+    border: 1px solid #aaa;
+    border-radius: 5px;
+}
+QPushButton#saveImage{
+    image: url('Icons/save.png');
+}
+QPushButton#eraseMode{
+    image: url('Icons/erase.png');
+}
+
+QPushButton#moveMode{
+    image: url('Icons/move.png');
+}
+
+QPushButton#clear{
+    image: url('Icons/clear.png');
+}
+
+QPushButton#DS{
+    image: url('Icons/visible.png');
+}
+
+QPushButton#eraseMode, #moveMode, #clear, #DS, #saveImage{
+    background: none;
+    border:none;
+    border-radius: 7;
+    margin: 5 5 5 5 ;
+    min-height: 50px;
+    max-height: 50px;
+    min-width: 50px;
+    max-width: 50px;
+
+}
+QPushButton#eraseMode:hover, #moveMode:hover, #clear:hover, #DS:hover, #saveImage:hover{
+    background: rgba(89,89,89, 0.2);
+}
+
+
+/* -------- Right Side --------------*/
+QWidget#right {
     background-color: #D8EAF3;
     border-color: #8DC1D8;
-    padding: 20 px;
+    padding: 100 px;
+}
+QTextEdit{
+    border: none;
+    min-height: 450px;
+    background-color: #D8EAF3;
+    font-family: "Trebuchet MS";
+    font: 29px;
+    padding: 20px;
+    color: #274C5B;
 }
 
-QWidget#Data{
+QFrame#userInput{
+    background-color: #D8EAF3;
+    border: 2px solid #8DC1D8;
+    margin: 0px;
+}
+
+QWidget#Data {
     border: 2px solid #8DC1D8;
     padding: 20 px;
 }
 
-QTableWidget#info{
+QTableWidget#info {
     font: 20px;
     background-color: #D8EAF3;
     border: 0;
     outline: none;
 }
 
-QLabel#enterfilepath{
-    min-width : 500px;
+QLabel#enterfilepath {
+    min-width: 500px;
     min-height: 60 px;
 }
 
-QLabel#error{
+QLabel#error {
     min-height: 0;
     color: #D8978D;
 }
-QDockWidget::close-button{
+
+QDockWidget::close-button {
     subcontrol-position: right;
     icon-size: 50px;
 }
 
-QPushButton#submit, #Open{
+QPushButton#submit, #Open {
     border-radius: 18;
     max-height: 40px;
     max-width: 200px;
     width: 100;
     color: #1A1A1A;
 }
-

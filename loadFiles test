@@ -1,0 +1,26 @@
+import os
+import pydicom as dcm
+
+study = "/Users/Heni/OneDrive/Uni/Bachelorarbeit/second-annual-data-science-bowl/test/test/932/study/"
+
+slices = os.listdir(study)  # list of all names of all slices
+slices.sort()
+data = []
+
+for i in range(1, len(slices)):
+    current_slice = os.path.join(study, slices[i])
+    frames = os.listdir(current_slice)
+    frames.sort()
+    data.append([])
+    for j in range(len(frames)):
+        current_frame = os.path.join(current_slice, frames[j])
+        dicom = dcm.dcmread(current_frame)
+        data[i - 1].append(dicom)
+
+
+# for testing purposes
+for k in range(len(data)):
+    for l in range(len(data[k])):
+        print(data[k][l])
+
+
