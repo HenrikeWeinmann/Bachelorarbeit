@@ -70,10 +70,15 @@ QComboBox {
 }
 
 /* -------- Media Bar --------------*/
+QWidget#MediaBar{
+    max-height: 100px;
+    max-width: 500px;
+}
+
 QWidget#MediaBarBackground {
     background: #999999;
     max-height: 100px;
-    max-width: 600px;
+    max-width: 500px;
     margin: 10 0 10 0;
     border-radius: 15;
 }
@@ -85,6 +90,7 @@ QPushButton#playbtn, #forward, #backward, #fastforward, #fastbackward, #stopbtn 
     max-height: 50px;
     min-width: 50px;
     min-height: 50px;
+    margin: 0 10 0 10 ;
 }
 
 QPushButton#playbtn:hover, #forward:hover, #backward:hover, #fastforward:hover, #fastbackward:hover, #stopbtn:hover {
@@ -268,7 +274,7 @@ QPushButton#DS{
 }
 
 QPushButton#eraseMode, #moveMode, #clear, #DS, #saveImage{
-    background:red;
+    background: none;
     border:none;
     border-radius: 7;
     margin: 5 5 5 5 ;

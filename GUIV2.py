@@ -40,16 +40,21 @@ class MainWindow (QMainWindow):
 
         self.background = QStackedWidget()
         self.background.setObjectName("MediaBarBackground")
-        self.play = MediaBar(self)
-        self.background.addWidget(self.play)
+        self.background.addWidget(MediaBar(self))
+
+        self.mediaBar = QHBoxLayout()
+        self.mediaBar.addWidget(self.background)
+
         self.dock = QDockWidget("Data", self)
         self.dock.setWidget(self.rightSide())
         self.dock.setFeatures(QDockWidget.DockWidgetFeature.DockWidgetClosable)
-        self.uI = QDockWidget("Input", self)
+
         self.input = UserInput(self)
         self.input.setObjectName("userInput")
+        self.uI = QDockWidget("Input", self)
         self.uI.setWidget(self.input)
         self.uI.setFeatures(QDockWidget.DockWidgetFeature.NoDockWidgetFeatures)
+
         self.addDockWidget(Qt.DockWidgetArea.RightDockWidgetArea, self.dock)
         self.addDockWidget(Qt.DockWidgetArea.RightDockWidgetArea, self.uI)
 
@@ -57,8 +62,9 @@ class MainWindow (QMainWindow):
         self.mainLayout.addWidget(self.dicom)
         if self.validDataset:
             self.mainLayout.insertWidget(0, self.picturemenu)
-            self.mainLayout.addWidget(self.background)
-        self.mainLayout.setAlignment(self.dicom, Qt.AlignmentFlag.AlignHCenter)
+            self.mainLayout.addLayout(self.mediaBar)
+        self.mainLayout.setAlignment(Qt.AlignmentFlag.AlignHCenter)
+        self.mainLayout.setAlignment(self.background, Qt.AlignmentFlag.AlignHCenter)
         self.centralWidget.setLayout(self.mainLayout)
         self.setCentralWidget(self.centralWidget)
 
@@ -200,8 +206,6 @@ class Dicom (FigureCanvas):
         super().__init__(self.fig)
         window.centralWidget.setFixedWidth(700)
         window.centralWidget.setFixedHeight(900 - window.menu.height())
-        print(window.centralWidget.width())
-        print(window.centralWidget.height())
         self.setParent(window)
         self.cmap = 'bone'
         self.vmin = 0
@@ -480,7 +484,7 @@ class UserInput(QFrame):
                 self.window.reset_after_changes()
                 if not self.window.validDataset:
                     self.window.validDataset = True
-                    self.window.mainLayout.addWidget(self.window.background)
+                    self.window.mainLayout.addLayout(self.window.mediaBar)
                     self.window.mainLayout.insertWidget(0, self.window.picturemenu)
             else:
                 self.layout.insertWidget(1, self.errorText)
@@ -583,12 +587,14 @@ class MediaBar(QWidget):
         self.FBbtn.setObjectName("fastbackward")
         self.FBbtn.clicked.connect(self.fastbackward)
         self.layout = QHBoxLayout()
+        self.layout.addStretch()
         self.layout.addWidget(self.Backwardbtn)
         # self.layout.addWidget(self.FBbtn)
         self.layout.addWidget(self.playbtn)
         self.layout.addWidget(self.stopbtn)
         # self.layout.addWidget(self.FFbtn)
         self.layout.addWidget(self.Forwardbtn)
+        self.layout.addStretch()
         self.setLayout(self.layout)
 
     def play(self):

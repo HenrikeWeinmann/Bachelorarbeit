@@ -4,6 +4,7 @@
     <list default="true" id="8e406e9a-7129-4799-b3f3-c02ccd0c5d7c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GUIV2.py" beforeDir="false" afterPath="$PROJECT_DIR$/GUIV2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Stylesheet.qss" beforeDir="false" afterPath="$PROJECT_DIR$/Stylesheet.qss" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -19,8 +20,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/GUIV2.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="616">
-              <caret line="408" column="45" lean-forward="true" selection-start-line="408" selection-start-column="45" selection-end-line="408" selection-end-column="45" />
+            <state relative-caret-position="606">
+              <caret line="596" column="31" selection-start-line="596" selection-start-column="31" selection-end-line="596" selection-end-column="31" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
@@ -75,7 +76,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="84" />
     <option name="y" value="25" />
     <option name="width" value="2476" />
@@ -317,20 +318,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1619447345414</updated>
-    </task>
-    <task id="LOCAL-00003" summary="Test commit">
-      <created>1619557786280</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1619557786280</updated>
-    </task>
-    <task id="LOCAL-00004" summary="Added Layout but Alignment is not good">
-      <created>1619720830264</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1619720830264</updated>
     </task>
     <task id="LOCAL-00005" summary="Still not pretty code,but button alignment works">
       <created>1619777642014</created>
@@ -661,7 +648,21 @@
       <option name="project" value="LOCAL" />
       <updated>1629195533046</updated>
     </task>
-    <option name="localTasksCounter" value="52" />
+    <task id="LOCAL-00052" summary="cid now correctly reconnected">
+      <created>1629196600685</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1629196600686</updated>
+    </task>
+    <task id="LOCAL-00053" summary="hide finished">
+      <created>1629197818043</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1629197818043</updated>
+    </task>
+    <option name="localTasksCounter" value="54" />
     <servers />
   </component>
   <component name="TodoView">
@@ -674,14 +675,14 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="84" y="25" width="2476" height="1415" extended-state="0" />
+    <frame x="83" y="26" width="2476" height="1415" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49248928" visible="true" weight="0.11731161" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49248928" visible="true" weight="0.06517312" />
       <window_info id="Structure" order="1" sideWeight="0.5075107" side_tool="true" weight="0.11731161" />
       <window_info id="Favorites" order="2" sideWeight="0.5005015" side_tool="true" weight="0.09531312" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.3270073" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3264996" />
       <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.5648438" visible="true" weight="0.29233107" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49921876" weight="0.39836735" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
@@ -795,8 +796,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="style focus field" />
-    <MESSAGE value="polygon selection mode added" />
     <MESSAGE value="changed icons to custom icons" />
     <MESSAGE value="icons" />
     <MESSAGE value="media bar fixed window parameter accessible again" />
@@ -820,18 +819,9 @@
     <MESSAGE value="picture menu style" />
     <MESSAGE value="safe images implemented" />
     <MESSAGE value="centered dicom and seperated data from input" />
-    <option name="LAST_COMMIT_MESSAGE" value="centered dicom and seperated data from input" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/GUIV2.py</url>
-          <line>401</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="cid now correctly reconnected" />
+    <MESSAGE value="hide finished" />
+    <option name="LAST_COMMIT_MESSAGE" value="hide finished" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/README.md">
@@ -867,13 +857,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/welcome.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="38" selection-start-column="38" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Stylesheet.qss">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="870">
@@ -881,10 +864,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/welcome.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="38" selection-start-column="38" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/GUIV2.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="616">
-          <caret line="408" column="45" lean-forward="true" selection-start-line="408" selection-start-column="45" selection-end-line="408" selection-end-column="45" />
+        <state relative-caret-position="606">
+          <caret line="596" column="31" selection-start-line="596" selection-start-column="31" selection-end-line="596" selection-end-column="31" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
           </folding>
