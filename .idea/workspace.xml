@@ -2,33 +2,29 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8e406e9a-7129-4799-b3f3-c02ccd0c5d7c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Icons/clear_clicked.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Icons/erase_clicked.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Icons/move_clicked.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/DicomViewer.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/UserInput.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GUIV2.py" beforeDir="false" afterPath="$PROJECT_DIR$/GUIV2.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Icons/clear.png" beforeDir="false" afterPath="$PROJECT_DIR$/Icons/clear.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Icons/ds.png" beforeDir="false" afterPath="$PROJECT_DIR$/Icons/ds.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LaTeX/BA.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/LaTeX/BA.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LaTeX/BA.synctex.gz" beforeDir="false" afterPath="$PROJECT_DIR$/LaTeX/BA.synctex.gz" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LaTeX/BA.tex" beforeDir="false" afterPath="$PROJECT_DIR$/LaTeX/BA.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LaTeX/Concept.tex" beforeDir="false" afterPath="$PROJECT_DIR$/LaTeX/Concept.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LaTeX/Literature.bib" beforeDir="false" afterPath="$PROJECT_DIR$/LaTeX/Literature.bib" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LaTeX/Medical_Data_and_imaging.tex" beforeDir="false" afterPath="$PROJECT_DIR$/LaTeX/Medical_Data_and_imaging.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LaTeX/State_of_the_art.tex" beforeDir="false" afterPath="$PROJECT_DIR$/LaTeX/State_of_the_art.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LaTeX/build/BA.aux" beforeDir="false" afterPath="$PROJECT_DIR$/LaTeX/build/BA.aux" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LaTeX/build/BA.bbl" beforeDir="false" afterPath="$PROJECT_DIR$/LaTeX/build/BA.bbl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LaTeX/build/BA.bcf" beforeDir="false" afterPath="$PROJECT_DIR$/LaTeX/build/BA.bcf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LaTeX/build/BA.blg" beforeDir="false" afterPath="$PROJECT_DIR$/LaTeX/build/BA.blg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LaTeX/build/BA.fdb_latexmk" beforeDir="false" afterPath="$PROJECT_DIR$/LaTeX/build/BA.fdb_latexmk" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LaTeX/build/BA.fls" beforeDir="false" afterPath="$PROJECT_DIR$/LaTeX/build/BA.fls" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LaTeX/build/BA.log" beforeDir="false" afterPath="$PROJECT_DIR$/LaTeX/build/BA.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LaTeX/build/BA.out" beforeDir="false" afterPath="$PROJECT_DIR$/LaTeX/build/BA.out" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LaTeX/build/BA.toc" beforeDir="false" afterPath="$PROJECT_DIR$/LaTeX/build/BA.toc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LaTeX/build/Medical_Data_and_imaging.fdb_latexmk" beforeDir="false" afterPath="$PROJECT_DIR$/LaTeX/build/Medical_Data_and_imaging.fdb_latexmk" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LaTeX/build/Medical_Data_and_imaging.fls" beforeDir="false" afterPath="$PROJECT_DIR$/LaTeX/build/Medical_Data_and_imaging.fls" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LaTeX/build/Medical_Data_and_imaging.log" beforeDir="false" afterPath="$PROJECT_DIR$/LaTeX/build/Medical_Data_and_imaging.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Stylesheet.qss" beforeDir="false" afterPath="$PROJECT_DIR$/Stylesheet.qss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Default.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Default.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GUIV2.py" beforeDir="false" afterPath="$PROJECT_DIR$/Application/GUIV2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Icons/Backward.png" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Icons/Backward.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Icons/FastBackward.png" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Icons/FastBackward.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Icons/FastForward.png" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Icons/FastForward.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Icons/Forward.png" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Icons/Forward.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Icons/Pause.png" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Icons/Pause.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Icons/Play.png" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Icons/Play.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Icons/Stop.png" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Icons/Stop.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Icons/clear.png" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Icons/clear.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Icons/clear_clicked.png" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Icons/clear_clicked.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Icons/ds.png" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Icons/ds.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Icons/erase.png" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Icons/erase.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Icons/erase_clicked.png" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Icons/erase_clicked.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Icons/move.png" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Icons/move.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Icons/move_clicked.png" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Icons/move_clicked.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Icons/save.png" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Icons/save.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Icons/visible.png" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Icons/visible.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Stylesheet.qss" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Stylesheet.qss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/welcome.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Application/welcome.txt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -41,11 +37,40 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/GUIV2.py">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Application/GUIV2.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="665">
-              <caret line="402" column="12" selection-start-line="402" selection-start-column="12" selection-end-line="402" selection-end-column="12" />
+            <state relative-caret-position="36">
+              <caret line="186" column="51" selection-start-line="186" selection-start-column="51" selection-end-line="186" selection-end-column="51" />
+              <folding>
+                <element signature="e#0#10#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Application/Animation.py">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Application/DicomViewer.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-119">
+              <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
+              <folding>
+                <element signature="e#1#30#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Application/UserInput.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="216">
+              <caret line="6" selection-start-line="6" selection-end-line="6" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
@@ -54,7 +79,7 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Stylesheet.qss">
+        <entry file="file://$PROJECT_DIR$/Application/Stylesheet.qss">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="297">
               <caret line="283" column="17" selection-start-line="283" selection-start-column="17" selection-end-line="283" selection-end-column="17" />
@@ -81,7 +106,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="StartScreen" />
+        <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
   </component>
@@ -96,14 +121,18 @@
         <option value="$PROJECT_DIR$/loadFiles test" />
         <option value="$PROJECT_DIR$/welcome.txt" />
         <option value="$PROJECT_DIR$/Stylesheet.qss" />
+        <option value="$PROJECT_DIR$/UserInput.py" />
         <option value="$PROJECT_DIR$/GUIV2.py" />
+        <option value="$PROJECT_DIR$/Application/DicomViewer.py" />
+        <option value="$PROJECT_DIR$/Application/GUIV2.py" />
+        <option value="$PROJECT_DIR$/Application/Animation.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="84" />
+    <option name="x" value="29" />
     <option name="y" value="25" />
-    <option name="width" value="2476" />
+    <option name="width" value="2531" />
     <option name="height" value="1415" />
   </component>
   <component name="ProjectView">
@@ -121,7 +150,7 @@
             <path>
               <item name="Bachelorarbeit" type="b2602c69:ProjectViewProjectNode" />
               <item name="Bachelorarbeit" type="462c0819:PsiDirectoryNode" />
-              <item name="Icons" type="462c0819:PsiDirectoryNode" />
+              <item name="Application" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -140,6 +169,8 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/LaTeX" />
+      <recent name="$PROJECT_DIR$/Application" />
       <recent name="$PROJECT_DIR$/Icons" />
       <recent name="$PROJECT_DIR$" />
     </key>
@@ -214,7 +245,7 @@
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/GUIV2.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Application/GUIV2.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -348,20 +379,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1619447345414</updated>
-    </task>
-    <task id="LOCAL-00006" summary="VTK integrated in Test file, but switch to pyqt5">
-      <created>1619819254091</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1619819254091</updated>
-    </task>
-    <task id="LOCAL-00007" summary="integrated first DICOM Test file">
-      <created>1620307248743</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1620307248743</updated>
     </task>
     <task id="LOCAL-00008" summary="File Input and Button Actions added to Gui">
       <created>1620829339642</created>
@@ -692,7 +709,21 @@
       <option name="project" value="LOCAL" />
       <updated>1629200361589</updated>
     </task>
-    <option name="localTasksCounter" value="55" />
+    <task id="LOCAL-00055" summary="updated icons">
+      <created>1629900591563</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1629900591564</updated>
+    </task>
+    <task id="LOCAL-00056" summary="single image no media show">
+      <created>1629905007537</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1629905007537</updated>
+    </task>
+    <option name="localTasksCounter" value="57" />
     <servers />
   </component>
   <component name="TodoView">
@@ -705,15 +736,15 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="84" y="25" width="2476" height="1415" extended-state="6" />
+    <frame x="29" y="25" width="2531" height="1415" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49248928" visible="true" weight="0.10142566" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49248928" visible="true" weight="0.099203184" />
       <window_info id="Structure" order="1" sideWeight="0.5075107" side_tool="true" weight="0.11731161" />
       <window_info id="Favorites" order="2" sideWeight="0.5005015" side_tool="true" weight="0.09531312" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.11161731" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.5648438" visible="true" weight="0.29233107" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.5648438" visible="true" weight="0.15717539" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49921876" weight="0.39836735" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -826,8 +857,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="icons" />
-    <MESSAGE value="media bar fixed window parameter accessible again" />
     <MESSAGE value="polygon selection perfected&#10;now sorting coordinates before plotting" />
     <MESSAGE value="stop button added" />
     <MESSAGE value="eraser Mode added" />
@@ -851,7 +880,9 @@
     <MESSAGE value="cid now correctly reconnected" />
     <MESSAGE value="hide finished" />
     <MESSAGE value="center media bar" />
-    <option name="LAST_COMMIT_MESSAGE" value="center media bar" />
+    <MESSAGE value="updated icons" />
+    <MESSAGE value="single image no media show" />
+    <option name="LAST_COMMIT_MESSAGE" value="single image no media show" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/README.md">
@@ -887,50 +918,73 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/welcome.txt">
+    <entry file="file://$PROJECT_DIR$/Application/welcome.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret column="38" selection-start-column="38" selection-end-column="38" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Icons/move.png">
+    <entry file="file://$PROJECT_DIR$/Application/Icons/move.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/Icons/move_clicked.png">
+    <entry file="file://$PROJECT_DIR$/Application/Icons/move_clicked.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/Icons/visible.png">
+    <entry file="file://$PROJECT_DIR$/Application/Icons/visible.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/Icons/ds.png">
+    <entry file="file://$PROJECT_DIR$/Application/Icons/ds.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/Icons/clear_clicked.png">
+    <entry file="file://$PROJECT_DIR$/Application/Icons/clear_clicked.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/Icons/erase_clicked.png">
+    <entry file="file://$PROJECT_DIR$/Application/Icons/erase_clicked.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
     <entry file="file://$PROJECT_DIR$/.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/Stylesheet.qss">
+    <entry file="file://$PROJECT_DIR$/Application/Stylesheet.qss">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="297">
           <caret line="283" column="17" selection-start-line="283" selection-start-column="17" selection-end-line="283" selection-end-column="17" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/GUIV2.py">
+    <entry file="file://$PROJECT_DIR$/Application/UserInput.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="665">
-          <caret line="402" column="12" selection-start-line="402" selection-start-column="12" selection-end-line="402" selection-end-column="12" />
+        <state relative-caret-position="216">
+          <caret line="6" selection-start-line="6" selection-end-line="6" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
           </folding>
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/DicomViewer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-119">
+          <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
+          <folding>
+            <element signature="e#1#30#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/GUIV2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="36">
+          <caret line="186" column="51" selection-start-line="186" selection-start-column="51" selection-end-line="186" selection-end-column="51" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Animation.py">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
   </component>
 </project>
