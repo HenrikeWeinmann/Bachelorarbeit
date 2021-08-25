@@ -348,10 +348,12 @@ class Dicom (FigureCanvas):
             self.cid2 = self.fig.canvas.mpl_disconnect(window.dicom.cid2)
             self.cid2 = self.fig.canvas.mpl_connect('button_release_event', self.release)
         if window.eraseMode.isChecked():
+            window.eraseMode.setStyleSheet("image: url('Icons/erase_clicked.png') ;")
             self.cid = self.fig.canvas.mpl_disconnect(window.dicom.cid)
             self.cid = self.fig.canvas.mpl_connect('button_press_event', self.erase_and_redraw)
         else:
             self.reconnect_cids(window)
+            window.eraseMode.setStyleSheet("image: url('Icons/erase.png') ;")
 
     def erasePoint(self, event):
         print("erasing")
@@ -389,12 +391,14 @@ class Dicom (FigureCanvas):
         if window.eraseMode.isChecked():
             window.eraseMode.toggle()
         if window.moveMode.isChecked():
+            window.moveMode.setStyleSheet("image: url('Icons/move_clicked.png') ;")
             self.cid = self.fig.canvas.mpl_disconnect(window.dicom.cid)
             self.cid = self.fig.canvas.mpl_connect('button_press_event', self.erasePoint)
             self.cid2 = self.fig.canvas.mpl_disconnect(window.dicom.cid2)
             self.cid2 = self.fig.canvas.mpl_connect('button_release_event', self.movePoint)
         else:
             self.reconnect_cids(window)
+            window.moveMode.setStyleSheet("image: url('Icons/move.png') ;")
 
     def movePoint(self, event):
         window = self.parent().parent()
@@ -438,7 +442,7 @@ class UserInput(QFrame):
         self.submitbtn = QPushButton('SUBMIT')
         self.submitbtn.setObjectName("submit")
         self.submitbtn.clicked.connect(self.set_filepath)
-        self.openbtn = QPushButton('Open')
+        self.openbtn = QPushButton('OPEN')
         self.openbtn.setObjectName("Open")
         self.openbtn.clicked.connect(self.open)
         self.label = QLabel("Please enter the filepath to a study directory: ")

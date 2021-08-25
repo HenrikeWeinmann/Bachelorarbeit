@@ -19,6 +19,105 @@
 
 \refsection{0}
   \datalist[entry]{nty/global//global/global}
+    \entry{bunckMagneticResonance4D2012a}{article}{}
+      \name{author}{11}{}{%
+        {{hash=5d9ab63a30bc4f335e6c324a52f77921}{%
+           family={Bunck},
+           familyi={B\bibinitperiod},
+           given={Alexander\bibnamedelima C.},
+           giveni={A\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+        {{hash=ff2efe5b6ba2450de13c33108d03b934}{%
+           family={Kroeger},
+           familyi={K\bibinitperiod},
+           given={Jan\bibnamedelima Robert},
+           giveni={J\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
+        {{hash=b274a6e10b979486396d57f335e05c00}{%
+           family={Juettner},
+           familyi={J\bibinitperiod},
+           given={Alena},
+           giveni={A\bibinitperiod}}}%
+        {{hash=51ae8d04562143034ba521da9191c543}{%
+           family={Brentrup},
+           familyi={B\bibinitperiod},
+           given={Angela},
+           giveni={A\bibinitperiod}}}%
+        {{hash=a9d4e464726577dca79e7cfd34fbeff8}{%
+           family={Fiedler},
+           familyi={F\bibinitperiod},
+           given={Barbara},
+           giveni={B\bibinitperiod}}}%
+        {{hash=c0aa20ab9254acaccd60b7591e04b7e7}{%
+           family={Crelier},
+           familyi={C\bibinitperiod},
+           given={Gerard\bibnamedelima R.},
+           giveni={G\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
+        {{hash=3bb3648130bf8f225b33facdce4d2f3c}{%
+           family={Martin},
+           familyi={M\bibinitperiod},
+           given={Bryn\bibnamedelima A.},
+           giveni={B\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+        {{hash=39a930434903d08bd01250e34c80b0f7}{%
+           family={Heindel},
+           familyi={H\bibinitperiod},
+           given={Walter},
+           giveni={W\bibinitperiod}}}%
+        {{hash=ba4bf88324c071f62abed43639925d68}{%
+           family={Maintz},
+           familyi={M\bibinitperiod},
+           given={David},
+           giveni={D\bibinitperiod}}}%
+        {{hash=cee9d25c6204300de02a4c1fc52550aa}{%
+           family={Schwindt},
+           familyi={S\bibinitperiod},
+           given={Wolfram},
+           giveni={W\bibinitperiod}}}%
+        {{hash=1f7c548181e9b0a910060439ee35d8b3}{%
+           family={Niederstadt},
+           familyi={N\bibinitperiod},
+           given={Thomas},
+           giveni={T\bibinitperiod}}}%
+      }
+      \strng{namehash}{abee141db096f59a3c88cbada80129dd}
+      \strng{fullhash}{1d126b60fe655402ad41e7331414743d}
+      \strng{bibnamehash}{abee141db096f59a3c88cbada80129dd}
+      \strng{authorbibnamehash}{abee141db096f59a3c88cbada80129dd}
+      \strng{authornamehash}{abee141db096f59a3c88cbada80129dd}
+      \strng{authorfullhash}{1d126b60fe655402ad41e7331414743d}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{To analyse cerebrospinal fluid (CSF) hydrodynamics in patients with Chiari type I malformation (CM) with and without syringomyelia using 4D magnetic resonance (MR) phase contrast (PC) flow imaging.}
+      \field{day}{1}
+      \field{issn}{1432-1084}
+      \field{journaltitle}{European Radiology}
+      \field{langid}{english}
+      \field{month}{9}
+      \field{number}{9}
+      \field{shortjournal}{Eur Radiol}
+      \field{title}{Magnetic Resonance {{4D}} Flow Analysis of Cerebrospinal Fluid Dynamics in {{Chiari I}} Malformation with and without Syringomyelia}
+      \field{urlday}{18}
+      \field{urlmonth}{8}
+      \field{urlyear}{2021}
+      \field{volume}{22}
+      \field{year}{2012}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \field{pages}{1860\bibrangedash 1870}
+      \range{pages}{11}
+      \verb{doi}
+      \verb 10.1007/s00330-012-2457-7
+      \endverb
+      \verb{file}
+      \verb /Users/Heni/Zotero/storage/L8EN5D4R/Bunck et al. - 2012 - Magnetic resonance 4D flow analysis of cerebrospin.pdf
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1007/s00330-012-2457-7
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1007/s00330-012-2457-7
+      \endverb
+    \endentry
     \entry{ElsevierEnhancedReader}{online}{}
       \field{sortinit}{E}
       \field{sortinithash}{8da8a182d344d5b9047633dfc0cc9131}
@@ -40,6 +139,72 @@
       \endverb
       \verb{url}
       \verb https://reader.elsevier.com/reader/sd/pii/S0009926005002199?token=E91C1EEF68066558A1FC3643CFF3FA302C75FD56F2348337AE917AE2335411C54F98910EB368F0E308F3D3BDEED81ACA&originRegion=eu-west-1&originCreation=20210809151919
+      \endverb
+    \endentry
+    \entry{harrisVolumetricCineMagnetic2020}{article}{}
+      \name{author}{4}{}{%
+        {{hash=ecf7d79ff58fb21f94f0fb251553020e}{%
+           family={Harris},
+           familyi={H\bibinitperiod},
+           given={Wendy},
+           giveni={W\bibinitperiod}}}%
+        {{hash=ba55680b120f8a2e1765b3ed61a1af28}{%
+           family={Yin},
+           familyi={Y\bibinitperiod},
+           given={Fang-Fang},
+           giveni={F\bibinithyphendelim F\bibinitperiod}}}%
+        {{hash=45295000fa65abd3d041c054376e60d9}{%
+           family={Cai},
+           familyi={C\bibinitperiod},
+           given={Jing},
+           giveni={J\bibinitperiod}}}%
+        {{hash=04c4bc29cb225b393a973fd6ccf6b00e}{%
+           family={Ren},
+           familyi={R\bibinitperiod},
+           given={Lei},
+           giveni={L\bibinitperiod}}}%
+      }
+      \strng{namehash}{8780f0045263e3c79c8c3ad4b07661e5}
+      \strng{fullhash}{8f1d1de2e3b748f47f20366e96012d2e}
+      \strng{bibnamehash}{8780f0045263e3c79c8c3ad4b07661e5}
+      \strng{authorbibnamehash}{8780f0045263e3c79c8c3ad4b07661e5}
+      \strng{authornamehash}{8780f0045263e3c79c8c3ad4b07661e5}
+      \strng{authorfullhash}{8f1d1de2e3b748f47f20366e96012d2e}
+      \field{sortinit}{H}
+      \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Background The purpose of this study is to improve on-board volumetric cine magnetic resonance imaging (VC-MRI) using multi-slice undersampled cine images reconstructed using spatio-temporal k-space data, patient prior 4D-MRI, motion modeling (MM) and free-form deformation (FD) for real-time 3D target verification of liver and lung radiotherapy. Methods A previous method was developed to generate on-board VC-MRI by deforming prior MRI images based on a MM and a single-slice on-board 2D-cine image. The two major improvements over the previous method are: (I) FD was introduced to estimate VC-MRI to correct for inaccuracies in the MM; (II) multi-slice undersampled 2D-cine images reconstructed by a k-t SLR reconstruction method were used for FD-based estimation to maintain the temporal resolution while improving the accuracy of VC-MRI. The method was evaluated using XCAT lung simulation and four liver patients’ data. Results For XCAT, VC-MRI estimated using ten undersampled sagittal 2D-cine MRIs resulted in volume percent difference/volume dice coefficient/center-of-mass shift of 9.77\%±3.71\%/0.95±0.02/0.75±0.26 mm among all scenarios based on estimation with MM and FD. Adding FD optimization improved VC-MRI accuracy substantially for scenarios with anatomical changes. For patient data, the mean tumor tracking errors were 0.64±0.51, 0.62±0.47 and 0.24±0.24 mm along the superior-inferior (SI), anterior-posterior (AP) and lateral directions, respectively, across all liver patients. Conclusions It is feasible to improve VC-MRI accuracy while maintaining high temporal resolution using FD and multi-slice undersampled 2D cine images for real-time 3D target verification.}
+      \field{eprinttype}{pmid}
+      \field{issn}{2223-4292}
+      \field{journaltitle}{Quantitative Imaging in Medicine and Surgery}
+      \field{month}{2}
+      \field{number}{2}
+      \field{shortjournal}{Quant Imaging Med Surg}
+      \field{title}{Volumetric Cine Magnetic Resonance Imaging ({{VC}}-{{MRI}}) Using Motion Modeling, Free-Form Deformation and Multi-Slice Undersampled {{2D}} Cine {{MRI}} Reconstructed with Spatio-Temporal Low-Rank Decomposition}
+      \field{urlday}{18}
+      \field{urlmonth}{8}
+      \field{urlyear}{2021}
+      \field{volume}{10}
+      \field{year}{2020}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \field{pages}{432\bibrangedash 450}
+      \range{pages}{19}
+      \verb{doi}
+      \verb 10.21037/qims.2019.12.10
+      \endverb
+      \verb{eprint}
+      \verb 32190569
+      \endverb
+      \verb{file}
+      \verb /Users/Heni/Zotero/storage/CD4J9D87/Harris et al. - 2020 - Volumetric cine magnetic resonance imaging (VC-MRI.pdf
+      \endverb
+      \verb{urlraw}
+      \verb https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7063294/
+      \endverb
+      \verb{url}
+      \verb https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7063294/
       \endverb
     \endentry
     \entry{heckelSketchBasedEditingTools2013}{article}{}
@@ -103,6 +268,120 @@
       \verb https://onlinelibrary.wiley.com/doi/abs/10.1111/cgf.12193
       \endverb
       \keyw{3D,and object representations,Computer Graphics I.3.5: Computational Geometry and Object ModellingCurve,Computer Graphics I.3.6: Methodology and TechniquesInteraction techniques,contours,correction,CT,editing,Image Processing and Computer Vision I.4.6: Segmentation,interaction,segmentation,sketching,solid,surface}
+    \endentry
+    \entry{helmbergerRadiologistsLeadingPosition2013}{article}{useprefix=true}
+      \name{author}{13}{}{%
+        {{hash=846a28f869d2da3101cbddffe42ffe76}{%
+           family={Helmberger},
+           familyi={H\bibinitperiod},
+           given={Thomas},
+           giveni={T\bibinitperiod}}}%
+        {{hash=e9b823873412ed15155085984ad6fba7}{%
+           family={Martí-Bonmatí},
+           familyi={M\bibinithyphendelim B\bibinitperiod},
+           given={Luis},
+           giveni={L\bibinitperiod}}}%
+        {{hash=b5b165d6cd4a6aea436a7409e5f72be9}{%
+           family={Pereira},
+           familyi={P\bibinitperiod},
+           given={Philippe},
+           giveni={P\bibinitperiod}}}%
+        {{hash=5ba59b35c3642903049982d45fd98b08}{%
+           family={Gillams},
+           familyi={G\bibinitperiod},
+           given={Alice},
+           giveni={A\bibinitperiod}}}%
+        {{hash=a165b9f868e99054ffbd736ae02209c9}{%
+           family={Martínez},
+           familyi={M\bibinitperiod},
+           given={Jose},
+           giveni={J\bibinitperiod}}}%
+        {{hash=4484ea43f64a934db9dd3f6584772175}{%
+           family={Lammer},
+           familyi={L\bibinitperiod},
+           given={Johannes},
+           giveni={J\bibinitperiod}}}%
+        {{hash=ef8bb969ffc0cb418f369554da6d1476}{%
+           family={Malagari},
+           familyi={M\bibinitperiod},
+           given={Katarina},
+           giveni={K\bibinitperiod}}}%
+        {{hash=7201c12265def53026b959f3aedaac27}{%
+           family={Gangi},
+           familyi={G\bibinitperiod},
+           given={Afshin},
+           giveni={A\bibinitperiod}}}%
+        {{hash=04c8b2b67c0e94127229893bcb7cad34}{%
+           family={Baere},
+           familyi={B\bibinitperiod},
+           given={Thierry},
+           giveni={T\bibinitperiod},
+           prefix={de},
+           prefixi={d\bibinitperiod}}}%
+        {{hash=8807475f55d24e49c4147e94a7b832f6}{%
+           family={Adam},
+           familyi={A\bibinitperiod},
+           given={E.\bibnamedelimi Jane},
+           giveni={E\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+        {{hash=b63d5ee21b0e2fc88853351495d4d0fa}{%
+           family={Rasch},
+           familyi={R\bibinitperiod},
+           given={Coen},
+           giveni={C\bibinitperiod}}}%
+        {{hash=7a61474d38d64330f6183bee338d4e9d}{%
+           family={Budach},
+           familyi={B\bibinitperiod},
+           given={Volker},
+           giveni={V\bibinitperiod}}}%
+        {{hash=d1bebf3d6d28cd3709d215279777a442}{%
+           family={Reekers},
+           familyi={R\bibinitperiod},
+           given={Jim\bibnamedelima A.},
+           giveni={J\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+      }
+      \strng{namehash}{3294cf97e519b99a9722840b9b0b66e8}
+      \strng{fullhash}{ac0cc63c5c3ad280b5e8dd11f5264c58}
+      \strng{bibnamehash}{3294cf97e519b99a9722840b9b0b66e8}
+      \strng{authorbibnamehash}{3294cf97e519b99a9722840b9b0b66e8}
+      \strng{authornamehash}{3294cf97e519b99a9722840b9b0b66e8}
+      \strng{authorfullhash}{ac0cc63c5c3ad280b5e8dd11f5264c58}
+      \field{sortinit}{H}
+      \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Image-guided diagnostic and therapeutic procedures are related to, or performed under, some kind of imaging. Such imaging may be direct inspection (as in open surgery) or indirect inspection as in endoscopy or laparoscopy. Common to all these techniques is the transformation of optical and visible information to a monitor or the eye of the operator. Image-guided therapy (IGT) differs by using processed imaging data acquired before, during and after a wide range of different imaging techniques. This means that the planning, performing and monitoring, as well as the control of the therapeutic procedure, are based and dependent on the “virtual reality” provided by imaging investigations. Since most of such imaging involves radiology in the broadest sense, there is a need to characterise IGT in more detail. In this paper, the technical, medico-legal and medico-political issues will be discussed. The focus will be put on state-of-the-art imaging, technical developments, methodological and legal requisites concerning radiation protection and licensing, speciality-specific limitations and crossing specialty borders, definition of technical and quality standards, and finally to the issue of awareness of IGT within the medical and public community. The specialty-specific knowledge should confer radiologists with a significant role in the overall responsibility for the imaging-related processes in various non-radiological specialties. These processes may encompass purchase, servicing, quality management, radiation protection and documentation, also taking responsibility for the definition and compliance with the legal requirements regarding all radiological imaging performed by non-radiologists.}
+      \field{day}{17}
+      \field{eprinttype}{pmid}
+      \field{issn}{1869-4101}
+      \field{journaltitle}{Insights into Imaging}
+      \field{month}{1}
+      \field{number}{1}
+      \field{shortjournal}{Insights Imaging}
+      \field{title}{Radiologists’ Leading Position in Image-Guided Therapy}
+      \field{urlday}{22}
+      \field{urlmonth}{8}
+      \field{urlyear}{2021}
+      \field{volume}{4}
+      \field{year}{2013}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \field{pages}{1\bibrangedash 7}
+      \range{pages}{7}
+      \verb{doi}
+      \verb 10.1007/s13244-012-0213-9
+      \endverb
+      \verb{eprint}
+      \verb 23325609
+      \endverb
+      \verb{file}
+      \verb /Users/Heni/Zotero/storage/6GKAKRY2/Helmberger et al. - 2013 - Radiologists’ leading position in image-guided the.pdf
+      \endverb
+      \verb{urlraw}
+      \verb https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3579996/
+      \endverb
+      \verb{url}
+      \verb https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3579996/
+      \endverb
     \endentry
     \entry{johnson2DMultislice3D1999}{article}{}
       \name{author}{3}{}{%
@@ -235,6 +514,77 @@
       \verb https://www.nibib.nih.gov/science-education/science-topics/magnetic-resonance-imaging-mri
       \endverb
     \endentry
+    \entry{stankovic4DFlowImaging2014}{article}{}
+      \name{author}{5}{}{%
+        {{hash=3d88d4bef3f00935d466f9da0fc3ed3c}{%
+           family={Stankovic},
+           familyi={S\bibinitperiod},
+           given={Zoran},
+           giveni={Z\bibinitperiod}}}%
+        {{hash=dbb8360b48d62defd69f91b144b7312e}{%
+           family={Allen},
+           familyi={A\bibinitperiod},
+           given={Bradley\bibnamedelima D.},
+           giveni={B\bibinitperiod\bibinitdelim D\bibinitperiod}}}%
+        {{hash=e51915c20516f58be65d8e940f5a8256}{%
+           family={Garcia},
+           familyi={G\bibinitperiod},
+           given={Julio},
+           giveni={J\bibinitperiod}}}%
+        {{hash=0f3aa9ae0cfe77ad2fd27f1d8ff7923e}{%
+           family={Jarvis},
+           familyi={J\bibinitperiod},
+           given={Kelly\bibnamedelima B.},
+           giveni={K\bibinitperiod\bibinitdelim B\bibinitperiod}}}%
+        {{hash=8ae830e8f6941fe7fe41b512a8787944}{%
+           family={Markl},
+           familyi={M\bibinitperiod},
+           given={Michael},
+           giveni={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{1667bd96061fba9bb06b4fb46f1f1743}
+      \strng{fullhash}{86f732087ae14483c733fcb56ac3483d}
+      \strng{bibnamehash}{1667bd96061fba9bb06b4fb46f1f1743}
+      \strng{authorbibnamehash}{1667bd96061fba9bb06b4fb46f1f1743}
+      \strng{authornamehash}{1667bd96061fba9bb06b4fb46f1f1743}
+      \strng{authorfullhash}{86f732087ae14483c733fcb56ac3483d}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Magnetic resonance imaging (MRI) has become an important tool for the clinical evaluation of patients with cardiovascular disease. Since its introduction in the late 1980s, 2-dimensional phase contrast MRI (2D PC-MRI) has become a routine part of standard-of-care cardiac MRI for the assessment of regional blood flow in the heart and great vessels. More recently, time-resolved PC-MRI with velocity encoding along all three flow directions and three-dimensional (3D) anatomic coverage (also termed ‘4D flow MRI’) has been developed and applied for the evaluation of cardiovascular hemodynamics in multiple regions of the human body. 4D flow MRI allows for the comprehensive evaluation of complex blood flow patterns by 3D blood flow visualization and flexible retrospective quantification of flow parameters. Recent technical developments, including the utilization of advanced parallel imaging techniques such as k-t GRAPPA, have resulted in reasonable overall scan times, e.g., 8-12 minutes for 4D flow MRI of the aorta and 10-20 minutes for whole heart coverage. As a result, the application of 4D flow MRI in a clinical setting has become more feasible, as documented by an increased number of recent reports on the utility of the technique for the assessment of cardiac and vascular hemodynamics in patient studies. A number of studies have demonstrated the potential of 4D flow MRI to provide an improved assessment of hemodynamics which might aid in the diagnosis and therapeutic management of cardiovascular diseases. The purpose of this review is to describe the methods used for 4D flow MRI acquisition, post-processing and data analysis. In addition, the article provides an overview of the clinical applications of 4D flow MRI and includes a review of applications in the heart, thoracic aorta and hepatic system.}
+      \field{eprinttype}{pmid}
+      \field{issn}{2223-3652}
+      \field{journaltitle}{Cardiovascular Diagnosis and Therapy}
+      \field{month}{4}
+      \field{number}{2}
+      \field{shortjournal}{Cardiovasc Diagn Ther}
+      \field{title}{{{4D}} Flow Imaging with {{MRI}}}
+      \field{urlday}{18}
+      \field{urlmonth}{8}
+      \field{urlyear}{2021}
+      \field{volume}{4}
+      \field{year}{2014}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \field{pages}{173\bibrangedash 192}
+      \range{pages}{20}
+      \verb{doi}
+      \verb 10.3978/j.issn.2223-3652.2014.01.02
+      \endverb
+      \verb{eprint}
+      \verb 24834414
+      \endverb
+      \verb{file}
+      \verb /Users/Heni/Zotero/storage/6U27RVTZ/Stankovic et al. - 2014 - 4D flow imaging with MRI.pdf
+      \endverb
+      \verb{urlraw}
+      \verb https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3996243/
+      \endverb
+      \verb{url}
+      \verb https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3996243/
+      \endverb
+    \endentry
     \entry{vangeunsBasicPrinciplesMagnetic1999}{article}{useprefix=true}
       \name{author}{8}{}{%
         {{hash=2f06f4af93f42c7d4c8411b915173044}{%
@@ -319,7 +669,7 @@
       \verb 10.1016/S0033-0620(99)70014-9
       \endverb
       \verb{file}
-      \verb /Users/Heni/Zotero/storage/VRHKFXJB/van Geuns et al. - 1999 - Basic principles of magnetic resonance imaging.pdf;/Users/Heni/Zotero/storage/RKBDV2MY/S0033062099700149.html
+      \verb /Users/Heni/Zotero/storage/JB68Q8XD/van Geuns et al. - 1999 - Basic principles of magnetic resonance imaging.pdf;/Users/Heni/Zotero/storage/VRHKFXJB/van Geuns et al. - 1999 - Basic principles of magnetic resonance imaging.pdf;/Users/Heni/Zotero/storage/RKBDV2MY/S0033062099700149.html
       \endverb
       \verb{urlraw}
       \verb https://www.sciencedirect.com/science/article/pii/S0033062099700149

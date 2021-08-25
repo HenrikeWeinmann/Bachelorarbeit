@@ -2,7 +2,33 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8e406e9a-7129-4799-b3f3-c02ccd0c5d7c" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Icons/clear_clicked.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Icons/erase_clicked.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Icons/move_clicked.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GUIV2.py" beforeDir="false" afterPath="$PROJECT_DIR$/GUIV2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Icons/clear.png" beforeDir="false" afterPath="$PROJECT_DIR$/Icons/clear.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Icons/ds.png" beforeDir="false" afterPath="$PROJECT_DIR$/Icons/ds.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LaTeX/BA.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/LaTeX/BA.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LaTeX/BA.synctex.gz" beforeDir="false" afterPath="$PROJECT_DIR$/LaTeX/BA.synctex.gz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LaTeX/BA.tex" beforeDir="false" afterPath="$PROJECT_DIR$/LaTeX/BA.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LaTeX/Concept.tex" beforeDir="false" afterPath="$PROJECT_DIR$/LaTeX/Concept.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LaTeX/Literature.bib" beforeDir="false" afterPath="$PROJECT_DIR$/LaTeX/Literature.bib" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LaTeX/Medical_Data_and_imaging.tex" beforeDir="false" afterPath="$PROJECT_DIR$/LaTeX/Medical_Data_and_imaging.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LaTeX/State_of_the_art.tex" beforeDir="false" afterPath="$PROJECT_DIR$/LaTeX/State_of_the_art.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LaTeX/build/BA.aux" beforeDir="false" afterPath="$PROJECT_DIR$/LaTeX/build/BA.aux" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LaTeX/build/BA.bbl" beforeDir="false" afterPath="$PROJECT_DIR$/LaTeX/build/BA.bbl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LaTeX/build/BA.bcf" beforeDir="false" afterPath="$PROJECT_DIR$/LaTeX/build/BA.bcf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LaTeX/build/BA.blg" beforeDir="false" afterPath="$PROJECT_DIR$/LaTeX/build/BA.blg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LaTeX/build/BA.fdb_latexmk" beforeDir="false" afterPath="$PROJECT_DIR$/LaTeX/build/BA.fdb_latexmk" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LaTeX/build/BA.fls" beforeDir="false" afterPath="$PROJECT_DIR$/LaTeX/build/BA.fls" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LaTeX/build/BA.log" beforeDir="false" afterPath="$PROJECT_DIR$/LaTeX/build/BA.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LaTeX/build/BA.out" beforeDir="false" afterPath="$PROJECT_DIR$/LaTeX/build/BA.out" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LaTeX/build/BA.toc" beforeDir="false" afterPath="$PROJECT_DIR$/LaTeX/build/BA.toc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LaTeX/build/Medical_Data_and_imaging.fdb_latexmk" beforeDir="false" afterPath="$PROJECT_DIR$/LaTeX/build/Medical_Data_and_imaging.fdb_latexmk" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LaTeX/build/Medical_Data_and_imaging.fls" beforeDir="false" afterPath="$PROJECT_DIR$/LaTeX/build/Medical_Data_and_imaging.fls" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LaTeX/build/Medical_Data_and_imaging.log" beforeDir="false" afterPath="$PROJECT_DIR$/LaTeX/build/Medical_Data_and_imaging.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Stylesheet.qss" beforeDir="false" afterPath="$PROJECT_DIR$/Stylesheet.qss" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -18,8 +44,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/GUIV2.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="175">
-              <caret line="594" column="43" lean-forward="true" selection-start-line="594" selection-start-column="43" selection-end-line="594" selection-end-column="43" />
+            <state relative-caret-position="665">
+              <caret line="402" column="12" selection-start-line="402" selection-start-column="12" selection-end-line="402" selection-end-column="12" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
@@ -28,10 +54,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/welcome.txt">
+        <entry file="file://$PROJECT_DIR$/Stylesheet.qss">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="38" selection-start-column="38" selection-end-column="38" />
+            <state relative-caret-position="297">
+              <caret line="283" column="17" selection-start-line="283" selection-start-column="17" selection-end-line="283" selection-end-column="17" />
             </state>
           </provider>
         </entry>
@@ -92,6 +118,11 @@
               <item name="Bachelorarbeit" type="b2602c69:ProjectViewProjectNode" />
               <item name="Bachelorarbeit" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="Bachelorarbeit" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Bachelorarbeit" type="462c0819:PsiDirectoryNode" />
+              <item name="Icons" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -108,11 +139,11 @@
     <property name="settings.editor.selected.configurable" value="preferences.general" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/Icons" />
+      <recent name="$PROJECT_DIR$" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
@@ -675,18 +706,19 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="84" y="25" width="2476" height="1415" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49248928" visible="true" weight="0.06517312" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49248928" visible="true" weight="0.10142566" />
       <window_info id="Structure" order="1" sideWeight="0.5075107" side_tool="true" weight="0.11731161" />
       <window_info id="Favorites" order="2" sideWeight="0.5005015" side_tool="true" weight="0.09531312" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.3264996" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.5648438" weight="0.29233107" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.11161731" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.5648438" visible="true" weight="0.29233107" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49921876" weight="0.39836735" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49940923" weight="0.329927" />
-      <window_info active="true" anchor="bottom" id="Version Control" order="7" sideWeight="0.49921876" visible="true" weight="0.6059226" />
+      <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.49921876" weight="0.062262718" />
       <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49901536" weight="0.329927" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.43515626" side_tool="true" weight="0.3495066" />
       <window_info anchor="bottom" id="Python Console" order="10" sideWeight="0.49940923" weight="0.329927" />
@@ -855,27 +887,48 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/welcome.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="38" selection-start-column="38" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Icons/move.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Icons/move_clicked.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Icons/visible.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Icons/ds.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Icons/clear_clicked.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Icons/erase_clicked.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/Stylesheet.qss">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="870">
-          <caret line="248" column="20" selection-start-line="248" selection-start-column="20" selection-end-line="248" selection-end-column="20" />
+        <state relative-caret-position="297">
+          <caret line="283" column="17" selection-start-line="283" selection-start-column="17" selection-end-line="283" selection-end-column="17" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/GUIV2.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="594" column="43" lean-forward="true" selection-start-line="594" selection-start-column="43" selection-end-line="594" selection-end-column="43" />
+        <state relative-caret-position="665">
+          <caret line="402" column="12" selection-start-line="402" selection-start-column="12" selection-end-line="402" selection-end-column="12" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/welcome.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="38" selection-start-column="38" selection-end-column="38" />
         </state>
       </provider>
     </entry>

@@ -1,13 +1,12 @@
 # Fdb version 3
-["pdflatex"] 1628852500 "Medical_Data_and_imaging.tex" "build/Medical_Data_and_imaging.pdf" "Medical_Data_and_imaging" 1628852501
+["pdflatex"] 1629632595 "Medical_Data_and_imaging.tex" "build/Medical_Data_and_imaging.pdf" "Medical_Data_and_imaging" 1629632596
   "/usr/local/texlive/2021/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2021/texmf-dist/fonts/tfm/public/cm/cmbx10.tfm" 1136768653 1328 c834bbb027764024c09d3d2bf908b5f0 ""
   "/usr/local/texlive/2021/texmf-dist/web2c/texmf.cnf" 1616443989 39972 3d6bb4d9d719e93193fa020b58adf5d4 ""
-  "/usr/local/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1616695603 5169178 a2ce6e2d73f603b690db6777d06dbccb ""
   "/usr/local/texlive/2021/texmf-var/web2c/pdftex/pdflatex.fmt" 1626438734 2724735 887578fd384e2209c87ff8d64b486e94 ""
   "/usr/local/texlive/2021/texmf.cnf" 1616695596 577 4c1911a7228e554c6032256d3cf5567d ""
-  "Medical_Data_and_imaging.tex" 1628852499 4039 32b77785cda2a11c4d36cd6899498ebd ""
-  "build/Medical_Data_and_imaging.aux" 1628092495 8 a94a2480d3289e625eea47cd1b285758 ""
+  "Medical_Data_and_imaging.tex" 1629632595 7007 45922e271bdb5b22c8cfd651b68f858b ""
+  "build/Medical_Data_and_imaging.aux" 1629203078 8 a94a2480d3289e625eea47cd1b285758 ""
   (generated)
   "build/Medical_Data_and_imaging.log"
   "build/Medical_Data_and_imaging.pdf"

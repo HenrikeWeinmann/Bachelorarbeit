@@ -2347,13 +2347,20 @@
     <bcf:citekey order="1">varmaManagingDICOMImages2012</bcf:citekey>
     <bcf:citekey order="2">ElsevierEnhancedReader</bcf:citekey>
     <bcf:citekey order="3">MagneticResonanceImaging</bcf:citekey>
-    <bcf:citekey order="4">johnson2DMultislice3D1999</bcf:citekey>
-    <bcf:citekey order="5">vangeunsBasicPrinciplesMagnetic1999</bcf:citekey>
-    <bcf:citekey order="6">vangeunsBasicPrinciplesMagnetic1999</bcf:citekey>
-    <bcf:citekey order="7">lineyMRIRadiotherapyPlanning2019</bcf:citekey>
-    <bcf:citekey order="8">ElsevierEnhancedReader</bcf:citekey>
-    <bcf:citekey order="9">varmaFreeDICOMBrowsers2008</bcf:citekey>
-    <bcf:citekey order="10">heckelSketchBasedEditingTools2013</bcf:citekey>
+    <bcf:citekey order="4">vangeunsBasicPrinciplesMagnetic1999</bcf:citekey>
+    <bcf:citekey order="5">lineyMRIRadiotherapyPlanning2019</bcf:citekey>
+    <bcf:citekey order="6">johnson2DMultislice3D1999</bcf:citekey>
+    <bcf:citekey order="7">vangeunsBasicPrinciplesMagnetic1999</bcf:citekey>
+    <bcf:citekey order="8">vangeunsBasicPrinciplesMagnetic1999</bcf:citekey>
+    <bcf:citekey order="9">bunckMagneticResonance4D2012a</bcf:citekey>
+    <bcf:citekey order="10">stankovic4DFlowImaging2014</bcf:citekey>
+    <bcf:citekey order="11">harrisVolumetricCineMagnetic2020</bcf:citekey>
+    <bcf:citekey order="12">helmbergerRadiologistsLeadingPosition2013</bcf:citekey>
+    <bcf:citekey order="13">lineyMRIRadiotherapyPlanning2019</bcf:citekey>
+    <bcf:citekey order="14">ElsevierEnhancedReader</bcf:citekey>
+    <bcf:citekey order="15">varmaFreeDICOMBrowsers2008</bcf:citekey>
+    <bcf:citekey order="16">lineyMRIRadiotherapyPlanning2019</bcf:citekey>
+    <bcf:citekey order="17">heckelSketchBasedEditingTools2013</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="nty">

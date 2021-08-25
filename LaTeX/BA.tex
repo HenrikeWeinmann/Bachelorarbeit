@@ -6,7 +6,7 @@
 %%% allgemeine Einstellungen
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %!TeX spellcheck = en-GB
-\documentclass[12pt,a4paper]{report}
+\documentclass[12pt,a4paper,twoside]{report}
 \usepackage[utf8]{inputenc}
 
 \usepackage{amsmath}
@@ -16,14 +16,16 @@
 \usepackage{eurosym}
 \usepackage[ngerman, english]{babel}
 \usepackage{biblatex}
-\usepackage{csquotes}
 \addbibresource{Literature.bib}
+\usepackage{csquotes}
+\usepackage{microtype}
+\usepackage{url}
 \usepackage{graphics, graphicx}
 \usepackage[margin=10pt,font=small,labelfont=bf]{caption}
 \usepackage{sistyle}
 \usepackage{latexsym}
 \usepackage{hyperref}
-\usepackage[textwidth=14cm,textheight=22cm]{geometry}
+\usepackage[textwidth=14cm,textheight=22cm,bindingoffset=6mm]{geometry}
 \usepackage{wrapfig}
 
 %\footskip 2cm
@@ -157,6 +159,9 @@ Datum, Ort, \hfill Unterschrift \hfill
 \small\normalsize
 
 \newpage
+\null
+\thispagestyle{empty}
+\newpage %%% Leerseite für Bindung, damit Content auf der rechten Seite anfängt
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% Der Haupttext, ab hier mit arabischer Numerierung
@@ -193,7 +198,9 @@ Datum, Ort, \hfill Unterschrift \hfill
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% Bibliographie
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+\setcounter{biburllcpenalty}{9000}
+\setcounter{biburlucpenalty}{9000}
+\setcounter{biburlnumpenalty}{9000}
 \addcontentsline{toc}{chapter}{Sources}
 \printbibliography
 
@@ -220,6 +227,8 @@ Datum, Ort, \hfill Unterschrift \hfill
     \textbf{SRS} \> Stereotactic radiosurgery\\
     \textbf{GTV} \> Gross tumor volume\\
     \textbf{OAR} \> Organs at risk\\
+    \textbf{ROI} \> Region of interest\\
+    \textbf{VC-MRI} \> Volumetric CINE Magnetic Resonance Imaging\\
 \end{tabbing}
 
 \newpage
