@@ -29,7 +29,7 @@ class Dicom (FigureCanvas):
         try:
             self.initCanvas()
         except:
-            self.img = self.ax.imshow(plt.imread("Default.jpg"), aspect='auto')
+            self.img = self.ax.imshow(plt.imread("Application/Default.jpg"), aspect='auto')
             self.fig.subplots_adjust(bottom=0, top=1, left=0, right=1)
             plt.axis("off")
 
@@ -164,12 +164,12 @@ class Dicom (FigureCanvas):
             self.cid2 = self.fig.canvas.mpl_disconnect(window.dicom.cid2)
             self.cid2 = self.fig.canvas.mpl_connect('button_release_event', self.release)
         if window.eraseMode.isChecked():
-            window.eraseMode.setStyleSheet("image: url('Icons/erase_clicked.png') ;")
+            window.eraseMode.setStyleSheet("image: url('Application/Icons/erase_clicked.png') ;")
             self.cid = self.fig.canvas.mpl_disconnect(window.dicom.cid)
             self.cid = self.fig.canvas.mpl_connect('button_press_event', self.erase_and_redraw)
         else:
             self.reconnect_cids(window)
-            window.eraseMode.setStyleSheet("image: url('Icons/erase.png') ;")
+            window.eraseMode.setStyleSheet("image: url('Application/Icons/erase.png') ;")
 
     def erasePoint(self, event):
         print("erasing")
@@ -207,14 +207,14 @@ class Dicom (FigureCanvas):
         if window.eraseMode.isChecked():
             window.eraseMode.toggle()
         if window.moveMode.isChecked():
-            window.moveMode.setStyleSheet("image: url('Icons/move_clicked.png') ;")
+            window.moveMode.setStyleSheet("image: url('Application/Icons/move_clicked.png') ;")
             self.cid = self.fig.canvas.mpl_disconnect(window.dicom.cid)
             self.cid = self.fig.canvas.mpl_connect('button_press_event', self.erasePoint)
             self.cid2 = self.fig.canvas.mpl_disconnect(window.dicom.cid2)
             self.cid2 = self.fig.canvas.mpl_connect('button_release_event', self.movePoint)
         else:
             self.reconnect_cids(window)
-            window.moveMode.setStyleSheet("image: url('Icons/move.png') ;")
+            window.moveMode.setStyleSheet("image: url('Application/Icons/move.png') ;")
 
     def movePoint(self, event):
         window = self.parent().parent()
@@ -226,7 +226,7 @@ class Dicom (FigureCanvas):
     def hide(self, window):
         if window.dontShow.isChecked():
             self.cid = self.fig.canvas.mpl_disconnect(window.dicom.cid)
-            window.dontShow.setStyleSheet("image: url('Icons/ds.png') ;")
+            window.dontShow.setStyleSheet("image: url('Application/Icons/ds.png') ;")
             print("hide")
             plt.clf()
             window.dicom.img = plt.imshow(self.imgarr, self.cmap, vmin=self.vmin, vmax=self.vmax)
@@ -236,7 +236,7 @@ class Dicom (FigureCanvas):
         elif not window.dontShow.isChecked():
             self.reconnect_cids(window)
             window.update_fig()
-            window.dontShow.setStyleSheet("image: url('Icons/visible.png') ;")
+            window.dontShow.setStyleSheet("image: url('Application/Icons/visible.png') ;")
             print("unhide")
 
     def save(self):

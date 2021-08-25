@@ -94,10 +94,17 @@ class MainWindow (QMainWindow):
         self.contrast.setValue(255)
         self.contrast.setMaximum(500)
         self.contrast.setMinimum(1)
-        self.label = QLabel("contrast")
+        self.con = QPixmap("Application/Icons/contrast.png")
+        self.label = QLabel()
+        self.label.setPixmap(self.con.scaled(30, 30))
         self.label.setObjectName("contrast")
+        self.con_max = QPixmap("Application/Icons/contrast_max.png")
+        self.label2 = QLabel()
+        self.label2.setPixmap(self.con_max.scaled(30, 30))
+        self.label2.setObjectName("contrast_max")
         layout.addWidget(self.label)
         layout.addWidget(self.contrast)
+        layout.addWidget(self.label2)
         layout.addWidget(self.saveImage)
         layout.addWidget(self.eraseMode)
         layout.addWidget(self.moveMode)
@@ -140,7 +147,7 @@ class MainWindow (QMainWindow):
         rightSide.setObjectName("right")
         self.data = Data(self)
         self.data.setObjectName("data")
-        with open('welcome.txt', 'r') as file:
+        with open('Application/welcome.txt', 'r') as file:
             text = file.read()
         self.welcome = QTextEdit()
         self.welcome.setReadOnly(True)
@@ -191,7 +198,7 @@ class MainWindow (QMainWindow):
 
 if __name__== '__main__':
     app = QApplication(sys.argv)
-    qss = "Stylesheet.qss"
+    qss = "Application/Stylesheet.qss"
 
     with open(qss, "r") as fh:
         app.setStyleSheet(fh.read())

@@ -42,12 +42,12 @@ class MediaBar(QWidget):
     def play(self):
         if self.window.running:
             self.window.running = False
-            self.playbtn.setStyleSheet("image: url('Icons/Play.png') ;")
+            self.playbtn.setStyleSheet("image: url('Application/Icons/Play.png') ;")
             self.timer.stop()
             print('start')
         else:
             self.window.running = True
-            self.playbtn.setStyleSheet("image: url('Icons/Pause.png') ;")
+            self.playbtn.setStyleSheet("image: url('Application/Icons/Pause.png') ;")
             self.timer.start(self.refresh)
             self.timer.timeout.connect(self.forward)
             print('stop')
@@ -55,7 +55,7 @@ class MediaBar(QWidget):
     def stop(self):
         if self.window.running:
             self.window.running = False
-            self.playbtn.setStyleSheet("image: url('Icons/Play.png') ;")
+            self.playbtn.setStyleSheet("image: url('Application/Icons/Play.png') ;")
             self.timer.stop()
             self.window.current = 0
             self.window.reset_after_changes()
