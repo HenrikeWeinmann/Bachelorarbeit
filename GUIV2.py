@@ -16,6 +16,7 @@ from scipy.spatial import distance
 
 class MainWindow (QMainWindow):
     validDataset = False  # /Users/Heni/OneDrive/Uni/Bachelorarbeit/second-annual-data-science-bowl/test/test/932/study/
+    single_image = False
     current = 0  # current frame starting with 0
     running = False
     slice = 0  # slice the user currently sees starting at 1
@@ -488,7 +489,8 @@ class UserInput(QFrame):
                 self.window.reset_after_changes()
                 if not self.window.validDataset:
                     self.window.validDataset = True
-                    self.window.mainLayout.addLayout(self.window.mediaBar)
+                    if not self.window.single_image:
+                        self.window.mainLayout.addLayout(self.window.mediaBar)
                     self.window.mainLayout.insertWidget(0, self.window.picturemenu)
             else:
                 self.layout.insertWidget(1, self.errorText)
@@ -534,6 +536,7 @@ class UserInput(QFrame):
         data = []
         if not os.path.isdir(self.filepath):
             print("single picture")
+            self.window.single_image = True
             data.append([])
             dicom = dcm.dcmread(self.filepath)
             data[0].append(dicom)
