@@ -21,6 +21,7 @@ QWidget {
 
 QFrame * {
     margin: 0;
+
 }
 
 /* -------- General --------------*/

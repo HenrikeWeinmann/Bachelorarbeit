@@ -9,6 +9,7 @@ from Application.DicomViewer import Dicom
 from Application.Animation import MediaBar
 from Application.Data import Data
 
+
 class MainWindow (QMainWindow):
     validDataset = False  # /Users/Heni/OneDrive/Uni/Bachelorarbeit/second-annual-data-science-bowl/test/test/932/study/
     single_image = False

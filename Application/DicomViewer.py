@@ -14,6 +14,7 @@ from scipy.spatial import distance
 class Dicom (FigureCanvas):
     pressed = False
     pos = []
+    current_pos = []
 
     def __init__(self, window):
         self.dpi = 100
@@ -45,7 +46,7 @@ class Dicom (FigureCanvas):
         self.cnv = self.ax.imshow(self.canvas, cmap=self.customcmap())
         self.cid = self.fig.canvas.mpl_connect('button_press_event', self.selection)
         self.cid2 = self.fig.canvas.mpl_connect('button_release_event', self.release)
-        self.cid3 = self.fig.canvas.mpl_connect('motion_notify_event', self.set_contrast)
+        self.cid3 = self.fig.canvas.mpl_connect('motion_notify_event', self.mouse_position)
         self.patch = patches.Circle([1, 1], 2)
         self.xlim = [0, self.imgarr.shape[1]-1]
         self.ylim = [self.imgarr.shape[0]-1, 0]
@@ -121,6 +122,23 @@ class Dicom (FigureCanvas):
     def setSelectionMode(self, selectionMode, window):
         print(selectionMode)
         window.selectionMode = selectionMode
+
+
+    def mouse_position(self, event):
+        self.set_contrast(event)
+        self.drag_draw(event)
+        self.current_pos = [event.xdata, event.ydata]
+        #print(self.current_pos)
+
+    def drag_draw(self, event):
+        window = self.parent().parent()
+        if event.button == MouseButton.LEFT and window.selectionMode == 'Multiple Point Selection':
+            if (math.sqrt((self.current_pos[1] - self.pos[1])**2 + (self.current_pos[0] - self.pos[0])**2)) > 10:
+                if self.current_pos[1] and self.current_pos[0] > 0:
+                    window.dicom.canvas[int(self.current_pos[1]), int(self.current_pos[0])] = 255
+                    window.selection.append(self.current_pos)
+                    self.pos = self.current_pos
+                    window.reset_after_changes()
 
     def set_contrast(self, event):
         window = self.parent().parent()
