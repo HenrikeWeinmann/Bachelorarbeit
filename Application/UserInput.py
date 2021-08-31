@@ -25,7 +25,7 @@ class UserInput(QFrame):
         self.openbtn.clicked.connect(self.open)
         self.label = QLabel("Please enter the filepath to a study directory: ")
         self.label.setObjectName("enterfilepath")
-        self.label2 = QLabel("Open a study folder from the file manager: ")
+        self.label2 = QLabel("Open a CINE set from the file manager: ")
         self.label2.setObjectName("label2")
         self.errorText = QLabel("This is not a valid file path")
         self.errorText.setSizePolicy(QSizePolicy.Policy.Preferred, QSizePolicy.Policy.Maximum)

@@ -22,7 +22,7 @@ class Dicom (FigureCanvas):
         self.ax = self.fig.add_subplot(1, 1, 1)
         super().__init__(self.fig)
         window.centralWidget.setFixedWidth(700)
-        window.centralWidget.setFixedHeight(900 - window.menu.height())
+        window.centralWidget.setFixedHeight(900)
         self.setParent(window)
         self.cmap = 'bone'
         self.vmin = 0
@@ -33,11 +33,14 @@ class Dicom (FigureCanvas):
             self.img = self.ax.imshow(plt.imread("Application/Default.jpg"), aspect='auto')
             self.fig.subplots_adjust(bottom=0, top=1, left=0, right=1)
             plt.axis("off")
+            window.toolbar.setVisible(False)
 
 
 
     def initCanvas(self):
         window = self.parent().parent()
+        window.centralWidget.setFixedHeight(900 - window.toolbar.height())
+        window.toolbar.setVisible(True)
         self.imgarr = window.dataArray[window.slice][window.current].pixel_array
         #  print(window.dataArray[window.slice][window.current])  #print meta data
         self.img = self.ax.imshow(self.imgarr, self.cmap)

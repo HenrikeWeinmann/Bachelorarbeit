@@ -27,10 +27,10 @@ class MainWindow (QMainWindow):
         self.centralWidget = QFrame()
         self.centralWidget.setFrameStyle(QFrame.StyledPanel)
         self.dataArray = []
-        self.menu = self.toolbar()
+        self.toolbar = self.toolbar()
         self.dicom = Dicom(self)
         self.dicom.setObjectName("dicom")
-        self.addToolBar(self.toolbar())
+        self.addToolBar(self.toolbar)
 
         self.picturemenu = self.selection_menu()
         self.picturemenu.setMaximumWidth(self.centralWidget.width())

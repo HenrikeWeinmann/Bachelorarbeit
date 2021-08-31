@@ -352,6 +352,24 @@
   file = {/Users/Heni/Zotero/storage/C2WH6B4N/Keiper et al. - 2020 - Feasibility of real-time motion tracking using cin.pdf;/Users/Heni/Zotero/storage/X3CTZEIT/mp.html}
 }
 
+@article{keizerFiducialMarkerBased2019,
+  title = {Fiducial Marker Based Intra-Fraction Motion Assessment on Cine-{{MR}} for {{MR}}-Linac Treatment of Prostate Cancer},
+  author = {Keizer, D. M. de Muinck and Pathmanathan, A. U. and Andreychenko, A. and Kerkmeijer, L. G. W. and van Zyp, J. R. N. van der Voort and Tree, A. C. and van den Berg, C. A. T. and de Boer, J. C. J.},
+  date = {2019-04},
+  journaltitle = {Physics in Medicine \& Biology},
+  shortjournal = {Phys. Med. Biol.},
+  volume = {64},
+  number = {7},
+  pages = {07NT02},
+  publisher = {{IOP Publishing}},
+  issn = {0031-9155},
+  doi = {10.1088/1361-6560/ab09a6},
+  url = {https://doi.org/10.1088/1361-6560/ab09a6},
+  urldate = {2021-08-31},
+  abstract = {We have developed a method to determine intrafraction motion of the prostate through automatic fiducial marker (FM) tracking on 3D cine-magnetic resonance (MR) images with high spatial and temporal resolution. Twenty-nine patients undergoing prostate stereotactic body radiotherapy (SBRT), with four implanted cylindrical gold FMs, had cine-MR imaging sessions after each of five weekly fractions. Each cine-MR examination consisted of 55 sequentially obtained 3D datasets (‘dynamics’), acquired over a 11 s period, covering a total of 10 min. FM locations in the first dynamic were manually identified by a clinician, FM centers in subsequent dynamics were automatically determined. Center of mass (COM) translations and rotations were determined by calculating the rigid transformations between the FM template of the first and subsequent dynamics. The algorithm was applied to 7315 dynamics over 133 scans of 29 patients and the obtained results were validated by comparing the COM locations recorded by the clinician at the halfway-dynamic (after 5 min) and end dynamic (after 10 min). The mean COM translations at 10 min were X: 0.0 0.8 mm, Y: 1.0 1.9 mm and Z: 0.9 2.0 mm. The mean rotation results at 10 min were X: 0.1 3.9°, Y: 0.0 1.3° and Z: 0.1 1.2°. The tracking success rate was 97.7\% with a mean 3D COM error of 1.1 mm. We have developed a robust, fast and accurate FM tracking algorithm for cine-MR data, which allows for continuous monitoring of prostate motion during MR-guided radiotherapy (MRgRT). These results will be used to validate automatic prostate tracking based on soft-tissue contrast.},
+  langid = {english}
+}
+
 @article{kerkmeijerMRILinearAcceleratorConsortium2016,
   title = {The {{MRI}}-{{Linear Accelerator Consortium}}: {{Evidence}}-{{Based Clinical Introduction}} of an {{Innovation}} in {{Radiation Oncology Connecting Researchers}}, {{Methodology}}, {{Data Collection}}, {{Quality Assurance}}, and {{Technical Development}}},
   shorttitle = {The {{MRI}}-{{Linear Accelerator Consortium}}},
@@ -391,6 +409,25 @@
   abstract = {At the first annual Conference on Machine Intelligence in Medical Imaging (C-MIMI), held in September 2016, a conference session on medical image data and datasets for machine learning identified multiple issues. The common theme from attendees was that everyone participating in medical image evaluation with machine learning is data starved. There is an urgent need to find better ways to collect, annotate, and reuse medical imaging data. Unique domain issues with medical image datasets require further study, development, and dissemination of best practices and standards, and a coordinated effort among medical imaging domain experts, medical imaging informaticists, government and industry data scientists, and interested commercial, academic, and government entities. High-level attributes of reusable medical image datasets suitable to train, test, validate, verify, and regulate ML products should be better described. NIH and other government agencies should promote and, where applicable, enforce, access to medical image datasets. We should improve communication among medical imaging domain experts, medical imaging informaticists, academic clinical and basic science researchers, government and industry data scientists, and interested commercial entities.},
   pmcid = {PMC5537092},
   file = {/Users/Heni/Zotero/storage/25LSLRBR/Kohli et al. - 2017 - Medical Image Data and Datasets in the Era of Mach.pdf}
+}
+
+@article{kontaxisFastOnlineIntrafraction2017a,
+  title = {Towards Fast Online Intrafraction Replanning for Free-Breathing Stereotactic Body Radiation Therapy with the {{MR}}-Linac},
+  author = {Kontaxis, C. and Bol, G. H. and Stemkens, B. and Glitzner, M. and Prins, F. M. and Kerkmeijer, L. G. W. and Lagendijk, J. J. W. and Raaymakers, B. W.},
+  date = {2017-08},
+  journaltitle = {Physics in Medicine \& Biology},
+  shortjournal = {Phys. Med. Biol.},
+  volume = {62},
+  number = {18},
+  pages = {7233--7248},
+  publisher = {{IOP Publishing}},
+  issn = {0031-9155},
+  doi = {10.1088/1361-6560/aa82ae},
+  url = {https://doi.org/10.1088/1361-6560/aa82ae},
+  urldate = {2021-08-31},
+  abstract = {The hybrid MRI-radiotherapy machines, like the MR-linac (Elekta AB, Stockholm, Sweden) installed at the UMC Utrecht (Utrecht, The Netherlands), will be able to provide real-time patient imaging during treatment. In order to take advantage of the system’s capabilities and enable online adaptive treatments, a new generation of software should be developed, ranging from motion estimation to treatment plan adaptation. In this work we present a proof of principle adaptive pipeline designed for high precision stereotactic body radiation therapy (SBRT) suitable for sites affected by respiratory motion, like renal cell carcinoma (RCC). We utilized our research MRL treatment planning system (MRLTP) to simulate a single fraction 25 Gy free-breathing SBRT treatment for RCC by performing inter-beam replanning for two patients and one volunteer. The simulated pipeline included a combination of (pre-beam) 4D-MRI and (online) 2D cine-MR acquisitions. The 4DMRI was used to generate the mid-position reference volume, while the cine-MRI, via an in-house motion model, provided three-dimensional (3D) deformable vector fields (DVFs) describing the anatomical changes during treatment. During the treatment fraction, at an inter-beam interval, the mid-position volume of the patient was updated and the delivered dose was accurately reconstructed on the underlying motion calculated by the model. Fast online replanning, targeting the latest anatomy and incorporating the previously delivered dose was then simulated with MRLTP. The adaptive treatment was compared to a conventional mid-position SBRT plan with a 3 mm planning target volume margin reconstructed on the same motion trace. We demonstrate that our system produced tighter dose distributions and thus spared the healthy tissue, while delivering more dose to the target. The pipeline was able to account for baseline variations/drifts that occurred during treatment ensuring target coverage at the end of the treatment fraction.},
+  langid = {english},
+  file = {/Users/Heni/Zotero/storage/VBYQ6S5W/Kontaxis et al. - 2017 - Towards fast online intrafraction replanning for f.pdf}
 }
 
 @article{liAminopeptidaseActivatableFluorescent2020,
@@ -585,6 +622,15 @@
   isbn = {978-3-030-00945-8 978-3-030-00946-5},
   langid = {english},
   file = {/Users/Heni/Zotero/storage/XR5D74CH/Stoyanov et al. - 2018 - Image Analysis for Moving Organ, Breast, and Thora.pdf}
+}
+
+@online{TechnicalDesignConcept,
+  title = {Technical Design and Concept of a 0.35 {{T MR}}-{{Linac}} | {{Elsevier Enhanced Reader}}},
+  doi = {10.1016/j.ctro.2019.04.007},
+  url = {https://reader.elsevier.com/reader/sd/pii/S2405630819300692?token=9537D3266CAA855B501CAF38A5ACD044103F8EBA95384E76529D511FBF7D56B7FFF6C13366DFA672232F271F11C07457&originRegion=eu-west-1&originCreation=20210831095956},
+  urldate = {2021-08-31},
+  langid = {english},
+  file = {/Users/Heni/Zotero/storage/5I4WSWLU/Technical design and concept of a 0.35 T MR-Linac .pdf;/Users/Heni/Zotero/storage/G6M96UW4/S2405630819300692.html}
 }
 
 @online{TechniqueGeneratingVolumetric,
