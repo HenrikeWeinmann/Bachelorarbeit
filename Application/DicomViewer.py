@@ -259,5 +259,5 @@ class Dicom (FigureCanvas):
 
     def save(self):
         test = QFileDialog.getSaveFileName(self, "Save File", filter="Images (*.png *.jpg)")
-        plt.savefig(test[0])
-
+        if not test[0] == "":
+            plt.savefig(test[0])
