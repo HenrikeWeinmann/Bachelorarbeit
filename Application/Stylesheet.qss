@@ -339,10 +339,22 @@ QDockWidget::close-button {
     icon-size: 50px;
 }
 
-QPushButton#submit, #Open {
-    border-radius: 18;
-    max-height: 40px;
-    max-width: 200px;
-    width: 100;
+QPushButton#submit{
+    image: url('Application/Icons/check.png');
+    border-radius: 22;
+    border: none;
+    min-height: 55px;
+    min-width: 55px;
+    max-height: 55px;
+    max-width: 55px;
     color: #1A1A1A;
+}
+
+QPushButton#Open{
+    padding: 3;
+    text-align: left;
+    border-radius: 20;
+    min-height: 60px;
+    max-height: 80px;
+    max-width: 410px;
 }

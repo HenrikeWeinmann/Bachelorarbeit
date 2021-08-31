@@ -42,7 +42,7 @@ class MainWindow (QMainWindow):
         self.mediaBar = QHBoxLayout()
         self.mediaBar.addWidget(self.background)
 
-        self.dock = QDockWidget("Data", self)
+        self.dock = QDockWidget("", self)
         self.dock.setWidget(self.rightSide())
         self.dock.setFeatures(QDockWidget.DockWidgetFeature.DockWidgetClosable)
 
@@ -160,6 +160,7 @@ class MainWindow (QMainWindow):
             self.RSlayout.addWidget(self.data)
         else:
             self.RSlayout.addWidget(self.welcome)
+
         self.RSlayout.addStretch()
         rightSide.setLayout(self.RSlayout)
 
@@ -179,6 +180,7 @@ class MainWindow (QMainWindow):
         self.update_fig()
         self.data.info = Data.information(self.data)
         self.dock.setWidget(self.rightSide())
+
 
     #update the matplotlib canvas with the current data stored in the DICOM object
     def update_fig(self):

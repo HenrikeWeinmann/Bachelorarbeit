@@ -17,16 +17,17 @@ class UserInput(QFrame):
         QWidget.__init__(self)
         self.window = window
         self.setObjectName("UserInput")
-        self.submitbtn = QPushButton('SUBMIT')
+        self.submitbtn = QPushButton('')
         self.submitbtn.setObjectName("submit")
         self.submitbtn.clicked.connect(self.set_filepath)
-        self.openbtn = QPushButton('OPEN')
+        self.openbtn = QPushButton('Open a CINE set from the file manager:             ')
+        self.openbtn.setIcon(QIcon(QPixmap("Application/Icons/open.png")))
+        self.openbtn.setIconSize(QSize(50,50))
         self.openbtn.setObjectName("Open")
+        self.openbtn.setLayoutDirection(Qt.LayoutDirection.RightToLeft)
         self.openbtn.clicked.connect(self.open)
         self.label = QLabel("Please enter the filepath to a study directory: ")
         self.label.setObjectName("enterfilepath")
-        self.label2 = QLabel("Open a CINE set from the file manager: ")
-        self.label2.setObjectName("label2")
         self.errorText = QLabel("This is not a valid file path")
         self.errorText.setSizePolicy(QSizePolicy.Policy.Preferred, QSizePolicy.Policy.Maximum)
         self.errorText.setObjectName("error")
@@ -35,14 +36,12 @@ class UserInput(QFrame):
         self.input.setPlaceholderText('file path')
         self.input.setMaxLength(150)
         self.input.editingFinished.connect(self.set_filepath)
-
         self.layout = QVBoxLayout()
         self.layout.addWidget(self.label)
         self.inner = QHBoxLayout()
         self.inner.addWidget(self.input)
         self.inner.addWidget(self.submitbtn)
         self.inner2 = QHBoxLayout()
-        self.inner2.addWidget(self.label2)
         self.inner2.addWidget(self.openbtn)
         self.layout.addLayout(self.inner)
         self.layout.addLayout(self.inner2)
@@ -63,6 +62,8 @@ class UserInput(QFrame):
             if self.check_file(self.filepath):
                 self.window.dataArray = self.loadData()
                 self.layout.removeWidget(self.errorText)
+                self.errorText.setText("")
+                self.errorText.setFixedHeight(0)
                 self.window.reset_after_changes()
                 if not self.window.validDataset:
                     self.window.validDataset = True
@@ -71,9 +72,11 @@ class UserInput(QFrame):
                     self.window.mainLayout.insertWidget(0, self.window.picturemenu)
             else:
                 self.layout.insertWidget(1, self.errorText)
+                print("error")
         else:
             self.layout.insertWidget(1, self.errorText)
-            self.errorText.setText("not a valid path")
+            print("error2")
+            #self.errorText.setText("not a valid path")
     '''
     check for DICOM file suffix as well as the structure of nested directories with up to 3 layers
     '''
