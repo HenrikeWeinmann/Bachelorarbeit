@@ -34,6 +34,9 @@ class MainWindow (QMainWindow):
 
         self.picturemenu = self.selection_menu()
         self.picturemenu.setMaximumWidth(self.centralWidget.width())
+        self.picturemenu.setObjectName("picturemenu")
+        self.picturemenu.setMaximumHeight(50)
+        print(self.picturemenu.height())
 
         self.background = QStackedWidget()
         self.background.setObjectName("MediaBarBackground")
@@ -68,7 +71,6 @@ class MainWindow (QMainWindow):
 #this menu handles everything concerning the selection and labeling function
     def selection_menu(self):
         picturemenu = QWidget()
-        picturemenu.setObjectName("picturemenu")
         layout = QHBoxLayout()
         self.saveImage = QPushButton()
         self.saveImage.setObjectName("saveImage")
@@ -191,15 +193,21 @@ class MainWindow (QMainWindow):
         if self.selectionMode == 'Polygon Selection' and len(self.selection) >= 3:
             Dicom.draw_polygon(self.dicom, patches.Polygon(self.selection, color='red', alpha=0.2))
             '''used to be: plt.gca().add_patch(polygon)... but somehow wont work anymore'''
-        self.dicom.xlim = [0, self.dicom.imgarr.shape[1]-1]
-        self.dicom.ylim = [self.dicom.imgarr.shape[0]-1, 0]
         plt.xlim(self.dicom.xlim)
         plt.ylim(self.dicom.ylim)
+        print("update")
+        print(self.dicom.ylim)
+        print(self.dicom.xlim)
         self.dicom.draw()
         self.mainLayout.insertWidget(1, self.dicom)
 
+'''
+ do when new slice is opened
+        self.dicom.xlim = [0, self.dicom.imgarr.shape[1]-1]
+        self.dicom.ylim = [self.dicom.imgarr.shape[0]-1, 0]
+'''
 
-if __name__== '__main__':
+if __name__=='__main__':
     app = QApplication(sys.argv)
     qss = "Application/Stylesheet.qss"
 

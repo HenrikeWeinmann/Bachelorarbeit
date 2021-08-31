@@ -213,16 +213,19 @@ class Dicom (FigureCanvas):
         window = self.parent().parent()
         x, y = event.xdata, event.ydata
         # calculate the new ax limits
-        xlength = ((abs(self.xlim[0] - self.xlim[1]) * 0.8) / 2)
-        ylength = ((abs(self.ylim[0] - self.ylim[1]) * 0.8) / 2)
+        xlength = int(((abs(window.dicom.xlim[0] - window.dicom.xlim[1]) * 0.8) / 2))
+        ylength = int(((abs(window.dicom.ylim[0] - window.dicom.ylim[1]) * 0.8) / 2))
         xmin = x - xlength
         xmax = x + xlength
         ymin = x - ylength
         ymax = x + ylength
         # set new limits
-        self.xlim = [xmin, xmax]
-        self.ylim = [ymax, ymin]
+        window.dicom.xlim = [int(xmin), int(xmax)]
+        window.dicom.ylim = [int(ymax), int(ymin)]
         window.update_fig()
+        print("zoom")
+        print(window.dicom.xlim)
+
 
     def move(self, window):
         if window.eraseMode.isChecked():
