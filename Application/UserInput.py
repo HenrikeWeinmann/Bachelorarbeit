@@ -70,13 +70,10 @@ class UserInput(QFrame):
                     if not self.window.single_image:
                         self.window.mainLayout.addLayout(self.window.mediaBar, 1, 1, 1, 1)
                     self.window.mainLayout.addWidget(self.window.picturemenu, 0, 0, 2, 1,Qt.AlignmentFlag.AlignLeft)
-                    #self.window.mainLayout.setColumnMinimumWidth(0, 270)
             else:
                 self.layout.insertWidget(1, self.errorText)
-                print("error")
         else:
             self.layout.insertWidget(1, self.errorText)
-            print("error2")
             #self.errorText.setText("not a valid path")
     '''
     check for DICOM file suffix as well as the structure of nested directories with up to 3 layers

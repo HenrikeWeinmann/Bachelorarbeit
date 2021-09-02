@@ -22,8 +22,6 @@ class MainWindow (QMainWindow):
     def __init__(self):
         QWidget.__init__(self)
         self.setGeometry(200, 300, 1300, 900)
-        #self.setFixedWidth(1300)
-        #self.setFixedHeight(900)
         self.centralWidget = QFrame()
         self.centralWidget.setFrameStyle(QFrame.StyledPanel)
         self.dataArray = []
@@ -32,10 +30,7 @@ class MainWindow (QMainWindow):
         self.addToolBar(self.toolbar)
 
         self.picturemenu = self.picture_menu()
-        #self.picturemenu.setMaximumWidth(self.centralWidget.width())
         self.picturemenu.setObjectName("picturemenu")
-        #self.picturemenu.setMaximumHeight(50)
-        print(self.picturemenu.height())
 
         self.background = QStackedWidget()
         self.background.setObjectName("MediaBarBackground")
@@ -58,12 +53,10 @@ class MainWindow (QMainWindow):
         self.addDockWidget(Qt.DockWidgetArea.RightDockWidgetArea, self.uI)
 
         self.mainLayout = QGridLayout()
-        #self.mainLayout.setColumnMinimumWidth(0, 270)
         self.mainLayout.addWidget(self.dicom, 0, 1, 1, 1)
         if self.validDataset:
             self.mainLayout.addWidget(self.picturemenu, 0, 0, 2, 1, Qt.AlignmentFlag.AlignLeft)
             self.mainLayout.addLayout(self.mediaBar, 1, 1, 1, 1)
-            #self.mainLayout.setColumnMinimumWidth(0, 270)
         self.centralWidget.setLayout(self.mainLayout)
         self.setCentralWidget(self.centralWidget)
 
@@ -110,10 +103,14 @@ class MainWindow (QMainWindow):
         self.label2.setObjectName("contrast_max")
 
         imageMode = QComboBox()
+        #imageMode.setEditable(True)
         imageMode.addItem('bone')
         imageMode.addItem('gist_gray')
         imageMode.addItem('binary')
         imageMode.activated.connect(lambda: Dicom.changecmap(self.dicom, imageMode.currentText(), self))
+        #line_edit = imageMode.lineEdit()
+        #line_edit.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        #line_edit.setReadOnly(True)
 
         selectionBox = QComboBox()
         selectionBox.addItem("Single Point Selection")
@@ -198,6 +195,7 @@ class MainWindow (QMainWindow):
             self.dock.setVisible(False)
         else:
             self.dock.setVisible(True)
+
     def showInput(self):
         if self.uI.isVisible():
             self.uI.setVisible(False)
@@ -236,13 +234,6 @@ class MainWindow (QMainWindow):
         self.dicom.xlim = [0, self.dicom.imgarr.shape[1]-1]
         self.dicom.ylim = [self.dicom.imgarr.shape[0]-1, 0]
 '''
-class Combo(QComboBox):
-    def showPopup(self):
-        super().showPopup()
-        popup = self.findChild(QFrame)
-        popup.move(popup.x() + popup.width(), popup.y())
-        print("pop")
-
 if __name__=='__main__':
     app = QApplication(sys.argv)
     qss = "Application/Stylesheet.qss"

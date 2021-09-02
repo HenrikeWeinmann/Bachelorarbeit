@@ -5,8 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8e406e9a-7129-4799-b3f3-c02ccd0c5d7c" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Application/Icons/downarrow.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/DicomViewer.py" beforeDir="false" afterPath="$PROJECT_DIR$/Application/DicomViewer.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Application/GUIV2.py" beforeDir="false" afterPath="$PROJECT_DIR$/Application/GUIV2.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Application/Stylesheet.qss" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Stylesheet.qss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Application/UserInput.py" beforeDir="false" afterPath="$PROJECT_DIR$/Application/UserInput.py" afterDir="false" />
@@ -25,8 +25,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Application/GUIV2.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="485">
-              <caret line="30" column="32" selection-start-line="30" selection-start-column="32" selection-end-line="30" selection-end-column="32" />
+            <state relative-caret-position="481">
+              <caret line="112" column="9" selection-start-line="112" selection-start-column="9" selection-end-line="112" selection-end-column="9" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
@@ -34,11 +34,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Application/DicomViewer.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1809">
-              <caret line="59" column="16" selection-start-line="59" selection-start-column="16" selection-end-line="59" selection-end-column="16" />
+            <state relative-caret-position="563">
+              <caret line="58" column="30" selection-start-line="58" selection-start-column="30" selection-end-line="58" selection-end-column="30" />
               <folding>
                 <element signature="e#1#30#0" expanded="true" />
               </folding>
@@ -70,8 +70,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Application/UserInput.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2413">
-              <caret line="72" column="21" selection-start-line="72" selection-start-column="21" selection-end-line="72" selection-end-column="21" />
+            <state relative-caret-position="209">
+              <caret line="75" column="55" selection-start-line="75" selection-start-column="55" selection-end-line="75" selection-end-column="55" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
@@ -79,11 +79,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Application/Stylesheet.qss">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="5615">
-              <caret line="156" lean-forward="true" selection-start-line="156" selection-end-line="156" />
+            <state relative-caret-position="688">
+              <caret line="275" column="21" selection-start-line="275" selection-start-column="21" selection-end-line="275" selection-end-column="21" />
             </state>
           </provider>
         </entry>
@@ -104,8 +104,8 @@
       <find>med</find>
       <find>back</find>
       <find>picture</find>
-      <find>width</find>
       <find>Fix</find>
+      <find>width</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -134,9 +134,9 @@
         <option value="$PROJECT_DIR$/Application/Animation.py" />
         <option value="$PROJECT_DIR$/Application/Stylesheet_dark.qss" />
         <option value="$PROJECT_DIR$/Application/DicomViewer.py" />
-        <option value="$PROJECT_DIR$/Application/Stylesheet.qss" />
         <option value="$PROJECT_DIR$/Application/UserInput.py" />
         <option value="$PROJECT_DIR$/Application/GUIV2.py" />
+        <option value="$PROJECT_DIR$/Application/Stylesheet.qss" />
       </list>
     </option>
   </component>
@@ -392,13 +392,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1619447345414</updated>
-    </task>
-    <task id="LOCAL-00014" summary="vtk_selection will now detect position of the mouse">
-      <created>1622576447034</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1622576447034</updated>
     </task>
     <task id="LOCAL-00015" summary="selection will appear on info">
       <created>1622576806952</created>
@@ -736,7 +729,14 @@
       <option name="project" value="LOCAL" />
       <updated>1630423280781</updated>
     </task>
-    <option name="localTasksCounter" value="63" />
+    <task id="LOCAL-00063" summary="new adaptive layout">
+      <created>1630620072386</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1630620072386</updated>
+    </task>
+    <option name="localTasksCounter" value="64" />
     <servers />
   </component>
   <component name="TodoView">
@@ -870,7 +870,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="binary color map" />
     <MESSAGE value="load data completely into an array before starting" />
     <MESSAGE value="load only one slice" />
     <MESSAGE value="patch fixed when pressed play" />
@@ -895,7 +894,8 @@
     <MESSAGE value="hide toolbar when starting the app" />
     <MESSAGE value="hide error message &#10;new icons for data input" />
     <MESSAGE value="zoom works again but needs zoom out function" />
-    <option name="LAST_COMMIT_MESSAGE" value="zoom works again but needs zoom out function" />
+    <MESSAGE value="new adaptive layout" />
+    <option name="LAST_COMMIT_MESSAGE" value="new adaptive layout" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/README.md">
@@ -974,33 +974,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Stylesheet.qss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5615">
-          <caret line="156" lean-forward="true" selection-start-line="156" selection-end-line="156" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Application/UserInput.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2413">
-          <caret line="72" column="21" selection-start-line="72" selection-start-column="21" selection-end-line="72" selection-end-column="21" />
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Application/GUIV2.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="485">
-          <caret line="30" column="32" selection-start-line="30" selection-start-column="32" selection-end-line="30" selection-end-column="32" />
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Application/Data.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-586">
@@ -1010,11 +983,38 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Application/DicomViewer.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1809">
-          <caret line="59" column="16" selection-start-line="59" selection-start-column="16" selection-end-line="59" selection-end-column="16" />
+        <state relative-caret-position="563">
+          <caret line="58" column="30" selection-start-line="58" selection-start-column="30" selection-end-line="58" selection-end-column="30" />
           <folding>
             <element signature="e#1#30#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/UserInput.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="75" column="55" selection-start-line="75" selection-start-column="55" selection-end-line="75" selection-end-column="55" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/GUIV2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="481">
+          <caret line="112" column="9" selection-start-line="112" selection-start-column="9" selection-end-line="112" selection-end-column="9" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Stylesheet.qss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="688">
+          <caret line="275" column="21" selection-start-line="275" selection-start-column="21" selection-end-line="275" selection-end-column="21" />
         </state>
       </provider>
     </entry>
