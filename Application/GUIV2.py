@@ -103,14 +103,10 @@ class MainWindow (QMainWindow):
         self.label2.setObjectName("contrast_max")
 
         imageMode = QComboBox()
-        #imageMode.setEditable(True)
         imageMode.addItem('bone')
         imageMode.addItem('gist_gray')
         imageMode.addItem('binary')
         imageMode.activated.connect(lambda: Dicom.changecmap(self.dicom, imageMode.currentText(), self))
-        #line_edit = imageMode.lineEdit()
-        #line_edit.setAlignment(Qt.AlignmentFlag.AlignCenter)
-        #line_edit.setReadOnly(True)
 
         selectionBox = QComboBox()
         selectionBox.addItem("Single Point Selection")
@@ -122,7 +118,8 @@ class MainWindow (QMainWindow):
         spacer = QWidget()
         spacer.setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Preferred)
         spacer.setObjectName("spacer")
-        self.analyze = QPushButton("Analyze")
+        analyze = QPushButton("Analyze")
+        analyze.clicked.connect(self.analyze)
         contrastlayout.addWidget(self.label)
         contrastlayout.addWidget(self.contrast)
         contrastlayout.addWidget(self.label2)
@@ -136,10 +133,9 @@ class MainWindow (QMainWindow):
         outerlayout.addLayout(contrastlayout)
         outerlayout.addLayout(layout)
         outerlayout.addWidget(spacer)
-        outerlayout.addWidget(self.analyze)
+        outerlayout.addWidget(analyze)
 
         picturemenu.setLayout(outerlayout)
-        print(picturemenu.width())
         return picturemenu
 
 #main toolbar with all major settings
@@ -223,17 +219,22 @@ class MainWindow (QMainWindow):
             '''used to be: plt.gca().add_patch(polygon)... but somehow wont work anymore'''
         plt.xlim(self.dicom.xlim)
         plt.ylim(self.dicom.ylim)
-        print("update")
-        print(self.dicom.ylim)
-        print(self.dicom.xlim)
         self.dicom.draw()
         self.mainLayout.addWidget(self.dicom,0,1)
+
+    def analyze(self):
+        print("please write code here (line 230)")
+        pass
 
 '''
  do when new slice is opened
         self.dicom.xlim = [0, self.dicom.imgarr.shape[1]-1]
         self.dicom.ylim = [self.dicom.imgarr.shape[0]-1, 0]
 '''
+
+
+
+
 if __name__=='__main__':
     app = QApplication(sys.argv)
     qss = "Application/Stylesheet.qss"
