@@ -21,8 +21,8 @@ class Dicom (FigureCanvas):
         self.fig = plt.figure(figsize=(700 / self.dpi, 900 / self.dpi), dpi=self.dpi, facecolor="#808080")
         self.ax = self.fig.add_subplot(1, 1, 1)
         super().__init__(self.fig)
-        window.centralWidget.setFixedWidth(700)
-        window.centralWidget.setFixedHeight(900)
+        #window.centralWidget.setFixedWidth(700)
+        #window.centralWidget.setFixedHeight(900)
         self.setParent(window)
         self.cmap = 'bone'
         self.vmin = 0
@@ -39,7 +39,7 @@ class Dicom (FigureCanvas):
 
     def initCanvas(self):
         window = self.parent().parent()
-        window.centralWidget.setFixedHeight(900 - window.toolbar.height())
+        #window.centralWidget.setFixedHeight(900 - window.toolbar.height())
         window.toolbar.setVisible(True)
         self.imgarr = window.dataArray[window.slice][window.current].pixel_array
         #  print(window.dataArray[window.slice][window.current])  #print meta data
@@ -55,8 +55,8 @@ class Dicom (FigureCanvas):
         self.ylim = [self.imgarr.shape[0]-1, 0]
         plt.xlim(self.xlim)
         plt.ylim(self.ylim)
-        plt.tight_layout(pad=3)
-        plt.tight_layout(pad=3)  # some bug in matplotlib version so it needs to be called twice
+        plt.tight_layout(pad=5)
+        plt.tight_layout(pad=5)  # some bug in matplotlib version so it needs to be called twice
         window.update_fig()
         #  print(self.fig.get_size_inches() * self.fig.dpi)
 
@@ -123,9 +123,8 @@ class Dicom (FigureCanvas):
         selection.sort(key=lambda p: math.atan2(p[1] - cent[1], p[0] - cent[0]))
 
     def setSelectionMode(self, selectionMode, window):
-        print(selectionMode)
-        window.selectionMode = selectionMode
-
+        print(selectionMode.currentText())
+        window.selectionMode = selectionMode.currentText()
 
     def mouse_position(self, event):
         self.set_contrast(event)

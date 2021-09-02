@@ -68,8 +68,9 @@ class UserInput(QFrame):
                 if not self.window.validDataset:
                     self.window.validDataset = True
                     if not self.window.single_image:
-                        self.window.mainLayout.addLayout(self.window.mediaBar)
-                    self.window.mainLayout.insertWidget(0, self.window.picturemenu)
+                        self.window.mainLayout.addLayout(self.window.mediaBar, 1, 1, 1, 1)
+                    self.window.mainLayout.addWidget(self.window.picturemenu, 0, 0, 2, 1,Qt.AlignmentFlag.AlignLeft)
+                    #self.window.mainLayout.setColumnMinimumWidth(0, 270)
             else:
                 self.layout.insertWidget(1, self.errorText)
                 print("error")

@@ -21,21 +21,20 @@ class MainWindow (QMainWindow):
 
     def __init__(self):
         QWidget.__init__(self)
-        self.setGeometry(200, 300, 1300, 1000)
-        self.setFixedWidth(1300)
-        self.setFixedHeight(900)
+        self.setGeometry(200, 300, 1300, 900)
+        #self.setFixedWidth(1300)
+        #self.setFixedHeight(900)
         self.centralWidget = QFrame()
         self.centralWidget.setFrameStyle(QFrame.StyledPanel)
         self.dataArray = []
         self.toolbar = self.toolbar()
         self.dicom = Dicom(self)
-        self.dicom.setObjectName("dicom")
         self.addToolBar(self.toolbar)
 
-        self.picturemenu = self.selection_menu()
-        self.picturemenu.setMaximumWidth(self.centralWidget.width())
+        self.picturemenu = self.picture_menu()
+        #self.picturemenu.setMaximumWidth(self.centralWidget.width())
         self.picturemenu.setObjectName("picturemenu")
-        self.picturemenu.setMaximumHeight(50)
+        #self.picturemenu.setMaximumHeight(50)
         print(self.picturemenu.height())
 
         self.background = QStackedWidget()
@@ -58,20 +57,24 @@ class MainWindow (QMainWindow):
         self.addDockWidget(Qt.DockWidgetArea.RightDockWidgetArea, self.dock)
         self.addDockWidget(Qt.DockWidgetArea.RightDockWidgetArea, self.uI)
 
-        self.mainLayout = QVBoxLayout()
-        self.mainLayout.addWidget(self.dicom)
+        self.mainLayout = QGridLayout()
+        #self.mainLayout.setColumnMinimumWidth(0, 270)
+        self.mainLayout.addWidget(self.dicom, 0, 1, 1, 1)
         if self.validDataset:
-            self.mainLayout.insertWidget(0, self.picturemenu)
-            self.mainLayout.addLayout(self.mediaBar)
-        self.mainLayout.setAlignment(Qt.AlignmentFlag.AlignHCenter)
-        self.mainLayout.setAlignment(self.background, Qt.AlignmentFlag.AlignHCenter)
+            self.mainLayout.addWidget(self.picturemenu, 0, 0, 2, 1, Qt.AlignmentFlag.AlignLeft)
+            self.mainLayout.addLayout(self.mediaBar, 1, 1, 1, 1)
+            #self.mainLayout.setColumnMinimumWidth(0, 270)
         self.centralWidget.setLayout(self.mainLayout)
         self.setCentralWidget(self.centralWidget)
 
 #this menu handles everything concerning the selection and labeling function
-    def selection_menu(self):
-        picturemenu = QWidget()
-        layout = QHBoxLayout()
+    def picture_menu(self):
+        picturemenu = QFrame()
+        picturemenu.setFrameStyle(QFrame.Box)
+        outerlayout = QVBoxLayout()
+        outerlayout.setContentsMargins(0, 0, 0, 0)
+        contrastlayout = QHBoxLayout()
+        layout = QGridLayout()
         self.saveImage = QPushButton()
         self.saveImage.setObjectName("saveImage")
         self.saveImage.clicked.connect(lambda: Dicom.save(self.dicom))
@@ -105,15 +108,41 @@ class MainWindow (QMainWindow):
         self.label2 = QLabel()
         self.label2.setPixmap(self.con_max.scaled(30, 30))
         self.label2.setObjectName("contrast_max")
-        layout.addWidget(self.label)
-        layout.addWidget(self.contrast)
-        layout.addWidget(self.label2)
-        layout.addWidget(self.saveImage)
-        layout.addWidget(self.eraseMode)
-        layout.addWidget(self.moveMode)
-        layout.addWidget(self.dontShow)
-        layout.addWidget(clear)
-        picturemenu.setLayout(layout)
+
+        imageMode = QComboBox()
+        imageMode.addItem('bone')
+        imageMode.addItem('gist_gray')
+        imageMode.addItem('binary')
+        imageMode.activated.connect(lambda: Dicom.changecmap(self.dicom, imageMode.currentText(), self))
+
+        selectionBox = QComboBox()
+        selectionBox.addItem("Single Point Selection")
+        selectionBox.addItem("Multiple Point Selection")
+        selectionBox.addItem("Polygon Selection")
+        # selectionMode.addItem("Freehand Selection")  # to be implemented in the future
+        selectionBox.activated.connect(lambda: Dicom.setSelectionMode(self.dicom, selectionBox, self))
+        self.selectionMode = selectionBox.currentText()
+        spacer = QWidget()
+        spacer.setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Preferred)
+        spacer.setObjectName("spacer")
+        self.analyze = QPushButton("Analyze")
+        contrastlayout.addWidget(self.label)
+        contrastlayout.addWidget(self.contrast)
+        contrastlayout.addWidget(self.label2)
+        layout.addWidget(self.saveImage, 0, 0)
+        layout.addWidget(self.eraseMode, 0, 1)
+        layout.addWidget(self.moveMode, 1, 0)
+        layout.addWidget(self.dontShow, 1, 1)
+        layout.addWidget(clear, 2, 0)
+        outerlayout.addWidget(selectionBox)
+        outerlayout.addWidget(imageMode)
+        outerlayout.addLayout(contrastlayout)
+        outerlayout.addLayout(layout)
+        outerlayout.addWidget(spacer)
+        outerlayout.addWidget(self.analyze)
+
+        picturemenu.setLayout(outerlayout)
+        print(picturemenu.width())
         return picturemenu
 
 #main toolbar with all major settings
@@ -121,28 +150,24 @@ class MainWindow (QMainWindow):
         toolbar = QToolBar()
         toolbar.setFixedHeight(50)
         toolbar.setObjectName("Toolbar")
-        selectionMode = QComboBox()
-        selectionMode.addItem("Single Point Selection")
-        selectionMode.addItem("Multiple Point Selection")
-        selectionMode.addItem("Polygon Selection")
-        #selectionMode.addItem("Freehand Selection")  # to be implemented in the future
-        selectionMode.activated.connect(lambda: Dicom.setSelectionMode(self.dicom, selectionMode.currentText(), self))
-        self.selectionMode = selectionMode.currentText()
-        imageMode = QComboBox()
-        imageMode.addItem('bone')
-        imageMode.addItem('gist_gray')
-        imageMode.addItem('binary')
-        imageMode.activated.connect(lambda: Dicom.changecmap(self.dicom, imageMode.currentText(), self))
-        showData = QPushButton("Show/Hide Data")
+        showData = QPushButton("Information")
         showData.setObjectName("ShowData")
+        File = QPushButton("File")
+        File.setObjectName("File")
+        File.clicked.connect(self.showInput)
+        Help = QPushButton("Help")
+        Help.setObjectName("Help")
+        MetaData = QPushButton("Meta Data")
+        MetaData.setObjectName("MetaData")
         spacer = QWidget()
         spacer.setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Preferred)
         spacer.setObjectName("spacer")
         showData.clicked.connect(self.showRightSide)
-        toolbar.addWidget(selectionMode)
-        toolbar.addWidget(imageMode)
+        toolbar.addWidget(File)
+        toolbar.addWidget(MetaData)
         toolbar.addWidget(spacer)
         toolbar.addWidget(showData)
+        toolbar.addWidget(Help)
         return toolbar
 
     def rightSide(self):  # exists only for styling purposes and displays welcome text when no data set is loaded
@@ -173,6 +198,11 @@ class MainWindow (QMainWindow):
             self.dock.setVisible(False)
         else:
             self.dock.setVisible(True)
+    def showInput(self):
+        if self.uI.isVisible():
+            self.uI.setVisible(False)
+        else:
+            self.uI.setVisible(True)
 
     # reset the current slice and frame we are on
     def reset_after_changes(self):
@@ -199,13 +229,19 @@ class MainWindow (QMainWindow):
         print(self.dicom.ylim)
         print(self.dicom.xlim)
         self.dicom.draw()
-        self.mainLayout.insertWidget(1, self.dicom)
+        self.mainLayout.addWidget(self.dicom,0,1)
 
 '''
  do when new slice is opened
         self.dicom.xlim = [0, self.dicom.imgarr.shape[1]-1]
         self.dicom.ylim = [self.dicom.imgarr.shape[0]-1, 0]
 '''
+class Combo(QComboBox):
+    def showPopup(self):
+        super().showPopup()
+        popup = self.findChild(QFrame)
+        popup.move(popup.x() + popup.width(), popup.y())
+        print("pop")
 
 if __name__=='__main__':
     app = QApplication(sys.argv)

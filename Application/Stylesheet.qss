@@ -65,32 +65,35 @@ QLineEdit:focus {
 QComboBox {
     color: #1A1A1A;
     background: #D8EAF3;
-    width: 300px;
+    max-width: 260px;
+    height: 40px;
     combobox-popup: 0;
     selection-background-color: #D8EAF3;
 }
 
 /* -------- Media Bar --------------*/
 QWidget#MediaBar{
+    min-height: 80px;
+    min-width: 380px;
     max-height: 100px;
-    max-width: 500px;
+    max-width: 400px;
 }
 
 QWidget#MediaBarBackground {
     background: #999999;
-    max-height: 100px;
-    max-width: 500px;
+    max-height: 80px;
+    max-width: 380px;
     margin: 10 0 10 0;
     border-radius: 15;
 }
 
 QPushButton#playbtn, #forward, #backward, #fastforward, #fastbackward, #stopbtn {
     background-color: #B2D6E6;
-    border-radius: 25;
-    max-width: 50px;
-    max-height: 50px;
-    min-width: 50px;
-    min-height: 50px;
+    border-radius: 15;
+    min-width: 43px;
+    max-width: 45px;
+    min-height: 43px;
+    max-height: 45px;
     margin: 0 10 0 10 ;
 }
 
@@ -142,52 +145,30 @@ QWidget#spacer {
     background: none;
 }
 
-QPushButton#ShowData {
-    border-radius: 15;
-    max-height: 20px;
-    min-width: 70;
-}
-
-QComboBox::drop-down {
-    subcontrol-origin: padding;
-    subcontrol-position: right;
-    margin: 0;
-    width: 20px;
-}
-
-QComboBox:on {
-    background: #B2D6E6;
-    border-bottom: none;
-}
-
-QComboBox QAbstractItemView {
-    min-width: 330px;
-    min-height: 60px;
-    border: none;
-    background: #B2D6E6;
-    margin: 46 0 0 13;
-    selection-background-color: #999999;
-    font 20px;
-    padding: 0;
-}
-
-QComboBox QAbstractItemView::item {
-    color: red;
-    border: 3px solid red;
-}
 
 /* -------- Picturemenu --------------*/
 
-QWidget#picturemenu{
-    min-height: 90 px;
-    max-height: 90 px;
+QFrame#picturemenu{
+    color: white;
+    border-width: 10px;
+    background: #999999;
+    max-width: 270px;
+}
+
+QFrame#picturemenu *{
+    color: #1A1A1A;
+    max-height: 50 px;
+}
+QWidget#picturemenuTop{
+    min-height: 55 px;
+    max-height: 55 px;
     background: #999999;
 }
 
-QWidget#picturemenu *{
-    color: #1A1A1A;
-    max-height: 50 px;
-    margin: 0;
+QWidget#picturemenuBottom{
+    min-height: 45 px;
+    max-height: 45 px;
+    background: #999999;
 }
 QLabel#contrast, #contrast_max{
     background: none;
@@ -280,7 +261,7 @@ QPushButton#eraseMode, #moveMode, #clear, #DS, #saveImage{
     background: none;
     border:none;
     border-radius: 7;
-    margin: 1;
+    margin: 0;
     min-height: 55px;
     max-height: 55px;
     min-width: 55px;
@@ -291,6 +272,34 @@ QPushButton#eraseMode:hover, #moveMode:hover, #clear:hover, #DS:hover, #saveImag
     background: rgba(89,89,89, 0.2);
 }
 
+
+QComboBox::drop-down {
+    subcontrol-origin: padding;
+    subcontrol-position: right;
+    margin: 0;
+    width: 20px;
+}
+
+QComboBox:on {
+    background: #B2D6E6;
+    border-bottom: none;
+}
+
+QComboBox QAbstractItemView {
+    min-width: 230px;
+    min-height: 70px;
+    border: none;
+    background: #B2D6E6;
+    margin: 0 0 0 200;
+    selection-background-color: #999999;
+    font 20px;
+    padding: 0;
+}
+
+QComboBox QAbstractItemView::item {
+    color: red;
+    border: 3px solid red;
+}
 
 /* -------- Right Side --------------*/
 QWidget#right {
