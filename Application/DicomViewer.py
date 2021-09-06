@@ -41,7 +41,6 @@ class Dicom (FigureCanvas):
         window = self.parent().parent()
         window.toolbar.setVisible(True)
         self.imgarr = window.dataArray[window.slice][window.current].pixel_array
-        #  print(window.dataArray[window.slice][window.current])  #print meta data
         self.img = self.ax.imshow(self.imgarr, self.cmap)
         self.canvas = np.empty(self.imgarr.shape)
         self.canvas[:] = 0
@@ -67,11 +66,13 @@ class Dicom (FigureCanvas):
             if change > 0:
                 if window.slice < (len(window.dataArray) - 1):
                     window.slice += 1
-                    window.newSlice()
+                    self.initCanvas()
+                    plt.tight_layout(pad=1)
                     window.reset_after_changes()
             elif window.slice > 1:
                     window.slice -= 1
-                    window.newSlice()
+                    self.initCanvas()
+                    plt.tight_layout(pad=1)
                     window.reset_after_changes()
 
     def changecmap(self, color, window):

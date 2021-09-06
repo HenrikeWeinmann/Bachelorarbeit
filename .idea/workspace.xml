@@ -4,7 +4,7 @@
     <option name="SCOPE_TYPE" value="3" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8e406e9a-7129-4799-b3f3-c02ccd0c5d7c" name="Default Changelist" comment="">
+    <list default="true" id="8e406e9a-7129-4799-b3f3-c02ccd0c5d7c" name="Default Changelist" comment="tight layout fi">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Application/DicomViewer.py" beforeDir="false" afterPath="$PROJECT_DIR$/Application/DicomViewer.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Application/GUIV2.py" beforeDir="false" afterPath="$PROJECT_DIR$/Application/GUIV2.py" afterDir="false" />
@@ -23,8 +23,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Application/GUIV2.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="129">
-              <caret line="231" selection-start-line="231" selection-end-line="231" />
+            <state relative-caret-position="587">
+              <caret line="222" column="49" selection-start-line="222" selection-start-column="49" selection-end-line="222" selection-end-column="49" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
@@ -35,8 +35,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Application/DicomViewer.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="36">
-              <caret line="40" column="39" selection-start-line="40" selection-start-column="39" selection-end-line="40" selection-end-column="39" />
+            <state relative-caret-position="508">
+              <caret line="74" column="43" selection-start-line="74" selection-start-column="43" selection-end-line="74" selection-end-column="43" />
               <folding>
                 <element signature="e#1#30#0" expanded="true" />
               </folding>
@@ -391,13 +391,6 @@
       <option name="presentableId" value="Default" />
       <updated>1619447345414</updated>
     </task>
-    <task id="LOCAL-00017" summary="Buttons Object will now get a window parameter">
-      <created>1622732561716</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1622732561716</updated>
-    </task>
     <task id="LOCAL-00018" summary="little structure update. Changed layout of main window. Render Window non-rezizable?">
       <created>1622793564103</created>
       <option name="number" value="00018" />
@@ -734,7 +727,14 @@
       <option name="project" value="LOCAL" />
       <updated>1630623387209</updated>
     </task>
-    <option name="localTasksCounter" value="66" />
+    <task id="LOCAL-00066" summary="zoom out when new slice">
+      <created>1630934192004</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1630934192004</updated>
+    </task>
+    <option name="localTasksCounter" value="67" />
     <servers />
   </component>
   <component name="TodoView">
@@ -868,7 +868,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="patch fixed when pressed play" />
     <MESSAGE value="moving Points enabled and minor refactoring." />
     <MESSAGE value="icons for picture menu" />
     <MESSAGE value="Create main method (finally)" />
@@ -893,7 +892,8 @@
     <MESSAGE value="new adaptive layout" />
     <MESSAGE value="styled combo boxes... drop down still to do" />
     <MESSAGE value="analyze function prepared" />
-    <option name="LAST_COMMIT_MESSAGE" value="analyze function prepared" />
+    <MESSAGE value="zoom out when new slice" />
+    <option name="LAST_COMMIT_MESSAGE" value="zoom out when new slice" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/README.md">
@@ -998,8 +998,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Application/GUIV2.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="129">
-          <caret line="231" selection-start-line="231" selection-end-line="231" />
+        <state relative-caret-position="587">
+          <caret line="222" column="49" selection-start-line="222" selection-start-column="49" selection-end-line="222" selection-end-column="49" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
           </folding>
@@ -1008,8 +1008,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Application/DicomViewer.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
-          <caret line="40" column="39" selection-start-line="40" selection-start-column="39" selection-end-line="40" selection-end-column="39" />
+        <state relative-caret-position="508">
+          <caret line="74" column="43" selection-start-line="74" selection-start-column="43" selection-end-line="74" selection-end-column="43" />
           <folding>
             <element signature="e#1#30#0" expanded="true" />
           </folding>

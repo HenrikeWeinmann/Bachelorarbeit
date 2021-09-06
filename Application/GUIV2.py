@@ -198,10 +198,6 @@ class MainWindow (QMainWindow):
         else:
             self.uI.setVisible(True)
 
-    def newSlice(self):
-        self.dicom.xlim = [0, self.dicom.imgarr.shape[1] - 1]
-        self.dicom.ylim = [self.dicom.imgarr.shape[0] - 1, 0]
-
     # reset the current slice and frame we are on
     def reset_after_changes(self):
         if not self.validDataset:
@@ -224,7 +220,7 @@ class MainWindow (QMainWindow):
         plt.xlim(self.dicom.xlim)
         plt.ylim(self.dicom.ylim)
         self.dicom.draw()
-        self.mainLayout.addWidget(self.dicom,0,1)
+        self.mainLayout.addWidget(self.dicom, 0, 1)
 
     def analyze(self):
         print("please write code here (line 230)")
