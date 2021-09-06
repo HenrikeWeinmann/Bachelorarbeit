@@ -39,7 +39,6 @@ class Dicom (FigureCanvas):
 
     def initCanvas(self):
         window = self.parent().parent()
-        #window.centralWidget.setFixedHeight(900 - window.toolbar.height())
         window.toolbar.setVisible(True)
         self.imgarr = window.dataArray[window.slice][window.current].pixel_array
         #  print(window.dataArray[window.slice][window.current])  #print meta data
@@ -68,9 +67,11 @@ class Dicom (FigureCanvas):
             if change > 0:
                 if window.slice < (len(window.dataArray) - 1):
                     window.slice += 1
+                    window.newSlice()
                     window.reset_after_changes()
             elif window.slice > 1:
                     window.slice -= 1
+                    window.newSlice()
                     window.reset_after_changes()
 
     def changecmap(self, color, window):
