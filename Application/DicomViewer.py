@@ -67,14 +67,18 @@ class Dicom (FigureCanvas):
             if change > 0:
                 if window.slice < (len(window.dataArray) - 1):
                     window.slice += 1
-                    self.initCanvas()
-                    plt.tight_layout(pad=1)
-                    window.reset_after_changes()
+                    self.newSlice(window)
             elif window.slice > 1:
                     window.slice -= 1
-                    self.initCanvas()
-                    plt.tight_layout(pad=1)
-                    window.reset_after_changes()
+                    self.newSlice(window)
+
+    def newSlice(self, window):
+        self.initCanvas()
+        plt.tight_layout(pad=1)
+        if window.AIdisplayed:
+            window.AIdisplayed = False
+        window.reset_after_changes()
+
 
     def changecmap(self, color, window):
         self.cmap = color
