@@ -18,6 +18,7 @@ class MainWindow (QMainWindow):
     slice = 0  # slice the user currently sees starting at 1
     selection = []
     selectionMode = ''
+    AIdisplayed = False
 
     def __init__(self):
         QWidget.__init__(self)
@@ -25,6 +26,7 @@ class MainWindow (QMainWindow):
         self.centralWidget = QFrame()
         self.centralWidget.setFrameStyle(QFrame.StyledPanel)
         self.dataArray = []
+        self.aiArray = []
         self.toolbar = self.toolbar()
         self.dicom = Dicom(self)
         self.addToolBar(self.toolbar)
@@ -145,17 +147,24 @@ class MainWindow (QMainWindow):
         toolbar.setObjectName("Toolbar")
         showData = QPushButton("Information")
         showData.setObjectName("ShowData")
-        File = QPushButton("File")
+        showData.setCheckable(True)
+        showData.setChecked(True)
+        showData.clicked.connect(self.showRightSide)
+        File = QPushButton("Open File")
         File.setObjectName("File")
         File.clicked.connect(self.showInput)
+        File.setCheckable(True)
+        File.setChecked(True)
         Help = QPushButton("Help")
         Help.setObjectName("Help")
+        Help.setCheckable(True)
         MetaData = QPushButton("Meta Data")
         MetaData.setObjectName("MetaData")
+        MetaData.setCheckable(True)
         spacer = QWidget()
         spacer.setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Preferred)
         spacer.setObjectName("spacer")
-        showData.clicked.connect(self.showRightSide)
+
         toolbar.addWidget(File)
         toolbar.addWidget(MetaData)
         toolbar.addWidget(spacer)
@@ -217,14 +226,23 @@ class MainWindow (QMainWindow):
         if self.selectionMode == 'Polygon Selection' and len(self.selection) >= 3:
             Dicom.draw_polygon(self.dicom, patches.Polygon(self.selection, color='red', alpha=0.2))
             '''used to be: plt.gca().add_patch(polygon)... but somehow wont work anymore'''
+        if self.AIdisplayed:
+            self.aicanvas = plt.imshow(self.aiArray[self.current])
         plt.xlim(self.dicom.xlim)
         plt.ylim(self.dicom.ylim)
         self.dicom.draw()
         self.mainLayout.addWidget(self.dicom, 0, 1)
 
+    '''
+    update fig will add the image to the display as an overlay
+    at the moment it runs out of bounds as it will always display the current slices calculation
+    and everything is hard coded
+    '''
     def analyze(self):
         print("please write code here (line 230)")
-        pass
+        self.AIdisplayed = True
+        self.aiArray = UserInput.load_calculations(self.uI)
+        self.update_fig()
 
 
 if __name__=='__main__':

@@ -137,7 +137,9 @@ QWidget#spacer {
     background: none;
 }
 
-
+QPushButton#File:checked, #Help:checked, #MetaData:checked, #ShowData:checked{
+    border-color: #163540;
+}
 /* -------- Picturemenu --------------*/
 
 QFrame#picturemenu{

@@ -4,6 +4,7 @@ from PyQt5.QtGui import *
 from PyQt5.QtCore import*
 import os
 import pydicom as dcm
+import numpy as np
 
 # --------------------- User Input---------------------------------------------------------------------------------
 '''
@@ -11,7 +12,7 @@ This class manages the process of opening and loading files into the app
 It creates an User Input Widget which always needs the window attribute in order to call some methods
 '''
 class UserInput(QFrame):
-    filepath = ''  # IM-13020-0001.dcm
+    filepath = ''  #option to hard code a file path
 
     def __init__(self, window):
         QWidget.__init__(self)
@@ -69,7 +70,7 @@ class UserInput(QFrame):
                     self.window.validDataset = True
                     if not self.window.single_image:
                         self.window.mainLayout.addLayout(self.window.mediaBar, 1, 1, 1, 1)
-                    self.window.mainLayout.addWidget(self.window.picturemenu, 0, 0, 2, 1,Qt.AlignmentFlag.AlignLeft)
+                    self.window.mainLayout.addWidget(self.window.picturemenu, 0, 0, 2, 1, Qt.AlignmentFlag.AlignLeft)
             else:
                 self.layout.insertWidget(1, self.errorText)
         else:
@@ -140,5 +141,21 @@ class UserInput(QFrame):
                     current_slice = os.path.join(self.filepath, slices[i])
                     dicom = dcm.dcmread(current_slice)
                     data[0].append(dicom)
-
             return data
+    '''
+    assuming that only one slice will be analyzed
+    loading the np arrays from path
+    '''
+    def load_calculations(self):
+        aiData = []
+        dir = "Application/masks"
+        for filename in os.listdir(dir):
+            arr = np.load(os.path.join(dir, filename))
+            arr = arr[:, :, 0]
+
+            aiData.append(arr)
+            if filename == "0_0_mask.npy":
+                print(arr)
+                print(aiData[0])
+        return aiData
+

@@ -58,6 +58,7 @@ class Dicom (FigureCanvas):
         window.update_fig()
         #  print(self.fig.get_size_inches() * self.fig.dpi)
 
+
     # scroll wheel
     def wheelEvent(self, event):
         window = self.parent().parent()
@@ -116,6 +117,21 @@ class Dicom (FigureCanvas):
                         window.selection.append(self.pos)
                         self.sortSelection(window.selection)
                         window.reset_after_changes()
+        # on mouse release
+
+    def release(self, event):
+        self.pressed = False
+        self.pos = []
+        window = self.parent().parent()
+        window.contrast.setValue(self.vmax)
+
+        # reconnect the standard on click actions
+
+    def reconnect_cids(self, window):
+        self.cid = self.fig.canvas.mpl_disconnect(window.dicom.cid)
+        self.cid = self.fig.canvas.mpl_connect('button_press_event', self.selection)
+        self.cid2 = self.fig.canvas.mpl_disconnect(window.dicom.cid2)
+        self.cid2 = self.fig.canvas.mpl_connect('button_release_event', self.release)
 
     def draw_polygon(self, polygon):
         plt.gca().add_patch(polygon)
@@ -132,7 +148,6 @@ class Dicom (FigureCanvas):
         self.set_contrast(event)
         self.drag_draw(event)
         self.current_pos = [event.xdata, event.ydata]
-        #print(self.current_pos)
 
     def drag_draw(self, event):
         window = self.parent().parent()
@@ -144,6 +159,9 @@ class Dicom (FigureCanvas):
                     self.pos = self.current_pos
                     window.reset_after_changes()
 
+    '''
+        picture menu methods
+    '''
     def set_contrast(self, event):
         window = self.parent().parent()
         if self.pressed and event.button == MouseButton.RIGHT:
@@ -156,23 +174,6 @@ class Dicom (FigureCanvas):
         self.vmax = value
         window.update_fig()
 
-    #on mouse release
-    def release(self, event):
-        self.pressed = False
-        self.pos = []
-        window = self.parent().parent()
-        window.contrast.setValue(self.vmax)
-
-    #reconnect the standard on click actions
-    def reconnect_cids(self, window):
-        self.cid = self.fig.canvas.mpl_disconnect(window.dicom.cid)
-        self.cid = self.fig.canvas.mpl_connect('button_press_event', self.selection)
-        self.cid2 = self.fig.canvas.mpl_disconnect(window.dicom.cid2)
-        self.cid2 = self.fig.canvas.mpl_connect('button_release_event', self.release)
-
-    '''
-    picture menu methods
-    '''
     def clear(self, window):
         self.canvas[:] = 0
         window.selection = []
@@ -268,3 +269,6 @@ class Dicom (FigureCanvas):
         test = QFileDialog.getSaveFileName(self, "Save File", filter="Images (*.png *.jpg)")
         if not test[0] == "":
             plt.savefig(test[0])
+
+    def pan(self):
+        pass
