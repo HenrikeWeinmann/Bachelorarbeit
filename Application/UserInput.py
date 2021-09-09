@@ -12,7 +12,7 @@ This class manages the process of opening and loading files into the app
 It creates an User Input Widget which always needs the window attribute in order to call some methods
 '''
 class UserInput(QFrame):
-    filepath = ''  #option to hard code a file path
+    filepath = ''  # option to hard code a file path just click on open from file manager after setting filepath to test dir
 
     def __init__(self, window):
         QWidget.__init__(self)
@@ -104,8 +104,9 @@ class UserInput(QFrame):
             return False
 
     def open(self):
-        file_name = QFileDialog.getExistingDirectory(self, 'Open Source Folder', os.getcwd())
-        self.filepath = file_name
+        if self.filepath == '':
+            file_name = QFileDialog.getExistingDirectory(self, 'Open Source Folder', os.getcwd())
+            self.filepath = file_name
         self.check_and_set_filepath()
 
     '''

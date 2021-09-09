@@ -9,7 +9,7 @@ import matplotlib.patches as patches
 import math
 from scipy.spatial import distance
 
-#----------------------Image viewer---------------------------------------------------------------------------------
+# ----------------------Image viewer---------------------------------------------------------------------------------
 
 class Dicom (FigureCanvas):
     pressed = False
@@ -34,8 +34,6 @@ class Dicom (FigureCanvas):
             self.fig.subplots_adjust(bottom=0, top=1, left=0, right=1)
             plt.axis("off")
             window.toolbar.setVisible(False)
-
-
 
     def initCanvas(self):
         window = self.parent().parent()

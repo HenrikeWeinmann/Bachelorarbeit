@@ -45,4 +45,4 @@ Single images and single slices can be loaded the same way.
 - color themes
 
 By Henrike Weinmann
-Last Updated(24.06.2021)
+Last Updated(09.09.2021)

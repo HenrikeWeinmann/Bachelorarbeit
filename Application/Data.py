@@ -7,6 +7,8 @@ from PyQt5.QtWidgets import *
 (0018, 0050) Slice Thickness
 (0020, 1041) Slice Location 
 '''
+# ----------------------Data---------------------------------------------------------------------------------
+
 class Data(QWidget):
 
     def __init__(self, window):

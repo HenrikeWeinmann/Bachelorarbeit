@@ -8,7 +8,8 @@ from Application.UserInput import UserInput
 from Application.DicomViewer import Dicom
 from Application.Animation import MediaBar
 from Application.Data import Data
-
+from Application.Meta import Meta
+from Application.Help import Help
 
 class MainWindow (QMainWindow):
     validDataset = False  # /Users/Heni/OneDrive/Uni/Bachelorarbeit/second-annual-data-science-bowl/test/test/932/study/
@@ -51,8 +52,18 @@ class MainWindow (QMainWindow):
         self.uI.setWidget(self.input)
         self.uI.setFeatures(QDockWidget.DockWidgetFeature.NoDockWidgetFeatures)
 
+        self.meta = Meta(self)
+        self.meta.setObjectName("meta")
+        self.meta.setFeatures(QDockWidget.DockWidgetFeature.NoDockWidgetFeatures)
+
+        self.help = Help(self)
+        self.help.setObjectName("meta")
+        self.help.setFeatures(QDockWidget.DockWidgetFeature.NoDockWidgetFeatures)
+
+        self.addDockWidget(Qt.DockWidgetArea.LeftDockWidgetArea, self.meta)
         self.addDockWidget(Qt.DockWidgetArea.RightDockWidgetArea, self.dock)
         self.addDockWidget(Qt.DockWidgetArea.RightDockWidgetArea, self.uI)
+        self.addDockWidget(Qt.DockWidgetArea.RightDockWidgetArea, self.help)
 
         self.mainLayout = QGridLayout()
         self.mainLayout.addWidget(self.dicom, 0, 1, 1, 1)
@@ -120,6 +131,7 @@ class MainWindow (QMainWindow):
         spacer = QWidget()
         spacer.setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Preferred)
         spacer.setObjectName("spacer")
+
         analyze = QPushButton("Analyze")
         analyze.clicked.connect(self.analyze)
         # layout
@@ -150,18 +162,21 @@ class MainWindow (QMainWindow):
         showData.setObjectName("ShowData")
         showData.setCheckable(True)
         showData.setChecked(True)
-        showData.clicked.connect(self.showRightSide)
+        showData.clicked.connect(lambda: self.showDockwidget(self.dock))
         File = QPushButton("Open File")
         File.setObjectName("File")
-        File.clicked.connect(self.showInput)
+        File.clicked.connect(lambda: self.showDockwidget(self.uI))
         File.setCheckable(True)
         File.setChecked(True)
         Help = QPushButton("Help")
         Help.setObjectName("Help")
         Help.setCheckable(True)
+        Help.clicked.connect(lambda: self.showDockwidget(self.help))
         MetaData = QPushButton("Meta Data")
         MetaData.setObjectName("MetaData")
         MetaData.setCheckable(True)
+        MetaData.setChecked(False)
+        MetaData.clicked.connect(lambda: self.showDockwidget(self.meta))
         spacer = QWidget()
         spacer.setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Preferred)
         spacer.setObjectName("spacer")
@@ -196,17 +211,11 @@ class MainWindow (QMainWindow):
 
         return rightSide
 
-    def showRightSide(self):
-        if self.dock.isVisible():
-            self.dock.setVisible(False)
+    def showDockwidget(self, widget):
+        if widget.isVisible():
+            widget.setVisible(False)
         else:
-            self.dock.setVisible(True)
-
-    def showInput(self):
-        if self.uI.isVisible():
-            self.uI.setVisible(False)
-        else:
-            self.uI.setVisible(True)
+            widget.setVisible(True)
 
     # reset the current slice and frame we are on
     def reset_after_changes(self):
@@ -216,6 +225,7 @@ class MainWindow (QMainWindow):
         self.update_fig()
         self.data.info = Data.information(self.data)
         self.dock.setWidget(self.rightSide())
+        self.meta.setWidget(Meta.readMetadata(self.meta))
 
 
     #update the matplotlib canvas with the current data stored in the DICOM object
