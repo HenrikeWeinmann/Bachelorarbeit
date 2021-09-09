@@ -1,11 +1,5 @@
 from PyQt5.QtWidgets import *
 
-'''
-(0028, 0010) Rows
-(0028, 0011) Columns
-(0018, 0050) Slice Thickness
-(0020, 1041) Slice Location 
-'''
 
 class Meta (QDockWidget):
 
@@ -27,13 +21,10 @@ class Meta (QDockWidget):
 
     def getMetadata(self):
         if self.window.validDataset:
-            dataset = self.window.dataArray[0][0]
+            dataset = self.window.dataArray[self.window.slice][self.window.current]
             string = ""
             for data_element in dataset:
-
                 string = string + "\n" + str(data_element)
-                print(string)
             return string
-
         else:
             return ""
