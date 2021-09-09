@@ -21,6 +21,7 @@ QWidget {
 
 QFrame * {
     margin: 0;
+
 }
 
 /* -------- General --------------*/
@@ -98,27 +99,27 @@ QPushButton#playbtn:hover, #forward:hover, #backward:hover, #fastforward:hover, 
 }
 
 QPushButton#playbtn {
-    image: url('Icons/Play.png');
+    image: url('Application/Icons/Play.png');
 }
 
 QPushButton#stopbtn {
-    image: url('Icons/Stop.png');
+    image: url('Application/Icons/Stop.png');
 }
 
 QPushButton#forward {
-    image: url('Icons/Forward.png');
+    image: url('Application/Icons/Forward.png');
 }
 
 QPushButton#fastforward {
-    image: url('Icons/FastForward.png');
+    image: url('Application/Icons/FastForward.png');
 }
 
 QPushButton#backward {
-    image: url('Icons/Backward.png');
+    image: url('Application/Icons/Backward.png');
 }
 
 QPushButton#fastbackward {
-    image: url('Icons/FastBackward.png');
+    image: url('Application/Icons/FastBackward.png');
 }
 
 /* -------- Toolbar --------------*/
@@ -178,18 +179,20 @@ QComboBox QAbstractItemView::item {
 /* -------- Picturemenu --------------*/
 
 QWidget#picturemenu{
-    max-height: 100 px;
+    min-height: 90 px;
+    max-height: 90 px;
     background: #999999;
 }
 
 QWidget#picturemenu *{
     color: #1A1A1A;
     max-height: 50 px;
+    margin: 0;
 }
-QLabel#contrast{
-    min-height: 50px;
-    max-width: 80px;
+QLabel#contrast, #contrast_max{
     background: none;
+    min-height: 50px;
+    max-width: 50px;
     padding: 0px;
     margin: 0px;
 
@@ -255,33 +258,33 @@ QSlider::handle:horizontal:disabled {
     border-radius: 5px;
 }
 QPushButton#saveImage{
-    image: url('Icons/save.png');
+    image: url('Application/Icons/save.png');
 }
 QPushButton#eraseMode{
-    image: url('Icons/erase.png');
+    image: url('Application/Icons/erase.png');
 }
 
 QPushButton#moveMode{
-    image: url('Icons/move.png');
+    image: url('Application/Icons/move.png');
 }
 
 QPushButton#clear{
-    image: url('Icons/clear.png');
+    image: url('Application/Icons/clear.png');
 }
 
 QPushButton#DS{
-    image: url('Icons/visible.png');
+    image: url('Application/Icons/visible.png');
 }
 
 QPushButton#eraseMode, #moveMode, #clear, #DS, #saveImage{
     background: none;
     border:none;
     border-radius: 7;
-    margin: 5 5 5 5 ;
-    min-height: 50px;
-    max-height: 50px;
-    min-width: 50px;
-    max-width: 50px;
+    margin: 1;
+    min-height: 55px;
+    max-height: 55px;
+    min-width: 55px;
+    max-width: 55px;
 
 }
 QPushButton#eraseMode:hover, #moveMode:hover, #clear:hover, #DS:hover, #saveImage:hover{
@@ -338,10 +341,22 @@ QDockWidget::close-button {
     icon-size: 50px;
 }
 
-QPushButton#submit, #Open {
-    border-radius: 18;
-    max-height: 40px;
-    max-width: 200px;
-    width: 100;
+QPushButton#submit{
+    image: url('Application/Icons/check.png');
+    border-radius: 22;
+    border: none;
+    min-height: 55px;
+    min-width: 55px;
+    max-height: 55px;
+    max-width: 55px;
     color: #1A1A1A;
+}
+
+QPushButton#Open{
+    padding: 3;
+    text-align: left;
+    border-radius: 20;
+    min-height: 60px;
+    max-height: 80px;
+    max-width: 410px;
 }

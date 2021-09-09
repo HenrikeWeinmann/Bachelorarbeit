@@ -13,7 +13,13 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {2.2.2}3d Volumetric imaging}{3}{subsection.2.2.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.2.3}4d medical imaging}{3}{subsection.2.2.3}%
+\contentsline {subsection}{\numberline {2.2.3}4d MRI}{3}{subsection.2.2.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.2.4}CINE MRI}{4}{subsection.2.2.4}%
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{2d CINE MRI}{4}{section*.6}%
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{Volumetric CINE MRI}{4}{section*.7}%
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {2.3}Image-guided therapy}{4}{section.2.3}%
 \defcounter {refsection}{0}\relax 
@@ -29,7 +35,7 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {3.1.2}Third party DICOM viewers}{5}{subsection.3.1.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.2}Image labeling and editing Software}{5}{section.3.2}%
+\contentsline {section}{\numberline {3.2}Image labelling and editing Software}{5}{section.3.2}%
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {3.2.1}Segmentation}{6}{subsection.3.2.1}%
 \defcounter {refsection}{0}\relax 
@@ -43,27 +49,27 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {4.2.2}Displaying the DICOM images}{8}{subsection.4.2.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subparagraph}{Media bar}{8}{section*.6}%
+\contentsline {paragraph}{Media bar}{8}{section*.8}%
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {4.3}Labeling}{8}{section.4.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subparagraph}{single point selection}{8}{section*.7}%
+\contentsline {paragraph}{single point selection}{8}{section*.9}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subparagraph}{multiple point selection}{8}{section*.8}%
+\contentsline {paragraph}{multiple point selection}{8}{section*.10}%
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {4.3.1}Polygonal segmentation}{8}{subsection.4.3.1}%
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {4.3.2}Editing}{8}{subsection.4.3.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subparagraph}{specify color map}{8}{section*.9}%
+\contentsline {paragraph}{specify color map}{8}{section*.11}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subparagraph}{edit labeling}{9}{section*.10}%
+\contentsline {paragraph}{edit labeling}{9}{section*.12}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subparagraph}{change contrast}{9}{section*.11}%
+\contentsline {paragraph}{change contrast}{9}{section*.13}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subparagraph}{export and save}{9}{section*.12}%
+\contentsline {paragraph}{export and save}{9}{section*.14}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subparagraph}{hide selections}{9}{section*.13}%
+\contentsline {paragraph}{hide selections}{9}{section*.15}%
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {4.4}Design}{9}{section.4.4}%
 \defcounter {refsection}{0}\relax 
@@ -71,9 +77,9 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {4.4.2}Simplicity}{10}{subsection.4.4.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subparagraph}{color palette}{10}{section*.14}%
+\contentsline {paragraph}{color palette}{10}{section*.16}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subparagraph}{logos}{10}{section*.15}%
+\contentsline {paragraph}{logos}{10}{section*.17}%
 \defcounter {refsection}{0}\relax 
 \contentsline {chapter}{\numberline {5}Evaluation}{11}{chapter.5}%
 \defcounter {refsection}{0}\relax 
@@ -81,8 +87,8 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {chapter}{Sources}{13}{chapter.6}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{List of abbreviations}{15}{chapter*.16}%
+\contentsline {chapter}{List of abbreviations}{15}{chapter*.18}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{List of images}{16}{appendix*.17}%
+\contentsline {chapter}{List of images}{16}{appendix*.19}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{List of tables}{17}{appendix*.18}%
+\contentsline {chapter}{List of tables}{17}{appendix*.20}%

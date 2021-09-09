@@ -19,14 +19,14 @@ Since the main focus was to display CINE datasets, each set consistet of multipl
 
 \subsection{Displaying the DICOM images}
 \label{Displaying the DICOM images}
-\subparagraph{Media bar}
+\paragraph{Media bar}
 If the loaded data set were to contain multiple images in a folder, the app recognizes them as a CINE sequence and provides a media bar with the options to play the video or go through it frame by frame.
 This option is automatically removed when only a single image or only one image per slice ist provided.
 
 \section{Labeling}
 \label{Labeling}
-\subparagraph{single point selection}
-\subparagraph{multiple point selection}
+\paragraph{single point selection}
+\paragraph{multiple point selection}
 
 \subsection{Polygonal segmentation}
 \label{Polygonal segmentation}
@@ -35,20 +35,20 @@ To make a 'multi point selection' better visible and also give the user the opti
 \subsection{Editing}
 \label{Editing}
 There are five main editing funcionalities. They don't alter the original image, but change how it is displayed as well as give the option to make changes.
-\subparagraph{specify color map}
+\paragraph{specify color map}
 There are several different color maps available. The standard when opening the app being 'bone', which resembles the original look of an X-ray film. I chose this color map a the standard because most people will be used to the look. Still, it might not be the best option for some usecases which is why the option to chose another one exists.
-\subparagraph{edit labeling}
+\paragraph{edit labeling}
 As mentioned before, the user is able to make selections on the image. Sometimes a selection needs to be moved or completly deleted. There are a few different options available.
 \begin{itemize}
     \item Clear all selections
     \item Erase a specific selection
     \item Move a selection
 \end{itemize}
- \subparagraph{change contrast}
+ \paragraph{change contrast}
  There are two ways to change the contrast. For a new user the slider in the image editing menu might be the most intuitive. However quite a few image viewers give the option to change the contrast via mouse as well. Although my intention was not to have any hidden features, this one was an exception since it is fairly established.
-\subparagraph{export and save}
+\paragraph{export and save}
 The 'export and save' function allows the user to save the current figure with all selections made to their computer.
-\subparagraph{hide selections}
+\paragraph{hide selections}
 This fuction was needed to be able to quickly check the original image without loosing the already made selections. It also allows to save 2 Versions of the displayed image. One with selections and one without.
 \section{Design}
 \label{Design}
@@ -60,7 +60,8 @@ When designing the app, I had a very modular style in mind. This way, it would b
 
 \subsection{Simplicity}
 \label{Simplicity}
-\subparagraph{color palette}
+\paragraph{color palette}
 In order to avoid to many clashing collors, I crated a monochromatic color palette. By using greys and blues of different saturation and brightness values the contrast between different texts and their background would still be given.
-\subparagraph{logos}
+
+\paragraph{logos}
 All logos and buttons were designed by me to avoid any copyright issues. I tryed to match the rest of the application with rounded edges and matching colors.

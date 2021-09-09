@@ -6,5 +6,3 @@ INPUT Medical_Data_and_imaging.tex
 OUTPUT build/Medical_Data_and_imaging.log
 INPUT /usr/local/texlive/2021/texmf-dist/fonts/map/fontname/texfonts.map
 INPUT /usr/local/texlive/2021/texmf-dist/fonts/tfm/public/cm/cmbx10.tfm
-OUTPUT build/Medical_Data_and_imaging.pdf
-INPUT /usr/local/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map
