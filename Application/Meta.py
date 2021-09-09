@@ -8,6 +8,7 @@ class Meta (QDockWidget):
         self.window = window
         self.setWidget(self.readMetadata())
         self.setVisible(False)
+        self.setWindowTitle("Meta Data")
 
     def readMetadata(self):
         metawidget = QWidget()

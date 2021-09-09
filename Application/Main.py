@@ -23,19 +23,23 @@ class MainWindow (QMainWindow):
 
     def __init__(self):
         QWidget.__init__(self)
-        self.setGeometry(200, 300, 1300, 900)
+        self.setGeometry(300, 400, 1300, 900)
+        self.setWindowTitle("Dicom Viewer")
         self.centralWidget = QFrame()
         self.centralWidget.setFrameStyle(QFrame.StyledPanel)
+        self.centralWidget.setSizePolicy(QSizePolicy.Policy.Preferred, QSizePolicy.Policy.Preferred)
         self.dataArray = []
         self.aiArray = []
         self.toolbar = self.toolbar()
         self.dicom = Dicom(self)
+        self.dicom.setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Expanding)
         self.addToolBar(self.toolbar)
 
         self.picturemenu = self.picture_menu()
         self.picturemenu.setObjectName("picturemenu")
 
         self.background = QStackedWidget()
+        self.background.setSizePolicy(QSizePolicy.Policy.Minimum,QSizePolicy.Policy.Minimum)
         self.background.setObjectName("MediaBarBackground")
         self.background.addWidget(MediaBar(self))
 
@@ -44,7 +48,7 @@ class MainWindow (QMainWindow):
 
         self.dock = QDockWidget("", self)
         self.dock.setWidget(self.rightSide())
-        self.dock.setFeatures(QDockWidget.DockWidgetFeature.DockWidgetClosable)
+        self.dock.setFeatures(QDockWidget.DockWidgetFeature.NoDockWidgetFeatures)
 
         self.input = UserInput(self)
         self.input.setObjectName("userInput")
@@ -203,8 +207,10 @@ class MainWindow (QMainWindow):
         self.RSlayout = QVBoxLayout()
         if self.validDataset:
             self.RSlayout.addWidget(self.data)
+            self.dock.setWindowTitle("Data")
         else:
             self.RSlayout.addWidget(self.welcome)
+            self.dock.setWindowTitle("Welcome")
 
         self.RSlayout.addStretch()
         rightSide.setLayout(self.RSlayout)
@@ -214,6 +220,8 @@ class MainWindow (QMainWindow):
     def showDockwidget(self, widget):
         if widget.isVisible():
             widget.setVisible(False)
+            if widget == self.meta:
+                self.resize(self.width()-400, self.height())  # doesn't work properly yet
         else:
             widget.setVisible(True)
 
