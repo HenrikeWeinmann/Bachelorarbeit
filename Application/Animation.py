@@ -28,6 +28,7 @@ class MediaBar(QWidget):
         self.FBbtn = QPushButton('')
         self.FBbtn.setObjectName("fastbackward")
         self.FBbtn.clicked.connect(self.fastbackward)
+        # layout
         self.layout = QHBoxLayout()
         self.layout.addStretch()
         self.layout.addWidget(self.Backwardbtn)

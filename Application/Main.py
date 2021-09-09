@@ -122,6 +122,7 @@ class MainWindow (QMainWindow):
         spacer.setObjectName("spacer")
         analyze = QPushButton("Analyze")
         analyze.clicked.connect(self.analyze)
+        # layout
         contrastlayout.addWidget(self.label)
         contrastlayout.addWidget(self.contrast)
         contrastlayout.addWidget(self.label2)

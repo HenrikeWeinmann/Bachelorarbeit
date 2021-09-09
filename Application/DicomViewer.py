@@ -79,7 +79,6 @@ class Dicom (FigureCanvas):
             window.AIdisplayed = False
         window.reset_after_changes()
 
-
     def changecmap(self, color, window):
         self.cmap = color
         window.update_fig()
@@ -94,6 +93,7 @@ class Dicom (FigureCanvas):
         my_cmap = ListedColormap(my_cmap)
         return my_cmap
 
+    #mouse click with left button
     def selection(self, event):
         if event.dblclick:
             self.zoom(event)
@@ -121,8 +121,8 @@ class Dicom (FigureCanvas):
                         window.selection.append(self.pos)
                         self.sortSelection(window.selection)
                         window.reset_after_changes()
-        # on mouse release
 
+        # on mouse release
     def release(self, event):
         self.pressed = False
         self.pos = []
@@ -130,7 +130,6 @@ class Dicom (FigureCanvas):
         window.contrast.setValue(self.vmax)
 
         # reconnect the standard on click actions
-
     def reconnect_cids(self, window):
         self.cid = self.fig.canvas.mpl_disconnect(window.dicom.cid)
         self.cid = self.fig.canvas.mpl_connect('button_press_event', self.selection)
@@ -166,6 +165,8 @@ class Dicom (FigureCanvas):
     '''
         picture menu methods
     '''
+
+    # mouse click with left button
     def set_contrast(self, event):
         window = self.parent().parent()
         if self.pressed and event.button == MouseButton.RIGHT:
