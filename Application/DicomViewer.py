@@ -18,7 +18,7 @@ class Dicom (FigureCanvas):
 
     def __init__(self, window):
         self.dpi = 100
-        self.fig = plt.figure(figsize=(700 / self.dpi, 900 / self.dpi), dpi=self.dpi, facecolor="#808080")
+        self.fig = plt.figure(figsize=(700 / self.dpi, 900 / self.dpi), dpi=self.dpi, facecolor="#999999")
         self.ax = self.fig.add_subplot(1, 1, 1)
         super().__init__(self.fig)
         #window.centralWidget.setFixedWidth(700)

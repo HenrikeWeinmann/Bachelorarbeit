@@ -68,8 +68,8 @@ class UserInput(QFrame):
                 self.window.reset_after_changes()
                 if not self.window.validDataset:
                     self.window.validDataset = True
-                    if not self.window.single_image:
-                        self.window.mainLayout.addLayout(self.window.mediaBar, 1, 1, 1, 1)
+                    #if not self.window.single_image:
+                       # self.window.mainLayout.addLayout(self.window.mediaBar, 1, 1, 1, 1)
                     self.window.mainLayout.addWidget(self.window.picturemenu, 0, 0, 2, 1, Qt.AlignmentFlag.AlignLeft)
                 self.window.reset_after_changes()  # update right siden and initialize meta data
             else:
