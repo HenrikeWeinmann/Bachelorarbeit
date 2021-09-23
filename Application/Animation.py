@@ -3,13 +3,14 @@ from PyQt5.QtCore import*
 
 # ----------------Animation/Video---------------------------------------------------------------------------------
 class MediaBar(QWidget):
-    refresh = 1  # in fps
+    refresh = 100  # in fps
 
     def __init__(self, window):
         QWidget.__init__(self)
         self.setObjectName("MediaBar")
         self.window = window
         self.timer = QTimer()
+        self.timer.setInterval(100)
         self.Backwardbtn = QPushButton('')
         self.Backwardbtn.setObjectName("backward")
         self.Backwardbtn.clicked.connect(self.backward)
@@ -45,13 +46,13 @@ class MediaBar(QWidget):
             self.window.running = False
             self.playbtn.setStyleSheet("image: url('Application/Icons/Play.png') ;")
             self.timer.stop()
-            print('start')
+            print('stop')
         else:
             self.window.running = True
             self.playbtn.setStyleSheet("image: url('Application/Icons/Pause.png') ;")
             self.timer.start(self.refresh)
             self.timer.timeout.connect(self.forward)
-            print('stop')
+            print('start')
 
     def stop(self):
         if self.window.running:

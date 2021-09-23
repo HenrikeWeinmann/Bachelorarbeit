@@ -260,7 +260,7 @@ class Dicom (FigureCanvas):
             plt.clf()
             window.dicom.img = plt.imshow(self.imgarr, self.cmap, vmin=self.vmin, vmax=self.vmax)
             window.dicom.draw()
-            window.mainLayout.insertWidget(1, window.dicom)
+            window.mainLayout.addWidget(window.dicom, 0, 1, 1, 1)
 
         elif not window.dontShow.isChecked():
             self.reconnect_cids(window)
