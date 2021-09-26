@@ -4,6 +4,7 @@ from PyQt5.QtGui import *
 from PyQt5.QtCore import*
 import matplotlib.pyplot as plt
 import matplotlib.patches as patches
+import numpy as np
 from Application.UserInput import UserInput
 from Application.DicomViewer import Dicom
 from Application.Animation import MediaBar
@@ -64,7 +65,7 @@ class MainWindow (QMainWindow):
         self.help.setObjectName("meta")
         self.help.setFeatures(QDockWidget.DockWidgetFeature.NoDockWidgetFeatures)
 
-        self.addDockWidget(Qt.DockWidgetArea.LeftDockWidgetArea, self.meta)
+        self.addDockWidget(Qt.DockWidgetArea.BottomDockWidgetArea, self.meta)
         self.addDockWidget(Qt.DockWidgetArea.RightDockWidgetArea, self.dock)
         self.addDockWidget(Qt.DockWidgetArea.RightDockWidgetArea, self.uI)
         self.addDockWidget(Qt.DockWidgetArea.RightDockWidgetArea, self.help)
@@ -233,8 +234,6 @@ class MainWindow (QMainWindow):
     def showDockwidget(self, widget):
         if widget.isVisible():
             widget.setVisible(False)
-            if widget == self.meta:
-                self.resize(self.width()-400, self.height())  # doesn't work properly yet
         else:
             widget.setVisible(True)
 
@@ -252,7 +251,10 @@ class MainWindow (QMainWindow):
     #update the matplotlib canvas with the current data stored in the DICOM object
     def update_fig(self):
         plt.clf()
-        self.dicom.imgarr = self.dataArray[self.slice][self.current].pixel_array
+        if isinstance(self.dataArray[self.slice][self.current], np.ndarray):
+            self.imgarr = self.dataArray[self.slice][self.current]
+        else:
+            self.dicom.imgarr = self.dataArray[self.slice][self.current].pixel_array
         self.dicom.img = plt.imshow(self.dicom.imgarr, self.dicom.cmap, vmin=self.dicom.vmin, vmax=self.dicom.vmax)
         self.cnv = plt.imshow(self.dicom.canvas, Dicom.customcmap(self.dicom))
         if self.selectionMode == 'Polygon Selection' and len(self.selection) >= 3:

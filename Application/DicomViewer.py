@@ -38,7 +38,10 @@ class Dicom (FigureCanvas):
     def initCanvas(self):
         window = self.parent().parent()
         window.toolbar.setVisible(True)
-        self.imgarr = window.dataArray[window.slice][window.current].pixel_array
+        if isinstance(window.dataArray[window.slice][window.current], np.ndarray):
+            self.imgarr = window.dataArray[window.slice][window.current]
+        else:
+            self.imgarr = window.dataArray[window.slice][window.current].pixel_array
         self.img = self.ax.imshow(self.imgarr, self.cmap)
         self.canvas = np.empty(self.imgarr.shape)
         self.canvas[:] = 0

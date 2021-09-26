@@ -384,8 +384,5 @@ QPushButton#Open{
 /* -------- Meta --------------*/
 
 QTextEdit#MetaText{
-    min-height: 700px;
-    min-width: 500px;
-    max-width: 800px;
-    font: 15px;
+    font: 18px;
 }
