@@ -253,9 +253,10 @@ class MainWindow (QMainWindow):
         plt.clf()
         if isinstance(self.dataArray[self.slice][self.current], np.ndarray):
             self.imgarr = self.dataArray[self.slice][self.current]
+            self.dicom.img = plt.imshow(self.dicom.imgarr, self.dicom.cmap, vmin=0, vmax=1)
         else:
             self.dicom.imgarr = self.dataArray[self.slice][self.current].pixel_array
-        self.dicom.img = plt.imshow(self.dicom.imgarr, self.dicom.cmap, vmin=self.dicom.vmin, vmax=self.dicom.vmax)
+            self.dicom.img = plt.imshow(self.dicom.imgarr, self.dicom.cmap, vmin=self.dicom.vmin, vmax=self.dicom.vmax)
         self.cnv = plt.imshow(self.dicom.canvas, Dicom.customcmap(self.dicom))
         if self.selectionMode == 'Polygon Selection' and len(self.selection) >= 3:
             Dicom.draw_polygon(self.dicom, patches.Polygon(self.selection, color='red', alpha=0.2))

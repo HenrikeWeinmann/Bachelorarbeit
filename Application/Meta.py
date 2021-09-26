@@ -1,5 +1,5 @@
 from PyQt5.QtWidgets import *
-
+import numpy as np
 
 class Meta (QDockWidget):
 
@@ -22,10 +22,13 @@ class Meta (QDockWidget):
 
     def getMetadata(self):
         if self.window.validDataset:
-            dataset = self.window.dataArray[self.window.slice][self.window.current]
-            string = ""
-            for data_element in dataset:
-                string = string + "\n" + str(data_element)
-            return string
+            if isinstance(self.window.dataArray[self.window.slice][self.window.current], np.ndarray):
+                return ""
+            else:
+                dataset = self.window.dataArray[self.window.slice][self.window.current]
+                string = ""
+                for data_element in dataset:
+                    string = string + "\n" + str(data_element)
+                return string
         else:
             return ""
