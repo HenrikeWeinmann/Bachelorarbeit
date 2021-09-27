@@ -65,7 +65,12 @@ class MediaBar(QWidget):
             pass
 
     def forward(self):
-        if self.window.current < min((len(self.window.dataArray[self.window.slice])-1), len(self.window.aiArray)-1):
+        if not self.window.aiArray == []:
+            max = min(len(self.window.dataArray[self.window.slice])-1, len(self.window.aiArray)-1)
+        else:
+            max = len(self.window.dataArray[self.window.slice])-1
+
+        if self.window.current < max:
             self.window.current += 1
             print(self.window.current)
         else:

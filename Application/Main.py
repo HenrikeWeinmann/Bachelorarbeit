@@ -108,9 +108,9 @@ class MainWindow (QMainWindow):
         clear.clicked.connect(lambda: Dicom.clear(self.dicom, self))
         self.contrast = QSlider(Qt.Horizontal)
         self.contrast.sliderMoved.connect(lambda: Dicom.change_contrast(self.dicom, self.contrast.value(), self))
-        self.contrast.setValue(255)
-        self.contrast.setMaximum(500)
-        self.contrast.setMinimum(1)
+        self.contrast.setValue(30)
+        self.contrast.setMaximum(100)
+        self.contrast.setMinimum(10)
         self.con = QPixmap("Application/Icons/contrast.png")
         self.label = QLabel()
         self.label.setPixmap(self.con.scaled(30, 30))
@@ -251,9 +251,14 @@ class MainWindow (QMainWindow):
     #update the matplotlib canvas with the current data stored in the DICOM object
     def update_fig(self):
         plt.clf()
+        self.init_imgarrays()
+        plt.xlim(self.dicom.xlim)
+        plt.ylim(self.dicom.ylim)
+        self.dicom.draw()
+        self.mainLayout.addWidget(self.dicom, 0, 1)
+
+    def init_imgarrays(self):
         if isinstance(self.dataArray[self.slice][self.current], np.ndarray):
-            print("update")
-            print(self.dicom.imgarr)
             self.dicom.imgarr = self.dataArray[self.slice][self.current]
             self.dicom.img = plt.imshow(self.dicom.imgarr, self.dicom.cmap, vmin=0, vmax=1)
         else:
@@ -265,10 +270,8 @@ class MainWindow (QMainWindow):
             '''used to be: plt.gca().add_patch(polygon)... but somehow wont work anymore'''
         if self.AIdisplayed:
             self.aicanvas = plt.imshow(self.aiArray[self.current], alpha=0.5)
-        plt.xlim(self.dicom.xlim)
-        plt.ylim(self.dicom.ylim)
-        self.dicom.draw()
-        self.mainLayout.addWidget(self.dicom, 0, 1)
+
+        return self.dicom.imgarr
 
     '''
     update fig will add the image to the display as an overlay

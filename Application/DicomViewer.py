@@ -177,8 +177,16 @@ class Dicom (FigureCanvas):
             self.change_contrast(value, window)
 
     def change_contrast(self, value, window):
-        self.vmax = value
-        window.update_fig()
+        pixvals = window.init_imgarrays()
+        minval = np.percentile(pixvals, (value/10)-1)
+        maxval = np.percentile(pixvals, 101-(value/10))
+        pixvals = np.clip(pixvals, minval, maxval)
+        self.imgarr = ((pixvals - minval) / (maxval - minval)) * 255
+        window.dicom.img = plt.imshow(self.imgarr, window.dicom.cmap, vmin=0, vmax=250)
+        window.dicom.draw()
+        window.mainLayout.addWidget(window.dicom, 0, 1)
+        print("new contrast")
+
 
     def clear(self, window):
         self.canvas[:] = 0
