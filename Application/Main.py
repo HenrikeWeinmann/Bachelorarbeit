@@ -262,7 +262,7 @@ class MainWindow (QMainWindow):
             Dicom.draw_polygon(self.dicom, patches.Polygon(self.selection, color='red', alpha=0.2))
             '''used to be: plt.gca().add_patch(polygon)... but somehow wont work anymore'''
         if self.AIdisplayed:
-            self.aicanvas = plt.imshow(self.aiArray[self.current])
+            self.aicanvas = plt.imshow(self.aiArray[self.current], alpha=0.5)
         plt.xlim(self.dicom.xlim)
         plt.ylim(self.dicom.ylim)
         self.dicom.draw()
