@@ -4,6 +4,7 @@ from PyQt5.QtGui import *
 from PyQt5.QtCore import*
 import matplotlib.pyplot as plt
 import matplotlib.patches as patches
+import numpy as np
 from Application.UserInput import UserInput
 from Application.DicomViewer import Dicom
 from Application.Animation import MediaBar
@@ -35,9 +36,6 @@ class MainWindow (QMainWindow):
         self.dicom.setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Expanding)
         self.addToolBar(self.toolbar)
 
-        self.picturemenu = self.picture_menu()
-        self.picturemenu.setObjectName("picturemenu")
-
         self.background = QStackedWidget()
         self.background.setSizePolicy(QSizePolicy.Policy.Minimum,QSizePolicy.Policy.Minimum)
         self.background.setObjectName("MediaBarBackground")
@@ -45,6 +43,9 @@ class MainWindow (QMainWindow):
 
         self.mediaBar = QHBoxLayout()
         self.mediaBar.addWidget(self.background)
+
+        self.picturemenu = self.picture_menu()
+        self.picturemenu.setObjectName("picturemenu")
 
         self.dock = QDockWidget("", self)
         self.dock.setWidget(self.rightSide())
@@ -64,7 +65,7 @@ class MainWindow (QMainWindow):
         self.help.setObjectName("meta")
         self.help.setFeatures(QDockWidget.DockWidgetFeature.NoDockWidgetFeatures)
 
-        self.addDockWidget(Qt.DockWidgetArea.LeftDockWidgetArea, self.meta)
+        self.addDockWidget(Qt.DockWidgetArea.BottomDockWidgetArea, self.meta)
         self.addDockWidget(Qt.DockWidgetArea.RightDockWidgetArea, self.dock)
         self.addDockWidget(Qt.DockWidgetArea.RightDockWidgetArea, self.uI)
         self.addDockWidget(Qt.DockWidgetArea.RightDockWidgetArea, self.help)
@@ -73,7 +74,7 @@ class MainWindow (QMainWindow):
         self.mainLayout.addWidget(self.dicom, 0, 1, 1, 1)
         if self.validDataset:
             self.mainLayout.addWidget(self.picturemenu, 0, 0, 2, 1, Qt.AlignmentFlag.AlignLeft)
-            self.mainLayout.addLayout(self.mediaBar, 1, 1, 1, 1)
+            #self.mainLayout.addLayout(self.mediaBar, 1, 1, 1, 1)
         self.centralWidget.setLayout(self.mainLayout)
         self.setCentralWidget(self.centralWidget)
 
@@ -107,9 +108,9 @@ class MainWindow (QMainWindow):
         clear.clicked.connect(lambda: Dicom.clear(self.dicom, self))
         self.contrast = QSlider(Qt.Horizontal)
         self.contrast.sliderMoved.connect(lambda: Dicom.change_contrast(self.dicom, self.contrast.value(), self))
-        self.contrast.setValue(255)
-        self.contrast.setMaximum(500)
-        self.contrast.setMinimum(1)
+        self.contrast.setValue(30)
+        self.contrast.setMaximum(100)
+        self.contrast.setMinimum(10)
         self.con = QPixmap("Application/Icons/contrast.png")
         self.label = QLabel()
         self.label.setPixmap(self.con.scaled(30, 30))
@@ -124,19 +125,28 @@ class MainWindow (QMainWindow):
         imageMode.addItem('gist_gray')
         imageMode.addItem('binary')
         imageMode.activated.connect(lambda: Dicom.changecmap(self.dicom, imageMode.currentText(), self))
+        imageMode.setView(QListView())
 
         selectionBox = QComboBox()
         selectionBox.addItem("Single Point Selection")
         selectionBox.addItem("Multiple Point Selection")
         selectionBox.addItem("Polygon Selection")
+        selectionBox.setView(QListView())
         # selectionMode.addItem("Freehand Selection")  # to be implemented in the future
         selectionBox.activated.connect(lambda: Dicom.setSelectionMode(self.dicom, selectionBox, self))
         self.selectionMode = selectionBox.currentText()
+
         spacer = QWidget()
         spacer.setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Preferred)
         spacer.setObjectName("spacer")
-
+        line1 = QWidget()
+        line1.setObjectName("line1")
+        line2 = QWidget()
+        line2.setObjectName("line2")
+        line3 = QWidget()
+        line3.setObjectName("line3")
         analyze = QPushButton("Analyze")
+        analyze.setObjectName("Analyze")
         analyze.clicked.connect(self.analyze)
         # layout
         contrastlayout.addWidget(self.label)
@@ -150,11 +160,15 @@ class MainWindow (QMainWindow):
         outerlayout.addWidget(selectionBox)
         outerlayout.addWidget(imageMode)
         outerlayout.addLayout(contrastlayout)
+        outerlayout.addWidget(line1)
         outerlayout.addLayout(layout)
-        outerlayout.addWidget(spacer)
+        outerlayout.addWidget(line2)
+        outerlayout.addLayout(self.mediaBar)
+        outerlayout.addWidget(line3)
         outerlayout.addWidget(analyze)
-
+        outerlayout.addWidget(spacer)
         picturemenu.setLayout(outerlayout)
+
         return picturemenu
 
 #main toolbar with all major settings
@@ -220,8 +234,6 @@ class MainWindow (QMainWindow):
     def showDockwidget(self, widget):
         if widget.isVisible():
             widget.setVisible(False)
-            if widget == self.meta:
-                self.resize(self.width()-400, self.height())  # doesn't work properly yet
         else:
             widget.setVisible(True)
 
@@ -239,18 +251,27 @@ class MainWindow (QMainWindow):
     #update the matplotlib canvas with the current data stored in the DICOM object
     def update_fig(self):
         plt.clf()
-        self.dicom.imgarr = self.dataArray[self.slice][self.current].pixel_array
-        self.dicom.img = plt.imshow(self.dicom.imgarr, self.dicom.cmap, vmin=self.dicom.vmin, vmax=self.dicom.vmax)
+        self.init_imgarrays()
+        plt.xlim(self.dicom.xlim)
+        plt.ylim(self.dicom.ylim)
+        self.dicom.draw()
+        self.mainLayout.addWidget(self.dicom, 0, 1)
+
+    def init_imgarrays(self):
+        if isinstance(self.dataArray[self.slice][self.current], np.ndarray):
+            self.dicom.imgarr = self.dataArray[self.slice][self.current]
+            self.dicom.img = plt.imshow(self.dicom.imgarr, self.dicom.cmap, vmin=0, vmax=1)
+        else:
+            self.dicom.imgarr = self.dataArray[self.slice][self.current].pixel_array
+            self.dicom.img = plt.imshow(self.dicom.imgarr, self.dicom.cmap, vmin=self.dicom.vmin, vmax=self.dicom.vmax)
         self.cnv = plt.imshow(self.dicom.canvas, Dicom.customcmap(self.dicom))
         if self.selectionMode == 'Polygon Selection' and len(self.selection) >= 3:
             Dicom.draw_polygon(self.dicom, patches.Polygon(self.selection, color='red', alpha=0.2))
             '''used to be: plt.gca().add_patch(polygon)... but somehow wont work anymore'''
         if self.AIdisplayed:
-            self.aicanvas = plt.imshow(self.aiArray[self.current])
-        plt.xlim(self.dicom.xlim)
-        plt.ylim(self.dicom.ylim)
-        self.dicom.draw()
-        self.mainLayout.addWidget(self.dicom, 0, 1)
+            self.aicanvas = plt.imshow(self.aiArray[self.current], alpha=0.5)
+
+        return self.dicom.imgarr
 
     '''
     update fig will add the image to the display as an overlay

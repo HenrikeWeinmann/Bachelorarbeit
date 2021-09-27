@@ -18,7 +18,7 @@ class Dicom (FigureCanvas):
 
     def __init__(self, window):
         self.dpi = 100
-        self.fig = plt.figure(figsize=(700 / self.dpi, 900 / self.dpi), dpi=self.dpi, facecolor="#808080")
+        self.fig = plt.figure(figsize=(700 / self.dpi, 900 / self.dpi), dpi=self.dpi, facecolor="#999999")
         self.ax = self.fig.add_subplot(1, 1, 1)
         super().__init__(self.fig)
         #window.centralWidget.setFixedWidth(700)
@@ -38,7 +38,10 @@ class Dicom (FigureCanvas):
     def initCanvas(self):
         window = self.parent().parent()
         window.toolbar.setVisible(True)
-        self.imgarr = window.dataArray[window.slice][window.current].pixel_array
+        if isinstance(window.dataArray[window.slice][window.current], np.ndarray):
+            self.imgarr = window.dataArray[window.slice][window.current]
+        else:
+            self.imgarr = window.dataArray[window.slice][window.current].pixel_array
         self.img = self.ax.imshow(self.imgarr, self.cmap)
         self.canvas = np.empty(self.imgarr.shape)
         self.canvas[:] = 0
@@ -174,8 +177,16 @@ class Dicom (FigureCanvas):
             self.change_contrast(value, window)
 
     def change_contrast(self, value, window):
-        self.vmax = value
-        window.update_fig()
+        pixvals = window.init_imgarrays()
+        minval = np.percentile(pixvals, (value/10)-1)
+        maxval = np.percentile(pixvals, 101-(value/10))
+        pixvals = np.clip(pixvals, minval, maxval)
+        self.imgarr = ((pixvals - minval) / (maxval - minval)) * 255
+        window.dicom.img = plt.imshow(self.imgarr, window.dicom.cmap, vmin=0, vmax=250)
+        window.dicom.draw()
+        window.mainLayout.addWidget(window.dicom, 0, 1)
+        print("new contrast")
+
 
     def clear(self, window):
         self.canvas[:] = 0
@@ -260,7 +271,7 @@ class Dicom (FigureCanvas):
             plt.clf()
             window.dicom.img = plt.imshow(self.imgarr, self.cmap, vmin=self.vmin, vmax=self.vmax)
             window.dicom.draw()
-            window.mainLayout.insertWidget(1, window.dicom)
+            window.mainLayout.addWidget(window.dicom, 0, 1, 1, 1)
 
         elif not window.dontShow.isChecked():
             self.reconnect_cids(window)

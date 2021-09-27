@@ -68,8 +68,8 @@ class UserInput(QFrame):
                 self.window.reset_after_changes()
                 if not self.window.validDataset:
                     self.window.validDataset = True
-                    if not self.window.single_image:
-                        self.window.mainLayout.addLayout(self.window.mediaBar, 1, 1, 1, 1)
+                    #if not self.window.single_image:
+                       # self.window.mainLayout.addLayout(self.window.mediaBar, 1, 1, 1, 1)
                     self.window.mainLayout.addWidget(self.window.picturemenu, 0, 0, 2, 1, Qt.AlignmentFlag.AlignLeft)
                 self.window.reset_after_changes()  # update right siden and initialize meta data
             else:
@@ -93,11 +93,11 @@ class UserInput(QFrame):
                     self.errorText.setText("you can only load one dataset at a time.")
                     self.layout.insertWidget(1, self.errorText)
                     return False
-                elif file.lower().endswith(('.dcm', '.dc3', '.dic')):
+                elif file.lower().endswith(('.dcm', '.dc3', '.dic', '.npy')):
                     return True
-            elif file.lower().endswith(('.dcm', '.dc3', '.dic')):
+            elif file.lower().endswith(('.dcm', '.dc3', '.dic', '.npy')):
                 return True
-        elif file.lower().endswith(('.dcm', '.dc3', '.dic')):
+        elif file.lower().endswith(('.dcm', '.dc3', '.dic', '.npy')):
             return True
         else:
             self.layout.insertWidget(1, self.errorText)
@@ -116,16 +116,20 @@ class UserInput(QFrame):
     def loadData(self):
         data = []
         if not os.path.isdir(self.filepath):
-            print("single picture")
+            #single image loaded
             self.window.single_image = True
             data.append([])
-            dicom = dcm.dcmread(self.filepath)
-            data[0].append(dicom)
+            if self.filepath.lower().endswith('.npy'):
+               numpy = np.load(self.filepath)
+               data[0].append(numpy)
+            else:
+                dicom = dcm.dcmread(self.filepath)
+                data[0].append(dicom)
             return data
         else:
             slices = os.listdir(self.filepath)  # list of all names of all slices
             slices.sort()
-
+            #multiple slices loaded
             if os.path.isdir(os.path.join(self.filepath, slices[1])):
                 for i in range(1, len(slices)):
                     current_slice = os.path.join(self.filepath, slices[i])
@@ -134,15 +138,24 @@ class UserInput(QFrame):
                     data.append([])
                     for j in range(len(frames)):
                         current_frame = os.path.join(current_slice, frames[j])
-                        dicom = dcm.dcmread(current_frame)
-                        data[i - 1].append(dicom)
-
+                        if current_frame.lower().endswith('.npy'):
+                            numpy = np.load(current_frame)
+                            data[i - 1].append(numpy)
+                        else:
+                            dicom = dcm.dcmread(current_frame)
+                            data[i - 1].append(dicom)
+            # only one slice is loaded
+            # in this case slices are actually frames
             elif not os.path.isdir(os.path.join(self.filepath, slices[1])):
                 data.append([])
                 for i in range(len(slices)):
                     current_slice = os.path.join(self.filepath, slices[i])
-                    dicom = dcm.dcmread(current_slice)
-                    data[0].append(dicom)
+                    if current_slice.lower().endswith('.npy'):
+                        numpy = np.load(current_slice)
+                        data[0].append(numpy)
+                    else:
+                        dicom = dcm.dcmread(current_slice)
+                        data[0].append(dicom)
             return data
     '''
     assuming that only one slice will be analyzed
@@ -154,10 +167,7 @@ class UserInput(QFrame):
         for filename in os.listdir(dir):
             arr = np.load(os.path.join(dir, filename))
             arr = arr[:, :, 0]
-
             aiData.append(arr)
-            if filename == "0_0_mask.npy":
-                print(arr)
-                print(aiData[0])
+
         return aiData
 
