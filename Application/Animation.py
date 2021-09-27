@@ -65,8 +65,9 @@ class MediaBar(QWidget):
             pass
 
     def forward(self):
-        if self.window.current < len(self.window.dataArray[self.window.slice])-1:
+        if self.window.current < min((len(self.window.dataArray[self.window.slice])-1), len(self.window.aiArray)-1):
             self.window.current += 1
+            print(self.window.current)
         else:
             self.window.current = 0
         self.window.reset_after_changes()
@@ -75,7 +76,7 @@ class MediaBar(QWidget):
         if self.window.current > 0:
             self.window.current -= 1
         else:
-            self.window.current = len(self.window.dataArray[self.window.slice])-1
+            self.window.current = min(len(self.window.dataArray[self.window.slice])-1, len(self.window.aiArray)-1)
         self.window.reset_after_changes()
 
 # to be implemented

@@ -252,7 +252,9 @@ class MainWindow (QMainWindow):
     def update_fig(self):
         plt.clf()
         if isinstance(self.dataArray[self.slice][self.current], np.ndarray):
-            self.imgarr = self.dataArray[self.slice][self.current]
+            print("update")
+            print(self.dicom.imgarr)
+            self.dicom.imgarr = self.dataArray[self.slice][self.current]
             self.dicom.img = plt.imshow(self.dicom.imgarr, self.dicom.cmap, vmin=0, vmax=1)
         else:
             self.dicom.imgarr = self.dataArray[self.slice][self.current].pixel_array

@@ -116,7 +116,7 @@ class UserInput(QFrame):
     def loadData(self):
         data = []
         if not os.path.isdir(self.filepath):
-            print("single picture")
+            #single image loaded
             self.window.single_image = True
             data.append([])
             if self.filepath.lower().endswith('.npy'):
@@ -129,7 +129,7 @@ class UserInput(QFrame):
         else:
             slices = os.listdir(self.filepath)  # list of all names of all slices
             slices.sort()
-
+            #multiple slices loaded
             if os.path.isdir(os.path.join(self.filepath, slices[1])):
                 for i in range(1, len(slices)):
                     current_slice = os.path.join(self.filepath, slices[i])
@@ -140,11 +140,12 @@ class UserInput(QFrame):
                         current_frame = os.path.join(current_slice, frames[j])
                         if current_frame.lower().endswith('.npy'):
                             numpy = np.load(current_frame)
-                            data[0].append(numpy)
+                            data[i - 1].append(numpy)
                         else:
                             dicom = dcm.dcmread(current_frame)
                             data[i - 1].append(dicom)
-
+            # only one slice is loaded
+            # in this case slices are actually frames
             elif not os.path.isdir(os.path.join(self.filepath, slices[1])):
                 data.append([])
                 for i in range(len(slices)):
@@ -166,10 +167,7 @@ class UserInput(QFrame):
         for filename in os.listdir(dir):
             arr = np.load(os.path.join(dir, filename))
             arr = arr[:, :, 0]
-
             aiData.append(arr)
-            if filename == "0_0_mask.npy":
-                print(arr)
-                print(aiData[0])
+
         return aiData
 

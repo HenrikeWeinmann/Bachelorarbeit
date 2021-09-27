@@ -6,8 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="8e406e9a-7129-4799-b3f3-c02ccd0c5d7c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Animation.py" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Animation.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Application/Main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Meta.py" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Meta.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/UserInput.py" beforeDir="false" afterPath="$PROJECT_DIR$/Application/UserInput.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -23,8 +24,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Application/Main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-338">
-              <caret line="266" column="33" lean-forward="true" selection-start-line="266" selection-start-column="33" selection-end-line="266" selection-end-column="33" />
+            <state relative-caret-position="-9">
+              <caret line="254" column="27" lean-forward="true" selection-start-line="254" selection-start-column="27" selection-end-line="254" selection-end-column="27" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
@@ -32,10 +33,10 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Application/Meta.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="739">
+            <state relative-caret-position="1188">
               <caret line="33" column="21" lean-forward="true" selection-start-line="33" selection-start-column="21" selection-end-line="33" selection-end-column="21" />
               <folding>
                 <element signature="e#0#29#0" expanded="true" />
@@ -47,7 +48,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Application/DicomViewer.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="902">
+            <state relative-caret-position="-718">
               <caret line="28" column="23" selection-start-line="28" selection-start-column="23" selection-end-line="28" selection-end-column="23" />
               <folding>
                 <element signature="e#1#30#0" expanded="true" />
@@ -56,11 +57,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Application/Animation.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-18">
-              <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
+            <state relative-caret-position="244">
+              <caret line="67" column="112" selection-start-line="67" selection-start-column="112" selection-end-line="67" selection-end-column="112" />
               <folding>
                 <element signature="e#0#29#0" expanded="true" />
               </folding>
@@ -83,8 +84,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Application/UserInput.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1671">
-              <caret line="151" column="36" selection-start-line="151" selection-start-column="36" selection-end-line="151" selection-end-column="36" />
+            <state relative-caret-position="328">
+              <caret line="157" column="45" selection-start-line="157" selection-start-column="45" selection-end-line="157" selection-end-column="45" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
@@ -148,12 +149,12 @@
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/Application/Data.py" />
         <option value="$PROJECT_DIR$/Application/Help.py" />
-        <option value="$PROJECT_DIR$/Application/Animation.py" />
         <option value="$PROJECT_DIR$/Application/Stylesheet.qss" />
-        <option value="$PROJECT_DIR$/Application/UserInput.py" />
         <option value="$PROJECT_DIR$/Application/DicomViewer.py" />
-        <option value="$PROJECT_DIR$/Application/Main.py" />
         <option value="$PROJECT_DIR$/Application/Meta.py" />
+        <option value="$PROJECT_DIR$/Application/Main.py" />
+        <option value="$PROJECT_DIR$/Application/UserInput.py" />
+        <option value="$PROJECT_DIR$/Application/Animation.py" />
       </list>
     </option>
   </component>
@@ -431,20 +432,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1619447345414</updated>
-    </task>
-    <task id="LOCAL-00028" summary="polygon selection mode added">
-      <created>1624048468551</created>
-      <option name="number" value="00028" />
-      <option name="presentableId" value="LOCAL-00028" />
-      <option name="project" value="LOCAL" />
-      <updated>1624048468551</updated>
-    </task>
-    <task id="LOCAL-00029" summary="changed icons to custom icons">
-      <created>1624192412429</created>
-      <option name="number" value="00029" />
-      <option name="presentableId" value="LOCAL-00029" />
-      <option name="project" value="LOCAL" />
-      <updated>1624192412429</updated>
     </task>
     <task id="LOCAL-00030" summary="icons">
       <created>1624192425204</created>
@@ -775,7 +762,21 @@
       <option name="project" value="LOCAL" />
       <updated>1632655921393</updated>
     </task>
-    <option name="localTasksCounter" value="77" />
+    <task id="LOCAL-00077" summary="meta data empty for numpy arrays">
+      <created>1632659716051</created>
+      <option name="number" value="00077" />
+      <option name="presentableId" value="LOCAL-00077" />
+      <option name="project" value="LOCAL" />
+      <updated>1632659716051</updated>
+    </task>
+    <task id="LOCAL-00078" summary="change opacity of masks">
+      <created>1632774559895</created>
+      <option name="number" value="00078" />
+      <option name="presentableId" value="LOCAL-00078" />
+      <option name="project" value="LOCAL" />
+      <updated>1632774559895</updated>
+    </task>
+    <option name="localTasksCounter" value="79" />
     <servers />
   </component>
   <component name="TodoView">
@@ -791,17 +792,17 @@
     <frame x="68" y="25" width="1612" height="1025" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4945534" weight="0.14142048" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4945534" visible="true" weight="0.14079195" />
       <window_info id="Structure" order="1" sideWeight="0.5075107" side_tool="true" weight="0.11731161" />
       <window_info id="Favorites" order="2" sideWeight="0.5054466" side_tool="true" weight="0.10142566" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.11161731" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.5648438" visible="true" weight="0.03236246" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.5648438" visible="true" weight="0.18985976" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49921876" weight="0.39836735" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49940923" weight="0.2642369" />
-      <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.49921876" weight="0.062262718" />
+      <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.49921876" weight="0.061488673" />
       <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49901536" weight="0.329927" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.43515626" side_tool="true" weight="0.3495066" />
       <window_info anchor="bottom" id="Python Console" order="10" sideWeight="0.49940923" weight="0.329927" />
@@ -909,8 +910,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="cid now correctly reconnected" />
-    <MESSAGE value="hide finished" />
     <MESSAGE value="center media bar" />
     <MESSAGE value="updated icons" />
     <MESSAGE value="single image no media show" />
@@ -934,7 +933,9 @@
     <MESSAGE value="style combo box and change media bar position" />
     <MESSAGE value="minor bug fixes" />
     <MESSAGE value="Load images as numpy files enabled" />
-    <option name="LAST_COMMIT_MESSAGE" value="Load images as numpy files enabled" />
+    <MESSAGE value="meta data empty for numpy arrays" />
+    <MESSAGE value="change opacity of masks" />
+    <option name="LAST_COMMIT_MESSAGE" value="change opacity of masks" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/UserInteraction.py" />
@@ -1015,16 +1016,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Animation.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-18">
-          <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
-          <folding>
-            <element signature="e#0#29#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Application/Stylesheet.qss">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="435">
@@ -1032,10 +1023,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Meta.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1188">
+          <caret line="33" column="21" lean-forward="true" selection-start-line="33" selection-start-column="21" selection-end-line="33" selection-end-column="21" />
+          <folding>
+            <element signature="e#0#29#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-9">
+          <caret line="254" column="27" lean-forward="true" selection-start-line="254" selection-start-column="27" selection-end-line="254" selection-end-column="27" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Application/UserInput.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1671">
-          <caret line="151" column="36" selection-start-line="151" selection-start-column="36" selection-end-line="151" selection-end-column="36" />
+        <state relative-caret-position="328">
+          <caret line="157" column="45" selection-start-line="157" selection-start-column="45" selection-end-line="157" selection-end-column="45" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
           </folding>
@@ -1044,7 +1055,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Application/DicomViewer.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="902">
+        <state relative-caret-position="-718">
           <caret line="28" column="23" selection-start-line="28" selection-start-column="23" selection-end-line="28" selection-end-column="23" />
           <folding>
             <element signature="e#1#30#0" expanded="true" />
@@ -1052,20 +1063,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Main.py">
+    <entry file="file://$PROJECT_DIR$/Application/Animation.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-338">
-          <caret line="266" column="33" lean-forward="true" selection-start-line="266" selection-start-column="33" selection-end-line="266" selection-end-column="33" />
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Meta.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="739">
-          <caret line="33" column="21" lean-forward="true" selection-start-line="33" selection-start-column="21" selection-end-line="33" selection-end-column="21" />
+        <state relative-caret-position="244">
+          <caret line="67" column="112" selection-start-line="67" selection-start-column="112" selection-end-line="67" selection-end-column="112" />
           <folding>
             <element signature="e#0#29#0" expanded="true" />
           </folding>
