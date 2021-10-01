@@ -78,10 +78,14 @@ class MediaBar(QWidget):
         self.window.reset_after_changes()
 
     def backward(self):
+        if not self.window.aiArray == []:
+            max = min(len(self.window.dataArray[self.window.slice])-1, len(self.window.aiArray)-1)
+        else:
+            max = len(self.window.dataArray[self.window.slice])-1
         if self.window.current > 0:
             self.window.current -= 1
         else:
-            self.window.current = min(len(self.window.dataArray[self.window.slice])-1, len(self.window.aiArray)-1)
+            self.window.current = max
         self.window.reset_after_changes()
 
 # to be implemented
