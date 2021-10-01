@@ -374,12 +374,12 @@ QPushButton#submit{
 }
 
 QPushButton#Open{
-    padding: 3;
+    padding: 4;
     text-align: left;
     border-radius: 20;
     min-height: 60px;
     max-height: 80px;
-    max-width: 410px;
+    max-width: 425px;
 }
 /* -------- Meta --------------*/
 
