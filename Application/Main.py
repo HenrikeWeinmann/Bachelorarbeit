@@ -234,7 +234,10 @@ class MainWindow (QMainWindow):
     def showDockwidget(self, widget):
         if widget.isVisible():
             widget.setVisible(False)
-            self.setGeometry(100, 100, self.width(), self.height()-widget.height())
+            if self.isFullScreen():
+                self.setGeometry(0,0, self.width(),self.height())
+            else:
+                self.setGeometry(100, 100, self.width(), self.height()-widget.height())
         else:
             widget.setVisible(True)
 
