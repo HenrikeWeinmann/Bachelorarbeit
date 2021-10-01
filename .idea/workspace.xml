@@ -5,7 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8e406e9a-7129-4799-b3f3-c02ccd0c5d7c" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Application/Main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Stylesheet_dark.qss" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Stylesheet_dark.qss" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -21,8 +23,44 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Application/Main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="478">
-              <caret line="239" column="16" selection-start-line="239" selection-start-column="16" selection-end-line="239" selection-end-column="16" />
+            <state relative-caret-position="450">
+              <caret line="292" column="29" selection-start-line="292" selection-start-column="29" selection-end-line="292" selection-end-column="29" />
+              <folding>
+                <element signature="e#0#10#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Application/DicomViewer.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="6039">
+              <caret line="181" column="43" selection-start-line="181" selection-start-column="43" selection-end-line="181" selection-end-column="43" />
+              <folding>
+                <element signature="e#1#30#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Application/Meta.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1188">
+              <caret line="33" column="21" lean-forward="true" selection-start-line="33" selection-start-column="21" selection-end-line="33" selection-end-column="21" />
+              <folding>
+                <element signature="e#0#29#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Application/UserInput.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="386">
+              <caret line="29" column="79" selection-start-line="29" selection-start-column="79" selection-end-line="29" selection-end-column="79" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
@@ -33,8 +71,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Application/Stylesheet.qss">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="507">
-              <caret line="387" column="20" selection-start-line="387" selection-start-column="20" selection-end-line="387" selection-end-column="20" />
+            <state>
+              <caret selection-end-line="388" selection-end-column="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Application/Stylesheet_dark.qss">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="12324">
+              <caret line="389" selection-start-line="389" selection-end-line="389" />
             </state>
           </provider>
         </entry>
@@ -64,7 +111,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="styling" />
       </map>
     </option>
   </component>
@@ -80,17 +127,18 @@
         <option value="$PROJECT_DIR$/Stylesheet.qss" />
         <option value="$PROJECT_DIR$/UserInput.py" />
         <option value="$PROJECT_DIR$/GUIV2.py" />
-        <option value="$PROJECT_DIR$/Application/Stylesheet_dark.qss" />
         <option value="$PROJECT_DIR$/Application/masktest.py" />
         <option value="$PROJECT_DIR$/Application/GUIV2.py" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/Application/Data.py" />
         <option value="$PROJECT_DIR$/Application/Help.py" />
         <option value="$PROJECT_DIR$/Application/Meta.py" />
-        <option value="$PROJECT_DIR$/Application/UserInput.py" />
         <option value="$PROJECT_DIR$/Application/DicomViewer.py" />
         <option value="$PROJECT_DIR$/Application/Animation.py" />
+        <option value="$PROJECT_DIR$/Application/welcome.txt" />
+        <option value="$PROJECT_DIR$/Application/UserInput.py" />
         <option value="$PROJECT_DIR$/Application/Stylesheet.qss" />
+        <option value="$PROJECT_DIR$/Application/Stylesheet_dark.qss" />
         <option value="$PROJECT_DIR$/Application/Main.py" />
       </list>
     </option>
@@ -369,27 +417,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1619447345414</updated>
-    </task>
-    <task id="LOCAL-00034" summary="eraser Mode added">
-      <created>1624211521989</created>
-      <option name="number" value="00034" />
-      <option name="presentableId" value="LOCAL-00034" />
-      <option name="project" value="LOCAL" />
-      <updated>1624211521989</updated>
-    </task>
-    <task id="LOCAL-00035" summary="integrated open files from file manager">
-      <created>1624466209854</created>
-      <option name="number" value="00035" />
-      <option name="presentableId" value="LOCAL-00035" />
-      <option name="project" value="LOCAL" />
-      <updated>1624466209854</updated>
-    </task>
-    <task id="LOCAL-00036" summary="Starting Screen">
-      <created>1624543118140</created>
-      <option name="number" value="00036" />
-      <option name="presentableId" value="LOCAL-00036" />
-      <option name="project" value="LOCAL" />
-      <updated>1624543118140</updated>
     </task>
     <task id="LOCAL-00037" summary="canvas auto clear fixed.">
       <created>1624609732415</created>
@@ -713,7 +740,28 @@
       <option name="project" value="LOCAL" />
       <updated>1633095901085</updated>
     </task>
-    <option name="localTasksCounter" value="83" />
+    <task id="LOCAL-00083" summary="resize now works also in full screen">
+      <created>1633096207112</created>
+      <option name="number" value="00083" />
+      <option name="presentableId" value="LOCAL-00083" />
+      <option name="project" value="LOCAL" />
+      <updated>1633096207112</updated>
+    </task>
+    <task id="LOCAL-00084" summary="welcome text changed">
+      <created>1633096257294</created>
+      <option name="number" value="00084" />
+      <option name="presentableId" value="LOCAL-00084" />
+      <option name="project" value="LOCAL" />
+      <updated>1633096257295</updated>
+    </task>
+    <task id="LOCAL-00085" summary="realign open button in Input field">
+      <created>1633096477981</created>
+      <option name="number" value="00085" />
+      <option name="presentableId" value="LOCAL-00085" />
+      <option name="project" value="LOCAL" />
+      <updated>1633096477981</updated>
+    </task>
+    <option name="localTasksCounter" value="86" />
     <servers />
   </component>
   <component name="TodoView">
@@ -729,12 +777,12 @@
     <frame x="68" y="25" width="1612" height="1025" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4900568" visible="true" weight="0.14079195" />
-      <window_info id="Structure" order="1" sideWeight="0.5099432" side_tool="true" visible="true" weight="0.14079195" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4903581" visible="true" weight="0.14079195" />
+      <window_info id="Structure" order="1" sideWeight="0.5096419" side_tool="true" visible="true" weight="0.14079195" />
       <window_info id="Favorites" order="2" sideWeight="0.5054466" side_tool="true" weight="0.10142566" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.11161731" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.5648438" visible="true" weight="0.24056095" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.5648438" visible="true" weight="0.21682848" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49921876" weight="0.39836735" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -847,9 +895,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="contrast icons added &#10;minor bug fix for paths to icons" />
-    <MESSAGE value="drag and draw in multiple point selection mode added" />
-    <MESSAGE value="hide toolbar when starting the app" />
     <MESSAGE value="hide error message &#10;new icons for data input" />
     <MESSAGE value="zoom works again but needs zoom out function" />
     <MESSAGE value="new adaptive layout" />
@@ -872,7 +917,10 @@
     <MESSAGE value="contrast now works properly" />
     <MESSAGE value="animation backwards out of bound fixed" />
     <MESSAGE value="resize window after closing meta data tab" />
-    <option name="LAST_COMMIT_MESSAGE" value="resize window after closing meta data tab" />
+    <MESSAGE value="resize now works also in full screen" />
+    <MESSAGE value="welcome text changed" />
+    <MESSAGE value="realign open button in Input field" />
+    <option name="LAST_COMMIT_MESSAGE" value="realign open button in Input field" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/UserInteraction.py" />
@@ -889,13 +937,6 @@
     <entry file="file://$PROJECT_DIR$/VTK DICOM Reader.py" />
     <entry file="file://$PROJECT_DIR$/VTK Test file.py" />
     <entry file="file://$PROJECT_DIR$/loadFiles test" />
-    <entry file="file://$PROJECT_DIR$/Application/welcome.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="38" selection-start-column="38" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Application/Icons/move.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
@@ -915,13 +956,6 @@
       <provider selected="true" editor-type-id="images" />
     </entry>
     <entry file="file://$PROJECT_DIR$/.png" />
-    <entry file="file://$PROJECT_DIR$/Application/Stylesheet_dark.qss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="778">
-          <caret line="361" column="1" selection-start-line="361" selection-start-column="1" selection-end-line="361" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Application/masks/0_0_mask.npy">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -953,13 +987,44 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Animation.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="499">
+          <caret line="87" column="37" selection-start-line="87" selection-start-column="37" selection-end-line="87" selection-end-column="37" />
+          <folding>
+            <element signature="e#0#29#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/welcome.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="4" column="74" selection-start-line="4" selection-start-column="74" selection-end-line="4" selection-end-column="74" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Application/UserInput.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="303">
-          <caret line="157" column="45" selection-start-line="157" selection-start-column="45" selection-end-line="157" selection-end-column="45" />
+        <state relative-caret-position="386">
+          <caret line="29" column="79" selection-start-line="29" selection-start-column="79" selection-end-line="29" selection-end-column="79" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Stylesheet.qss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-line="388" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Stylesheet_dark.qss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="12324">
+          <caret line="389" selection-start-line="389" selection-end-line="389" />
         </state>
       </provider>
     </entry>
@@ -975,7 +1040,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Application/DicomViewer.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="284">
+        <state relative-caret-position="6039">
           <caret line="181" column="43" selection-start-line="181" selection-start-column="43" selection-end-line="181" selection-end-column="43" />
           <folding>
             <element signature="e#1#30#0" expanded="true" />
@@ -983,27 +1048,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Animation.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="499">
-          <caret line="87" column="37" selection-start-line="87" selection-start-column="37" selection-end-line="87" selection-end-column="37" />
-          <folding>
-            <element signature="e#0#29#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Stylesheet.qss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="507">
-          <caret line="387" column="20" selection-start-line="387" selection-start-column="20" selection-end-line="387" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Application/Main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="478">
-          <caret line="239" column="16" selection-start-line="239" selection-start-column="16" selection-end-line="239" selection-end-column="16" />
+        <state relative-caret-position="450">
+          <caret line="292" column="29" selection-start-line="292" selection-start-column="29" selection-end-line="292" selection-end-column="29" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
           </folding>

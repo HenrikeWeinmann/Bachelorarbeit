@@ -195,14 +195,20 @@ class MainWindow (QMainWindow):
         MetaData.setCheckable(True)
         MetaData.setChecked(False)
         MetaData.clicked.connect(lambda: self.showDockwidget(self.meta))
+        dark = QPushButton("dark")
+        dark.setObjectName("dark")
+        dark.clicked.connect(lambda: self.change_theme(dark))
+        dark.setCheckable(True)
+        dark.setChecked(False)
         spacer = QWidget()
         spacer.setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Preferred)
         spacer.setObjectName("spacer")
 
         toolbar.addWidget(File)
         toolbar.addWidget(MetaData)
-        toolbar.addWidget(spacer)
         toolbar.addWidget(showData)
+        toolbar.addWidget(spacer)
+        toolbar.addWidget(dark)
         toolbar.addWidget(Help)
         return toolbar
 
@@ -276,6 +282,18 @@ class MainWindow (QMainWindow):
             self.aicanvas = plt.imshow(self.aiArray[self.current], alpha=0.5)
 
         return self.dicom.imgarr
+
+    def change_theme(self, button):
+        if not button.isChecked():
+            qss = "Application/Stylesheet.qss"
+            self.dicom.fig.set_facecolor("#999999")
+        elif button.isChecked():
+            qss = "Application/Stylesheet_dark.qss"
+            button.setText("light")
+            self.dicom.fig.set_facecolor("#3b3b3b")
+        self.update_fig()
+        with open(qss, "r") as fh:
+                app.setStyleSheet(fh.read())
 
     '''
     update fig will add the image to the display as an overlay
