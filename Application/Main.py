@@ -24,7 +24,7 @@ class MainWindow (QMainWindow):
 
     def __init__(self):
         QWidget.__init__(self)
-        self.setGeometry(300, 400, 1300, 900)
+        self.setGeometry(100, 100, 1300, 900)
         self.setWindowTitle("Dicom Viewer")
         self.centralWidget = QFrame()
         self.centralWidget.setFrameStyle(QFrame.StyledPanel)
@@ -234,6 +234,7 @@ class MainWindow (QMainWindow):
     def showDockwidget(self, widget):
         if widget.isVisible():
             widget.setVisible(False)
+            self.setGeometry(100, 100, self.width(), self.height()-widget.height())
         else:
             widget.setVisible(True)
 
