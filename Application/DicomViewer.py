@@ -1,5 +1,6 @@
 
 from PyQt5.QtWidgets import *
+from PyQt5.QtCore import *
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
@@ -103,6 +104,7 @@ class Dicom (FigureCanvas):
             self.pos = [int(event.xdata), int(event.ydata)]
             if event.button == MouseButton.LEFT:
                 window = self.parent().parent()
+                window.input.input.clearFocus()
                 x = event.xdata
                 y = event.ydata
                 if window.selectionMode == 'Single Point Selection':

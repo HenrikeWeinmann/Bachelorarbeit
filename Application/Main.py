@@ -252,6 +252,7 @@ class MainWindow (QMainWindow):
         if not self.validDataset:
             self.dicom.initCanvas()
         self.mainLayout.setAlignment(Qt.AlignmentFlag.AlignHCenter)
+        self.input.input.clearFocus()
         self.update_fig()
         self.data.info = Data.information(self.data)
         self.dock.setWidget(self.rightSide())
@@ -270,7 +271,7 @@ class MainWindow (QMainWindow):
     def init_imgarrays(self):
         if isinstance(self.dataArray[self.slice][self.current], np.ndarray):
             self.dicom.imgarr = self.dataArray[self.slice][self.current]
-            self.dicom.img = plt.imshow(self.dicom.imgarr, self.dicom.cmap, vmin=0, vmax=1)
+            self.dicom.img = plt.imshow(self.dicom.imgarr, self.dicom.cmap,vmin=self.dicom.vmin, vmax=self.dicom.vmax)
         else:
             self.dicom.imgarr = self.dataArray[self.slice][self.current].pixel_array
             self.dicom.img = plt.imshow(self.dicom.imgarr, self.dicom.cmap, vmin=self.dicom.vmin, vmax=self.dicom.vmax)
@@ -282,6 +283,21 @@ class MainWindow (QMainWindow):
             self.aicanvas = plt.imshow(self.aiArray[self.current], alpha=0.5)
 
         return self.dicom.imgarr
+
+    def keyPressEvent(self, event):
+        if self.validDataset:
+            if event.key() == Qt.Key_Down:
+                if self.slice == 0:
+                    self.slice = len(self.dataArray) - 1
+                else:
+                    self.slice -= 1
+                self.dicom.newSlice(self)
+            elif event.key() == Qt.Key_Up:
+                if self.slice < (len(self.dataArray) - 1):
+                    self.slice += 1
+                else:
+                    self.slice = 0
+                self.dicom.newSlice(self)
 
     def change_theme(self, button):
         if not button.isChecked():
