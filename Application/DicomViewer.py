@@ -175,7 +175,6 @@ class Dicom (FigureCanvas):
         if self.pressed and event.button == MouseButton.RIGHT:
             diff = int(self.pos[1] - event.ydata)
             value = window.contrast.value() + diff
-
             self.change_contrast(value, window)
 
     def change_contrast(self, value, window):
@@ -187,14 +186,13 @@ class Dicom (FigureCanvas):
         window.dicom.img = plt.imshow(self.imgarr, window.dicom.cmap, vmin=0, vmax=250)
         window.dicom.draw()
         window.mainLayout.addWidget(window.dicom, 0, 1)
-        print("new contrast")
 
 
     def clear(self, window):
         self.canvas[:] = 0
         window.selection = []
-        self.xlim = [0, self.imgarr.shape[1]]
-        self.ylim = [self.imgarr.shape[0], 0]
+        self.xlim = [0, self.imgarr.shape[1]-1]
+        self.ylim = [self.imgarr.shape[0]-1, 0]
         window.reset_after_changes()
 
     def erase(self, window):
@@ -238,12 +236,18 @@ class Dicom (FigureCanvas):
         ymin = x - ylength
         ymax = x + ylength
         # set new limits
-        window.dicom.xlim = [int(xmin), int(xmax)]
-        window.dicom.ylim = [int(ymax), int(ymin)]
+        self.xlim = [int(xmin), int(xmax)]
+        self.ylim = [int(ymax), int(ymin)]
         window.update_fig()
         print("zoom")
         print(window.dicom.xlim)
 
+    def zoom_out(self):
+        window = self.parent().parent()
+        self.xlim = [0,self.imgarr.shape[1]-1]
+        self.ylim = [self.imgarr.shape[0]-1,0]
+        window.update_fig()
+        pass
 
     def move(self, window):
         if window.eraseMode.isChecked():

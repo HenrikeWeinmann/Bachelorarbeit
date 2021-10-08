@@ -69,8 +69,6 @@ class UserInput(QFrame):
                 self.window.reset_after_changes()
                 if not self.window.validDataset:
                     self.window.validDataset = True
-                    #if not self.window.single_image:
-                       # self.window.mainLayout.addLayout(self.window.mediaBar, 1, 1, 1, 1)
                     self.window.mainLayout.addWidget(self.window.picturemenu, 0, 0, 2, 1, Qt.AlignmentFlag.AlignLeft)
                 self.window.reset_after_changes()  # update right siden and initialize meta data
             else:
@@ -131,7 +129,20 @@ class UserInput(QFrame):
             slices = os.listdir(self.filepath)  # list of all names of all slices
             slices.sort()
             #multiple slices loaded
-            if os.path.isdir(os.path.join(self.filepath, slices[1])):
+            # only one slice is loaded
+            # in this case slices are actually frames
+            if not os.path.isdir(os.path.join(self.filepath, slices[1])):
+                data.append([])
+                for i in range(1, len(slices)):  # skip first since its not a slice
+                    current_slice = os.path.join(self.filepath, slices[i])
+                    print(current_slice)
+                    if current_slice.lower().endswith('.npy'):
+                        numpy = np.load(current_slice)
+                        data[0].append(numpy)
+                    else:
+                        dicom = dcm.dcmread(current_slice)
+                        data[0].append(dicom)
+            elif os.path.isdir(os.path.join(self.filepath, slices[1])):
                 for i in range(1, len(slices)):
                     current_slice = os.path.join(self.filepath, slices[i])
                     frames = os.listdir(current_slice)
@@ -145,18 +156,6 @@ class UserInput(QFrame):
                         else:
                             dicom = dcm.dcmread(current_frame)
                             data[i - 1].append(dicom)
-            # only one slice is loaded
-            # in this case slices are actually frames
-            elif not os.path.isdir(os.path.join(self.filepath, slices[1])):
-                data.append([])
-                for i in range(len(slices)):
-                    current_slice = os.path.join(self.filepath, slices[i])
-                    if current_slice.lower().endswith('.npy'):
-                        numpy = np.load(current_slice)
-                        data[0].append(numpy)
-                    else:
-                        dicom = dcm.dcmread(current_slice)
-                        data[0].append(dicom)
             return data
     '''
     assuming that only one slice will be analyzed
@@ -164,7 +163,7 @@ class UserInput(QFrame):
     '''
     def load_calculations(self):
         aiData = []
-        dir = "Application/masks"
+        dir = "Application/masks_01"
         for filename in os.listdir(dir):
             arr = np.load(os.path.join(dir, filename))
             arr = arr[:, :, 0]

@@ -108,7 +108,7 @@ class MainWindow (QMainWindow):
         clear.clicked.connect(lambda: Dicom.clear(self.dicom, self))
         self.contrast = QSlider(Qt.Horizontal)
         self.contrast.sliderMoved.connect(lambda: Dicom.change_contrast(self.dicom, self.contrast.value(), self))
-        self.contrast.setValue(30)
+        self.contrast.setValue(20)
         self.contrast.setMaximum(100)
         self.contrast.setMinimum(10)
         self.con = QPixmap("Application/Icons/contrast.png")
@@ -298,6 +298,9 @@ class MainWindow (QMainWindow):
                 else:
                     self.slice = 0
                 self.dicom.newSlice(self)
+            elif event.key() == Qt.Key_Space:
+                self.dicom.zoom_out()
+
 
     def change_theme(self, button):
         if not button.isChecked():
