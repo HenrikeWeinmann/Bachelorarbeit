@@ -26,8 +26,8 @@ class Dicom (FigureCanvas):
         #window.centralWidget.setFixedHeight(900)
         self.setParent(window)
         self.cmap = 'bone'
-        self.vmin = 0
-        self.vmax = 255
+        self.vmin = None
+        self.vmax = None
         try:
             self.initCanvas()
         except:
@@ -44,6 +44,7 @@ class Dicom (FigureCanvas):
         else:
             self.imgarr = window.dataArray[window.slice][window.current].pixel_array
         self.img = self.ax.imshow(self.imgarr, self.cmap)
+        self.init_contrast(window)
         self.canvas = np.empty(self.imgarr.shape)
         self.canvas[:] = 0
         self.cnv = self.ax.imshow(self.canvas, cmap=self.customcmap())
@@ -60,6 +61,11 @@ class Dicom (FigureCanvas):
         window.update_fig()
         #  print(self.fig.get_size_inches() * self.fig.dpi)
 
+    def init_contrast(self, window):
+        self.vmax = self.img.get_clim()[1]
+        self.vmin = self.img.get_clim()[0]
+        window.contrast.setMaximum(self.vmax * 1.5)
+        window.contrast.setValue(self.vmax)
 
     # scroll wheel
     def wheelEvent(self, event):
@@ -178,13 +184,8 @@ class Dicom (FigureCanvas):
             self.change_contrast(value, window)
 
     def change_contrast(self, value, window):
-        pixvals = window.init_imgarrays()
-        minval = np.percentile(pixvals, (value/10)-1)
-        maxval = np.percentile(pixvals, 101-(value/10))
-        pixvals = np.clip(pixvals, minval, maxval)
-        self.imgarr = ((pixvals - minval) / (maxval - minval)) * 255
-        window.dicom.img = plt.imshow(self.imgarr, window.dicom.cmap, vmin=0, vmax=250)
-        window.dicom.draw()
+        self.vmax = value
+        window.reset_after_changes()
         window.mainLayout.addWidget(window.dicom, 0, 1)
 
 

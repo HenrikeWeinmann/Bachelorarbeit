@@ -108,9 +108,9 @@ class MainWindow (QMainWindow):
         clear.clicked.connect(lambda: Dicom.clear(self.dicom, self))
         self.contrast = QSlider(Qt.Horizontal)
         self.contrast.sliderMoved.connect(lambda: Dicom.change_contrast(self.dicom, self.contrast.value(), self))
-        self.contrast.setValue(20)
-        self.contrast.setMaximum(100)
-        self.contrast.setMinimum(10)
+        self.contrast.setValue(250)
+        self.contrast.setMaximum(250)
+        self.contrast.setMinimum(100)
         self.con = QPixmap("Application/Icons/contrast.png")
         self.label = QLabel()
         self.label.setPixmap(self.con.scaled(30, 30))
@@ -271,16 +271,17 @@ class MainWindow (QMainWindow):
     def init_imgarrays(self):
         if isinstance(self.dataArray[self.slice][self.current], np.ndarray):
             self.dicom.imgarr = self.dataArray[self.slice][self.current]
-            self.dicom.img = plt.imshow(self.dicom.imgarr, self.dicom.cmap,vmin=self.dicom.vmin, vmax=self.dicom.vmax)
+            self.dicom.img = plt.imshow(self.dicom.imgarr, self.dicom.cmap, vmax=self.dicom.vmax, vmin=self.dicom.vmin)
         else:
             self.dicom.imgarr = self.dataArray[self.slice][self.current].pixel_array
-            self.dicom.img = plt.imshow(self.dicom.imgarr, self.dicom.cmap, vmin=self.dicom.vmin, vmax=self.dicom.vmax)
+            self.dicom.img = plt.imshow(self.dicom.imgarr, self.dicom.cmap, vmax=self.dicom.vmax, vmin=self.dicom.vmin)
         self.cnv = plt.imshow(self.dicom.canvas, Dicom.customcmap(self.dicom))
         if self.selectionMode == 'Polygon Selection' and len(self.selection) >= 3:
             Dicom.draw_polygon(self.dicom, patches.Polygon(self.selection, color='red', alpha=0.2))
             '''used to be: plt.gca().add_patch(polygon)... but somehow wont work anymore'''
         if self.AIdisplayed:
-            self.aicanvas = plt.imshow(self.aiArray[self.current], alpha=0.5)
+            mask = self.aiArray[self.current]
+            self.aicanvas = plt.imshow(np.ma.masked_where(mask == 0, mask), alpha=0.5)
 
         return self.dicom.imgarr
 
