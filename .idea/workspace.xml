@@ -9,7 +9,6 @@
       <change beforePath="$PROJECT_DIR$/Application/DicomViewer.py" beforeDir="false" afterPath="$PROJECT_DIR$/Application/DicomViewer.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Application/Main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Application/UserInput.py" beforeDir="false" afterPath="$PROJECT_DIR$/Application/UserInput.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LaTeX/Literature.bib" beforeDir="false" afterPath="$PROJECT_DIR$/LaTeX/Literature.bib" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -22,11 +21,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Application/UserInput.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="540">
-              <caret line="135" column="49" selection-start-line="135" selection-start-column="49" selection-end-line="135" selection-end-column="49" />
+            <state relative-caret-position="389">
+              <caret line="139" column="57" selection-start-line="139" selection-start-column="57" selection-end-line="139" selection-end-column="57" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
@@ -34,11 +33,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Application/Main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-3661">
-              <caret line="112" column="36" selection-start-line="112" selection-start-column="36" selection-end-line="112" selection-end-column="36" />
+            <state relative-caret-position="1725">
+              <caret line="75" column="95" selection-start-line="75" selection-start-column="95" selection-end-line="75" selection-end-column="95" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
@@ -49,8 +48,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Application/DicomViewer.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="719">
-              <caret line="176" column="50" selection-start-line="176" selection-start-column="50" selection-end-line="176" selection-end-column="50" />
+            <state relative-caret-position="2908">
+              <caret line="241" column="27" selection-start-line="241" selection-start-column="27" selection-end-line="241" selection-end-column="27" />
               <folding>
                 <element signature="e#1#30#0" expanded="true" />
               </folding>
@@ -109,13 +108,13 @@
         <option value="$PROJECT_DIR$/Application/welcome.txt" />
         <option value="$PROJECT_DIR$/Application/Stylesheet.qss" />
         <option value="$PROJECT_DIR$/Application/Stylesheet_dark.qss" />
+        <option value="$PROJECT_DIR$/Application/DicomViewer.py" />
         <option value="$PROJECT_DIR$/Application/Main.py" />
         <option value="$PROJECT_DIR$/Application/UserInput.py" />
-        <option value="$PROJECT_DIR$/Application/DicomViewer.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds">
     <option name="x" value="68" />
     <option name="y" value="25" />
     <option name="width" value="1612" />
@@ -389,20 +388,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1619447345414</updated>
-    </task>
-    <task id="LOCAL-00039" summary="load data completely into an array before starting">
-      <created>1624618520452</created>
-      <option name="number" value="00039" />
-      <option name="presentableId" value="LOCAL-00039" />
-      <option name="project" value="LOCAL" />
-      <updated>1624618520452</updated>
-    </task>
-    <task id="LOCAL-00040" summary="load only one slice">
-      <created>1625080932020</created>
-      <option name="number" value="00040" />
-      <option name="presentableId" value="LOCAL-00040" />
-      <option name="project" value="LOCAL" />
-      <updated>1625080932020</updated>
     </task>
     <task id="LOCAL-00041" summary="patch fixed when pressed play">
       <created>1625092631057</created>
@@ -733,7 +718,21 @@
       <option name="project" value="LOCAL" />
       <updated>1633354186149</updated>
     </task>
-    <option name="localTasksCounter" value="88" />
+    <task id="LOCAL-00088" summary="np load error fixed">
+      <created>1633696612757</created>
+      <option name="number" value="00088" />
+      <option name="presentableId" value="LOCAL-00088" />
+      <option name="project" value="LOCAL" />
+      <updated>1633696612757</updated>
+    </task>
+    <task id="LOCAL-00089" summary="another contrast function update">
+      <created>1633874636625</created>
+      <option name="number" value="00089" />
+      <option name="presentableId" value="LOCAL-00089" />
+      <option name="project" value="LOCAL" />
+      <updated>1633874636625</updated>
+    </task>
+    <option name="localTasksCounter" value="90" />
     <servers />
   </component>
   <component name="TodoView">
@@ -749,12 +748,12 @@
     <frame x="68" y="25" width="1612" height="1025" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.48700175" visible="true" weight="0.14079195" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.48700175" visible="true" weight="0.14079195" />
       <window_info id="Structure" order="1" sideWeight="0.5129983" side_tool="true" visible="true" weight="0.14079195" />
       <window_info id="Favorites" order="2" sideWeight="0.5054466" side_tool="true" weight="0.10142566" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.11161731" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.5648438" visible="true" weight="0.37756202" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.5648438" visible="true" weight="0.37756202" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49921876" weight="0.39836735" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -867,8 +866,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="new adaptive layout" />
-    <MESSAGE value="styled combo boxes... drop down still to do" />
     <MESSAGE value="analyze function prepared" />
     <MESSAGE value="zoom out when new slice" />
     <MESSAGE value="tight layout padding reset" />
@@ -892,7 +889,9 @@
     <MESSAGE value="realign open button in Input field" />
     <MESSAGE value="dark theme added" />
     <MESSAGE value="change slice with keyboard" />
-    <option name="LAST_COMMIT_MESSAGE" value="change slice with keyboard" />
+    <MESSAGE value="np load error fixed" />
+    <MESSAGE value="another contrast function update" />
+    <option name="LAST_COMMIT_MESSAGE" value="another contrast function update" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/UserInteraction.py" />
@@ -1000,10 +999,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Application/UserInput.py">
+    <entry file="file://$PROJECT_DIR$/Application/Main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="135" column="49" selection-start-line="135" selection-start-column="49" selection-end-line="135" selection-end-column="49" />
+        <state relative-caret-position="1725">
+          <caret line="75" column="95" selection-start-line="75" selection-start-column="95" selection-end-line="75" selection-end-column="95" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
           </folding>
@@ -1012,18 +1011,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Application/DicomViewer.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="719">
-          <caret line="176" column="50" selection-start-line="176" selection-start-column="50" selection-end-line="176" selection-end-column="50" />
+        <state relative-caret-position="2908">
+          <caret line="241" column="27" selection-start-line="241" selection-start-column="27" selection-end-line="241" selection-end-column="27" />
           <folding>
             <element signature="e#1#30#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Main.py">
+    <entry file="file://$PROJECT_DIR$/Application/UserInput.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3661">
-          <caret line="112" column="36" selection-start-line="112" selection-start-column="36" selection-end-line="112" selection-end-column="36" />
+        <state relative-caret-position="389">
+          <caret line="139" column="57" selection-start-line="139" selection-start-column="57" selection-end-line="139" selection-end-column="57" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
           </folding>

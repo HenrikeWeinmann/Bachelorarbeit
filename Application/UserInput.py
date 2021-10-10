@@ -70,12 +70,11 @@ class UserInput(QFrame):
                 if not self.window.validDataset:
                     self.window.validDataset = True
                     self.window.mainLayout.addWidget(self.window.picturemenu, 0, 0, 2, 1, Qt.AlignmentFlag.AlignLeft)
-                self.window.reset_after_changes()  # update right siden and initialize meta data
+                self.window.reset_after_changes()  # update right side and initialize meta data
             else:
                 self.layout.insertWidget(1, self.errorText)
         else:
             self.layout.insertWidget(1, self.errorText)
-            #self.errorText.setText("not a valid path")
     '''
     check for DICOM file suffix as well as the structure of nested directories with up to 3 layers
     '''
@@ -115,7 +114,7 @@ class UserInput(QFrame):
     def loadData(self):
         data = []
         if not os.path.isdir(self.filepath):
-            #single image loaded
+            # single image loaded
             self.window.single_image = True
             data.append([])
             if self.filepath.lower().endswith('.npy'):
@@ -128,20 +127,19 @@ class UserInput(QFrame):
         else:
             slices = os.listdir(self.filepath)  # list of all names of all slices
             slices.sort()
-            #multiple slices loaded
             # only one slice is loaded
-            # in this case slices are actually frames
             if not os.path.isdir(os.path.join(self.filepath, slices[1])):
                 data.append([])
-                for i in range(1, len(slices)):  # skip first since its not a slice
-                    current_slice = os.path.join(self.filepath, slices[i])
-                    print(current_slice)
-                    if current_slice.lower().endswith('.npy'):
-                        numpy = np.load(current_slice)
+                frames = slices
+                for i in range(1, len(frames)):  # skip first since its not a slice
+                    current_frame = os.path.join(self.filepath, frames[i])
+                    if current_frame.lower().endswith('.npy'):
+                        numpy = np.load(current_frame)
                         data[0].append(numpy)
                     else:
-                        dicom = dcm.dcmread(current_slice)
+                        dicom = dcm.dcmread(current_frame)
                         data[0].append(dicom)
+            # multiple slices loaded
             elif os.path.isdir(os.path.join(self.filepath, slices[1])):
                 for i in range(1, len(slices)):
                     current_slice = os.path.join(self.filepath, slices[i])

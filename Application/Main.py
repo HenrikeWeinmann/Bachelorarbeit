@@ -74,7 +74,6 @@ class MainWindow (QMainWindow):
         self.mainLayout.addWidget(self.dicom, 0, 1, 1, 1)
         if self.validDataset:
             self.mainLayout.addWidget(self.picturemenu, 0, 0, 2, 1, Qt.AlignmentFlag.AlignLeft)
-            #self.mainLayout.addLayout(self.mediaBar, 1, 1, 1, 1)
         self.centralWidget.setLayout(self.mainLayout)
         self.setCentralWidget(self.centralWidget)
 

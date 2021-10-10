@@ -240,8 +240,6 @@ class Dicom (FigureCanvas):
         self.xlim = [int(xmin), int(xmax)]
         self.ylim = [int(ymax), int(ymin)]
         window.update_fig()
-        print("zoom")
-        print(window.dicom.xlim)
 
     def zoom_out(self):
         window = self.parent().parent()
