@@ -7,7 +7,6 @@
     <list default="true" id="8e406e9a-7129-4799-b3f3-c02ccd0c5d7c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Application/DicomViewer.py" beforeDir="false" afterPath="$PROJECT_DIR$/Application/DicomViewer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Application/UserInput.py" beforeDir="false" afterPath="$PROJECT_DIR$/Application/UserInput.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -24,10 +23,22 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Application/UserInput.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="389">
-              <caret line="139" column="57" selection-start-line="139" selection-start-column="57" selection-end-line="139" selection-end-column="57" />
+            <state relative-caret-position="157">
+              <caret line="14" column="18" selection-start-line="14" selection-start-column="18" selection-end-line="14" selection-end-column="18" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Application/DicomViewer.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1645">
+              <caret line="246" column="45" selection-start-line="246" selection-start-column="45" selection-end-line="246" selection-end-column="45" />
+              <folding>
+                <element signature="e#1#30#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -40,18 +51,6 @@
               <caret line="75" column="95" selection-start-line="75" selection-start-column="95" selection-end-line="75" selection-end-column="95" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Application/DicomViewer.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2908">
-              <caret line="241" column="27" selection-start-line="241" selection-start-column="27" selection-end-line="241" selection-end-column="27" />
-              <folding>
-                <element signature="e#1#30#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -75,6 +74,7 @@
       <find>picture</find>
       <find>Fix</find>
       <find>width</find>
+      <find>focus</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -108,8 +108,8 @@
         <option value="$PROJECT_DIR$/Application/welcome.txt" />
         <option value="$PROJECT_DIR$/Application/Stylesheet.qss" />
         <option value="$PROJECT_DIR$/Application/Stylesheet_dark.qss" />
-        <option value="$PROJECT_DIR$/Application/DicomViewer.py" />
         <option value="$PROJECT_DIR$/Application/Main.py" />
+        <option value="$PROJECT_DIR$/Application/DicomViewer.py" />
         <option value="$PROJECT_DIR$/Application/UserInput.py" />
       </list>
     </option>
@@ -388,20 +388,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1619447345414</updated>
-    </task>
-    <task id="LOCAL-00041" summary="patch fixed when pressed play">
-      <created>1625092631057</created>
-      <option name="number" value="00041" />
-      <option name="presentableId" value="LOCAL-00041" />
-      <option name="project" value="LOCAL" />
-      <updated>1625092631057</updated>
-    </task>
-    <task id="LOCAL-00042" summary="moving Points enabled and minor refactoring.">
-      <created>1626134194778</created>
-      <option name="number" value="00042" />
-      <option name="presentableId" value="LOCAL-00042" />
-      <option name="project" value="LOCAL" />
-      <updated>1626134194778</updated>
     </task>
     <task id="LOCAL-00043" summary="icons for picture menu">
       <created>1626796355027</created>
@@ -732,7 +718,21 @@
       <option name="project" value="LOCAL" />
       <updated>1633874636625</updated>
     </task>
-    <option name="localTasksCounter" value="90" />
+    <task id="LOCAL-00090" summary="variable names changed for better readability">
+      <created>1633875111985</created>
+      <option name="number" value="00090" />
+      <option name="presentableId" value="LOCAL-00090" />
+      <option name="project" value="LOCAL" />
+      <updated>1633875111986</updated>
+    </task>
+    <task id="LOCAL-00091" summary="error text fix">
+      <created>1633875515277</created>
+      <option name="number" value="00091" />
+      <option name="presentableId" value="LOCAL-00091" />
+      <option name="project" value="LOCAL" />
+      <updated>1633875515278</updated>
+    </task>
+    <option name="localTasksCounter" value="92" />
     <servers />
   </component>
   <component name="TodoView">
@@ -866,8 +866,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="analyze function prepared" />
-    <MESSAGE value="zoom out when new slice" />
     <MESSAGE value="tight layout padding reset" />
     <MESSAGE value="display masks" />
     <MESSAGE value="hide mask when new slice is selected through scroll wheel" />
@@ -891,7 +889,9 @@
     <MESSAGE value="change slice with keyboard" />
     <MESSAGE value="np load error fixed" />
     <MESSAGE value="another contrast function update" />
-    <option name="LAST_COMMIT_MESSAGE" value="another contrast function update" />
+    <MESSAGE value="variable names changed for better readability" />
+    <MESSAGE value="error text fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="error text fix" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/UserInteraction.py" />
@@ -999,6 +999,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Application/DicomViewer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1645">
+          <caret line="246" column="45" selection-start-line="246" selection-start-column="45" selection-end-line="246" selection-end-column="45" />
+          <folding>
+            <element signature="e#1#30#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Application/Main.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1725">
@@ -1009,20 +1019,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Application/DicomViewer.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2908">
-          <caret line="241" column="27" selection-start-line="241" selection-start-column="27" selection-end-line="241" selection-end-column="27" />
-          <folding>
-            <element signature="e#1#30#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Application/UserInput.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="389">
-          <caret line="139" column="57" selection-start-line="139" selection-start-column="57" selection-end-line="139" selection-end-column="57" />
+        <state relative-caret-position="157">
+          <caret line="14" column="18" selection-start-line="14" selection-start-column="18" selection-end-line="14" selection-end-column="18" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
           </folding>

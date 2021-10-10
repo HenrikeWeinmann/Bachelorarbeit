@@ -243,8 +243,8 @@ class Dicom (FigureCanvas):
 
     def zoom_out(self):
         window = self.parent().parent()
-        self.xlim = [0,self.imgarr.shape[1]-1]
-        self.ylim = [self.imgarr.shape[0]-1,0]
+        self.xlim = [0, self.imgarr.shape[1]-1]
+        self.ylim = [self.imgarr.shape[0]-1, 0]
         window.update_fig()
         pass
 
