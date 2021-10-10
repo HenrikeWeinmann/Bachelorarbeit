@@ -72,8 +72,12 @@ class UserInput(QFrame):
                     self.window.mainLayout.addWidget(self.window.picturemenu, 0, 0, 2, 1, Qt.AlignmentFlag.AlignLeft)
                 self.window.reset_after_changes()  # update right side and initialize meta data
             else:
+                self.errorText.setText("This is not a valid file path")
+                self.errorText.setFixedHeight(20)
                 self.layout.insertWidget(1, self.errorText)
         else:
+            self.errorText.setText("This is not a valid file path")
+            self.errorText.setFixedHeight(20)
             self.layout.insertWidget(1, self.errorText)
     '''
     check for DICOM file suffix as well as the structure of nested directories with up to 3 layers
@@ -88,6 +92,7 @@ class UserInput(QFrame):
                 slices.sort()
                 file = os.path.join(file, slices[1])
                 if os.path.isdir(file):
+                    self.errorText.setFixedHeight(20)
                     self.errorText.setText("you can only load one dataset at a time.")
                     self.layout.insertWidget(1, self.errorText)
                     return False
@@ -98,6 +103,7 @@ class UserInput(QFrame):
         elif file.lower().endswith(('.dcm', '.dc3', '.dic', '.npy')):
             return True
         else:
+            self.errorText.setFixedHeight(20)
             self.layout.insertWidget(1, self.errorText)
             self.errorText.setText("you can only load dicom images")
             return False
