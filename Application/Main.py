@@ -280,7 +280,7 @@ class MainWindow (QMainWindow):
             '''used to be: plt.gca().add_patch(polygon)... but somehow wont work anymore'''
         if self.AIdisplayed:
             mask = self.aiArray[self.current]
-            self.aicanvas = plt.imshow(np.ma.masked_where(mask == 0, mask), alpha=0.5)
+            self.aicanvas = plt.imshow(np.ma.masked_where(mask == 0, mask), cmap="Wistia", alpha=0.5)
 
         return self.dicom.imgarr
 
