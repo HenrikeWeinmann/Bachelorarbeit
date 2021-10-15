@@ -1,18 +1,18 @@
 /* -------- Color Palette --------------
 
-Text : #1A1A1A
-Text2: #163540
+Text : #e6e3e3
+Text2: #70808a
 dark grey: #808080
-light grey: #999999
-dark blue: #8DC1D8 or rgb(141,193,216)
-middle blue: #B2D6E6
-light blue: #D8EAF3
+light grey: #3b3b3b
+dark blue:   #212a2e  or rgb(33, 42, 46)
+middle blue: #38454b
+light blue: #375463
 
 */
 /* -------- Stylesheet --------------*/
 QWidget {
-    background-color: #808080;
-    color: #163540;
+    background-color: #212a2e;
+    color: #e6e3e3;
     padding: 0px;
     font-family: "Trebuchet MS";
     font: 20px;
@@ -26,107 +26,47 @@ QFrame * {
 
 /* -------- General --------------*/
 QLabel {
-    background-color: #D8EAF3;
+    background-color: #38454b;
     min-height: 80px;
 }
 
 QPushButton {
-    color: #1A1A1A;
-    background-color: #D8EAF3;
-    border-color: #8DC1D8;
+    color: #e6e3e3;
+    background-color: #212a2e;
+    border-color: #38454b;
     border-radius: 20;
     border-style: outset;
     border-width: 3px;
 }
 
 QPushButton:hover {
-    background-color: #B2D6E6;
+    background-color: #70808a;
 }
 
 QPushButton:pressed {
     border-color: #808080;
-    background-color: #8DC1D8;
+    background-color: #38454b;
 }
 
 QLineEdit {
-    background-color: #B2D6E6;
-    border: 2px solid #8DC1D8;
+    background-color: #375463;
+    border: 2px solid #212a2e;
     max-width: 500px;
     min-width: 300px;
     min-height: 40px;
-    color: #808080;
+    color: #70808a;
     font: 20px;
 }
 
 QLineEdit:focus {
-    border: 5px solid #8DC1D8;
-}
-
-QComboBox {
-    color: #1A1A1A;
-    background: #D8EAF3;
-    width: 300px;
-    combobox-popup: 0;
-    selection-background-color: #D8EAF3;
-}
-
-/* -------- Media Bar --------------*/
-QWidget#MediaBar{
-    max-height: 100px;
-    max-width: 500px;
-}
-
-QWidget#MediaBarBackground {
-    background: #999999;
-    max-height: 100px;
-    max-width: 500px;
-    margin: 10 0 10 0;
-    border-radius: 15;
-}
-
-QPushButton#playbtn, #forward, #backward, #fastforward, #fastbackward, #stopbtn {
-    background-color: #B2D6E6;
-    border-radius: 25;
-    max-width: 50px;
-    max-height: 50px;
-    min-width: 50px;
-    min-height: 50px;
-    margin: 0 10 0 10 ;
-}
-
-QPushButton#playbtn:hover, #forward:hover, #backward:hover, #fastforward:hover, #fastbackward:hover, #stopbtn:hover {
-    background-color: #8DC1D8;
-}
-
-QPushButton#playbtn {
-    image: url('Application/Icons/Play.png');
-}
-
-QPushButton#stopbtn {
-    image: url('Application/Icons/Stop.png');
-}
-
-QPushButton#forward {
-    image: url('Application/Icons/Forward.png');
-}
-
-QPushButton#fastforward {
-    image: url('Application/Icons/FastForward.png');
-}
-
-QPushButton#backward {
-    image: url('Application/Icons/Backward.png');
-}
-
-QPushButton#fastbackward {
-    image: url('Application/Icons/FastBackward.png');
+    border: 5px solid #38454b;
 }
 
 /* -------- Toolbar --------------*/
 QToolBar {
     height: 50px;
-    background: #8DC1D8;
-    border: 2px solid #1A1A1A;
+    background: #38454b;
+    border: 2px solid #70808a;
     border-style: outset;
     margin: 0;
 }
@@ -142,56 +82,26 @@ QWidget#spacer {
     background: none;
 }
 
-QPushButton#ShowData {
-    border-radius: 15;
-    max-height: 20px;
-    min-width: 70;
+QPushButton#File:checked, #Help:checked, #MetaData:checked, #ShowData:checked,#dark:checked{
+    border-color: #70808a;
 }
-
-QComboBox::drop-down {
-    subcontrol-origin: padding;
-    subcontrol-position: right;
-    margin: 0;
-    width: 20px;
-}
-
-QComboBox:on {
-    background: #B2D6E6;
-    border-bottom: none;
-}
-
-QComboBox QAbstractItemView {
-    min-width: 330px;
-    min-height: 60px;
-    border: none;
-    background: #B2D6E6;
-    margin: 46 0 0 13;
-    selection-background-color: #999999;
-    font 20px;
-    padding: 0;
-}
-
-QComboBox QAbstractItemView::item {
-    color: red;
-    border: 3px solid red;
-}
-
 /* -------- Picturemenu --------------*/
 
-QWidget#picturemenu{
-    min-height: 90 px;
-    max-height: 90 px;
-    background: #999999;
+QFrame#picturemenu{
+    border: none;
+    background: #38454b;
+    max-width: 270px;
+    padding: 5px;
 }
 
-QWidget#picturemenu *{
-    color: #1A1A1A;
-    max-height: 50 px;
-    margin: 0;
+QFrame#picturemenu *{
+    color: #e6e3e3;
 }
+
 QLabel#contrast, #contrast_max{
     background: none;
     min-height: 50px;
+    max-height: 50px;
     max-width: 50px;
     padding: 0px;
     margin: 0px;
@@ -257,6 +167,7 @@ QSlider::handle:horizontal:disabled {
     border: 1px solid #aaa;
     border-radius: 5px;
 }
+
 QPushButton#saveImage{
     image: url('Application/Icons/save.png');
 }
@@ -280,48 +191,158 @@ QPushButton#eraseMode, #moveMode, #clear, #DS, #saveImage{
     background: none;
     border:none;
     border-radius: 7;
-    margin: 1;
-    min-height: 55px;
-    max-height: 55px;
-    min-width: 55px;
-    max-width: 55px;
+    margin: 0 0 0 0;
+    min-height: 70px;
+    max-height: 70px;
+    min-width: 70px;
+    max-width: 70px;
 
 }
 QPushButton#eraseMode:hover, #moveMode:hover, #clear:hover, #DS:hover, #saveImage:hover{
-    background: rgba(89,89,89, 0.2);
+    background: rgba(33, 42, 46,0.2);
 }
 
+/* -------- QComboBox --------------*/
+QComboBox {
+    border-radius:10;
+    color: #e6e3e3;
+    background: #212a2e;
+    max-width: 260px;
+    height: 40px;
+    combobox-popup: 0;
+    selection-background-color: #212a2e;
+    padding: 0 10 0 10;
+    margin: 0 0 20 0;
 
+}
+
+QComboBox::drop-down {
+    subcontrol-origin: content;
+    subcontrol-position: right;
+    width: 20px;
+    border: none;
+    margin: 0,2,0,0;
+}
+
+QComboBox::down-arrow {
+    image: url('Application/Icons/downarrow.png');
+    min-width: 19px;
+    min-height: 19px;
+    background: none;
+}
+
+QComboBox:on {
+    background: #38454b;
+    border-bottom: none;
+}
+
+QComboBox QAbstractItemView {
+    min-width: 250px;
+    min-height: 100px;
+    background: #38454b;
+    margin: 40 0 0 9;
+    selection-background-color: #3b3b3b;
+    padding 5 0 0 5;
+}
+
+QComboBox QAbstractItemView::item{
+    min-height: 40px;
+    font: 30px;
+}
+
+/* -------- Media Bar --------------*/
+QWidget#MediaBar{
+    min-height: 60px;
+    min-width: 170px;
+    max-height: 60px;
+    max-width: 250px;
+}
+
+QWidget#MediaBarBackground {
+    background: #212a2e;
+    max-height: 60px;
+    max-width: 250px;
+    margin: 0 0 0 0;
+    border-radius: 15;
+}
+
+QPushButton#playbtn, #forward, #backward, #fastforward, #fastbackward, #stopbtn {
+    background-color: #3b3b3b;
+    border-radius: 12;
+    min-width:  32px;
+    max-width:  32px;
+    min-height: 32px;
+    max-height: 32px;
+}
+
+QPushButton#playbtn:hover, #forward:hover, #backward:hover, #fastforward:hover, #fastbackward:hover, #stopbtn:hover {
+    background-color: #375463;
+}
+
+QPushButton#playbtn {
+    image: url('Application/Icons/Play.png');
+}
+
+QPushButton#stopbtn {
+    image: url('Application/Icons/Stop.png');
+}
+
+QPushButton#forward {
+    image: url('Application/Icons/Forward.png');
+}
+
+QPushButton#fastforward {
+    image: url('Application/Icons/FastForward.png');
+}
+
+QPushButton#backward {
+    image: url('Application/Icons/Backward.png');
+}
+
+QPushButton#fastbackward {
+    image: url('Application/Icons/FastBackward.png');
+}
+
+QWidget#line1, #line2, #line3{
+    border-top: 1px solid black;
+    max-height: 0px;
+    min-height: 0px;
+}
+QPushButton#Analyze {
+    max-height: 40px;
+    min-height: 40px;
+    border-radius: 15;
+}
 /* -------- Right Side --------------*/
 QWidget#right {
-    background-color: #D8EAF3;
-    border-color: #8DC1D8;
+    background-color: #38454b;
+    border-color: #375463;
     padding: 100 px;
 }
 QTextEdit{
     border: none;
     min-height: 450px;
-    background-color: #D8EAF3;
+    background-color: #38454b;
     font-family: "Trebuchet MS";
     font: 29px;
     padding: 20px;
-    color: #274C5B;
+    color: #e6e3e3;
 }
 
 QFrame#userInput{
-    background-color: #D8EAF3;
-    border: 2px solid #8DC1D8;
+    background-color: #38454b;
+    border: 2px solid #375463;
     margin: 0px;
 }
 
 QWidget#Data {
-    border: 2px solid #8DC1D8;
+    border: 2px solid #375463;
     padding: 20 px;
 }
 
 QTableWidget#info {
     font: 20px;
-    background-color: #D8EAF3;
+    background-color: #38454b;
     border: 0;
     outline: none;
 }
@@ -349,14 +370,20 @@ QPushButton#submit{
     min-width: 55px;
     max-height: 55px;
     max-width: 55px;
-    color: #1A1A1A;
+    color: #e6e3e3;
 }
 
 QPushButton#Open{
-    padding: 3;
+    padding: 4;
     text-align: left;
     border-radius: 20;
     min-height: 60px;
     max-height: 80px;
-    max-width: 410px;
+    max-width: 425px;
+}
+/* -------- Meta --------------*/
+
+QTextEdit#MetaText{
+    font: 18px;
+    min-height: 0px;
 }

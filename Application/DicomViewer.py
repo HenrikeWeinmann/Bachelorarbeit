@@ -1,5 +1,6 @@
 
 from PyQt5.QtWidgets import *
+from PyQt5.QtCore import *
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
@@ -25,8 +26,8 @@ class Dicom (FigureCanvas):
         #window.centralWidget.setFixedHeight(900)
         self.setParent(window)
         self.cmap = 'bone'
-        self.vmin = 0
-        self.vmax = 255
+        self.vmin = None
+        self.vmax = None
         try:
             self.initCanvas()
         except:
@@ -43,6 +44,7 @@ class Dicom (FigureCanvas):
         else:
             self.imgarr = window.dataArray[window.slice][window.current].pixel_array
         self.img = self.ax.imshow(self.imgarr, self.cmap)
+        self.init_contrast(window)
         self.canvas = np.empty(self.imgarr.shape)
         self.canvas[:] = 0
         self.cnv = self.ax.imshow(self.canvas, cmap=self.customcmap())
@@ -59,6 +61,11 @@ class Dicom (FigureCanvas):
         window.update_fig()
         #  print(self.fig.get_size_inches() * self.fig.dpi)
 
+    def init_contrast(self, window):
+        self.vmax = self.img.get_clim()[1]
+        self.vmin = self.img.get_clim()[0]
+        window.contrast.setMaximum(self.vmax * 1.5)
+        window.contrast.setValue(self.vmax)
 
     # scroll wheel
     def wheelEvent(self, event):
@@ -103,6 +110,7 @@ class Dicom (FigureCanvas):
             self.pos = [int(event.xdata), int(event.ydata)]
             if event.button == MouseButton.LEFT:
                 window = self.parent().parent()
+                window.input.input.clearFocus()
                 x = event.xdata
                 y = event.ydata
                 if window.selectionMode == 'Single Point Selection':
@@ -173,26 +181,19 @@ class Dicom (FigureCanvas):
         if self.pressed and event.button == MouseButton.RIGHT:
             diff = int(self.pos[1] - event.ydata)
             value = window.contrast.value() + diff
-
             self.change_contrast(value, window)
 
     def change_contrast(self, value, window):
-        pixvals = window.init_imgarrays()
-        minval = np.percentile(pixvals, (value/10)-1)
-        maxval = np.percentile(pixvals, 101-(value/10))
-        pixvals = np.clip(pixvals, minval, maxval)
-        self.imgarr = ((pixvals - minval) / (maxval - minval)) * 255
-        window.dicom.img = plt.imshow(self.imgarr, window.dicom.cmap, vmin=0, vmax=250)
-        window.dicom.draw()
+        self.vmax = value
+        window.reset_after_changes()
         window.mainLayout.addWidget(window.dicom, 0, 1)
-        print("new contrast")
 
 
     def clear(self, window):
         self.canvas[:] = 0
         window.selection = []
-        self.xlim = [0, self.imgarr.shape[1]]
-        self.ylim = [self.imgarr.shape[0], 0]
+        self.xlim = [0, self.imgarr.shape[1]-1]
+        self.ylim = [self.imgarr.shape[0]-1, 0]
         window.reset_after_changes()
 
     def erase(self, window):
@@ -236,12 +237,16 @@ class Dicom (FigureCanvas):
         ymin = x - ylength
         ymax = x + ylength
         # set new limits
-        window.dicom.xlim = [int(xmin), int(xmax)]
-        window.dicom.ylim = [int(ymax), int(ymin)]
+        self.xlim = [int(xmin), int(xmax)]
+        self.ylim = [int(ymax), int(ymin)]
         window.update_fig()
-        print("zoom")
-        print(window.dicom.xlim)
 
+    def zoom_out(self):
+        window = self.parent().parent()
+        self.xlim = [0, self.imgarr.shape[1]-1]
+        self.ylim = [self.imgarr.shape[0]-1, 0]
+        window.update_fig()
+        pass
 
     def move(self, window):
         if window.eraseMode.isChecked():

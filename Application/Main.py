@@ -74,7 +74,6 @@ class MainWindow (QMainWindow):
         self.mainLayout.addWidget(self.dicom, 0, 1, 1, 1)
         if self.validDataset:
             self.mainLayout.addWidget(self.picturemenu, 0, 0, 2, 1, Qt.AlignmentFlag.AlignLeft)
-            #self.mainLayout.addLayout(self.mediaBar, 1, 1, 1, 1)
         self.centralWidget.setLayout(self.mainLayout)
         self.setCentralWidget(self.centralWidget)
 
@@ -108,9 +107,9 @@ class MainWindow (QMainWindow):
         clear.clicked.connect(lambda: Dicom.clear(self.dicom, self))
         self.contrast = QSlider(Qt.Horizontal)
         self.contrast.sliderMoved.connect(lambda: Dicom.change_contrast(self.dicom, self.contrast.value(), self))
-        self.contrast.setValue(30)
-        self.contrast.setMaximum(100)
-        self.contrast.setMinimum(10)
+        self.contrast.setValue(250)
+        self.contrast.setMaximum(250)
+        self.contrast.setMinimum(100)
         self.con = QPixmap("Application/Icons/contrast.png")
         self.label = QLabel()
         self.label.setPixmap(self.con.scaled(30, 30))
@@ -195,14 +194,20 @@ class MainWindow (QMainWindow):
         MetaData.setCheckable(True)
         MetaData.setChecked(False)
         MetaData.clicked.connect(lambda: self.showDockwidget(self.meta))
+        dark = QPushButton("dark")
+        dark.setObjectName("dark")
+        dark.clicked.connect(lambda: self.change_theme(dark))
+        dark.setCheckable(True)
+        dark.setChecked(False)
         spacer = QWidget()
         spacer.setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Preferred)
         spacer.setObjectName("spacer")
 
         toolbar.addWidget(File)
         toolbar.addWidget(MetaData)
-        toolbar.addWidget(spacer)
         toolbar.addWidget(showData)
+        toolbar.addWidget(spacer)
+        toolbar.addWidget(dark)
         toolbar.addWidget(Help)
         return toolbar
 
@@ -246,6 +251,7 @@ class MainWindow (QMainWindow):
         if not self.validDataset:
             self.dicom.initCanvas()
         self.mainLayout.setAlignment(Qt.AlignmentFlag.AlignHCenter)
+        self.input.input.clearFocus()
         self.update_fig()
         self.data.info = Data.information(self.data)
         self.dock.setWidget(self.rightSide())
@@ -264,18 +270,49 @@ class MainWindow (QMainWindow):
     def init_imgarrays(self):
         if isinstance(self.dataArray[self.slice][self.current], np.ndarray):
             self.dicom.imgarr = self.dataArray[self.slice][self.current]
-            self.dicom.img = plt.imshow(self.dicom.imgarr, self.dicom.cmap, vmin=0, vmax=1)
+            self.dicom.img = plt.imshow(self.dicom.imgarr, self.dicom.cmap, vmax=self.dicom.vmax, vmin=self.dicom.vmin)
         else:
             self.dicom.imgarr = self.dataArray[self.slice][self.current].pixel_array
-            self.dicom.img = plt.imshow(self.dicom.imgarr, self.dicom.cmap, vmin=self.dicom.vmin, vmax=self.dicom.vmax)
+            self.dicom.img = plt.imshow(self.dicom.imgarr, self.dicom.cmap, vmax=self.dicom.vmax, vmin=self.dicom.vmin)
         self.cnv = plt.imshow(self.dicom.canvas, Dicom.customcmap(self.dicom))
         if self.selectionMode == 'Polygon Selection' and len(self.selection) >= 3:
             Dicom.draw_polygon(self.dicom, patches.Polygon(self.selection, color='red', alpha=0.2))
             '''used to be: plt.gca().add_patch(polygon)... but somehow wont work anymore'''
         if self.AIdisplayed:
-            self.aicanvas = plt.imshow(self.aiArray[self.current], alpha=0.5)
+            mask = self.aiArray[self.current]
+            self.aicanvas = plt.imshow(np.ma.masked_where(mask == 0, mask), cmap="Wistia", alpha=0.5)
 
         return self.dicom.imgarr
+
+    def keyPressEvent(self, event):
+        if self.validDataset:
+            if event.key() == Qt.Key_Down:
+                if self.slice == 0:
+                    self.slice = len(self.dataArray) - 1
+                else:
+                    self.slice -= 1
+                self.dicom.newSlice(self)
+            elif event.key() == Qt.Key_Up:
+                if self.slice < (len(self.dataArray) - 1):
+                    self.slice += 1
+                else:
+                    self.slice = 0
+                self.dicom.newSlice(self)
+            elif event.key() == Qt.Key_Space:
+                self.dicom.zoom_out()
+
+
+    def change_theme(self, button):
+        if not button.isChecked():
+            qss = "Application/Stylesheet.qss"
+            self.dicom.fig.set_facecolor("#999999")
+        elif button.isChecked():
+            qss = "Application/Stylesheet_dark.qss"
+            button.setText("light")
+            self.dicom.fig.set_facecolor("#3b3b3b")
+        self.update_fig()
+        with open(qss, "r") as fh:
+                app.setStyleSheet(fh.read())
 
     '''
     update fig will add the image to the display as an overlay

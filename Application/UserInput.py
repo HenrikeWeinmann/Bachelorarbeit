@@ -12,7 +12,7 @@ This class manages the process of opening and loading files into the app
 It creates an User Input Widget which always needs the window attribute in order to call some methods
 '''
 class UserInput(QFrame):
-    filepath = ''  # option to hard code a file path just click on open from file manager after setting filepath to test dir
+    filepath = ''
 
     def __init__(self, window):
         QWidget.__init__(self)
@@ -69,15 +69,16 @@ class UserInput(QFrame):
                 self.window.reset_after_changes()
                 if not self.window.validDataset:
                     self.window.validDataset = True
-                    #if not self.window.single_image:
-                       # self.window.mainLayout.addLayout(self.window.mediaBar, 1, 1, 1, 1)
                     self.window.mainLayout.addWidget(self.window.picturemenu, 0, 0, 2, 1, Qt.AlignmentFlag.AlignLeft)
-                self.window.reset_after_changes()  # update right siden and initialize meta data
+                self.window.reset_after_changes()  # update right side and initialize meta data
             else:
+                self.errorText.setText("This is not a valid file path")
+                self.errorText.setFixedHeight(20)
                 self.layout.insertWidget(1, self.errorText)
         else:
+            self.errorText.setText("This is not a valid file path")
+            self.errorText.setFixedHeight(20)
             self.layout.insertWidget(1, self.errorText)
-            #self.errorText.setText("not a valid path")
     '''
     check for DICOM file suffix as well as the structure of nested directories with up to 3 layers
     '''
@@ -91,6 +92,7 @@ class UserInput(QFrame):
                 slices.sort()
                 file = os.path.join(file, slices[1])
                 if os.path.isdir(file):
+                    self.errorText.setFixedHeight(20)
                     self.errorText.setText("you can only load one dataset at a time.")
                     self.layout.insertWidget(1, self.errorText)
                     return False
@@ -101,14 +103,14 @@ class UserInput(QFrame):
         elif file.lower().endswith(('.dcm', '.dc3', '.dic', '.npy')):
             return True
         else:
+            self.errorText.setFixedHeight(20)
             self.layout.insertWidget(1, self.errorText)
             self.errorText.setText("you can only load dicom images")
             return False
 
     def open(self):
-        if self.filepath == '':
-            file_name = QFileDialog.getExistingDirectory(self, 'Open Source Folder', os.getcwd())
-            self.filepath = file_name
+        file_name = QFileDialog.getExistingDirectory(self, 'Open Source Folder', os.getcwd())
+        self.filepath = file_name
         self.check_and_set_filepath()
 
     '''
@@ -117,7 +119,7 @@ class UserInput(QFrame):
     def loadData(self):
         data = []
         if not os.path.isdir(self.filepath):
-            #single image loaded
+            # single image loaded
             self.window.single_image = True
             data.append([])
             if self.filepath.lower().endswith('.npy'):
@@ -130,8 +132,20 @@ class UserInput(QFrame):
         else:
             slices = os.listdir(self.filepath)  # list of all names of all slices
             slices.sort()
-            #multiple slices loaded
-            if os.path.isdir(os.path.join(self.filepath, slices[1])):
+            # only one slice is loaded
+            if not os.path.isdir(os.path.join(self.filepath, slices[1])):
+                data.append([])
+                frames = slices
+                for i in range(1, len(frames)):  # skip first since its not a slice
+                    current_frame = os.path.join(self.filepath, frames[i])
+                    if current_frame.lower().endswith('.npy'):
+                        numpy = np.load(current_frame)
+                        data[0].append(numpy)
+                    else:
+                        dicom = dcm.dcmread(current_frame)
+                        data[0].append(dicom)
+            # multiple slices loaded
+            elif os.path.isdir(os.path.join(self.filepath, slices[1])):
                 for i in range(1, len(slices)):
                     current_slice = os.path.join(self.filepath, slices[i])
                     frames = os.listdir(current_slice)
@@ -145,18 +159,6 @@ class UserInput(QFrame):
                         else:
                             dicom = dcm.dcmread(current_frame)
                             data[i - 1].append(dicom)
-            # only one slice is loaded
-            # in this case slices are actually frames
-            elif not os.path.isdir(os.path.join(self.filepath, slices[1])):
-                data.append([])
-                for i in range(len(slices)):
-                    current_slice = os.path.join(self.filepath, slices[i])
-                    if current_slice.lower().endswith('.npy'):
-                        numpy = np.load(current_slice)
-                        data[0].append(numpy)
-                    else:
-                        dicom = dcm.dcmread(current_slice)
-                        data[0].append(dicom)
             return data
     '''
     assuming that only one slice will be analyzed
@@ -164,7 +166,7 @@ class UserInput(QFrame):
     '''
     def load_calculations(self):
         aiData = []
-        dir = "Application/masks"
+        dir = "Application/masks_01"
         for filename in os.listdir(dir):
             arr = np.load(os.path.join(dir, filename))
             arr = arr[:, :, 0]
